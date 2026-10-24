@@ -1,27 +1,34 @@
 # yt-faceless-ai
 
-얼굴 없이 운영하는 영어 테크·AI 유튜브 채널의 제작 파이프라인. 쇼츠 매일 1편을 2주 실측한 뒤 8분 영상으로 확장할지 결정한다.
+얼굴 없이 운영하는 영어 AI × 경제 설명 채널의 제작 파이프라인. 롱폼(10~13분)을 먼저 만들고, 그걸 잘라 쇼츠·릴스·틱톡을 만든다.
 
 ## 한 편이 만들어지는 흐름
 
+`/yt-pipeline` 스킬이 아래 순서를 고정한다(`.claude/skills/yt-pipeline/SKILL.md`). 사람 확인은 4곳.
+
 | 단계 | 도구 | 비용 |
 |---|---|---|
-| 1. 조사 | `/yt-viral` (잘 되는 영상 수집) → `/watch` (Gemini가 영상 구조 분석) | Gemini 8분 1편 0.04~0.11달러 |
-| 2. 대본 | Claude Opus 5.5 + `/yt-script` · `/yt-shorts` + `/ai-video-storyboard` (클립별 프롬프트) | 토큰 |
-| 3. 클립 | Higgsfield 웹 화면을 Claude in Chrome으로 조작 (Kling 3.0 720p) | Plus 월 59달러 |
-| 4. 조립 | HyperFrames(모션 그래픽) + Voicebox(내레이션) + `/embedded-captions`(자막) | 0 |
-| 5. 업로드 | `scripts/` 의 YouTube Data API 업로드 | 0 |
-| 6. 측정 | `/yt-retention` · `/yt-audit` | 0 |
+| 1. 질문 발굴 | yt-dlp + `/yt-viral` | 0 |
+| 2. 리서치 | 1차 자료 + `/watch`(Gemini, 구조 분석만) | 영상당 0.04~0.11달러 |
+| 3. 대본 | Claude + `/yt-script` (7단계 비트시트) | 토큰 |
+| 4. 패키징 | `/yt-package` | 0 |
+| 5. 음성 | Voicebox 로컬 REST | 0 |
+| 6. 화면·렌더 | HyperFrames + `/media-use` | 0 |
+| 7. 챕터·설명 | `/yt-chapters` + `/yt-seo` | 0 |
+| 8. 숏폼 | `/yt-shorts` + HyperFrames 세로 렌더 | 0 |
+| 9. 업로드 | `scripts/` (유튜브·릴스), 틱톡 수동 | 0 |
+| 10. 측정 | `/yt-retention` · `/yt-comment` · `/yt-audit` · `/yt-plan` | 0 |
 
-힉스필드를 MCP가 아니라 브라우저로 쓰는 이유: 무제한 모델 혜택은 higgsfield.ai 웹 화면에서만 적용되고 MCP·CLI는 크레딧만 차감되기 때문이다(공식 요금 페이지, 2026-10-23 확인).
+AI 생성 영상은 쓰지 않는다. 이유는 `docs/adr/ADR-002-longform-first-no-ai-video.md`.
 
-## 가설 (2주 실측)
+## 가설 (8주)
 
-14일 동안 쇼츠 15편을 올려 합산 조회수가 10만 미만이면 주제를 바꾼다. 이상이면 8분 영상 주 2편으로 확장한다.
+주 1~2편으로 8주에 12편. 평균 시청 지속률 35% 이상, 12편 중 1편 이상이 채널 중앙값 5배를 넘으면 통과.
 
 ## 폴더
 
-- `prompts/` — 대본·클립 프롬프트 템플릿
+- `episodes/NNN-slug/` — 에피소드별 기획·리서치·대본·상태(STATUS.md)
+- `prompts/` — 대본 템플릿
 - `scripts/` — 업로드·조립 스크립트
 - `docs/adr/` — 되돌리기 어려운 결정 기록
 - `output/` — 생성물 (git 제외)
