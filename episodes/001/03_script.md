@@ -1,7 +1,7 @@
 # EP001 — 3단계 대본 (게이트 2)
 
 - 이슈 #2 · 기준: `docs/voice.md`, `02_research.md` 숫자만 사용
-- 분량: 약 1,650단어 → 150wpm 기준 약 11분
+- 분량: 약 1,472단어 → 150wpm 기준 약 9.8분
 - 화면 표기: `[CHART]` 차트, `[ARTICLE]` 원문 캡처 무빙+형광펜, `[CUTOUT]` 2D 컷아웃, `[STOCK]` 스톡, `[TEXT]` 큰 글자, `[EST]` 화면에 "Estimate" 표시
 
 ## 훅 후보 (hookscore.py)
@@ -32,7 +32,7 @@ Here's the story almost everyone agrees on. Companies got ChatGPT, junior work g
 
 The story isn't crazy. Young graduates really are struggling. But a story can be true in its effects and wrong about its cause. And the cause matters, because it decides what you should actually do about it.
 
-So in June 2026, three economists at the New York Fed did something simple. They didn't ask whether AI could replace junior workers. They asked when the damage started, and in which kinds of jobs.
+So in June 2026, three economists writing for the New York Fed's research blog did something simple. They didn't ask whether AI could replace junior workers. They asked when the damage started, and in which kinds of jobs.
 
 `[ARTICLE] author line: Emanuel, Harrington, Pallais`
 
@@ -78,7 +78,7 @@ So the gap opened where people stopped coming into the office, and it closed whe
 
 And look at the dates. The comparison window ends in 2024, and the youth unemployment rise it measures started before generative AI was in widespread use. You can't blame a tool for damage that began before most companies were using it.
 
-`[TEXT] Gap opens: 2020–2022. ChatGPT: Nov 2022.` `[CHART] timeline with both markers`
+`[TEXT] Compared: 2017–19 vs 2022–24 · ChatGPT: Nov 2022` `[CHART] timeline with both markers`
 
 ## 5. Pillar three: why distance hurts juniors (4:30–6:00)
 
@@ -95,6 +95,12 @@ Remove the shared room, and the company still has to pay you while the teaching 
 `[ARTICLE] quote highlight: "shies away from employing inexperienced workers if distance creates barriers to training and development"`
 
 That's the mechanism. Not a robot taking your desk. An empty desk next to yours, with nobody there to teach you.
+
+Now, a fair warning about this evidence. The inside look comes from a single company. One firm's habits don't automatically describe the whole economy, and the researchers' own wording is careful: remote work "can explain" the rise, and "has meaningfully contributed" to it. That's a strong claim, but it's not a closed case.
+
+`[TEXT] Evidence: 1 company · wording: "can explain"`
+
+What makes it worth taking seriously is that the company-level story and the national numbers line up. The firm hired fewer juniors when people went remote. Nationally, the gap opened in exactly the jobs that went remote. Two different kinds of data, pointing at the same place.
 
 ## 6. Pillar four: the 64 percent (6:00–7:30)
 
@@ -134,11 +140,19 @@ So which is it? Remote work or AI?
 
 Both, at different times. The Fed's window ends in 2024 and captures the first wave, which began before AI was widespread. Stanford's data runs to mid-2026 and captures a second wave, building on top of the first.
 
-And the second wave has a shape. Stanford found the declines are concentrated in jobs where AI does the work instead of the person. Where AI is used to help workers, employment is flat or rising. The authors are careful here. They call these descriptive patterns, not proof that AI caused them.
+And the second wave has a shape. Stanford found the declines are concentrated in jobs where AI does the work instead of the person. Where AI is used to help workers, employment is flat or rising.
+
+`[CUTOUT] two jobs side by side: one where a robot hand does the task, one where it hands a tool to the person`
+
+The authors are careful here too, and you should know their caveats. They call these descriptive patterns, not proof that AI caused them. Some of the differences show up before generative AI was widely used. The gap shrinks when you account for education. And their payroll sample shows bigger gaps than national surveys do, mostly in education, health care and public administration.
+
+`[TEXT] "descriptive patterns, not causal estimates"`
+
+So neither side has a smoking gun. What they have is timing and shape. The first wave started in the wrong place and at the wrong time to be AI. The second wave is concentrated in exactly the jobs where AI replaces tasks, and it keeps growing.
 
 ## 8. Punchline (9:30–10:30)
 
-`[CHART] the punchline: one timeline, two shaded waves. Wave 1 (2020–2024): remote work, mentoring gap. Wave 2 (2023–2026): AI in jobs where it replaces tasks. Overlap shaded.`
+`[CHART] the punchline: one timeline, two shaded waves. Wave 1 (Fed window, through 2024): remote work, mentoring gap. Wave 2 (after ChatGPT, data to mid-2026): AI in jobs where it replaces tasks. Overlap shaded.`
 
 Put them on one timeline and the graduate job crisis stops looking like one thing.
 
@@ -146,7 +160,7 @@ The first wave was about distance. Companies stopped hiring people they couldn't
 
 The second wave is about tasks. Companies hire fewer juniors for work that AI can do on its own.
 
-If you only fight the second wave, you miss the first. And the first one is still the bigger share of what's happened so far, on the Fed's estimate.
+If you only fight the second wave, you miss the first. And on the Fed's estimate, the first one was the bigger share of what happened through 2024.
 
 The research points at two practical questions. Will this role put me near people who can teach me? And is AI in this job doing the work, or helping someone do it? Those aren't career tips from us. They're the two dividing lines the data drew.
 
