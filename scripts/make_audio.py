@@ -48,12 +48,12 @@ for s in np.arange(0.25, dur, 1.0):
     put(bed, hat, s, 1.0)
 bed += drone.astype("float32")
 
-# 음량 자동화: 기본 -27 dB. 큰 숫자·제목 드롭 직전 2초 -20 dB로 상승, 마지막 장면 -36 dB
-gain = np.full(N, 10 ** (-27 / 20), dtype="float32")
+# 음량 자동화: 기본 -25 dB. 큰 숫자·제목 드롭 직전 2초 -19 dB로 상승, 마지막 장면 -36 dB
+gain = np.full(N, 10 ** (-25 / 20), dtype="float32")
 for c in cuts:
     if c["s"] in ("drop", "hit", "riser"):
         a, b = int(max(0, c["t"] - 2.0) * SR), int(c["t"] * SR)
-        gain[a:b] = np.linspace(gain[a], 10 ** (-20 / 20), b - a)
+        gain[a:b] = np.linspace(gain[a], 10 ** (-19 / 20), b - a)
 last9 = next(c for c in cuts if c["t"] >= 609.0)
 gain[int(last9["t"] * SR):] = 10 ** (-36 / 20)
 gain = sfx.lp(gain, 2).astype("float32")
@@ -100,7 +100,7 @@ for c in cuts:
     put(fx, SFX[code](), at, 1.0)
 
 # —— 믹스 ——
-mix = voice * 0.9 + bed + fx * 0.8
+mix = voice * 0.9 + bed + fx * 0.35
 peak = float(np.abs(mix).max())
 if peak > 0.98:
     mix *= 0.98 / peak
