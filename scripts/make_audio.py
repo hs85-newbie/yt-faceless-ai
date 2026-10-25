@@ -1,8 +1,9 @@
-"""내레이션 + 합성 배경음 + 효과음을 하나의 mix.wav(48 kHz 스테레오)로 만든다. 외부 다운로드 없음.
+"""내레이션 + 합성 펄스 비트·드론 + 컷마다 효과음을 mix.wav(48 kHz 스테레오)로 만든다. 외부 다운로드 없음.
 
 사용: cd ~/lemo-opuscar && .venv/bin/python <repo>/scripts/make_audio.py <repo>/output/001
-- 배경음: 저음 드론(두 음을 살짝 어긋나게) + 갈색 잡음 바닥 + 1초 시계 초침. 내레이션 아래 약 -22 dB, 장면 전환 직전 살짝 올라옴.
-- 효과음: 장면 시작마다 낮은 타격음, 줄(비트) 시작마다 아주 작은 휙 소리, 제목 드롭에 큰 타격음, 큰 숫자에 팝.
+입력: output/001/voice.wav, output/001/film/cuts.json (컷마다 s=효과음 코드)
+- 바닥: 전자 펄스(0.5초 간격 저음 킥 + 1초 하이햇 틱) + 저음 드론. 내레이션 아래 약 -11 dB, 마지막 장면은 더 낮게.
+- 효과음 코드: whoosh, pop, hit, drop, type, tick, riser, none
 """
 import json
 import sys
@@ -12,76 +13,98 @@ import numpy as np
 import soundfile as sf
 import soxr
 
-sys.path.insert(0, ".")  # lemo-opuscar 루트에서 실행
+sys.path.insert(0, ".")
 from core.audio import sfx  # noqa: E402
 
 SR = sfx.SR
 out = Path(sys.argv[1])
-cues = json.loads((out / "film" / "cues.json").read_text(encoding="utf-8"))
-dur = cues["dur"]
+cuts = json.loads((out / "film" / "cuts.json").read_text(encoding="utf-8"))["cuts"]
+dur = cuts[-1]["t"] + cuts[-1]["d"]
 N = int(dur * SR)
 
-# 내레이션 (24 kHz 모노 → 48 kHz)
 v, vsr = sf.read(out / "voice.wav", dtype="float32")
 voice = soxr.resample(v, vsr, SR).astype("float32")
 voice = np.pad(voice, (0, max(0, N - len(voice))))[:N]
 
-# 배경음: 드론
+# —— 바닥 음악 ——
 t = np.arange(N) / SR
-drone = (np.sin(2 * np.pi * 55 * t) + 0.7 * np.sin(2 * np.pi * 55.3 * t) + 0.5 * np.sin(2 * np.pi * 82.4 * t) * (0.6 + 0.4 * np.sin(2 * np.pi * 0.05 * t)))
-drone = sfx.lp(drone, 220) * 0.4
-bed = sfx.lp(sfx.brown(dur), 400) * 0.12
-tick = np.zeros(N, dtype="float32")
-tk = sfx.hp(sfx.noise(0.012), 3000) * sfx.env_exp(0.012, 0.003) * 0.25
-for s in range(int(dur)):
-    i = s * SR
-    tick[i:i + len(tk)] += tk[: N - i] if i + len(tk) > N else tk
-bgm = (drone[:N] + bed[:N]).astype("float32") + tick[:N]  # 길이 반올림 차이 정리
+drone = sfx.lp(np.sin(2 * np.pi * 55 * t) + 0.6 * np.sin(2 * np.pi * 55.4 * t) + 0.4 * np.sin(2 * np.pi * 82.4 * t), 200)[:N] * 0.35
+kick = sfx.lp(np.sin(2 * np.pi * 52 * sfx.t_(0.25)) * sfx.env_exp(0.25, 0.06), 150) * 0.9
+hat = sfx.hp(sfx.noise(0.03), 6000) * sfx.env_exp(0.03, 0.006) * 0.18
+bed = np.zeros(N, dtype="float32")
 
-# 배경음 음량 자동화: 기본 -27 dB, 각 장면 시작 2초 전부터 -19 dB로 올렸다가 장면 시작에 되돌림, 마지막 장면은 -40 dB
+
+def put(buf, x, at, v=1.0):
+    i = int(at * SR)
+    if i >= N or i < 0:
+        return
+    x = x[: N - i] * v
+    buf[i:i + len(x)] += x.astype("float32")
+
+
+for s in np.arange(0, dur, 0.5):
+    put(bed, kick, s, 0.6 if int(s * 2) % 4 == 0 else 0.35)
+for s in np.arange(0.25, dur, 1.0):
+    put(bed, hat, s, 1.0)
+bed += drone.astype("float32")
+
+# 음량 자동화: 기본 -27 dB. 큰 숫자·제목 드롭 직전 2초 -20 dB로 상승, 마지막 장면 -36 dB
 gain = np.full(N, 10 ** (-27 / 20), dtype="float32")
-for sc in cues["scenes"]:
-    a, b = int(max(0, sc["start"] - 2.0) * SR), int(sc["start"] * SR)
-    gain[a:b] = np.linspace(gain[a], 10 ** (-19 / 20), b - a)
-last = cues["scenes"][-1]
-gain[int(last["start"] * SR):] = 10 ** (-40 / 20)
-gain = sfx.lp(gain, 2).astype("float32")  # 부드럽게
-bgm *= gain
+for c in cuts:
+    if c["s"] in ("drop", "hit", "riser"):
+        a, b = int(max(0, c["t"] - 2.0) * SR), int(c["t"] * SR)
+        gain[a:b] = np.linspace(gain[a], 10 ** (-20 / 20), b - a)
+last9 = next(c for c in cuts if c["t"] >= 609.0)
+gain[int(last9["t"] * SR):] = 10 ** (-36 / 20)
+gain = sfx.lp(gain, 2).astype("float32")
+bed *= gain
 
-# 효과음
+# —— 효과음 ——
 fx = np.zeros(N, dtype="float32")
 
 
-def put(x, at, v=1.0):
-    i = int(at * SR)
-    if i >= N:
-        return
-    x = x[: N - i] * v
-    fx[i:i + len(x)] += x
+def riser(d=1.2):
+    tt = sfx.t_(d)
+    return (sfx.bp(sfx.noise(d), 400, 6000) * (tt / d) ** 2 * 0.6).astype("float32")
 
 
-for sc in cues["scenes"]:
-    put(sfx.thump(1.0, 60), sc["start"], 0.5)
-for ln in cues["lines"]:
-    put(sfx.whoosh(0.3), ln["t0"], 0.12)
-# 제목 드롭: s2_04의 후반 비트(줄 길이 절반 지점)
-s2_04 = next(l for l in cues["lines"] if l["id"] == "s2_04")
-put(sfx.thump(1.0, 48), s2_04["t0"] + (s2_04["t1"] - s2_04["t0"] + 0.5) / 2, 1.0)
-# 큰 숫자 2개 (s3_02 두 비트), 64% 도넛 (s6_02), 펀치라인 차트 (s8_01)
-s3_02 = next(l for l in cues["lines"] if l["id"] == "s3_02")
-half = (s3_02["t1"] - s3_02["t0"] + 0.5) / 2
-put(sfx.pop(), s3_02["t0"] + 0.3, 0.5); put(sfx.pop(), s3_02["t0"] + half + 0.3, 0.5)
-for lid in ("s6_02", "s8_01", "s7_02"):
-    l = next(l for l in cues["lines"] if l["id"] == lid)
-    put(sfx.thump(1.0, 55), l["t0"] + 0.2, 0.6)
+def drop():
+    d = 0.9
+    tt = sfx.t_(d)
+    f = 110 * np.exp(-tt * 6) + 40
+    return (np.sin(2 * np.pi * np.cumsum(f) / SR) * sfx.env_exp(d, 0.35) * 0.9).astype("float32")
 
-# 믹스: 음성 기준, 배경음은 이미 자동화로 낮춤. 최종 라우드니스는 mux.sh의 loudnorm이 맞춘다.
-mix = voice * 0.9 + bgm + fx * 0.8
-peak = np.abs(mix).max()
+
+def typing(d=1.4, n=12):
+    x = np.zeros(int(d * SR), dtype="float32")
+    for i in range(n):
+        at = int(i * d / n * SR)
+        c = sfx.click(1.0 + 0.1 * ((i * 7) % 3), 0.4)
+        x[at:at + len(c)] += c[: len(x) - at]
+    return x
+
+
+SFX = {
+    "whoosh": lambda: sfx.whoosh(0.3) * 0.5,
+    "pop": lambda: sfx.pop() * 0.6,
+    "hit": lambda: sfx.thump(1.0, 55) * 0.9,
+    "drop": drop,
+    "type": typing,
+    "tick": lambda: sfx.click(0.9, 0.5),
+    "riser": riser,
+    "none": lambda: np.zeros(1, dtype="float32"),
+}
+for c in cuts:
+    code = c.get("s", "whoosh")
+    at = c["t"] - (1.2 if code == "riser" else 0.0)  # 라이저는 컷 전에 올라와 컷에서 끝난다
+    put(fx, SFX[code](), at, 1.0)
+
+# —— 믹스 ——
+mix = voice * 0.9 + bed + fx * 0.8
+peak = float(np.abs(mix).max())
 if peak > 0.98:
     mix *= 0.98 / peak
-stereo = np.stack([mix, mix], axis=1)
-sf.write(out / "mix.wav", stereo, SR)
+sf.write(out / "mix.wav", np.stack([mix, mix], axis=1), SR)
 rms = lambda x: 20 * np.log10(np.sqrt(np.mean(x ** 2)) + 1e-9)
-print(f"mix.wav {dur:.1f}s | voice {rms(voice):.1f} dBFS, bgm {rms(bgm):.1f} dBFS, fx {rms(fx):.1f} dBFS, peak {peak:.2f}")
-assert rms(voice) - rms(bgm) > 8, "배경음이 내레이션에 너무 가깝다"
+print(f"mix.wav {dur:.1f}s | voice {rms(voice):.1f} dBFS, bed {rms(bed):.1f} dBFS, fx {rms(fx):.1f} dBFS, peak {peak:.2f}, sfx events {len(cuts)}")
+assert rms(voice) - rms(bed) > 7, "바닥 음악이 내레이션에 너무 가깝다"

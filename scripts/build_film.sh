@@ -6,11 +6,12 @@ EP="$1"; shift || true
 LIB=/Users/cjons/lemo-opuscar
 SRC="episodes/$EP/film"; OUT="output/$EP/film"
 mkdir -p "$OUT/assets"
-cp "$SRC/index.html" "$SRC/cues.json" "$OUT/"
+cp "$SRC/index.html" "$SRC/cues.json" "$SRC/cuts.json" "$OUT/"
+mkdir -p "$OUT/pages" && cp output/$EP/pages/*.png output/$EP/pages/*_marks.json "$OUT/pages/" 2>/dev/null || true
 cp brand/tokens.css "$OUT/tokens.css"
 cp output/$EP/assets/*.png "$OUT/assets/" 2>/dev/null || true
 if [ $# -eq 0 ]; then
-  set -- $(python3 -I -c "import json;[print(round(s['start']+2,1)) for s in json.load(open('$OUT/cues.json'))['scenes']]")
+  set -- $(python3 -I -c "import json;c=json.load(open('$OUT/cuts.json'))['cuts'];[print(round(x['t']+min(1.5,x['d']/2),1)) for x in c[::12]]")
 fi
 rm -rf "$OUT/stills"
 (cd "$LIB" && node core/render/still.mjs "$PWD/../yt-faceless-ai/.claude/worktrees/ep001/$OUT" "$@" --out "$PWD/../yt-faceless-ai/.claude/worktrees/ep001/$OUT/stills" --size 1920x1080)

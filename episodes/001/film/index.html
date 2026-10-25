@@ -2,213 +2,239 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>EP001 — What Really Hit Entry-Level Jobs in 2022</title>
+<title>EP001 v2 — What Really Hit Entry-Level Jobs in 2022</title>
 <link rel="stylesheet" href="tokens.css">
 <style>
   html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); color: var(--ink); font-family: var(--font-body); }
   #stage { position: relative; width: 1920px; height: 1080px; }
-  .beat { position: absolute; inset: 0; opacity: 0; }
-  .beat.on { opacity: 1; }
-  .pad { position: absolute; left: var(--margin); right: var(--margin); top: var(--margin); bottom: var(--margin); }
-  .big { font-family: var(--font-number); font-size: var(--size-number); line-height: 1; color: var(--accent); letter-spacing: -0.02em; }
-  .title { font-size: var(--size-title); font-weight: 700; line-height: 1.05; }
-  .body { font-size: var(--size-body); line-height: 1.3; max-width: 1400px; }
-  .src { font-family: var(--font-number); font-size: var(--size-source); color: var(--ink-muted); letter-spacing: 0.02em; }
-  .card { width: 1400px; background: var(--surface); border: 1px solid #2a2e38; border-radius: 12px; padding: 56px 64px; box-sizing: border-box; }
-  .card .head { font-size: 60px; font-weight: 700; line-height: 1.15; }
-  .card .hl { background: linear-gradient(var(--accent), var(--accent)) no-repeat 0 85% / var(--hlw, 0%) 22%; }
-  .tag { display: inline-block; font-family: var(--font-number); font-size: 26px; color: var(--bg); background: var(--estimate); padding: 6px 14px; border-radius: 6px; margin-left: 20px; vertical-align: middle; }
-  .img { position: absolute; inset: 0; background: center / contain no-repeat; mix-blend-mode: lighten; -webkit-mask-image: radial-gradient(ellipse at center, #000 55%, transparent 78%); mask-image: radial-gradient(ellipse at center, #000 55%, transparent 78%); }
-  .strike { position: absolute; left: 0; top: 54%; height: 10px; background: var(--chart-3); width: var(--sw, 0); }
-  canvas { position: absolute; left: 0; top: 0; }
+  .cut { position: absolute; inset: 0; opacity: 0; overflow: hidden; }
+  .cut.blurred { opacity: 1; filter: blur(18px) brightness(.4) saturate(.6); }
+  .fill { position: absolute; inset: 0; }
+  .fill img { width: 1920px; height: 1080px; display: block; }
+  .hl { position: absolute; background: var(--accent); opacity: .45; mix-blend-mode: multiply; border-radius: 4px; transform-origin: left center; }
+  .src { position: absolute; left: 40px; bottom: 32px; font-family: var(--font-number); font-size: 26px; color: #fff; background: rgba(0,0,0,.55); padding: 8px 14px; border-radius: 6px; letter-spacing: .02em; }
   .center { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; }
-  .foot { position: absolute; left: var(--margin); bottom: 56px; }
-  .end { font-family: var(--font-number); font-size: 72px; letter-spacing: 0.18em; color: var(--ink); }
+  .card { background: rgba(23,26,33,.92); border: 1px solid #2a2e38; border-radius: 14px; padding: 48px 64px; max-width: 1400px; box-shadow: 0 30px 80px rgba(0,0,0,.5); }
+  .card .t { font-size: 84px; font-weight: 700; line-height: 1.1; }
+  .card .t.big { font-size: 128px; color: var(--accent); letter-spacing: -.01em; }
+  .card .sub { font-size: 40px; color: var(--ink-muted); margin-top: 20px; }
+  .card .end { font-family: var(--font-number); font-size: 72px; letter-spacing: .18em; }
+  .topic { position: absolute; left: 40px; bottom: 32px; font-family: var(--font-number); font-size: 24px; color: var(--ink-muted); }
+  .toplabel { position: absolute; left: var(--margin); top: 72px; font-size: 48px; font-weight: 700; text-shadow: 0 2px 12px rgba(0,0,0,.6); }
+  .img { position: absolute; inset: 0; background: center / contain no-repeat; mix-blend-mode: lighten; -webkit-mask-image: radial-gradient(ellipse at center, #000 55%, transparent 78%); mask-image: radial-gradient(ellipse at center, #000 55%, transparent 78%); }
+  canvas { position: absolute; left: 0; top: 0; }
+  .ui { position: absolute; inset: 0; }
+  .box { position: absolute; background: var(--surface); border: 1px solid #2a2e38; border-radius: 12px; padding: 28px 36px; font-size: 40px; }
+  .mono { font-family: var(--font-number); }
 </style>
 </head>
 <body>
 <div id="stage"></div>
 <script type="module">
 import { seg, eo, eio, ss, clamp } from '/core/lib.js';
-
-const cues = await (await fetch('cues.json')).json();
-window.DUR = cues.dur;
+const data = await (await fetch('cuts.json')).json();
+const CUTS = data.cuts, SRC = data.src;
+window.DUR = CUTS.at(-1).t + CUTS.at(-1).d;
 const stage = document.getElementById('stage');
-const T = {  // tokens read once from CSS
-  bg: '#0f1115', surface: '#171a21', ink: '#e8e6df', muted: '#9a9890', accent: '#e5b650', c1: '#e5b650', c2: '#6f8fb0', c3: '#c75b4a', est: '#9a9890',
-  mono: getComputedStyle(document.documentElement).getPropertyValue('--font-number').trim(),
-  body: getComputedStyle(document.documentElement).getPropertyValue('--font-body').trim(),
-};
+const T = { bg: '#0f1115', surface: '#171a21', ink: '#e8e6df', muted: '#9a9890', accent: '#e5b650', c1: '#e5b650', c2: '#6f8fb0', c3: '#c75b4a', est: '#9a9890',
+  mono: getComputedStyle(document.documentElement).getPropertyValue('--font-number').trim(), body: getComputedStyle(document.documentElement).getPropertyValue('--font-body').trim() };
+const MARKS = {};
+for (const pg of Object.keys(SRC)) { try { MARKS[pg] = await (await fetch(`pages/${pg}_marks.json`)).json(); } catch { MARKS[pg] = {}; } }
+const markOf = (pg, m) => { const v = Object.values(MARKS[pg] || {}); return (m != null && v[m]) || null; };
 
-// —— beat builders: each returns {el, draw(p, lt)} ; p = 0→1 over the beat, lt = seconds since beat start ——
-const el = (html, cls = '') => { const d = document.createElement('div'); d.className = 'beat ' + cls; d.innerHTML = html; stage.appendChild(d); return d; };
-const fadeUp = (node, p, d = 0, dist = 40) => { const q = eo(seg(p, d, d + .25)); node.style.opacity = q; node.style.transform = `translateY(${(1 - q) * dist}px)`; };
-
-function textBeat(lines, opts = {}) {
-  const d = el(`<div class="center"><div style="text-align:${opts.align || 'center'}">${lines.map((s, i) => `<div class="${opts.cls || 'title'}" data-i="${i}" style="margin:14px 0;${opts.style || ''}">${s}</div>`).join('')}</div></div>`);
-  const rows = [...d.querySelectorAll('[data-i]')];
-  return { el: d, draw: p => rows.forEach((r, i) => fadeUp(r, p, i * 0.08)) };
-}
-function bigNumber(num, label, src) {
-  const d = el(`<div class="center"><div><div class="big"></div><div class="body" style="margin-top:24px">${label}</div><div class="src" style="margin-top:40px">${src}</div></div></div>`);
-  const n = d.querySelector('.big'), target = parseFloat(num), suffix = num.replace(/[\d.]/g, '');
-  return { el: d, draw: p => { const q = eo(seg(p, 0, .5)); n.textContent = (target * q).toFixed(num.includes('.') ? 1 : 0) + suffix; fadeUp(d.querySelector('.body'), p, .3); fadeUp(d.querySelector('.src'), p, .4); } };
-}
-function article(source, headline, note = '') {
-  const d = el(`<div class="center"><div class="card"><div class="src">${source}</div><div class="head" style="margin-top:20px"><span class="hl">${headline}</span></div>${note ? `<div class="body" style="margin-top:28px;color:var(--ink-muted)">${note}</div>` : ''}</div></div>`);
-  const card = d.querySelector('.card'), hl = d.querySelector('.hl');
-  return { el: d, draw: (p, lt) => { fadeUp(card, p, 0, 30); card.style.transform += ` scale(${1 + 0.015 * clamp(lt / 12)})`; hl.style.setProperty('--hlw', `${100 * ss(seg(lt, 1.0, 2.6))}%`); } };
-}
-function image(file, caption = '', zoom = 1.06) {
-  const d = el(`<div class="img" style="background-image:url(assets/${file})"></div>${caption ? `<div class="foot src">${caption}</div>` : ''}`);
-  const im = d.querySelector('.img');
-  return { el: d, draw: (p, lt) => { im.style.opacity = eo(seg(p, 0, .15)); im.style.transform = `scale(${1 + (zoom - 1) * clamp(lt / 20)})`; } };
-}
-function strikeText(text, after) {
-  const d = el(`<div class="center"><div style="position:relative;display:inline-block"><div class="title" style="font-size:112px">${text}</div><div class="strike"></div></div><div class="body" style="position:absolute;bottom:200px;left:0;right:0;text-align:center;color:var(--accent)">${after}</div></div>`);
-  const s = d.querySelector('.strike'), a = d.querySelector('.body');
-  return { el: d, draw: p => { s.style.setProperty('--sw', `${100 * ss(seg(p, .45, .7))}%`); fadeUp(a, p, .72); } };
-}
-function canvasBeat(draw) {
-  const d = el('<canvas width="1920" height="1080"></canvas>'); const c = d.querySelector('canvas').getContext('2d');
-  return { el: d, draw: (p, lt) => { c.clearRect(0, 0, 1920, 1080); draw(c, p, lt); } };
-}
-// chart helpers
+const el = (html) => { const d = document.createElement('div'); d.className = 'cut'; d.innerHTML = html; stage.appendChild(d); return d; };
+const pop = (node, e, delay = 0) => { const q = seg(e, delay, delay + .5); node.style.opacity = q; node.style.transform = `scale(${0.9 + 0.1 * eo(q)}) translateY(${(1 - eo(q)) * 24}px)`; };
 const font = (c, size, mono = false, weight = 400) => { c.font = `${weight} ${size}px ${mono ? T.mono : T.body}`; };
-function bars(c, p, groups, opts) {  // groups: [{label, vals:[{v,color,name}]}]
-  const x0 = 260, y0 = 820, w = 1400, h = 520, max = opts.max, bw = opts.bw || 150, gap = 70;
-  c.fillStyle = T.ink; font(c, 60, false, 700); c.fillText(opts.title, x0, 150);
-  c.fillStyle = T.muted; font(c, 28, true); c.fillText(opts.src, x0, 1000);
-  let x = x0 + 60;
-  groups.forEach((g, gi) => {
-    const q = eo(seg(p, gi * .15, gi * .15 + .45));
-    g.vals.forEach((v, i) => {
-      const bh = h * (v.v / max) * q, bx = x + i * (bw + 24);
-      c.fillStyle = v.color; c.fillRect(bx, y0 - bh, bw, bh);
-      c.fillStyle = T.ink; font(c, 44, true); c.textAlign = 'center'; c.fillText(v.name, bx + bw / 2, y0 - bh - 18);
-      c.fillStyle = T.muted; font(c, 30, true); c.fillText(v.sub || '', bx + bw / 2, y0 + 46); c.textAlign = 'left';
-    });
-    c.fillStyle = T.ink; font(c, 36); c.textAlign = 'center'; c.fillText(g.label, x + (g.vals.length * (bw + 24) - 24) / 2, y0 + 100); c.textAlign = 'left';
-    x += g.vals.length * (bw + 24) + gap + 120;
-  });
-}
-function lineChart(c, p, series, opts) {  // series: [{name,color,pts:[[x,y]]}] x in 0..1 (time), y value
-  const x0 = 260, x1 = 1660, y0 = 860, y1 = 260, ymin = opts.ymin, ymax = opts.ymax;
-  c.fillStyle = T.ink; font(c, 60, false, 700); c.fillText(opts.title, x0, 150);
-  c.strokeStyle = '#2a2e38'; c.lineWidth = 2; [0, .5, 1].forEach(f => { const y = y0 - (y1 - y0) * -f; c.beginPath(); c.moveTo(x0, y0 + (y1 - y0) * f); c.lineTo(x1, y0 + (y1 - y0) * f); c.stroke(); });
-  (opts.xlabels || []).forEach(([f, s]) => { c.fillStyle = T.muted; font(c, 28, true); c.textAlign = 'center'; c.fillText(s, x0 + (x1 - x0) * f, y0 + 50); c.textAlign = 'left'; });
-  const reveal = eo(seg(p, .05, .7));
-  series.forEach(s => {
-    c.strokeStyle = s.color; c.lineWidth = 8; c.lineJoin = 'round'; c.beginPath();
-    s.pts.forEach(([fx, v], i) => { if (fx > reveal + 1e-6) return; const X = x0 + (x1 - x0) * fx, Y = y0 + (y1 - y0) * ((v - ymin) / (ymax - ymin)); i ? c.lineTo(X, Y) : c.moveTo(X, Y); });
-    c.stroke();
-    const last = s.pts.filter(([fx]) => fx <= reveal + 1e-6).at(-1); if (!last) return;
-    const X = x0 + (x1 - x0) * last[0], Y = y0 + (y1 - y0) * ((last[1] - ymin) / (ymax - ymin));
-    c.fillStyle = s.color; c.beginPath(); c.arc(X, Y, 12, 0, 7); c.fill(); font(c, 36, true); const lbl = s.name + (s.fmt ? ' ' + s.fmt(last[1]) : ''); if (last[0] > .75) { c.textAlign = 'right'; c.fillText(lbl, X - 24, Y - 24); c.textAlign = 'left'; } else c.fillText(lbl, X + 24, Y + 12);
-  });
-  c.fillStyle = T.muted; font(c, 28, true); c.fillText(opts.src, x0, 1000);
-  if (opts.note) { c.fillStyle = T.accent; font(c, 36); c.fillText(opts.note, x0, 215); }
-}
-function donut(c, p, frac, label, src, est) {
-  const q = eio(seg(p, .05, .6)), cx = 760, cy = 540, r = 300;
-  c.lineWidth = 70; c.strokeStyle = '#2a2e38'; c.beginPath(); c.arc(cx, cy, r, 0, 7); c.stroke();
-  c.strokeStyle = T.accent; c.beginPath(); c.arc(cx, cy, r, -Math.PI / 2, -Math.PI / 2 + 2 * Math.PI * frac * q); c.stroke();
-  c.fillStyle = T.accent; font(c, 150, true); c.textAlign = 'center'; c.fillText(Math.round(frac * 100 * q) + '%', cx, cy + 50); c.textAlign = 'left';
-  c.fillStyle = T.ink; font(c, 48); label.forEach((s, i) => c.fillText(s, 1180, 440 + i * 70));
-  if (est) { c.fillStyle = T.est; c.fillRect(1180, 640, 230, 56); c.fillStyle = T.bg; font(c, 30, true); c.fillText('ESTIMATE', 1205, 679); }
-  c.fillStyle = T.muted; font(c, 28, true); c.fillText(src, 260, 1000);
-}
-function timeline(c, p, items, opts) {  // items: [{f0,f1,label,color,row}]
-  const x0 = 260, x1 = 1660, baseY = 560;
-  c.fillStyle = T.ink; font(c, 60, false, 700); c.fillText(opts.title, x0, 150);
-  c.strokeStyle = T.ink; c.lineWidth = 3; c.beginPath(); c.moveTo(x0, baseY); c.lineTo(x1, baseY); c.stroke();
-  (opts.marks || []).forEach(([f, s], i) => { const X = x0 + (x1 - x0) * f, q = eo(seg(p, .05 + i * .08, .25 + i * .08)); c.globalAlpha = q; c.fillStyle = T.ink; c.beginPath(); c.arc(X, baseY, 10, 0, 7); c.fill(); font(c, 28, true); c.textAlign = 'center'; c.fillText(s, X, baseY + 56); c.textAlign = 'left'; c.globalAlpha = 1; });
-  items.forEach((it, i) => { const q = eo(seg(p, .3 + i * .2, .6 + i * .2)), X0 = x0 + (x1 - x0) * it.f0, X1 = X0 + (x1 - x0) * (it.f1 - it.f0) * q, Y = baseY - 90 - it.row * 110;
-    c.globalAlpha = .85; c.fillStyle = it.color; c.fillRect(X0, Y - 36, X1 - X0, 72); c.globalAlpha = 1; c.fillStyle = T.bg; font(c, 34, false, 700); if (q > .5) c.fillText(it.label, X0 + 20, Y + 12); });
-  c.fillStyle = T.muted; font(c, 28, true); c.fillText(opts.src, x0, 1000);
-}
-function desksApart(c, p) {  // two desks sliding apart, speech bubbles shrinking
-  const q = ss(seg(p, .15, .7)), gap = 80 + 700 * q;
-  const desk = (x, y, person) => { c.fillStyle = T.ink; c.fillRect(x - 160, y, 320, 22); c.fillRect(x - 140, y + 22, 18, 120); c.fillRect(x + 122, y + 22, 18, 120); if (person) { c.beginPath(); c.arc(x, y - 110, 42, 0, 7); c.fill(); c.fillRect(x - 60, y - 70, 120, 72); } };
-  desk(960 - gap, 600, true); desk(960 + gap, 600, false);
-  const bub = (x, y, s) => { c.fillStyle = T.accent; c.beginPath(); c.ellipse(x, y, 90 * s, 50 * s, 0, 0, 7); c.fill(); };
-  const s = 1 - .8 * q; bub(960 - gap + 120, 430, s); bub(960 + gap - 120, 430, s * .9);
-  c.fillStyle = T.muted; font(c, 36, true); c.textAlign = 'center'; c.fillText(q > .6 ? 'feedback and mentoring drop with distance' : 'feedback · mentoring', 960, 900); c.textAlign = 'left';
-  c.fillStyle = T.muted; font(c, 28, true); c.fillText('Source: NY Fed Liberty Street Economics, one Fortune 500 firm', 260, 1000);
-}
-function splitJobs(c, p, left, right, note) {
-  const q = eo(seg(p, .05, .4)); c.fillStyle = '#2a2e38'; c.fillRect(958, 200, 4, 680 * q);
-  [[480, left, T.c1], [1440, right, T.c2]].forEach(([x, [h, s, icon], col], i) => { const r = eo(seg(p, .2 + i * .15, .5 + i * .15)); c.globalAlpha = r;
-    c.fillStyle = col; font(c, 120, true); c.textAlign = 'center'; c.fillText(icon, x, 470); c.fillStyle = T.ink; font(c, 52, false, 700); c.fillText(h, x, 600); c.fillStyle = T.muted; font(c, 36); c.fillText(s, x, 670); c.textAlign = 'left'; c.globalAlpha = 1; });
-  if (note) { c.fillStyle = T.accent; font(c, 40); c.textAlign = 'center'; c.fillText(note, 960, 900); c.textAlign = 'left'; }
-}
-function deskRow(c, p) {  // five empty desks, one lamp lit
-  for (let i = 0; i < 5; i++) { const x = 360 + i * 300, q = eo(seg(p, i * .08, i * .08 + .3)); c.globalAlpha = q; c.fillStyle = T.ink; c.fillRect(x - 110, 560, 220, 16); c.fillRect(x - 96, 576, 12, 100); c.fillRect(x + 84, 576, 12, 100); c.fillStyle = '#2a2e38'; c.beginPath(); c.arc(x, 500, 34, 0, 7); c.fill(); c.fillRect(x - 40, 520, 80, 40); }
-  c.globalAlpha = 1; const l = eo(seg(p, .5, .8)); c.fillStyle = T.accent; c.globalAlpha = l; c.beginPath(); c.moveTo(960, 470); c.lineTo(900, 560); c.lineTo(1020, 560); c.closePath(); c.fill(); c.globalAlpha = 1;
-  c.fillStyle = T.muted; font(c, 36, true); c.textAlign = 'center'; c.fillText('the common version: the first rung disappeared', 960, 900); c.textAlign = 'left';
-}
+const srcLabel = (pg) => `<div class="src">${SRC[pg] || ''}</div>`;
 
-// —— the film: one beat per narration line, keyed by line id ——
-const SRC_NYF = 'Source: NY Fed, Liberty Street Economics, June 1, 2026';
-const SRC_CLM = 'Source: NY Fed, The Labor Market for Recent College Graduates, 2026 Q2';
-const SRC_STAN = 'Source: Stanford Digital Economy Lab, Aug 12, 2026 (ADP payroll data)';
-const SRC_CEN = 'Source: U.S. Census Bureau, CES-WP-26-27 (April 2026)';
-const SRC_FRED = 'Source: FRED, Federal Funds Effective Rate (monthly)';
-const B = {
-  s1_01: [ image('graduate_rejections.png'), strikeText('"AI took the entry-level jobs"', 'A New York Fed study says the trouble started earlier.'), article('Liberty Street Economics · June 1, 2026', 'Remote Work Leaves Younger Workers Sidelined') ],
-  s2_01: [ image('ladder_missing_rung.png'), canvasBeat(deskRow) ],
-  s2_02: [ textBeat(['Young graduates are struggling.', 'That part is true.', 'The question is why.']) ],
-  s2_03: [ article('Liberty Street Economics · June 1, 2026', 'Emanuel · Harrington · Pallais', 'Federal Reserve Bank of New York · University of Virginia · Harvard') ],
-  s2_04: [ textBeat(['A change that came before AI tools were in wide use.', 'A second study adds a newer problem on top.'], { cls: 'body', style: 'font-size:56px' }), textBeat(['THE FIRST PROBLEM', "WASN'T AI"], { style: 'font-size:132px;color:var(--accent)' }) ],
-  s3_01: [ textBeat(['Start with the gap itself.']) ],
-  s3_02: [ bigNumber('5.6%', 'unemployment rate, recent college graduates (age 22–27), 2026 Q2', SRC_CLM), bigNumber('42%', 'of recent graduates underemployed (a job that does not need a degree)', SRC_CLM) ],
-  s3_03: [ canvasBeat((c, p) => bars(c, p, [{ label: '2017–19', vals: [{ v: 3.1, color: T.c1, name: '3.1%' }] }, { label: '2022–25', vals: [{ v: 3.7, color: T.c1, name: '3.7%' }] }], { title: 'Unemployment, college graduates under 29', src: SRC_NYF, max: 4.2, bw: 220 })) ],
-  s3_04: [ canvasBeat((c, p) => bars(c, p, [{ label: 'under 29', vals: [{ v: 3.1, color: T.c1, name: '3.1%', sub: '2017–19' }, { v: 3.7, color: T.c1, name: '3.7%', sub: '2022–25' }] }, { label: 'older graduates', vals: [{ v: 1.9, color: T.c2, name: '1.9%', sub: '2017–19' }, { v: 1.8, color: T.c2, name: '1.8%', sub: '2022–25' }] }], { title: 'Young graduates rose, older graduates edged down', src: SRC_NYF, max: 4.2 })) ],
-  s3_05: [ textBeat(['A weak economy alone would not single out the youngest.', 'Juniors replaced, seniors stay?', 'That fits the AI story. So the researchers looked closer.'], { cls: 'body', style: 'font-size:54px' }) ],
-  s4_01: [ canvasBeat((c, p) => splitJobs(c, p, ['Jobs you can do from home', 'e.g. software engineering', '⌂'], ['Jobs where you show up', 'e.g. mechanical engineering', '⚙'], 'sorted by a published remotability index')) ],
-  s4_02: [ textBeat(['Young vs. older workers,', 'inside each group.']) ],
-  s4_03: [ canvasBeat((c, p) => lineChart(c, p, [{ name: 'young graduates', color: T.c1, pts: [[0, 0], [.5, .35], [1, .95]], fmt: v => '+' + v.toFixed(1) + ' pt' }, { name: 'older workers', color: T.c2, pts: [[0, 0], [.5, -.05], [1, -.1]], fmt: v => v.toFixed(1) + ' pt' }], { title: 'From-home jobs: change in unemployment', ymin: -.4, ymax: 1.2, xlabels: [[0, '2017–19'], [1, '2022–24']], src: SRC_NYF, note: 'young graduates: up almost a full percentage point' })) ],
-  s4_04: [ canvasBeat((c, p) => lineChart(c, p, [{ name: 'young − older gap', color: T.c1, pts: [[0, 0], [.3, .05], [.45, .6], [.6, .15], [1, .05]] }], { title: 'Show-up jobs: the gap bumped in 2020, then returned', ymin: -.4, ymax: 1.2, xlabels: [[0, '2017'], [.45, '2020'], [1, '2024']], src: SRC_NYF })) ],
-  s4_05: [ textBeat(['The gap opened where work went remote.', 'It did not open where work stayed in person.', 'Remote work: about four-fold since the pandemic.'], { cls: 'body', style: 'font-size:56px' }) ],
-  s4_06: [ canvasBeat((c, p) => timeline(c, p, [{ f0: 0, f1: .3, label: 'baseline 2017–19', color: T.c2, row: 0 }, { f0: .62, f1: .92, label: 'comparison 2022–24', color: T.c1, row: 0 }], { title: 'The rise began before generative AI was in wide use', marks: [[.38, '2020 remote shift'], [.69, 'Nov 2022 ChatGPT']], src: SRC_NYF })) ],
-  s5_01: [ textBeat(['Why would working from home', 'hurt new hires most?']) ],
-  s5_02: [ canvasBeat(desksApart) ],
-  s5_03: [ textBeat(['A junior job is partly work', 'and partly training.']) ],
-  s5_04: [ article('NY Fed · Liberty Street Economics', '“shies away from employing inexperienced workers if distance creates barriers to training and development”') ],
-  s5_05: [ article('Two cautions', 'Evidence: one company · wording: “can explain”, “has meaningfully contributed”', 'An argument, not a closed case.') ],
-  s6_01: [ textBeat(['How much does remote work', 'account for?']) ],
-  s6_02: [ canvasBeat((c, p) => donut(c, p, .64, ['of the recent increase in', 'young graduate unemployment', 'can be explained by remote work'], SRC_NYF, true)) ],
-  s6_03: [ textBeat(['AI exposure held constant', '→ the gap persists'], { style: 'color:var(--accent)' }) ],
-  s6_04: [ textBeat(['The first problem:', 'jobs that went remote.'], {}) ],
-  s6_05: [ textBeat(['A second study looks at the same years', 'and finds something else.'], { cls: 'body', style: 'font-size:56px' }) ],
-  s7_01: [ article('Stanford Digital Economy Lab · Aug 12, 2026', 'Brynjolfsson, Chandar, Chen — ADP payroll data', 'Workers aged 22–25 in the occupations most exposed to AI') ],
-  s7_02: [ canvasBeat((c, p) => lineChart(c, p, [{ name: 'gap', color: T.c3, pts: [[0, 15], [1, 19]], fmt: v => v.toFixed(0) + '%' }], { title: 'Young workers in AI-exposed jobs: employment gap', ymin: 0, ymax: 24, xlabels: [[0, 'July 2025 data'], [1, 'June 2026 data']], src: SRC_STAN, note: '15% → 19%, relative to less-exposed jobs' })) ],
-  s7_03: [ textBeat(['Holds up with interest rates and remote work controlled for.', 'No comparable gap for experienced workers.'], { cls: 'body', style: 'font-size:54px' }) ],
-  s7_04: [ canvasBeat((c, p) => bars(c, p, [{ label: 'most AI-exposed industries', vals: [{ v: 12, color: T.c3, name: '−12%' }] }, { label: 'less exposed', vals: [{ v: .4, color: T.c2, name: 'steady' }] }], { title: 'Workers aged 22–24, ten quarters after ChatGPT', src: SRC_CEN, max: 14, bw: 220 })) ],
-  s7_05: [ canvasBeat((c, p) => splitJobs(c, p, ['AI does the task', 'young employment declines', '⤓'], ['AI helps the worker', 'flat or rising', '⤴'], 'the gap is not spread evenly across jobs')) ],
-  s7_06: [ article('Stanford authors’ cautions', '“descriptive patterns, not causal estimates”', 'Some differences predate wide AI use · smaller when education is controlled · payroll sample shows larger gaps than national surveys') ],
-  s7b_01: [ textBeat(['A third suspect:', 'interest rates.']) ],
-  s7b_02: [ canvasBeat((c, p) => lineChart(c, p, [{ name: 'fed funds', color: T.c1, pts: [[0, .08], [.1, .2], [.35, 4.3], [.42, 5.33], [.68, 5.33], [.9, 3.72], [1, 3.75]], fmt: v => v.toFixed(2) + '%' }], { title: 'Federal funds effective rate', ymin: 0, ymax: 6, xlabels: [[0, 'Jan 2022'], [.42, 'Aug 2023'], [1, 'Sep 2026']], src: SRC_FRED })) ],
-  s7b_03: [ textBeat(['Sharp rate hikes raise the cost of borrowing.', 'Did that slow hiring of the youngest workers?'], { cls: 'body', style: 'font-size:56px' }) ],
-  s7b_04: [ textBeat(['Rates: up to 1/4 of the decline', 'at least 3/4: not rates'], { style: 'color:var(--accent)' }) ],
-  s7b_05: [ textBeat(['Stanford: gap persists', 'with rates controlled for']) ],
-  s7b_06: [ textBeat(['A real but partial factor.'], { cls: 'body', style: 'font-size:60px' }) ],
-  s8_01: [ canvasBeat((c, p) => timeline(c, p, [{ f0: 0, f1: .66, label: 'NY Fed: remote work (2017–19 vs 2022–24)', color: T.c2, row: 1 }, { f0: .52, f1: 1, label: 'Stanford: AI-exposed jobs (Nov 2022 – Jun 2026)', color: T.c1, row: 0 }], { title: 'Two overlapping problems', marks: [[.52, 'Nov 2022'], [1, 'Jun 2026']], src: 'Sources: NY Fed; Stanford Digital Economy Lab' })) ],
-  s8_02: [ textBeat(['NY Fed: the early gap sits in jobs that went remote.', 'Stanford: a newer, growing gap where AI does the task.', 'Two or more causes, stacking.'], { cls: 'body', style: 'font-size:52px' }) ],
-  s8_03: [ textBeat(['Will this role put me near people who can teach me?', 'Is AI in this job doing the work, or helping someone do it?'], { cls: 'body', style: 'font-size:56px;color:var(--accent)' }) ],
-  s9_01: [ image('two_paths.png') ],
-  s9_02: [ textBeat(['Which of the two questions', 'applies to your search?']), el('<div class="center"><div class="end">COUNTER LEDGER</div></div>') ],
+// ——— renderers: each returns draw(e, lt, p): e = entrance 0→1 over 1.2 s, lt = seconds in cut, p = 0→1 over the cut ———
+function PAGE(c) {
+  const mk = markOf(c.pg, c.m), file = mk ? mk.file : `${c.pg}.png`;
+  const d = el(`<div class="fill"><img src="pages/${file}"></div>${mk ? '<div class="hl"></div>' : ''}${srcLabel(c.pg)}`);
+  const f = d.querySelector('.fill'), hl = d.querySelector('.hl');
+  if (hl) Object.assign(hl.style, { left: (mk.x - 8) + 'px', top: (mk.y - 4) + 'px', width: (mk.w + 16) + 'px', height: (mk.h + 8) + 'px' });
+  const ox = mk ? clamp(mk.x + mk.w / 2, 300, 1620) : 960, oy = mk ? clamp(mk.y + mk.h / 2, 200, 880) : 540;
+  f.style.transformOrigin = `${ox}px ${oy}px`;
+  return (e, lt, p) => {
+    const s = c.z === 'snap' ? 1.3 - 0.22 * eo(seg(lt, 0, .35)) : 1.0 + 0.07 * p + (mk ? 0.06 : 0);
+    f.style.transform = `scale(${s})`;
+    if (hl) { hl.style.transform = `scale(${ss(seg(lt, .5, 1.3))}, 1)`; }
+  };
+}
+function CARD(c) {
+  const inner = c.end ? `<div class="end">${c.text}</div>` : `<div class="t ${c.big ? 'big' : ''}"></div>${c.sub ? `<div class="sub">${c.sub}</div>` : ''}`;
+  const d = el(`<div class="center" style="justify-content:${c.pos === 'l' ? 'flex-start' : c.pos === 'r' ? 'flex-end' : 'center'};padding:0 160px"><div class="card">${inner}</div></div>`);
+  const card = d.querySelector('.card'), t = d.querySelector('.t');
+  return (e, lt, p) => {
+    pop(card, e);
+    if (!t) return;
+    let txt = c.text;
+    if (c.swap && p > .5) txt = c.swap;
+    if (c.typing) txt = c.text.slice(0, Math.ceil(c.text.length * seg(lt, .2, 1.8)));
+    if (t.textContent !== txt) t.textContent = txt;
+    if (c.big) card.style.transform += ` scale(${1 + 0.02 * p})`;
+  };
+}
+function CUT(c) {
+  const d = el(`<div class="img" style="background-image:url(assets/${c.f})"></div>${c.label ? `<div class="toplabel">${c.label}</div>` : ''}`);
+  const im = d.querySelector('.img');
+  return (e, lt, p) => { im.style.opacity = eo(seg(lt, 0, .3)); im.style.transform = `scale(${1 + 0.08 * p})`; };
+}
+function STOCK(c) {  // 자리표시: 스톡 클립이 들어오기 전까지 추상 사무실 창 격자가 천천히 흐른다
+  const d = el(`<canvas width="1920" height="1080"></canvas>${c.label ? `<div class="toplabel">${c.label}</div>` : ''}<div class="topic">[stock placeholder] ${c.topic}</div>`);
+  const g = d.querySelector('canvas').getContext('2d'); const seed = [...c.topic].reduce((a, ch) => a + ch.charCodeAt(0), 0);
+  return (e, lt, p) => {
+    g.clearRect(0, 0, 1920, 1080); g.fillStyle = '#12151b'; g.fillRect(0, 0, 1920, 1080);
+    const pan = 60 * p, zoom = 1 + 0.05 * p;
+    for (let i = 0; i < 48; i++) { const col = i % 8, row = Math.floor(i / 8), on = ((seed * (i + 7)) % 11) < 4;
+      const x = (120 + col * 230 - pan) * zoom, y = (120 + row * 150) * zoom; g.fillStyle = on ? 'rgba(229,182,80,.14)' : 'rgba(255,255,255,.04)'; g.fillRect(x, y, 170 * zoom, 100 * zoom); }
+    const grd = g.createLinearGradient(0, 600, 0, 1080); grd.addColorStop(0, 'rgba(15,17,21,0)'); grd.addColorStop(1, 'rgba(15,17,21,1)'); g.fillStyle = grd; g.fillRect(0, 600, 1920, 480);
+  };
+}
+function TL(c) {
+  const d = el('<canvas width="1920" height="1080"></canvas>'); const g = d.querySelector('canvas').getContext('2d');
+  const V = {
+    ai_marker: { title: 'When did it start?', marks: [[.0, '2017'], [.69, 'Nov 2022 ChatGPT'], [1, '2026']], items: [] },
+    baseline: { title: 'The comparison window', marks: [[0, '2017'], [1, '2024']], items: [{ f0: 0, f1: .3, label: 'baseline 2017–19', color: T.c2, row: 0 }] },
+    comparison: { title: 'The comparison window', marks: [[0, '2017'], [1, '2024']], items: [{ f0: 0, f1: .3, label: 'baseline 2017–19', color: T.c2, row: 0 }, { f0: .62, f1: 1, label: 'comparison 2022–24', color: T.c1, row: 0 }] },
+    chatgpt: { title: 'The rise began before generative AI was in wide use', marks: [[.38, '2020 remote shift'], [.69, 'Nov 2022 ChatGPT']], items: [{ f0: 0, f1: .3, label: 'baseline 2017–19', color: T.c2, row: 0 }, { f0: .62, f1: 1, label: 'comparison 2022–24', color: T.c1, row: 0 }] },
+    through2024: { title: 'The first problem, through 2024', marks: [[0, '2017'], [1, '2024']], items: [{ f0: .25, f1: 1, label: 'remote work · mentoring gap', color: T.c2, row: 0 }] },
+    before_ai: { title: 'Some differences predate wide AI use', marks: [[.5, 'Nov 2022 ChatGPT']], items: [{ f0: .2, f1: .5, label: 'before', color: T.c2, row: 0 }, { f0: .5, f1: 1, label: 'after', color: T.c1, row: 0 }] },
+    two_bands_1: { title: 'Two overlapping problems', marks: [[.52, 'Nov 2022'], [1, 'Jun 2026']], items: [{ f0: 0, f1: .66, label: 'NY Fed: remote work', color: T.c2, row: 1 }] },
+    two_bands_2: { title: 'Two overlapping problems', marks: [[.52, 'Nov 2022'], [1, 'Jun 2026']], items: [{ f0: 0, f1: .66, label: 'NY Fed: remote work', color: T.c2, row: 1 }, { f0: .52, f1: 1, label: 'Stanford: AI-exposed jobs', color: T.c1, row: 0 }] },
+    stacking: { title: 'Two or more causes, stacking', marks: [[.52, 'Nov 2022'], [1, 'Jun 2026']], items: [{ f0: 0, f1: .66, label: 'remote work', color: T.c2, row: 1 }, { f0: .52, f1: 1, label: 'AI does the task', color: T.c1, row: 0 }, { f0: .3, f1: .75, label: 'interest rates (up to ¼, Census)', color: T.est, row: 2 }] },
+  }[c.v];
+  return (e, lt, p) => { g.clearRect(0, 0, 1920, 1080); timeline(g, clamp(lt / 2.2), V.items, V); };
+}
+function CHART(c) {
+  const d = el('<canvas width="1920" height="1080"></canvas>'); const g = d.querySelector('canvas').getContext('2d');
+  const fn = CHARTS[c.c]; if (!fn) throw new Error('chart ' + c.c);
+  return (e, lt, p) => { g.clearRect(0, 0, 1920, 1080); fn(g, clamp(lt / Math.min(c.d, 3.5)), lt, p); };
+}
+function UI(c) { const fn = UIS[c.tpl]; if (!fn) throw new Error('ui ' + c.tpl); return fn(c); }
+
+// ——— chart helpers ———
+const S_NYF = 'Source: NY Fed, Liberty Street Economics (Jun 1, 2026)', S_CLM = 'Source: NY Fed, Labor Market for Recent College Graduates (2026 Q2)', S_STAN = 'Source: Stanford Digital Economy Lab (Aug 12, 2026), ADP payroll data', S_CEN = 'Source: U.S. Census Bureau, CES-WP-26-27', S_FRED = 'Source: FRED, FEDFUNDS (monthly)';
+function titleSrc(g, title, src) { g.fillStyle = T.ink; font(g, 56, false, 700); g.textAlign = 'left'; g.fillText(title, 260, 150); g.fillStyle = T.muted; font(g, 26, true); g.fillText(src, 260, 1000); }
+function bars(g, q, groups, o) {
+  titleSrc(g, o.title, o.src); const y0 = 820, h = 520, bw = o.bw || 170; let x = 360;
+  groups.forEach((gr, gi) => { const qq = eo(seg(q, gi * .25, gi * .25 + .6));
+    gr.vals.forEach((v, i) => { const bh = h * (Math.abs(v.v) / o.max) * qq, bx = x + i * (bw + 24); g.fillStyle = v.color; g.fillRect(bx, y0 - bh, bw, bh);
+      g.fillStyle = T.ink; font(g, 44, true); g.textAlign = 'center'; g.fillText(v.name, bx + bw / 2, y0 - bh - 18); g.fillStyle = T.muted; font(g, 28, true); g.fillText(v.sub || '', bx + bw / 2, y0 + 46); });
+    g.fillStyle = T.ink; font(g, 34); g.textAlign = 'center'; g.fillText(gr.label, x + (gr.vals.length * (bw + 24) - 24) / 2, y0 + 100); x += gr.vals.length * (bw + 24) + 200; });
+  g.textAlign = 'left';
+}
+function lineChart(g, q, series, o) {
+  titleSrc(g, o.title, o.src); const x0 = 260, x1 = 1560, y0 = 860, y1 = 280;
+  g.strokeStyle = '#2a2e38'; g.lineWidth = 2; [0, .5, 1].forEach(f => { g.beginPath(); g.moveTo(x0, y0 + (y1 - y0) * f); g.lineTo(x1, y0 + (y1 - y0) * f); g.stroke(); });
+  (o.xlabels || []).forEach(([f, s]) => { g.fillStyle = T.muted; font(g, 28, true); g.textAlign = 'center'; g.fillText(s, x0 + (x1 - x0) * f, y0 + 50); });
+  const reveal = eo(seg(q, .05, 1));
+  series.forEach(s => { g.strokeStyle = s.color; g.lineWidth = 8; g.lineJoin = 'round'; g.beginPath();
+    s.pts.forEach(([fx, v], i) => { if (fx > reveal + 1e-6) return; const X = x0 + (x1 - x0) * fx, Y = y0 + (y1 - y0) * ((v - o.ymin) / (o.ymax - o.ymin)); i ? g.lineTo(X, Y) : g.moveTo(X, Y); }); g.stroke();
+    const last = s.pts.filter(([fx]) => fx <= reveal + 1e-6).at(-1); if (!last) return; const X = x0 + (x1 - x0) * last[0], Y = y0 + (y1 - y0) * ((last[1] - o.ymin) / (o.ymax - o.ymin));
+    g.fillStyle = s.color; g.beginPath(); g.arc(X, Y, 12, 0, 7); g.fill(); font(g, 36, true); g.textAlign = 'left'; g.fillText(s.name + (s.fmt ? ' ' + s.fmt(last[1]) : ''), X + 24, Y + 12); });
+  if (o.note) { g.fillStyle = T.accent; font(g, 36); g.textAlign = 'left'; g.fillText(o.note, 260, 215); }
+  g.textAlign = 'left';
+}
+function donut(g, q, frac, label, src, est) {
+  const cx = 700, cy = 560, r = 300, qq = eio(seg(q, .05, 1));
+  g.lineWidth = 70; g.strokeStyle = '#2a2e38'; g.beginPath(); g.arc(cx, cy, r, 0, 7); g.stroke();
+  g.strokeStyle = T.accent; g.beginPath(); g.arc(cx, cy, r, -Math.PI / 2, -Math.PI / 2 + 2 * Math.PI * frac * qq); g.stroke();
+  g.fillStyle = T.accent; font(g, 150, true); g.textAlign = 'center'; g.fillText(Math.round(frac * 100 * qq) + '%', cx, cy + 50); g.textAlign = 'left';
+  g.fillStyle = T.ink; font(g, 46); label.forEach((s, i) => g.fillText(s, 1120, 460 + i * 68));
+  if (est) { g.fillStyle = T.est; g.fillRect(1120, 660, 230, 56); g.fillStyle = T.bg; font(g, 30, true); g.fillText('ESTIMATE', 1145, 699); }
+  g.fillStyle = T.muted; font(g, 26, true); g.fillText(src, 260, 1000);
+}
+function timeline(g, q, items, o) {
+  const x0 = 260, x1 = 1660, baseY = 600; titleSrc(g, o.title, o.src || 'Sources: NY Fed; Stanford DEL; U.S. Census Bureau');
+  g.strokeStyle = T.ink; g.lineWidth = 3; g.beginPath(); g.moveTo(x0, baseY); g.lineTo(x1, baseY); g.stroke();
+  (o.marks || []).forEach(([f, s], i) => { const X = x0 + (x1 - x0) * f, qq = eo(seg(q, i * .1, .3 + i * .1)); g.globalAlpha = qq; g.fillStyle = T.ink; g.beginPath(); g.arc(X, baseY, 10, 0, 7); g.fill(); font(g, 28, true); g.textAlign = 'center'; g.fillText(s, X, baseY + 56); g.globalAlpha = 1; });
+  items.forEach((it, i) => { const qq = eo(seg(q, .2 + i * .25, .6 + i * .25)), X0 = x0 + (x1 - x0) * it.f0, X1 = X0 + (x1 - x0) * (it.f1 - it.f0) * qq, Y = baseY - 100 - it.row * 110;
+    g.globalAlpha = .85; g.fillStyle = it.color; g.fillRect(X0, Y - 36, X1 - X0, 72); g.globalAlpha = 1; g.fillStyle = T.bg; font(g, 32, false, 700); g.textAlign = 'left'; if (qq > .5) g.fillText(it.label, X0 + 20, Y + 12); });
+  g.textAlign = 'left';
+}
+function bigNum(g, q, num, label, src) {
+  const target = parseFloat(num), suffix = num.replace(/[\d.]/g, ''), qq = eo(seg(q, 0, .8));
+  g.fillStyle = T.accent; font(g, 220, true); g.textAlign = 'center'; g.fillText((target * qq).toFixed(num.includes('.') ? 1 : 0) + suffix, 960, 520);
+  g.fillStyle = T.ink; font(g, 46); g.fillText(label, 960, 640); g.textAlign = 'left'; g.fillStyle = T.muted; font(g, 26, true); g.fillText(src, 260, 1000);
+}
+function desks(g, q, apart) {
+  const gap = apart ? 80 + 700 * ss(q) : 80;
+  const desk = (x, y, person) => { g.fillStyle = T.ink; g.fillRect(x - 160, y, 320, 22); g.fillRect(x - 140, y + 22, 18, 120); g.fillRect(x + 122, y + 22, 18, 120); if (person) { g.beginPath(); g.arc(x, y - 110, 42, 0, 7); g.fill(); g.fillRect(x - 60, y - 70, 120, 72); } };
+  desk(960 - gap, 600, true); desk(960 + gap, 600, true);
+  const s = apart ? 1 - .8 * ss(q) : .6 + .4 * eo(q); g.fillStyle = T.accent;
+  [[960 - gap + 120, 430], [960 + gap - 120, 430]].forEach(([x, y]) => { g.beginPath(); g.ellipse(x, y, 90 * s, 50 * s, 0, 0, 7); g.fill(); });
+  g.fillStyle = T.muted; font(g, 34, true); g.textAlign = 'center'; g.fillText(apart ? 'feedback and mentoring drop with distance' : 'feedback · mentoring', 960, 900); g.textAlign = 'left';
+  g.fillStyle = T.muted; font(g, 26, true); g.fillText(S_NYF + ' · one Fortune 500 firm', 260, 1000);
+}
+const CHARTS = {
+  num_5_6: (g, q) => bigNum(g, q, '5.6%', 'unemployment, recent college graduates (22–27), 2026 Q2', S_CLM),
+  num_42: (g, q) => bigNum(g, q, '42%', 'of recent graduates underemployed', S_CLM),
+  num_4x: (g, q) => bigNum(g, q, '4×', 'remote work since the pandemic', S_NYF),
+  bars_young_1: (g, q) => bars(g, q, [{ label: '2017–19', vals: [{ v: 3.1, color: T.c1, name: '3.1%' }] }], { title: 'Unemployment, college graduates under 29', src: S_NYF, max: 4.2, bw: 220 }),
+  bars_young_2: (g, q) => bars(g, Math.min(1, .5 + q / 2), [{ label: '2017–19', vals: [{ v: 3.1, color: T.c1, name: '3.1%' }] }, { label: '2022–25', vals: [{ v: 3.7, color: T.c1, name: '3.7%' }] }], { title: 'Unemployment, college graduates under 29', src: S_NYF, max: 4.2, bw: 220 }),
+  bars_young_arrow: (g, q) => { bars(g, 1, [{ label: '2017–19', vals: [{ v: 3.1, color: T.c1, name: '3.1%' }] }, { label: '2022–25', vals: [{ v: 3.7, color: T.c1, name: '3.7%' }] }], { title: 'Unemployment, college graduates under 29', src: S_NYF, max: 4.2, bw: 220 }); g.strokeStyle = T.c3; g.lineWidth = 6; g.beginPath(); g.moveTo(620, 420); g.lineTo(620 + 160 * eo(q), 400 - 60 * eo(q)); g.stroke(); g.fillStyle = T.c3; font(g, 40, true); g.fillText('+0.6 pt', 1120, 420); },
+  bars_older: (g, q) => bars(g, q, [{ label: 'older graduates', vals: [{ v: 1.9, color: T.c2, name: '1.9%', sub: '2017–19' }, { v: 1.8, color: T.c2, name: '1.8%', sub: '2022–25' }] }], { title: 'Older graduates edged down', src: S_NYF, max: 4.2, bw: 220 }),
+  bars_both: (g, q) => bars(g, q, [{ label: 'under 29', vals: [{ v: 3.1, color: T.c1, name: '3.1%', sub: '2017–19' }, { v: 3.7, color: T.c1, name: '3.7%', sub: '2022–25' }] }, { label: 'older graduates', vals: [{ v: 1.9, color: T.c2, name: '1.9%', sub: '2017–19' }, { v: 1.8, color: T.c2, name: '1.8%', sub: '2022–25' }] }], { title: 'Young graduates rose, older graduates edged down', src: S_NYF, max: 4.2 }),
+  line_remote_young: (g, q) => lineChart(g, q, [{ name: 'young graduates', color: T.c1, pts: [[0, 0], [.5, .35], [1, .95]], fmt: v => '+' + v.toFixed(1) + ' pt' }], { title: 'From-home jobs: change in unemployment', ymin: -.4, ymax: 1.2, xlabels: [[0, '2017–19'], [1, '2022–24']], src: S_NYF, note: 'young graduates: up almost a full percentage point' }),
+  line_remote_both: (g, q) => lineChart(g, Math.min(1, .6 + q / 2), [{ name: 'young graduates', color: T.c1, pts: [[0, 0], [.5, .35], [1, .95]], fmt: v => '+' + v.toFixed(1) + ' pt' }, { name: 'older workers', color: T.c2, pts: [[0, 0], [.5, -.05], [1, -.1]], fmt: v => v.toFixed(1) + ' pt' }], { title: 'From-home jobs: change in unemployment', ymin: -.4, ymax: 1.2, xlabels: [[0, '2017–19'], [1, '2022–24']], src: S_NYF }),
+  line_showup: (g, q) => lineChart(g, q, [{ name: 'young − older gap', color: T.c1, pts: [[0, 0], [.3, .05], [.45, .6], [.6, .15], [1, .05]] }], { title: 'Show-up jobs: the gap bumped in 2020, then returned', ymin: -.4, ymax: 1.2, xlabels: [[0, '2017'], [.45, '2020'], [1, '2024']], src: S_NYF }),
+  desks_close: (g, q) => desks(g, q, false), desks_apart: (g, q) => desks(g, q, true),
+  mentoring_drop: (g, q) => bars(g, q, [{ label: 'co-located', vals: [{ v: 100, color: T.c1, name: 'more' }] }, { label: 'a short distance apart', vals: [{ v: 45, color: T.c2, name: 'less' }] }, { label: 'younger workers', vals: [{ v: 30, color: T.c3, name: 'least' }] }], { title: 'Feedback and mentoring (illustrative scale)', src: S_NYF + ' · one Fortune 500 firm', max: 110, bw: 200 }),
+  donut_64: (g, q) => donut(g, q, .64, ['of the recent increase in', 'young graduate unemployment', 'can be explained by remote work'], S_NYF, true),
+  donut_quarter: (g, q) => donut(g, q, .25, ['of the decline it measured', 'can be traced to rate shocks', 'through 2023 (up to)'], S_CEN, true),
+  gap_persists: (g, q) => bars(g, q, [{ label: 'from-home jobs', vals: [{ v: 1, color: T.c1, name: 'gap' }] }, { label: 'show-up jobs', vals: [{ v: .55, color: T.c1, name: 'gap' }] }], { title: 'AI exposure held fixed: the young–older gap persists', src: S_NYF, max: 1.3, bw: 220 }),
+  gap_education: (g, q) => bars(g, q, [{ label: 'raw', vals: [{ v: 1, color: T.c3, name: 'gap' }] }, { label: 'education controlled', vals: [{ v: .6, color: T.c3, name: 'smaller' }] }], { title: 'The gap shrinks when education is taken into account', src: S_STAN, max: 1.3, bw: 220 }),
+  line_gap_15_19: (g, q) => lineChart(g, q, [{ name: 'gap', color: T.c3, pts: [[0, 15], [1, 19]], fmt: v => v.toFixed(0) + '%' }], { title: 'Young workers in AI-exposed jobs: employment gap', ymin: 0, ymax: 24, xlabels: [[0, 'July 2025 data'], [1, 'June 2026 data']], src: S_STAN, note: '15% → 19%, relative to less-exposed jobs' }),
+  line_gap_widening: (g, q) => { lineChart(g, 1, [{ name: 'gap', color: T.c3, pts: [[0, 15], [1, 19]], fmt: v => v.toFixed(0) + '%' }], { title: 'Young workers in AI-exposed jobs: employment gap', ymin: 0, ymax: 24, xlabels: [[0, 'July 2025 data'], [1, 'June 2026 data']], src: S_STAN }); g.strokeStyle = T.c3; g.lineWidth = 6; g.setLineDash([14, 12]); g.beginPath(); g.moveTo(1560, 400); g.lineTo(1560 + 80 * eo(q), 380 - 40 * eo(q)); g.stroke(); g.setLineDash([]); g.fillStyle = T.c3; font(g, 36); g.fillText('and widening', 1280, 300); },
+  line_experienced_flat: (g, q) => lineChart(g, q, [{ name: 'young, AI-exposed', color: T.c3, pts: [[0, 0], [1, -19]], fmt: v => v.toFixed(0) + '%' }, { name: 'experienced, same jobs', color: T.c2, pts: [[0, 0], [1, 1]], fmt: v => 'no gap' }], { title: 'Experienced workers show no comparable gap', ymin: -24, ymax: 8, xlabels: [[0, 'Nov 2022'], [1, 'Jun 2026']], src: S_STAN }),
+  bar_minus12: (g, q) => bars(g, q, [{ label: 'most AI-exposed industries', vals: [{ v: 12, color: T.c3, name: '−12%' }] }], { title: 'Workers aged 22–24, ten quarters after ChatGPT', src: S_CEN, max: 14, bw: 240 }),
+  bar_minus12_steady: (g, q) => bars(g, Math.min(1, .5 + q / 2), [{ label: 'most AI-exposed industries', vals: [{ v: 12, color: T.c3, name: '−12%' }] }, { label: 'less exposed', vals: [{ v: .4, color: T.c2, name: 'steady' }] }], { title: 'Workers aged 22–24, ten quarters after ChatGPT', src: S_CEN, max: 14, bw: 240 }),
+  bars_task_vs_help: (g, q) => bars(g, q, [{ label: 'AI does the task', vals: [{ v: 1, color: T.c3, name: 'declines' }] }, { label: 'AI helps the worker', vals: [{ v: .55, color: T.c2, name: 'flat or rising' }] }], { title: 'Young employment by how AI is used in the job', src: S_STAN, max: 1.3, bw: 240 }),
+  line_fedfunds: (g, q) => lineChart(g, q, [{ name: 'fed funds', color: T.c1, pts: [[0, .08], [.1, .2], [.35, 4.3], [.42, 5.33], [.68, 5.33], [.9, 3.72], [1, 3.75]], fmt: v => v.toFixed(2) + '%' }], { title: 'Federal funds effective rate', ymin: 0, ymax: 6, xlabels: [[0, 'Jan 2022'], [.42, 'Aug 2023'], [1, 'Sep 2026']], src: S_FRED }),
+  line_fedfunds_hold: (g, q) => { lineChart(g, 1, [{ name: 'fed funds', color: T.c1, pts: [[0, .08], [.1, .2], [.35, 4.3], [.42, 5.33], [.68, 5.33], [.9, 3.72], [1, 3.75]], fmt: v => v.toFixed(2) + '%' }], { title: 'Federal funds effective rate', ymin: 0, ymax: 6, xlabels: [[0, 'Jan 2022'], [.42, 'Aug 2023'], [1, 'Sep 2026']], src: S_FRED }); g.fillStyle = 'rgba(229,182,80,.18)'; g.fillRect(260 + 1300 * .42, 280, 1300 * .26 * eo(q), 580); g.fillStyle = T.accent; font(g, 36); g.fillText('about a year at 5.33%', 900, 240); },
+  bar_ai_firms_hiring: (g, q) => bars(g, q, [{ label: 'most AI-exposed firms', vals: [{ v: 1, color: T.c3, name: 'sharp drop' }] }, { label: 'explained by rates', vals: [{ v: .25, color: T.est, name: 'up to ¼' }] }], { title: 'The hiring drop at AI-exposed firms is not explained by rates', src: S_CEN, max: 1.3, bw: 240 }),
 };
-// a line with several beats splits its time evenly between them
-const plan = cues.lines.map(l => { const bs = B[l.id] || [textBeat([''])]; const n = bs.length, len = (l.t1 - l.t0 + 0.5) / n; return bs.map((b, i) => ({ b: b.el ? b : { el: b, draw: () => {} }, t0: l.t0 + i * len, t1: l.t0 + (i + 1) * len })); }).flat();
-plan.at(-1).t1 = cues.dur;
-const XF = 0.35;  // cut with a short fade
+
+// ——— UI templates (DOM) ———
+function box(html, style) { return `<div class="box" style="${style}">${html}</div>`; }
+const UIS = {
+  counter: c => { const d = el(`<div class="ui"><div class="box mono" style="left:560px;top:380px;width:800px;text-align:center"><div style="font-size:150px;color:var(--accent)" class="n">0</div><div style="font-size:40px">${c.label}</div><div style="font-size:40px;color:var(--chart-3);margin-top:12px" class="sub"></div></div></div>`); const n = d.querySelector('.n'), sub = d.querySelector('.sub'), bx = d.querySelector('.box'); return (e, lt) => { n.textContent = Math.round(c.n * eo(seg(lt, 0, 1.2))); sub.textContent = lt > 1.3 ? c.sub : ''; pop(bx, e); }; },
+  chat: c => { const d = el(`<div class="ui"><div class="box" style="left:460px;top:300px;width:1000px;font-size:38px"><div style="color:var(--ink-muted)">You</div><div class="q"></div><div style="color:var(--ink-muted);margin-top:28px">Assistant</div><div class="a" style="color:var(--accent)"></div></div></div>`); const q = d.querySelector('.q'), a = d.querySelector('.a'); return (e, lt) => { q.textContent = c.prompt.slice(0, Math.ceil(c.prompt.length * seg(lt, 0, 1))); a.textContent = c.reply.slice(0, Math.ceil(c.reply.length * seg(lt, 1.2, 2.4))); }; },
+  calendar: c => { const d = el(`<div class="ui"><div class="box mono" style="left:560px;top:300px;width:800px;text-align:center;font-size:44px"><div class="grid" style="display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-bottom:24px"></div><div>${c.label}</div></div></div>`); const grid = d.querySelector('.grid'); for (let i = 0; i < 28; i++) { const s = document.createElement('div'); s.style.cssText = 'height:60px;border-radius:8px;background:#2a2e38'; grid.appendChild(s); } return (e, lt) => { [...grid.children].forEach((s, i) => s.style.background = i < 28 * seg(lt, 0, 2.2) ? 'var(--chart-3)' : '#2a2e38'); }; },
+  cards3: c => { const d = el(`<div class="ui">${c.items.map((s, i) => box(s, `left:260px;top:${300 + i * 150}px;width:1400px`)).join('')}</div>`); const bs = [...d.querySelectorAll('.box')]; return (e, lt) => bs.forEach((b, i) => pop(b, seg(lt, i * .5, i * .5 + 1))); },
+  question: c => { const d = el(`<div class="ui"><div class="center"><div class="card" style="text-align:left"><div class="t" style="font-size:76px;white-space:pre"></div></div></div></div>`); const t = d.querySelector('.t'); const full = c.lines.join('\n'); return (e, lt) => { t.textContent = full.slice(0, Math.ceil(full.length * seg(lt, .1, 2.2))); }; },
+  people10: c => { const d = el(`<div class="ui"><div style="position:absolute;left:260px;top:360px;display:flex;gap:40px">${'<div class="p" style="width:110px;height:230px;border-radius:55px 55px 20px 20px;background:#2a2e38"></div>'.repeat(10)}</div><div class="toplabel" style="top:720px;left:260px">${c.label}</div></div>`); const ps = [...d.querySelectorAll('.p')]; return (e, lt) => ps.forEach((p, i) => { p.style.background = i < c.lit * seg(lt, .2, 1.8) ? 'var(--accent)' : '#2a2e38'; }); },
+  fadejunior: c => { const d = el(`<div class="ui"><div style="position:absolute;left:460px;top:320px;display:flex;gap:120px;align-items:flex-end"><div class="j" style="width:200px;height:340px;border-radius:100px 100px 30px 30px;background:var(--accent)"></div><div style="width:260px;height:440px;border-radius:130px 130px 30px 30px;background:var(--chart-2)"></div></div><div class="toplabel" style="top:820px">${c.label}</div></div>`); const j = d.querySelector('.j'); return (e, lt) => { j.style.opacity = 1 - .85 * seg(lt, .5, 2.5); }; },
+  split: c => { const d = el(`<div class="ui"><div class="line" style="position:absolute;left:958px;top:200px;width:4px;height:0;background:#2a2e38"></div><div class="l" style="position:absolute;left:0;width:940px;top:420px;text-align:center;font-size:56px;font-weight:700;color:var(--${c.lcolor || 'accent'})">${c.left}${c.icons ? '<div style="font-size:150px">⌂</div>' : ''}</div><div class="r" style="position:absolute;left:980px;width:940px;top:420px;text-align:center;font-size:56px;font-weight:700;color:var(--chart-2)">${c.right}${c.icons ? '<div style="font-size:150px">⚙</div>' : ''}</div></div>`); const ln = d.querySelector('.line'), l = d.querySelector('.l'), r = d.querySelector('.r'); return (e, lt) => { ln.style.height = 680 * eo(seg(lt, 0, .8)) + 'px'; pop(l, seg(lt, .3, 1.3)); pop(r, seg(lt, .6, 1.6)); }; },
+  label: c => { const d = el(`<div class="ui">${box(c.text, `top:720px;${c.pos === 'l' ? 'left:260px' : 'right:260px'};font-size:44px`)}</div>`); const b = d.querySelector('.box'); return (e, lt) => pop(b, e); },
+  splitbar: c => { const d = el(`<div class="ui"><div style="position:absolute;left:260px;top:460px;width:1400px;height:120px;border-radius:16px;overflow:hidden;background:#2a2e38;display:flex"><div class="a" style="background:var(--accent);width:50%"></div><div style="background:var(--chart-2);flex:1"></div></div><div style="position:absolute;left:260px;top:620px;font-size:44px">${c.left}</div><div style="position:absolute;right:260px;top:620px;font-size:44px">${c.right}</div><div class="toplabel" style="top:300px">A junior job</div></div>`); const a = d.querySelector('.a'); return (e, lt) => { a.style.width = (100 - 50 * eo(seg(lt, .3, 1.5))) + '%'; }; },
+  strikelist: c => { const d = el(`<div class="ui">${c.items.map((s, i) => box(`<span class="s${i}">${s}</span>`, `left:460px;top:${300 + i * 150}px;width:1000px`)).join('')}</div>`); const target = d.querySelector('.s' + c.strike); return (e, lt) => { const q = seg(lt, 1.2, 2.0); target.style.background = `linear-gradient(var(--chart-3),var(--chart-3)) no-repeat 0 55% / ${100 * q}% 10%`; target.style.color = q > .9 ? 'var(--ink-muted)' : 'var(--ink)'; }; },
+  map: c => { const d = el(`<div class="ui"><canvas width="1920" height="1080"></canvas><div class="toplabel">${c.label}</div></div>`); const g = d.querySelector('canvas').getContext('2d'); const pts = [[400, 420], [700, 700], [960, 380], [1250, 650], [1500, 440], [1100, 850]]; return (e, lt) => { g.clearRect(0, 0, 1920, 1080); g.strokeStyle = '#2a2e38'; g.lineWidth = 3; pts.forEach((p, i) => pts.slice(i + 1).forEach(q => { if (seg(lt, .8, 2.4) > i / pts.length) { g.beginPath(); g.moveTo(...p); g.lineTo(...q); g.stroke(); } })); pts.forEach((p, i) => { if (lt > i * .2) { g.fillStyle = T.accent; g.beginPath(); g.arc(p[0], p[1], 18, 0, 7); g.fill(); } }); }; },
+  buildings: c => { const d = el(`<div class="ui"><div style="position:absolute;left:260px;top:280px;width:1400px;display:grid;grid-template-columns:repeat(10,1fr);gap:24px">${'<div class="b" style="height:110px;border-radius:8px;background:#2a2e38"></div>'.repeat(40)}</div><div class="toplabel" style="top:820px">one firm's internal data</div></div>`); const bs = [...d.querySelectorAll('.b')]; return (e, lt) => { bs.forEach((b, i) => b.style.background = (i === 17 && lt > .8) ? 'var(--accent)' : '#2a2e38'); }; },
+  converge: c => { const d = el(`<div class="ui"><canvas width="1920" height="1080"></canvas><div style="position:absolute;left:200px;top:300px;font-size:44px">${c.left}</div><div style="position:absolute;right:200px;top:300px;font-size:44px">${c.right}</div></div>`); const g = d.querySelector('canvas').getContext('2d'); return (e, lt) => { g.clearRect(0, 0, 1920, 1080); const q = eo(seg(lt, .2, 1.8)); g.strokeStyle = T.accent; g.lineWidth = 10; [[260, 380], [1660, 380]].forEach(([x, y]) => { g.beginPath(); g.moveTo(x, y); g.lineTo(x + (960 - x) * q, y + (720 - y) * q); g.stroke(); }); if (q > .95) { g.fillStyle = T.accent; g.beginPath(); g.arc(960, 720, 24, 0, 7); g.fill(); g.fillStyle = T.ink; font(g, 40); g.textAlign = 'center'; g.fillText('same direction', 960, 800); g.textAlign = 'left'; } }; },
+  lock: c => { const d = el(`<div class="ui"><div class="box" style="left:460px;top:400px;width:1000px;font-size:44px">${c.label}<div style="height:16px;border-radius:8px;background:#2a2e38;margin:28px 0;position:relative"><div class="k" style="position:absolute;top:-16px;width:48px;height:48px;border-radius:24px;background:var(--accent)"></div></div><div class="s" style="color:var(--accent);font-size:40px"></div></div></div>`); const k = d.querySelector('.k'), s = d.querySelector('.s'); return (e, lt) => { k.style.left = (lt < 1 ? 20 + 400 * Math.abs(Math.sin(lt * 6)) : 420) + 'px'; s.textContent = lt > 1.2 ? '🔒 ' + c.sub : ''; }; },
+  badge: c => { const d = el(`<div class="ui"><div class="center"><div class="box mono" style="position:relative;font-size:56px;padding:40px 70px;border-color:var(--accent)">${c.text}</div></div></div>`); const b = d.querySelector('.box'); return (e) => pop(b, e); },
+  dials: c => { const d = el(`<div class="ui"><canvas width="1920" height="1080"></canvas></div>`); const g = d.querySelector('canvas').getContext('2d'); return (e, lt) => { g.clearRect(0, 0, 1920, 1080); c.items.forEach((name, i) => { const cx = 560 + i * 800, cy = 480, q = eo(seg(lt, .3 + i * .8, 1.3 + i * .8)); g.lineWidth = 26; g.strokeStyle = '#2a2e38'; g.beginPath(); g.arc(cx, cy, 170, Math.PI * .75, Math.PI * 2.25); g.stroke(); g.strokeStyle = T.accent; g.beginPath(); g.arc(cx, cy, 170, Math.PI * .75, Math.PI * .75 + Math.PI * 1.5 * q); g.stroke(); g.fillStyle = T.ink; font(g, 42); g.textAlign = 'center'; g.fillText(name, cx, cy + 260); g.fillStyle = T.accent; font(g, 44, true); g.fillText(q > .95 ? 'controlled ✓' : '', cx, cy + 20); }); if (c.with_gap && lt > 2.2) { g.fillStyle = T.c3; g.fillRect(1250, 300, 200, 360); g.fillStyle = T.ink; font(g, 40); g.textAlign = 'center'; g.fillText('gap remains', 1350, 720); } g.textAlign = 'left'; }; },
+  robot: c => { const d = el(`<div class="ui"><canvas width="1920" height="1080"></canvas></div>`); const g = d.querySelector('canvas').getContext('2d'); return (e, lt) => { g.clearRect(0, 0, 1920, 1080); const q = (lt % 1.6) / 1.6; g.fillStyle = T.c3; g.fillRect(380, 560, 60, 260); g.save(); g.translate(410, 560); g.rotate(-.6 + 1.2 * Math.sin(q * Math.PI)); g.fillRect(-20, -220, 40, 220); g.restore(); for (let i = 0; i < 5; i++) { g.fillStyle = i < Math.floor(lt * 2) % 6 ? '#2a2e38' : T.ink; g.fillRect(600 + i * 70, 700, 50, 64); } g.fillStyle = T.ink; font(g, 44); g.fillText('AI does the task', 320, 900); g.fillStyle = T.c2; g.fillRect(1180, 560, 60, 260); g.beginPath(); g.arc(1210, 500, 48, 0, 7); g.fill(); g.fillStyle = T.accent; g.fillRect(1300, 600, 140 * eo(seg(lt, .5, 1.5)), 40); g.fillStyle = T.ink; font(g, 44); g.fillText('AI helps the worker', 1120, 900); }; },
+  list: c => { const d = el(`<div class="ui">${c.items.map((s, i) => box(s, `left:560px;top:${300 + i * 150}px;width:800px`)).join('')}<div class="toplabel">larger gaps in the payroll sample, mostly in:</div></div>`); const bs = [...d.querySelectorAll('.box')]; return (e, lt) => bs.forEach((b, i) => pop(b, seg(lt, .3 + i * .5, 1.3 + i * .5))); },
+  gauge: c => { const d = el(`<div class="ui"><canvas width="1920" height="1080"></canvas></div>`); const g = d.querySelector('canvas').getContext('2d'); return (e, lt) => { g.clearRect(0, 0, 1920, 1080); const q = eo(seg(lt, .2, 2)); g.lineWidth = 40; g.strokeStyle = '#2a2e38'; g.beginPath(); g.arc(960, 640, 300, Math.PI, 2 * Math.PI); g.stroke(); g.strokeStyle = T.c3; g.beginPath(); g.arc(960, 640, 300, Math.PI, Math.PI + Math.PI * q); g.stroke(); g.fillStyle = T.ink; font(g, 52); g.textAlign = 'center'; g.fillText(c.label + ' ↑', 960, 760); g.textAlign = 'left'; }; },
+  scale: c => { const d = el(`<div class="ui"><canvas width="1920" height="1080"></canvas><div class="toplabel" style="top:860px;left:0;width:1920px;text-align:center">${c.label}</div></div>`); const g = d.querySelector('canvas').getContext('2d'); return (e, lt) => { g.clearRect(0, 0, 1920, 1080); const a = .12 * Math.sin(lt * 1.3); g.save(); g.translate(960, 520); g.rotate(a); g.fillStyle = T.ink; g.fillRect(-500, -8, 1000, 16); [[-460, 'remote work'], [460, 'AI']].forEach(([x, s]) => { g.fillStyle = T.accent; g.fillRect(x - 90, 20, 180, 120); g.fillStyle = T.bg; font(g, 32, false, 700); g.textAlign = 'center'; g.fillText(s, x, 92); g.fillStyle = T.ink; font(g, 72, true); g.fillText('?', x, -40); }); g.restore(); g.fillStyle = T.ink; g.fillRect(940, 520, 40, 300); g.textAlign = 'left'; }; },
+};
+
+// ——— build & render ———
+const R = { PAGE, CARD, CUT, STOCK, TL, CHART, UI };
+const plan = CUTS.map(c => { const draw = R[c.k](c); return { c, el: stage.lastElementChild, draw }; });
+const XF = 0.12;  // 컷: 짧은 페이드만
 window.render = t => {
-  for (const { b, t0, t1 } of plan) {
-    const on = t >= t0 && t < t1;
-    b.el.style.opacity = on ? Math.min(eo(seg(t, t0, t0 + XF)), 1 - seg(t, t1 - XF, t1)) : 0;
-    if (on) b.draw(clamp((t - t0) / 2.5), t - t0);  // 첫 인자 = 등장 진행도(2.5초), 둘째 = 경과 초
-  }
+  let active = -1;
+  for (let i = 0; i < plan.length; i++) { const { c } = plan[i]; if (t >= c.t && t < c.t + c.d) active = i; }
+  plan.forEach(b => { b.el.classList.remove('blurred'); b.el.style.opacity = 0; });
+  if (active < 0) return;
+  const { c, el: node, draw } = plan[active], lt = t - c.t;
+  if (active > 0 && (c.k === 'CARD' || c.over)) { const prev = plan[active - 1]; if (c.k === 'CARD') prev.el.classList.add('blurred'); else prev.el.style.opacity = 1; prev.draw(1, prev.c.d + lt, 1); }  // 카드는 앞 컷을 흐려 깔고, over 컷은 앞 컷 위에 그대로 얹는다
+  node.style.opacity = Math.min(eo(seg(lt, 0, XF)), 1 - seg(lt, c.d - XF, c.d));
+  draw(clamp(lt / 1.2), lt, clamp(lt / c.d));
 };
 await document.fonts.ready;
 await Promise.all([...document.images].map(i => i.complete ? 0 : new Promise(r => { i.onload = i.onerror = r; })));
