@@ -1,8 +1,8 @@
 # EP001 — 3단계 대본 v2 (게이트 2)
 
 - 이슈 #2 · 기준: `docs/voice.md`, `02_research.md`에 있는 숫자·인용만 사용
-- v2.1: 2차 검토 반영(마무리 단정 완화, '설명 못 한다'→'통제해도 남는다', 지어낸 예시 삭제, 숫자 밀집 해소). v2 변경: 영어 AI 티 검토(critic) 반영. 대구·한 줄 펀치 제거, 결론을 연구자 확신 수준으로 낮춤, 숫자 한 문장 2개 이하, 용어를 구어로.
-- 분량: 1,328단어, 약 8.9분 (절별 구간은 파일 끝)
+- v2.2: 10분 확장 — 7b절(금리 요인) 추가, 기준금리는 FRED 1차 확인. v2.1: 2차 검토 반영(마무리 단정 완화, '설명 못 한다'→'통제해도 남는다', 지어낸 예시 삭제, 숫자 밀집 해소). v2 변경: 영어 AI 티 검토(critic) 반영. 대구·한 줄 펀치 제거, 결론을 연구자 확신 수준으로 낮춤, 숫자 한 문장 2개 이하, 용어를 구어로.
+- 분량: 1,502단어, 약 10.0분 (절별 구간은 파일 끝)
 - 화면 표기: `[CHART]` 차트, `[ARTICLE]` 원문 캡처 무빙+형광펜, `[CUTOUT]` 2D 컷아웃, `[STOCK]` 스톡, `[TEXT]` 큰 글자, `[EST]` 화면에 "Estimate" 표시
 
 ## 훅 (hookscore.py v2)
@@ -137,6 +137,26 @@ The Stanford authors attach their own cautions. They describe these as descripti
 
 `[TEXT] "descriptive patterns, not causal estimates"`
 
+## 7b. What about interest rates?
+
+There is a third suspect, and both studies mention it. Money got expensive.
+
+In January 2022, the Federal Reserve's benchmark rate was close to zero, at 0.08 percent. By August 2023 it was 5.33 percent, and it stayed there for about a year.
+
+`[CHART] fed funds rate line: 0.08% (Jan 2022) → 5.33% (Aug 2023), flat through mid-2024, 3.75% (Sep 2026)`
+
+When borrowing costs jump like that, companies that had been growing on cheap credit slow their hiring, and the first budget line to go is usually the one with the least experience attached to it. So part of what looks like an AI effect, or a remote-work effect, could be a rate effect.
+
+The Census paper tested this. Its estimate is that up to a quarter of the relative decline in early-career employment through mid-2025 can be traced to interest rate shocks through 2023. That leaves roughly three quarters that rates don't account for, and the paper notes that rates don't explain the sharp hiring drop at the most AI-exposed firms.
+
+`[TEXT] Rates: up to 1/4 of the decline · the rest: not rates`
+
+The Stanford study handles it differently. The 19 percent gap is measured after controlling for interest rates, so the rate effect is already taken out of that number.
+
+`[TEXT] Stanford's 19%: measured with rates controlled for`
+
+So rates are real, and they are in the mix. On the evidence here, they are the smallest of the three.
+
 ## 8. Putting the two together
 
 `[CHART] one timeline with two shaded bands. Band 1: New York Fed, remote work, comparison window 2017–19 vs 2022–24. Band 2: Stanford, AI-exposed occupations, Nov 2022 to Jun 2026. The bands overlap from late 2022 on.`
@@ -149,7 +169,7 @@ That still leaves a graduate with two questions worth asking about any job. Will
 
 ## 9. Close
 
-The two studies point to two overlapping problems. One is tied to remote work, and the size of it rests on a rough estimate. The other is newer, and it sits in jobs where AI does the task. How much each one matters is still open.
+The two studies point to two overlapping problems, with interest rates underneath both. One is tied to remote work, and the size of it rests on a rough estimate. The other is newer, and it sits in jobs where AI does the task. How much each one matters is still open.
 
 `[CUTOUT] graduate looking at two paths on the horizon` → `[TEXT] Which of the two questions applies to your search?` → end card (channel name only)
 
@@ -165,14 +185,15 @@ So, looking at your own job search: which of those two questions applies to you?
 
 | 절 | 제목 | 단어 | 구간 |
 |---|---|---:|---|
-| 1 | Hook | 23 | 0:00–0:09 |
-| 2 | The turn | 135 | 0:00–0:54 |
-| 3 | The gap is real | 157 | 0:54–1:56 |
-| 4 | Timing and job type | 178 | 1:56–3:08 |
-| 5 | Why distance hurts juniors | 219 | 3:08–4:35 |
-| 6 | The 64 percent | 144 | 4:35–5:33 |
-| 7 | The second problem | 275 | 5:33–7:23 |
-| 8 | Putting the two together | 143 | 7:23–8:20 |
-| 9 | Close | 54 | 8:20–8:41 |
+| 1 | Hook | 25 | 0:00–0:10 |
+| 2 | The turn | 137 | 0:10–1:04 |
+| 3 | The gap is real | 145 | 1:04–2:02 |
+| 4 | Timing and job type | 178 | 2:02–3:14 |
+| 5 | Why distance hurts juniors | 181 | 3:14–4:26 |
+| 6 | The 64 percent | 145 | 4:26–5:24 |
+| 7 | The second problem | 272 | 5:24–7:13 |
+| 7b | What about interest rates? | 203 | 7:13–8:34 |
+| 8 | Putting the two together | 144 | 8:34–9:32 |
+| 9 | Close | 72 | 9:32–10:00 |
 
-합계 1,328단어, 약 8.9분.
+합계 1,502단어, 약 10.0분.
