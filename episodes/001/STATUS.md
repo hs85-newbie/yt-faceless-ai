@@ -5,7 +5,9 @@
 - [x] 3. 대본 — v2.2 승인(2026-10-25, 훅 1번, 7b 금리 절 추가로 1,502단어 10.0분)
 - [x] 4. 패키징 — 제목 "What Really Hit Entry-Level Jobs in 2022" + 썸네일 "NOT THE ROBOT" (04_package.md)
 - [x] 5. 음성 — am_michael 확정. 43줄 생성, Whisper 대조(표기 차이 외 불일치 0, 모호 문장 2곳 대본 수정), voice.wav 10.5분 + transcript.srt + scenes.txt (output/001/)
-- [ ] 6. 화면·렌더 (게이트 3) — 본편 HyperFrames + 강조 장면 lemo-opuscar, 합성은 장면 단위. 선행: brand/tokens.css (#5), archify 도표 (#9)
+- [ ] 6. 화면·렌더 (게이트 3) — 본편 HyperFrames + 강조 장면 lemo-opuscar, 합성은 장면 단위. 컷아웃 그림은 Gemini 이미지 생성(승인 2026-10-25, 약 0.3달러). BGM·효과음 포함. 선행: brand/tokens.css (#5), archify 도표 (#9)
+  - 내레이션 voice.wav 사용자 승인(2026-10-25)
+  - Seedance 실사 컷은 EP002부터 5컷 이내 시험(결정 A, 2026-10-25). EP001은 AI 영상 0 유지
 - [ ] 7. 챕터·설명
 - [ ] 8. 숏폼 2~3개 — 16:9 롱폼에서 장면 경계로 잘라 세로 캔버스에 얹기
 - [ ] 9. 업로드 (게이트 4, 선행: 이슈 #3 업로드 스크립트)
