@@ -55,7 +55,7 @@ Over the same years, older graduates went the other way. Their rate edged down s
 
 `[CHART] add second bar pair: 29+ grads 1.9% → 1.8%`
 
-A weak economy alone wouldn't obviously single out the youngest graduates, but that is what the numbers show. On its own, that pattern fits the AI explanation. Juniors get replaced and seniors stay, so the researchers looked closer.
+A weak economy alone wouldn't obviously single out the youngest graduates, but that is what the numbers show. On its own, that pattern fits the AI explanation. Juniors get replaced while seniors stay, so the researchers looked closer.
 
 ## 4. Timing and job type
 
@@ -125,7 +125,7 @@ By June 2026, employment for those young workers was about 19 percent lower, rel
 
 Two details connect this to the Fed study. The gap holds up when the authors control for interest rates and for remote work. And experienced workers in the same occupations show no comparable gap.
 
-A separate working paper from the U.S. Census Bureau found a related pattern. It looks at workers aged 22 to 24. In the industries most exposed to AI, their employment fell 12 percent in the ten quarters after ChatGPT's release. In less exposed industries it held steady.
+A separate working paper from the U.S. Census Bureau found a related pattern. It looks at workers aged 22 to 24. In the industries most exposed to AI, their employment fell 12 percent in the ten quarters after ChatGPT's release. Industries with less exposure held steady.
 
 `[CHART] Census: most-exposed industries −12%, others flat` `[TEXT] up to 1/4: interest rates`
 
