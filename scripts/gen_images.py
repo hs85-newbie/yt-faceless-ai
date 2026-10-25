@@ -12,17 +12,20 @@ from pathlib import Path
 
 MODEL = "gemini-2.5-flash-image"
 STYLE = ("Flat vector illustration, paper-cutout look, strong silhouettes, minimal detail, no text, no watermark, "
-         "no gradients, no photorealism. Palette only: background #0f1115 (solid, fills the whole frame), "
+         "no gradients, no photorealism. The whole canvas is pure black (#0f1115) edge to edge: no floor, no ground plane, no horizon band, no lighter area anywhere; objects float on black. Palette only: "
          "ink #e8e6df, accent #e5b650, secondary #6f8fb0. Composition centered with generous empty margin. 16:9.")
 
 spec_path, out_dir = Path(sys.argv[1]), Path(sys.argv[2])
 key = [l.split("=", 1)[1].strip() for l in open(Path.home() / ".config/watch/.env") if l.startswith("GEMINI_API_KEY=")][0]
 out_dir.mkdir(parents=True, exist_ok=True)
 spec = json.loads(spec_path.read_text(encoding="utf-8"))
+only = set(sys.argv[3].split(",")) if len(sys.argv) > 3 else None  # 일부만 다시 뽑기
+spec = [i for i in spec if not only or i["id"] in only]
 
 for item in spec:
-    body = {"contents": [{"parts": [{"text": f"{item['prompt']} {STYLE}"}]}],
-            "generationConfig": {"responseModalities": ["IMAGE"]}}
+    style = "" if item.get("raw") else STYLE  # raw: 프롬프트가 자체 스타일을 정할 때(예: 종이 콜라주)
+    body = {"contents": [{"parts": [{"text": f"{item['prompt']} {style}"}]}],
+            "generationConfig": {"responseModalities": ["IMAGE"], "imageConfig": {"aspectRatio": "16:9"}}}
     req = urllib.request.Request(
         f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent?key={key}",
         data=json.dumps(body).encode(), headers={"Content-Type": "application/json"})

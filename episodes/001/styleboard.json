@@ -1,0 +1,32 @@
+[
+ {
+  "id": "sb1_hook",
+  "prompt": "A paper-cutout collage scene filling the whole 16:9 frame: a young graduate in cap and gown cut out of matte paper, standing on a desk-sized green self-healing cutting mat with faint grid lines, surrounded by torn paper rejection letters and scattered paper envelopes casting soft shadows. Wide composition, empty space on the right third for a headline. Hand-made craft look, visible paper texture and torn edges, warm studio light, slight drop shadows. No text, no letters, no words.",
+  "raw": true
+ },
+ {
+  "id": "sb2_number",
+  "prompt": "A paper-cutout collage on a green cutting mat filling the 16:9 frame: a crowd of small identical paper figures in a row, several of them cut from a darker paper and slightly lifted, as if separated from the group. Lots of empty mat space in the upper half for a large number. Hand-made craft look, paper texture, torn edges, soft shadows. No text, no numbers, no words.",
+  "raw": true
+ },
+ {
+  "id": "sb3_document",
+  "prompt": "A paper-cutout collage on a green cutting mat filling the 16:9 frame: a pair of scissors, a strip of masking tape and a yellow highlighter pen lying at the edges, with a large blank torn paper sheet in the center left empty for content to be placed. Top-down view, paper texture, soft shadows. The central sheet must be blank. No text, no words.",
+  "raw": true
+ },
+ {
+  "id": "sb4_chart",
+  "prompt": "A paper-cutout collage on a green cutting mat filling the 16:9 frame: two stacks of paper coins or paper bars of different heights cut from mustard-yellow and slate-blue paper, a small paper figure of a graduate standing next to the taller one and a paper figure of an older worker next to the shorter one. Lots of space above for labels. Hand-made craft look, paper texture, soft shadows. No text, no numbers.",
+  "raw": true
+ },
+ {
+  "id": "sb5_mechanism",
+  "prompt": "A paper-cutout collage on a green cutting mat filling the 16:9 frame: two paper office desks pulled far apart, each with a small paper worker, a dotted paper thread between them that frays and breaks in the middle, small paper speech bubbles near the left desk and almost none near the right. Hand-made craft look, paper texture, torn edges, soft shadows. No text, no words.",
+  "raw": true
+ },
+ {
+  "id": "sb6_conclusion",
+  "prompt": "A paper-cutout collage on a green cutting mat filling the 16:9 frame: a paper road that splits into two paths, one cut from mustard-yellow paper and one from slate-blue paper, with a small paper graduate standing at the fork seen from behind, paper buildings on the horizon. Hand-made craft look, paper texture, soft shadows. No text, no words.",
+  "raw": true
+ }
+]
