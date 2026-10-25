@@ -1,8 +1,8 @@
 # EP001 — 3단계 대본 v2 (게이트 2)
 
 - 이슈 #2 · 기준: `docs/voice.md`, `02_research.md`에 있는 숫자·인용만 사용
-- v2.2: 10분 확장 — 7b절(금리 요인) 추가, 기준금리는 FRED 1차 확인. v2.1: 2차 검토 반영(마무리 단정 완화, '설명 못 한다'→'통제해도 남는다', 지어낸 예시 삭제, 숫자 밀집 해소). v2 변경: 영어 AI 티 검토(critic) 반영. 대구·한 줄 펀치 제거, 결론을 연구자 확신 수준으로 낮춤, 숫자 한 문장 2개 이하, 용어를 구어로.
-- 분량: 1,502단어, 약 10.0분 (절별 구간은 파일 끝)
+- v2.3: 7b절 검토 반영(요인 서열 삭제, 스탠퍼드 통제 표현 정확화, 근거 없는 메커니즘 삭제). v2.2: 10분 확장 — 7b절(금리 요인) 추가, 기준금리는 FRED 1차 확인. v2.1: 2차 검토 반영(마무리 단정 완화, '설명 못 한다'→'통제해도 남는다', 지어낸 예시 삭제, 숫자 밀집 해소). v2 변경: 영어 AI 티 검토(critic) 반영. 대구·한 줄 펀치 제거, 결론을 연구자 확신 수준으로 낮춤, 숫자 한 문장 2개 이하, 용어를 구어로.
+- 분량: 1,424단어, 약 9.5분 (절별 구간은 파일 끝)
 - 화면 표기: `[CHART]` 차트, `[ARTICLE]` 원문 캡처 무빙+형광펜, `[CUTOUT]` 2D 컷아웃, `[STOCK]` 스톡, `[TEXT]` 큰 글자, `[EST]` 화면에 "Estimate" 표시
 
 ## 훅 (hookscore.py v2)
@@ -125,7 +125,7 @@ By June 2026, employment for those young workers was about 19 percent lower, rel
 
 Two details connect this to the Fed study. The gap holds up when the authors control for interest rates and for remote work. And experienced workers in the same occupations show no comparable gap.
 
-A separate working paper from the U.S. Census Bureau found a related pattern. It looks at workers aged 22 to 24. In the industries most exposed to AI, their employment fell 12 percent in the ten quarters after ChatGPT's release. In less exposed industries it held steady. That paper also estimates that up to a quarter of the decline may trace back to interest rate increases, which leaves most of it unexplained by rates.
+A separate working paper from the U.S. Census Bureau found a related pattern. It looks at workers aged 22 to 24. In the industries most exposed to AI, their employment fell 12 percent in the ten quarters after ChatGPT's release. In less exposed industries it held steady.
 
 `[CHART] Census: most-exposed industries −12%, others flat` `[TEXT] up to 1/4: interest rates`
 
@@ -139,23 +139,23 @@ The Stanford authors attach their own cautions. They describe these as descripti
 
 ## 7b. What about interest rates?
 
-There is a third suspect, and both studies mention it. Money got expensive.
+There is a third suspect: interest rates. Stanford controls for them, and a Census paper tests them directly.
 
 In January 2022, the Federal Reserve's benchmark rate was close to zero, at 0.08 percent. By August 2023 it was 5.33 percent, and it stayed there for about a year.
 
 `[CHART] fed funds rate line: 0.08% (Jan 2022) → 5.33% (Aug 2023), flat through mid-2024, 3.75% (Sep 2026)`
 
-When borrowing costs jump like that, companies that had been growing on cheap credit slow their hiring, and the first budget line to go is usually the one with the least experience attached to it. So part of what looks like an AI effect, or a remote-work effect, could be a rate effect.
+Sharp rate hikes raise the cost of borrowing, and the Census paper asks whether that is what slowed hiring of the youngest workers.
 
-The Census paper tested this. Its estimate is that up to a quarter of the relative decline in early-career employment through mid-2025 can be traced to interest rate shocks through 2023. That leaves roughly three quarters that rates don't account for, and the paper notes that rates don't explain the sharp hiring drop at the most AI-exposed firms.
+Its estimate is that up to a quarter of the decline it measured can be traced to rate shocks through 2023. That leaves at least three quarters unexplained by rates, and the paper notes that rates don't explain the sharp hiring drop at the most AI-exposed firms.
 
-`[TEXT] Rates: up to 1/4 of the decline · the rest: not rates`
+`[TEXT] Rates: up to 1/4 of the decline · at least 3/4: not rates`
 
-The Stanford study handles it differently. The 19 percent gap is measured after controlling for interest rates, so the rate effect is already taken out of that number.
+Stanford's authors say their gap remains when they control for interest rates.
 
-`[TEXT] Stanford's 19%: measured with rates controlled for`
+`[TEXT] Stanford: gap persists with rates controlled for`
 
-So rates are real, and they are in the mix. On the evidence here, they are the smallest of the three.
+Rates look like a real but partial factor. The Census paper puts their share at no more than a quarter of the decline it measured.
 
 ## 8. Putting the two together
 
@@ -163,13 +163,13 @@ So rates are real, and they are in the mix. On the evidence here, they are the s
 
 The two studies cover overlapping years, so this isn't a clean handoff from one cause to the next. They ask different questions.
 
-The New York Fed study finds the early gap in jobs that went remote, and the gap is still there when AI exposure is held fixed. The Stanford study finds a newer and growing gap in jobs where AI does the task, and that gap is still there when remote work is controlled for. The simplest reading is that two causes are stacking, and the data can't yet say how much weight each carries.
+The New York Fed study finds the early gap in jobs that went remote, and the gap is still there when AI exposure is held fixed. The Stanford study finds a newer and growing gap in jobs where AI does the task, and that gap is still there when remote work is controlled for. The simplest reading is that two or more causes are stacking, and the data can't yet say how much weight each carries.
 
 That still leaves a graduate with two questions worth asking about any job. Will this role put me near people who can teach me? And is AI in this job doing the work, or helping someone do it? Both questions come straight from what the two studies measured.
 
 ## 9. Close
 
-The two studies point to two overlapping problems, with interest rates underneath both. One is tied to remote work, and the size of it rests on a rough estimate. The other is newer, and it sits in jobs where AI does the task. How much each one matters is still open.
+The two studies point to two overlapping problems. One is tied to remote work, and the size of it rests on a rough estimate. The other is newer, and it sits in jobs where AI does the task. How much each one matters is still open.
 
 `[CUTOUT] graduate looking at two paths on the horizon` → `[TEXT] Which of the two questions applies to your search?` → end card (channel name only)
 
@@ -191,9 +191,9 @@ So, looking at your own job search: which of those two questions applies to you?
 | 4 | Timing and job type | 178 | 2:02–3:14 |
 | 5 | Why distance hurts juniors | 181 | 3:14–4:26 |
 | 6 | The 64 percent | 145 | 4:26–5:24 |
-| 7 | The second problem | 272 | 5:24–7:13 |
-| 7b | What about interest rates? | 203 | 7:13–8:34 |
-| 8 | Putting the two together | 144 | 8:34–9:32 |
-| 9 | Close | 72 | 9:32–10:00 |
+| 7 | The second problem | 245 | 5:24–7:02 |
+| 7b | What about interest rates? | 155 | 7:02–8:04 |
+| 8 | Putting the two together | 146 | 8:04–9:02 |
+| 9 | Close | 67 | 9:02–9:29 |
 
-합계 1,502단어, 약 10.0분.
+합계 1,424단어, 약 9.5분.
