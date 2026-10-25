@@ -1,179 +1,178 @@
-# EP001 — 3단계 대본 (게이트 2)
+# EP001 — 3단계 대본 v2 (게이트 2)
 
-- 이슈 #2 · 기준: `docs/voice.md`, `02_research.md` 숫자만 사용
-- 분량: 약 1,472단어 → 150wpm 기준 약 9.8분
+- 이슈 #2 · 기준: `docs/voice.md`, `02_research.md`에 있는 숫자·인용만 사용
+- v2 변경: 영어 AI 티 검토(critic) 반영. 대구·한 줄 펀치 제거, 결론을 연구자 확신 수준으로 낮춤, 숫자 한 문장 2개 이하, 용어를 구어로.
+- 분량: 1,328단어, 약 8.9분 (절별 구간은 파일 끝)
 - 화면 표기: `[CHART]` 차트, `[ARTICLE]` 원문 캡처 무빙+형광펜, `[CUTOUT]` 2D 컷아웃, `[STOCK]` 스톡, `[TEXT]` 큰 글자, `[EST]` 화면에 "Estimate" 표시
 
-## 훅 후보 (hookscore.py)
+## 훅 (hookscore.py v2)
 
 | 순위 | 훅 | 점수 |
 |---|---|---|
-| 1 | You've been told AI is why new grads can't get hired. The Fed checked: it started before ChatGPT. Prepare for the wrong threat and you keep losing. | 61 WORKABLE (원안의 "lose the next two years"는 근거 없는 숫자라 교체) |
+| 1 | You've been told AI is why new grads can't get hired. A New York Fed study found the trouble started before ChatGPT existed. | 59 WORKABLE (약점: 손해를 말하지 않음. 근거 없는 위협 대신 이걸 택함) |
 | 2 | You've been told AI is why new grads can't get hired. The New York Fed checked, and the damage started before ChatGPT existed. | 59 WORKABLE |
 
-공식: 시청자 직접 호명 + 통념 뒤집기. 이 영상의 시청자는 "AI 때문"이라는 설명을 이미 들은 사람이라 첫 문장에서 그 설명을 짚어야 클릭이 확인된다.
-
 ## 제목 드롭 문구
-**THE FIRST WAVE WASN'T AI**
+**THE FIRST PROBLEM WASN'T AI**
 
 ---
 
-## 1. Hook (0:00–0:15)
+## 1. Hook
 
-You've been told AI is why new grads can't get hired. The Fed checked. It started before ChatGPT. And if you prepare for the wrong threat, you keep losing.
+You've been told AI is why new grads can't get hired. A New York Fed study found the trouble started before ChatGPT existed.
 
 `[CUTOUT] graduate in cap and gown, rejection emails stacking up` → `[TEXT] "AI took the entry-level jobs"` → `[ARTICLE] Liberty Street Economics headline, June 1, 2026`
 
-## 2. The turn (0:15–1:30)
+## 2. The turn
 
-Here's the story almost everyone agrees on. Companies got ChatGPT, junior work got automated, and the first rung of the career ladder disappeared. Big outlets have run versions of it, and those videos have been watched millions of times.
+The common version goes like this. Companies adopted ChatGPT, junior work got automated, and the first rung of the career ladder disappeared. CNBC and the Financial Times each made a video along those lines, and each has been watched more than a million times.
 
 `[STOCK] empty office desks` `[CUTOUT] ladder with the bottom rung missing`
 
-The story isn't crazy. Young graduates really are struggling. But a story can be true in its effects and wrong about its cause. And the cause matters, because it decides what you should actually do about it.
+Young graduates are struggling. That part is true. The question is why, because the answer changes what a graduate should do about it.
 
-So in June 2026, three economists writing for the New York Fed's research blog did something simple. They didn't ask whether AI could replace junior workers. They asked when the damage started, and in which kinds of jobs.
+In June 2026, three economists published a study on the New York Fed's research blog. Instead of asking whether AI could replace junior workers, they asked when the problem started, and in which kinds of jobs.
 
 `[ARTICLE] author line: Emanuel, Harrington, Pallais`
 
-The answer splits this story into two waves. The first one hit before most companies had used AI at all. The second one is AI, and it's growing. Almost everyone is only talking about the second.
+Their answer points at something that happened before most companies had touched AI. A second study, from Stanford, then adds a newer problem on top. This video walks through both.
 
-`[TEXT] THE FIRST WAVE WASN'T AI` (title drop, bass hit)
+`[TEXT] THE FIRST PROBLEM WASN'T AI` (title drop)
 
-## 3. Pillar one: the gap is real (1:30–3:00)
+## 3. The gap is real
 
-Start with what nobody disputes.
+Start with the gap itself.
 
-According to the New York Fed, recent college graduates aged 22 to 27 had an unemployment rate of about 5.6 percent in the second quarter of 2026. And 42 percent of recent grads are underemployed, which means they're working jobs that don't need a degree.
+The New York Fed tracks recent college graduates, meaning people aged 22 to 27. In the second quarter of 2026, their unemployment rate was about 5.6 percent. Separately, 42 percent of recent grads were underemployed, which means working a job that doesn't need a degree.
 
 `[CHART] two big numbers: 5.6% unemployed / 42% underemployed, source tag NY Fed Q2 2026`
 
-But the more revealing number is the comparison. In the Fed's research, college graduates under 29 averaged 3.1 percent unemployment from 2017 to 2019. From 2022 to 2025, that rose to 3.7 percent. That's a 20 percent increase.
+The comparison with older graduates is what makes this interesting. In the years just before the pandemic, roughly 3 in every 100 graduates under 29 were unemployed. In the years after, it was closer to 4 in 100. A 20 percent rise.
 
-Now look at experienced graduates over the same years. Their unemployment went from 1.9 percent to 1.8 percent. It went down.
+`[CHART] under-29 grads: 3.1% (2017–19) → 3.7% (2022–25)`
 
-`[CHART] paired bars: under-29 3.1% → 3.7% rising; 29+ 1.9% → 1.8% falling`
+Over the same years, graduates aged 29 and up went the other way. Their unemployment rate edged down, from 1.9 percent to 1.8.
 
-So this isn't a weak economy hurting everyone with a degree. It's something hitting young graduates specifically, while people a few years older are doing fine. Young grads ended up unemployed at roughly twice the rate of experienced ones.
+`[CHART] add second bar pair: 29+ grads 1.9% → 1.8%`
 
-That pattern is exactly what the AI story predicts. Juniors get replaced, seniors stay. Which is why the next step matters.
+A weak economy would have hurt every graduate. This didn't. It hit the youngest ones, and left people a few years older untouched. On its own, that pattern fits the AI explanation. Juniors get replaced, seniors stay. So the researchers looked closer.
 
-## 4. Pillar two: the timing and the job type (3:00–4:30)
+## 4. Timing and job type
 
-The researchers split jobs into two groups. Remotable jobs are ones where the work can be done from home, like software engineering. Non-remotable jobs need you physically there, like mechanical engineering.
+They sorted jobs into two groups. Jobs you can do from home, like software engineering. And jobs where you have to show up, like mechanical engineering. The study uses a published index of how remotable each occupation is.
 
-`[CUTOUT] split screen: laptop at kitchen table vs. engineer at a machine`
+`[CUTOUT] split screen: laptop at kitchen table vs. engineer at a machine` `[TEXT] remotable / non-remotable`
 
 Then they compared young and older workers inside each group.
 
-In remotable jobs, unemployment for young graduates rose by almost a full percentage point between 2017 to 2019 and 2022 to 2024. Older workers in those same jobs saw their unemployment slightly decline.
+In the from-home jobs, unemployment for young graduates rose by almost a full percentage point between the pre-pandemic years and 2022 to 2024. Older workers in those same jobs saw a slight decline.
 
 `[CHART] remotable jobs: young line rising ~1 point, older line flat-to-down`
 
-In non-remotable jobs, the young-versus-old gap ticked up in 2020, then went back to normal.
+In the show-up jobs, the gap between young and old widened briefly in 2020, then went back to where it had been.
 
 `[CHART] non-remotable jobs: small bump in 2020, back to baseline`
 
-So the gap opened where people stopped coming into the office, and it closed where they kept coming in. Remote work, by the Fed's count, has risen about four-fold since the pandemic.
+So the gap opened in the jobs that went remote, and it didn't open in the jobs that stayed in person. Remote work itself, by the study's count, has grown about four-fold since the pandemic.
 
-And look at the dates. The comparison window ends in 2024, and the youth unemployment rise it measures started before generative AI was in widespread use. You can't blame a tool for damage that began before most companies were using it.
+The timing matters as well. The study's comparison window is the pre-pandemic years against 2022 to 2024. The authors note that the rise in young graduate unemployment began before generative AI was in wide use. ChatGPT launched in November 2022.
 
-`[TEXT] Compared: 2017–19 vs 2022–24 · ChatGPT: Nov 2022` `[CHART] timeline with both markers`
+`[CHART] timeline: 2017–19 baseline · 2020 remote shift · Nov 2022 ChatGPT · 2022–24 comparison window`
 
-## 5. Pillar three: why distance hurts juniors (4:30–6:00)
+## 5. Why distance hurts juniors
 
 Why would working from home hurt new hires more than anyone else?
 
-The researchers had data from inside one Fortune 500 company. When people sat near each other, they gave and got more feedback and mentoring. Put even a short distance between them, and that dropped sharply, and it dropped more for younger workers.
+The researchers had internal data from one Fortune 500 company. When employees sat near each other, they exchanged more feedback and more mentoring. Even a short physical distance reduced that, and it reduced it more for younger workers.
 
 `[CUTOUT] two desks close together with speech bubbles; then the desks slide apart and the bubbles shrink`
 
-Think about what a junior job actually is. You're paid partly to do work, and partly to be taught. The teaching happens in small moments: someone glances at your screen, someone pulls you into a meeting, someone fixes your draft in five minutes instead of an hour.
+A junior job is partly work and partly training. The training tends to happen in small moments, like a senior colleague glancing at your screen or fixing your draft in a few minutes. Take away the shared room and the company is still paying for the work, but the training has become harder to deliver.
 
-Remove the shared room, and the company still has to pay you while the teaching gets harder. So the firm did the rational thing. When the offices closed, it hired fewer inexperienced workers. And for teams that stayed distributed, it kept favoring experienced hires even after the offices reopened.
+That company's response followed the incentive. When its offices closed, it hired fewer inexperienced workers. For teams that stayed distributed, it continued to favor experienced hires even after the offices reopened. In the authors' words, a firm "shies away from employing inexperienced workers if distance creates barriers to training and development."
 
-`[ARTICLE] quote highlight: "shies away from employing inexperienced workers if distance creates barriers to training and development"`
+`[ARTICLE] quote highlight`
 
-That's the mechanism. Not a robot taking your desk. An empty desk next to yours, with nobody there to teach you.
-
-Now, a fair warning about this evidence. The inside look comes from a single company. One firm's habits don't automatically describe the whole economy, and the researchers' own wording is careful: remote work "can explain" the rise, and "has meaningfully contributed" to it. That's a strong claim, but it's not a closed case.
+Two cautions before going further. The inside view comes from a single company, so it can't stand in for the whole economy. And the authors' wording is careful: they say remote work "can explain" the rise and "has meaningfully contributed" to it. The national numbers and the company data point the same direction, but that is still an argument, not a closed case.
 
 `[TEXT] Evidence: 1 company · wording: "can explain"`
 
-What makes it worth taking seriously is that the company-level story and the national numbers line up. The firm hired fewer juniors when people went remote. Nationally, the gap opened in exactly the jobs that went remote. Two different kinds of data, pointing at the same place.
+## 6. The 64 percent
 
-## 6. Pillar four: the 64 percent (6:00–7:30)
+How much of the problem does remote work account for?
 
-So how much of the graduate job problem does this explain?
-
-The researchers ran a rough calculation. Their estimate: remote work can explain about 64 percent of the recent increase in unemployment among young college graduates.
+The researchers ran what they call a back-of-the-envelope calculation. Their estimate: remote work can explain about 64 percent of the recent increase in unemployment among young college graduates. Treat it as a rough size, not a measurement.
 
 `[CHART] donut, 64% filled` `[EST]`
 
-They call it a back-of-the-envelope number, so treat it as a ballpark, not a measurement. But it's a big ballpark.
-
-Then they tested the obvious objection. Maybe remotable jobs are just the same jobs AI is good at. So they held each occupation's AI exposure constant. The gap between young and older workers was still there, in remotable and non-remotable jobs alike.
+They also tested the obvious objection. Maybe the from-home jobs are simply the same jobs AI is good at. So they held each occupation's AI exposure fixed and ran the comparison again. The gap between young and older workers was still there, in both groups of jobs.
 
 `[TEXT] AI exposure held constant → gap persists`
 
-That's the first wave. It started in the empty office, and on the Fed's numbers, it's most of what happened through 2024.
+That is the first problem. It shows up in the jobs that went remote, and on the New York Fed's estimate it accounts for a large share of the rise through 2024.
 
-But that's not the end of the story. Because there's a second study, and it points the other way.
+It isn't the whole picture, because a second study looks at the same years and finds something else.
 
-## 7. The second wave (7:30–9:30)
+## 7. The second problem
 
-In August 2026, economists at Stanford, led by Erik Brynjolfsson, updated a study using payroll data from ADP. They looked at workers aged 22 to 25 in the jobs most exposed to AI.
+In August 2026, Erik Brynjolfsson and two colleagues at Stanford updated a study based on payroll records from ADP. They focused on workers aged 22 to 25 in the occupations most exposed to AI.
 
 `[ARTICLE] Stanford Digital Economy Lab, Aug 12, 2026`
 
-Their finding: by June 2026, employment for those young workers was about 19 percent lower than it would have been if it had kept pace with young workers in less exposed jobs. A year earlier, that gap was 15 percent. It's getting wider.
+By June 2026, employment for those young workers was about 19 percent below where it would have been if it had kept pace with young workers in less exposed jobs. A year earlier, the same gap was 15 percent. It has been widening.
 
 `[CHART] gap line: 15% (July 2025 data) → 19% (June 2026 data)`
 
-And here's the part that matters for our story. That gap survives when they control for interest rates and for remote work. Experienced workers in the same jobs show no such gap.
+Two details connect this to the Fed study. The gap holds up when the authors control for interest rates and for remote work. And experienced workers in the same occupations show no comparable gap.
 
-A separate working paper from the U.S. Census Bureau found something similar. In the industries most exposed to AI, employment of workers aged 22 to 24 fell 12 percent over the ten quarters after ChatGPT came out, while less exposed industries held steady. Even that paper says up to a quarter of the decline may trace back to interest rate shocks. The rest it doesn't explain away.
+A separate working paper from the U.S. Census Bureau found a related pattern. In the industries most exposed to AI, employment of workers aged 22 to 24 fell 12 percent over the ten quarters after ChatGPT's release. In less exposed industries it held steady. That paper also estimates that up to a quarter of the decline may trace back to interest rate increases, which leaves most of it unexplained by rates.
 
 `[CHART] Census: most-exposed industries −12%, others flat` `[TEXT] up to 1/4: interest rates`
 
-So which is it? Remote work or AI?
-
-Both, at different times. The Fed's window ends in 2024 and captures the first wave, which began before AI was widespread. Stanford's data runs to mid-2026 and captures a second wave, building on top of the first.
-
-And the second wave has a shape. Stanford found the declines are concentrated in jobs where AI does the work instead of the person. Where AI is used to help workers, employment is flat or rising.
+The Stanford gap also has a shape. The declines are concentrated in occupations where AI tends to do the task instead of the person. Where AI is mainly used to help workers, young employment is flat or rising.
 
 `[CUTOUT] two jobs side by side: one where a robot hand does the task, one where it hands a tool to the person`
 
-The authors are careful here too, and you should know their caveats. They call these descriptive patterns, not proof that AI caused them. Some of the differences show up before generative AI was widely used. The gap shrinks when you account for education. And their payroll sample shows bigger gaps than national surveys do, mostly in education, health care and public administration.
+The Stanford authors attach their own cautions. They describe these as descriptive patterns, not causal estimates. Some of the differences appear before generative AI was widely used. The gap shrinks when education is taken into account. And their payroll sample shows larger gaps than national surveys do, mostly in education, health care, and public administration.
 
 `[TEXT] "descriptive patterns, not causal estimates"`
 
-So neither side has a smoking gun. What they have is timing and shape. The first wave started in the wrong place and at the wrong time to be AI. The second wave is concentrated in exactly the jobs where AI replaces tasks, and it keeps growing.
+## 8. Putting the two together
 
-## 8. Punchline (9:30–10:30)
+`[CHART] one timeline with two shaded bands. Band 1: New York Fed, remote work, comparison window 2017–19 vs 2022–24. Band 2: Stanford, AI-exposed occupations, Nov 2022 to Jun 2026. The bands overlap from late 2022 on.`
 
-`[CHART] the punchline: one timeline, two shaded waves. Wave 1 (Fed window, through 2024): remote work, mentoring gap. Wave 2 (after ChatGPT, data to mid-2026): AI in jobs where it replaces tasks. Overlap shaded.`
+The two studies cover overlapping years, so this isn't a clean handoff from one cause to the next. They ask different questions.
 
-Put them on one timeline and the graduate job crisis stops looking like one thing.
+The New York Fed study finds the early gap in jobs that went remote, and finds that AI exposure doesn't explain it. The Stanford study finds a newer and growing gap in jobs where AI does the task, and finds that remote work doesn't explain that one. The simplest reading is that two causes are stacking, and the data can't yet say how much weight each carries.
 
-The first wave was about distance. Companies stopped hiring people they couldn't easily train.
+That still leaves a graduate with two questions worth asking about any job. Will this role put me near people who can teach me? And is AI in this job doing the work, or helping someone do it? These aren't career advice from us. They are the two lines the studies happen to draw.
 
-The second wave is about tasks. Companies hire fewer juniors for work that AI can do on its own.
+## 9. Close
 
-If you only fight the second wave, you miss the first. And on the Fed's estimate, the first one was the bigger share of what happened through 2024.
+Most of the conversation about young workers and AI is about what comes next. The numbers suggest the trouble began earlier, when offices emptied out and companies stopped training people they couldn't see.
 
-The research points at two practical questions. Will this role put me near people who can teach me? And is AI in this job doing the work, or helping someone do it? Those aren't career tips from us. They're the two dividing lines the data drew.
+`[CUTOUT] graduate looking at two paths on the horizon` → `[TEXT] Which of the two questions applies to your search?` → end card (channel name only)
 
-## 9. Close (10:30–11:00)
-
-Most of the conversation about young workers and AI is about the future. But the numbers say the damage began in a quieter place, an office that stopped having people in it.
-
-So here's the question to sit with. When you look at your own job search, which wave are you standing in?
-
-`[CUTOUT] graduate looking at two waves on the horizon` → `[TEXT] Which wave are you in?` → end card (channel name only)
+So, looking at your own job search: which of those two questions applies to you?
 
 ---
 
 ## 화면 출처 메모
-- 모든 숫자는 `02_research.md` 1·2·4·5·6·7·8·9·10·11·12·14번. [2차]인 3·15번은 쓰지 않았다.
+- 숫자와 인용은 전부 `02_research.md`의 1·2·4·5·6·7·8·9·10·11·12·14번과 16~24번(v2에서 추가한 1차 확인 사실).
 - 기사 캡처는 원문 페이지(뉴욕 연준·스탠퍼드·인구조사국). 뉴스 방송 클립은 쓰지 않는다.
+
+## 분량·타임스탬프 (자동 계산, 150wpm)
+
+| 절 | 제목 | 단어 | 구간 |
+|---|---|---:|---|
+| 1 | Hook | 23 | 0:00–0:09 |
+| 2 | The turn | 135 | 0:00–0:54 |
+| 3 | The gap is real | 157 | 0:54–1:56 |
+| 4 | Timing and job type | 178 | 1:56–3:08 |
+| 5 | Why distance hurts juniors | 219 | 3:08–4:35 |
+| 6 | The 64 percent | 144 | 4:35–5:33 |
+| 7 | The second problem | 275 | 5:33–7:23 |
+| 8 | Putting the two together | 143 | 7:23–8:20 |
+| 9 | Close | 54 | 8:20–8:41 |
+
+합계 1,328단어, 약 8.9분.

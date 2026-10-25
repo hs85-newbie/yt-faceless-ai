@@ -32,6 +32,20 @@
 | 14 | 같은 연구: 격차는 기술 기업·컴퓨터 직종을 빼도, 금리와 원격 근무를 통제해도 남는다. 경력자에겐 격차 없음 | 같음 | [1차] |
 | 15 | 미국 기준금리 약 0.1% (2022-03) → 5.3% (2023-08) | FRED DFF | [2차] 수치 재확인 |
 
+## v2 추가 — 대본에 쓰는 1차 확인 사실 (2026-10-24 원문 WebFetch, 숫자 아닌 사실·인용)
+
+| # | 사실 | 출처 | 표기 |
+|---|---|---|---|
+| 16 | 저자: Natalia Emanuel(뉴욕 연준), Emma Harrington(버지니아대), Amanda Pallais(하버드). 2026-06-01, DOI 10.59576/lse.20260601 | Liberty Street Economics | [1차] |
+| 17 | 원격 가능 직종 예: 소프트웨어 엔지니어링. 비원격 예: 기계공학. 분류는 공개된 원격 가능성 지수 기준 | 같음 | [1차] |
+| 18 | 비원격 직종의 청년-경력자 격차는 2020년에 올랐다가 기준선으로 복귀 | 같음 | [1차] |
+| 19 | 포춘 500 기업 1곳 내부 자료: 가까이 앉으면 피드백·멘토링이 많고, 짧은 거리에도 급감하며 젊은 직원에게 더 큼. 사무실 폐쇄 시 미경험자 채용 감소, 분산 팀은 재개장 후에도 경력자 선호 | 같음 | [1차] |
+| 20 | 인용: "shies away from employing inexperienced workers if distance creates barriers to training and development" | 같음 | [1차] |
+| 21 | 저자 표현: 원격 근무가 증가를 "can explain", "has meaningfully contributed"; 64%는 "back-of-the-envelope"; 앞으로는 생성형 AI 등이 "more primary role"을 할 수 있음 | 같음 | [1차] |
+| 22 | 스탠퍼드 저자: Erik Brynjolfsson, Bharat Chandar, Ruyu Chen. 자료: ADP 급여 데이터(Canaries Dashboard). AI 노출 지표: Eloundou et al. (2024) | Stanford DEL 2026-08-12 | [1차] |
+| 23 | 스탠퍼드 주의점: "descriptive patterns, not causal estimates"; 일부 차이는 생성형 AI 확산 전부터; 교육 수준 통제 시 격차 축소; ADP 표본 격차가 전국 조사보다 큼(교육·보건·공공행정에 집중) | 같음 | [1차] |
+| 24 | 참고 영상 조회: CNBC 177만, FT 145만 (각각 100만 이상) | yt-dlp 2026-10-24 | [1차] |
+
 ## 반론과 그 반박
 
 - **뉴욕 연준 쪽에 대한 반론:** 증거가 한 회사(포춘 500 기업) 자료에 기대고, 64%는 저자 스스로 어림 계산이라고 한다. 스탠퍼드는 원격 근무를 통제해도 AI 효과가 남는다고 본다.
