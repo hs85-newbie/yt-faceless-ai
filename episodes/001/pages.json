@@ -1,12 +1,13 @@
 [
- {"id": "nyfed_lse", "url": "https://libertystreeteconomics.newyorkfed.org/2026/06/remote-work-leaves-younger-workers-sidelined/", "note": "NY Fed Liberty Street 기사 헤더·본문"},
- {"id": "nyfed_clm", "url": "https://www.newyorkfed.org/research/college-labor-market", "note": "NY Fed 최근 대졸자 노동시장 페이지"},
- {"id": "stanford_canaries", "url": "https://digitaleconomy.stanford.edu/news/canariesaug26/", "note": "스탠퍼드 2026-08 글"},
- {"id": "stanford_dashboard", "url": "https://digitaleconomy.stanford.edu/project/indicators/canaries-dashboard/", "note": "Canaries 대시보드"},
- {"id": "census_wp", "url": "https://www.census.gov/library/working-papers/2026/adrm/CES-WP-26-27.html", "note": "인구조사국 워킹페이퍼"},
- {"id": "fred_fedfunds", "url": "https://fred.stlouisfed.org/series/FEDFUNDS", "note": "FRED 연방기금금리"},
- {"id": "openai_chatgpt", "url": "https://openai.com/index/chatgpt/", "note": "OpenAI Introducing ChatGPT (2022-11-30)"},
- {"id": "yt_cnbc", "url": "https://www.youtube.com/watch?v=KW067woSxws", "note": "CNBC 영상 페이지"},
- {"id": "yt_ft", "url": "https://www.youtube.com/results?search_query=financial+times+graduate+jobpocalypse", "note": "FT 영상 검색 결과"},
- {"id": "nber_w31880", "url": "https://www.nber.org/papers/w31880", "note": "NY Fed 기반 논문"}
+ {"id": "nyfed_lse", "url": "https://libertystreeteconomics.newyorkfed.org/2026/06/remote-work-leaves-younger-workers-sidelined/", "note": "NY Fed Liberty Street 기사",
+  "marks": ["Remote Work Leaves Younger Workers Sidelined", "Natalia Emanuel, Emma Harrington, and Amanda Pallais", "64 percent", "not generative AI", "can explain", "Fortune 500", "shies away from employing inexperienced workers", "meaningfully contributed", "four-fold", "remotable", "back-of-the-envelope"]},
+ {"id": "nyfed_clm", "url": "https://www.newyorkfed.org/research/college-labor-market", "note": "NY Fed 최근 대졸자 노동시장", "marks": ["Recent College Graduates", "Underemployment"]},
+ {"id": "stanford_canaries", "url": "https://digitaleconomy.stanford.edu/news/canariesaug26/", "note": "스탠퍼드 2026-08 글", "marks": ["19", "descriptive patterns", "Brynjolfsson", "ADP", "interest rates"]},
+ {"id": "stanford_dashboard", "url": "https://digitaleconomy.stanford.edu/project/indicators/canaries-dashboard/", "note": "Canaries 대시보드", "marks": ["Canaries"]},
+ {"id": "census_wp", "url": "https://www.census.gov/library/working-papers/2026/adrm/CES-WP-26-27.html", "note": "인구조사국 워킹페이퍼", "marks": ["22-24", "monetary policy", "ChatGPT"]},
+ {"id": "fred_fedfunds", "url": "https://fred.stlouisfed.org/series/FEDFUNDS", "note": "FRED 연방기금금리", "marks": ["Federal Funds Effective Rate", "3.75"]},
+ {"id": "openai_chatgpt", "url": "https://openai.com/index/chatgpt/", "note": "OpenAI Introducing ChatGPT", "marks": ["ChatGPT"]},
+ {"id": "yt_cnbc", "url": "https://www.youtube.com/watch?v=KW067woSxws", "note": "CNBC 영상 페이지", "marks": ["1.7M views", "How AI Is Killing The Value Of A College Degree"]},
+ {"id": "yt_ft", "url": "https://www.youtube.com/results?search_query=financial+times+graduate+jobpocalypse", "note": "FT 영상 검색 결과", "marks": ["jobpocalypse"]},
+ {"id": "nber_w31880", "url": "https://www.nber.org/papers/w31880", "note": "NY Fed 기반 논문", "marks": ["Working Paper"]}
 ]
