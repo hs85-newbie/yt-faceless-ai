@@ -7,6 +7,6 @@
 - [ ] 5. 음성 — lemo-opuscar 내장 TTS(Kokoro)로 시험, 안 맞으면 Voicebox (#4)
 - [ ] 6. 화면·렌더 (게이트 3) — lemo-opuscar(Visual Investigation 또는 Data Storytelling)로 시험, HyperFrames 예비 (#5, #9)
 - [ ] 7. 챕터·설명
-- [ ] 8. 숏폼 2~3개
+- [ ] 8. 숏폼 2~3개 — 16:9 롱폼에서 잘라 세로 캔버스에 얹기(다시 그리지 않음)
 - [ ] 9. 업로드 (게이트 4, 선행: 이슈 #3 업로드 스크립트)
 - [ ] 10. 측정
