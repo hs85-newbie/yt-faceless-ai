@@ -1,0 +1,28 @@
+/* Counter Ledger — 두 렌더 엔진(HyperFrames, lemo-opuscar)이 공유하는 색·글꼴 변수.
+   값을 바꾸면 두 엔진의 결과가 같이 바뀐다. 초안: 2026-10-25, 게이트 3에서 사용자 확인 후 확정. */
+:root {
+  /* 색: 어두운 장부 종이 + 강조색 하나. 차트 계열은 순서대로 쓴다. */
+  --bg: #0f1115;          /* 배경, 거의 검정 */
+  --surface: #171a21;     /* 카드·기사 캡처 뒤판 */
+  --ink: #e8e6df;         /* 본문 글자, 따뜻한 흰색 */
+  --ink-muted: #9a9890;   /* 출처 표기·보조 글자 */
+  --accent: #e5b650;      /* 강조 숫자·제목 드롭·썸네일 문구 (황금색 잉크) */
+  --chart-1: #e5b650;     /* 주 계열 (예: 청년) */
+  --chart-2: #6f8fb0;     /* 비교 계열 (예: 경력자) */
+  --chart-3: #c75b4a;     /* 경고·감소 */
+  --estimate: #9a9890;    /* [EST] 표시는 회색 빗금 */
+
+  /* 글꼴: 둘 다 SIL OFL(무료·상업 가능). brand/fonts/ 에 파일을 둔다. */
+  --font-body: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;   /* 자막·본문 */
+  --font-number: "IBM Plex Mono", "SF Mono", Menlo, monospace;         /* 큰 숫자·출처 */
+
+  /* 크기: 1920×1080 기준. 세로 캔버스에 얹을 때는 1.6배. */
+  --size-title: 96px;
+  --size-number: 160px;
+  --size-body: 44px;
+  --size-source: 28px;
+
+  /* 여백·전환 */
+  --margin: 96px;
+  --fade: 240ms;
+}
