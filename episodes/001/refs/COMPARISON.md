@@ -99,9 +99,9 @@ gemini-3.7-flash의 정확한 단가는 확인하지 못했습니다. 입력 단
 ## 남은 결정
 
 - 콜라주를 겉옷으로 두고 데이터 무대를 뼈대로 삼는 위 추천으로 갈지 결정이 필요합니다.
-- Remotion 라이선스 예외 여부는 앞선 스킬 점검에서 넘어온 결정으로 아직 열려 있습니다.
+- Remotion 라이선스 예외는 2026-10-26 승인됐습니다.
 
 ## 산출물 위치
 
-- 분석 원자료(채널 통계, Gemini 판정 JSON): 레포 `docs/research/refscan/`
+- 분석 원자료(채널 통계, Gemini 판정 JSON): 레포 `episodes/001/refs/` (재사용 스크립트는 `scripts/refscan/`)
 - 이 보고서와 비교 보드: `/Users/cjons/docs/reports/`
