@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>EP001 style board — paper collage</title>
+<style>
+  html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:#1d5c4c;font-family:"Helvetica Neue",Arial,sans-serif}
+  .f{position:absolute;inset:0;display:none}.f.on{display:block}
+  .bg{position:absolute;inset:0;background:center/cover no-repeat}
+  /* 종이 라벨: 흰 종이 띠 + 그림자 + 살짝 기울임 */
+  .strip{position:absolute;background:#f4efe3;color:#1a1a1a;padding:18px 30px;box-shadow:0 10px 22px rgba(0,0,0,.35);font-weight:800;letter-spacing:-.01em;clip-path:polygon(0 4%,3% 0,40% 3%,70% 0,100% 5%,98% 50%,100% 96%,60% 100%,30% 97%,0 100%,2% 50%)}
+  .tape{position:absolute;width:150px;height:44px;background:rgba(240,225,170,.75);box-shadow:0 2px 6px rgba(0,0,0,.2)}
+  .hl{background:linear-gradient(transparent 52%,#ffe14d 52%,#ffe14d 90%,transparent 90%)}
+  .red{color:#c8392e}
+  .num{font-family:"Helvetica Neue",Arial;font-weight:900;color:#1a1a1a;line-height:.9}
+  .stamp{position:absolute;border:6px solid #c8392e;color:#c8392e;font-weight:900;padding:8px 22px;font-size:46px;letter-spacing:.06em;transform:rotate(-8deg);background:rgba(244,239,227,.85)}
+  .src{position:absolute;left:36px;bottom:30px;font:500 24px Menlo,monospace;color:#f4efe3;background:rgba(0,0,0,.45);padding:6px 12px;border-radius:4px}
+  .doc{position:absolute;box-shadow:0 18px 40px rgba(0,0,0,.45);overflow:hidden;clip-path:polygon(0 1%,4% 0,30% 2%,60% 0,100% 1.5%,99% 40%,100% 99%,70% 100%,40% 98%,0 100%,1% 60%)}
+  .doc img{display:block}
+  .marker{position:absolute;border:7px solid #c8392e;border-radius:50%;transform:rotate(-4deg)}
+  .label{font:700 34px "Helvetica Neue";color:#f4efe3;text-shadow:0 2px 6px rgba(0,0,0,.6);position:absolute}
+</style></head><body>
+
+<!-- 1 훅: 큰 키네틱 헤드라인 + 도장 -->
+<div class="f" id="f0"><div class="bg" style="background-image:url(sb1_hook.png)"></div>
+  <div class="strip" style="left:1020px;top:230px;font-size:86px;transform:rotate(-2deg)">“AI took the</div>
+  <div class="strip" style="left:1060px;top:360px;font-size:86px;transform:rotate(1.5deg)">entry-level jobs”</div>
+  <div class="stamp" style="left:1180px;top:540px">NOT SO FAST</div>
+  <div class="tape" style="left:1000px;top:215px;transform:rotate(-20deg)"></div>
+  <div class="src">Counter Ledger · EP001</div></div>
+
+<!-- 2 숫자: 거대한 숫자 종이 + 라벨 -->
+<div class="f" id="f1"><div class="bg" style="background-image:url(sb2_number.png)"></div>
+  <div class="strip num" style="left:640px;top:110px;font-size:260px;padding:10px 40px;transform:rotate(-1.5deg)">5.6<span style="font-size:150px">%</span></div>
+  <div class="strip" style="left:690px;top:420px;font-size:40px;font-weight:600;transform:rotate(1deg)">of recent college graduates are <span class="hl">unemployed</span></div>
+  <div class="label" style="left:745px;top:545px">↓ the darker ones</div>
+  <div class="src">Source: NY Fed, Labor Market for Recent College Graduates (2026 Q2)</div></div>
+
+<!-- 3 원문 인용: 실제 캡처를 찢은 종이로 + 마커 동그라미 -->
+<div class="f" id="f2"><div class="bg" style="background-image:url(sb3_document.png)"></div>
+  <div class="doc" style="left:440px;top:150px;width:1040px;height:690px;transform:rotate(-1deg)"><img src="lse_crop.png" style="width:1040px"></div>
+  <div style="position:absolute;left:490px;top:584px;width:900px;height:34px;background:#ffe14d;opacity:.55;mix-blend-mode:multiply;transform:rotate(-1deg)"></div>
+  <div class="strip num" style="left:1320px;top:90px;font-size:120px;transform:rotate(4deg)">64%</div>
+  <div class="tape" style="left:420px;top:130px;transform:rotate(-25deg)"></div><div class="tape" style="left:1370px;top:810px;transform:rotate(-25deg)"></div>
+  <div class="src">Source: NY Fed, Liberty Street Economics (Jun 1, 2026)</div></div>
+
+<!-- 4 차트: 종이 막대 위에 종이 라벨 -->
+<div class="f" id="f3"><div class="bg" style="background-image:url(sb4_chart.png)"></div>
+  <div class="strip" style="left:200px;top:90px;font-size:60px;transform:rotate(-1deg)">Unemployment, college grads</div>
+  <div class="strip num" style="left:190px;top:330px;font-size:84px;transform:rotate(-3deg)">3.1% → <span class="red">3.7%</span></div>
+  <div class="label" style="left:120px;top:900px">under 29</div>
+  <div class="strip num" style="left:1180px;top:440px;font-size:70px;transform:rotate(2deg)">1.9% → 1.8%</div>
+  <div class="label" style="left:1420px;top:900px">older graduates</div>
+  <div class="src">Source: NY Fed, Liberty Street Economics (2017–19 vs 2022–25)</div></div>
+
+<!-- 5 메커니즘: 끊어진 실 + 짧은 설명 종이 -->
+<div class="f" id="f4"><div class="bg" style="background-image:url(sb5_mechanism.png)"></div>
+  <div class="strip" style="left:560px;top:120px;font-size:64px;transform:rotate(-1deg)">Distance cuts the <span class="hl">training</span></div>
+  <div class="strip" style="left:690px;top:760px;font-size:38px;font-weight:600;transform:rotate(1deg)">feedback and mentoring drop — most for younger workers</div>
+  <div class="stamp" style="left:1460px;top:300px;font-size:34px">1 COMPANY’S DATA</div>
+  <div class="src">Source: NY Fed, Liberty Street Economics · one Fortune 500 firm</div></div>
+
+<!-- 6 결론: 두 갈래 길 위 질문 -->
+<div class="f" id="f5"><div class="bg" style="background-image:url(sb6_conclusion.png)"></div>
+  <div class="strip" style="left:150px;top:560px;font-size:46px;transform:rotate(-3deg);background:#f2c94c">Will this role put me near<br>people who can teach me?</div>
+  <div class="strip" style="left:1180px;top:600px;font-size:46px;transform:rotate(2.5deg);background:#a9bfd6">Is AI doing the work,<br>or helping someone do it?</div>
+  <div class="src">Counter Ledger</div></div>
+
+<script>
+const fs=[...document.querySelectorAll('.f')];
+window.DUR=fs.length;
+window.render=t=>fs.forEach((f,i)=>f.classList.toggle('on',i===Math.min(fs.length-1,Math.floor(t))));
+Promise.all([...document.images].map(i=>i.complete?0:new Promise(r=>{i.onload=i.onerror=r})))
+ .then(()=>Promise.all([...document.querySelectorAll('.bg')].map(b=>new Promise(r=>{const im=new Image();im.onload=im.onerror=r;im.src=b.style.backgroundImage.slice(5,-2)}))))
+ .then(()=>document.fonts.ready).then(()=>{window.render(0);window.READY=true});
+</script></body></html>

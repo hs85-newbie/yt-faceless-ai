@@ -1,0 +1,11 @@
+{
+ "queries": ["economics explained animated", "how money works explained", "economics animation documentary", "finance explained animation",
+             "why is everything so expensive explained", "housing market explained animation", "AI economy explained", "business explained animated",
+             "the economics of explained", "how companies make money explained"],
+ "known": ["@HowMoneyWorks", "@Vox", "@PolyMatter", "@TheInfographicsShow", "@EconomicsExplained", "@RealLifeLore", "@TheSwedishInvestor",
+           "@EconomyMedia", "@Wendoverproductions", "@BusinessCasual", "@WhatIfShow", "@sambeckman"],
+ "min_graphics": 70,
+ "videos": {"Antidote": "jPPzvuDIr1w", "PolyMatter": "CXfNGcMSwzU", "LITTLE BIT BETTER": "zxVoCw3P1Gc",
+            "Kurzgesagt": "ujkD4SxPKOI", "How Money Works": "QmWyQ-BCD8E", "Economics Explained": "QtZfbWOkoIY"},
+ "segments": {"hook": ["0:00", "0:30"], "body": ["2:00", "2:30"]}
+}

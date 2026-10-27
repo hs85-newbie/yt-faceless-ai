@@ -1,0 +1,358 @@
+{
+ "dur": 632.223,
+ "scenes": [
+  {
+   "id": "1",
+   "start": 0.0,
+   "end": 10.593
+  },
+  {
+   "id": "2",
+   "start": 11.593,
+   "end": 70.999
+  },
+  {
+   "id": "3",
+   "start": 71.999,
+   "end": 140.192
+  },
+  {
+   "id": "4",
+   "start": 141.192,
+   "end": 225.789
+  },
+  {
+   "id": "5",
+   "start": 226.789,
+   "end": 305.9
+  },
+  {
+   "id": "6",
+   "start": 306.9,
+   "end": 368.336
+  },
+  {
+   "id": "7",
+   "start": 369.336,
+   "end": 484.325
+  },
+  {
+   "id": "7b",
+   "start": 485.325,
+   "end": 553.348
+  },
+  {
+   "id": "8",
+   "start": 554.348,
+   "end": 608.035
+  },
+  {
+   "id": "9",
+   "start": 609.035,
+   "end": 631.223
+  }
+ ],
+ "lines": [
+  {
+   "id": "s1_01",
+   "scene": "1",
+   "t0": 0.0,
+   "t1": 10.593,
+   "text": "You've been told AI is why new grads are struggling to find jobs. A New York Fed study found the trouble started before ChatGPT existed."
+  },
+  {
+   "id": "s2_01",
+   "scene": "2",
+   "t0": 11.593,
+   "t1": 31.527,
+   "text": "The common version goes like this. Companies adopted ChatGPT, junior work got automated, and the first rung of the career ladder disappeared. CNBC and the Financial Times each made a video along those lines, and each has been watched more than a million times."
+  },
+  {
+   "id": "s2_02",
+   "scene": "2",
+   "t0": 32.027,
+   "t1": 40.946,
+   "text": "Young graduates are struggling. That part is true. The question is why, because the answer changes what a graduate should do about it."
+  },
+  {
+   "id": "s2_03",
+   "scene": "2",
+   "t0": 41.446,
+   "t1": 57.46,
+   "text": "In June 2026, three economists published a study on the New York Fed's research blog. Instead of asking whether AI could replace junior workers, they asked when the problem started, and in which kinds of jobs."
+  },
+  {
+   "id": "s2_04",
+   "scene": "2",
+   "t0": 57.96,
+   "t1": 70.999,
+   "text": "Their answer points at a change that came before AI tools were in wide use. A second study, from Stanford, then adds a newer problem on top. This video walks through both."
+  },
+  {
+   "id": "s3_01",
+   "scene": "3",
+   "t0": 71.999,
+   "t1": 73.687,
+   "text": "Start with the gap itself."
+  },
+  {
+   "id": "s3_02",
+   "scene": "3",
+   "t0": 74.187,
+   "t1": 96.41499999999999,
+   "text": "The New York Fed tracks recent college graduates, meaning people aged 22 to 27. In the second quarter of 2026, their unemployment rate was about 5.6 percent. Separately, 42 percent of recent grads were underemployed, which means working a job that doesn't need a degree."
+  },
+  {
+   "id": "s3_03",
+   "scene": "3",
+   "t0": 96.91499999999999,
+   "t1": 116.497,
+   "text": "The comparison with older graduates is what makes this interesting. For graduates under 29, the unemployment rate averaged about 3.1 percent in the years before the pandemic. In the years after, it averaged about 3.7 percent, a rise of roughly a fifth."
+  },
+  {
+   "id": "s3_04",
+   "scene": "3",
+   "t0": 116.997,
+   "t1": 122.851,
+   "text": "Over the same years, older graduates went the other way. Their rate edged down slightly."
+  },
+  {
+   "id": "s3_05",
+   "scene": "3",
+   "t0": 123.351,
+   "t1": 140.192,
+   "text": "A weak economy alone wouldn't obviously single out the youngest graduates, but that is what the numbers show. On its own, that pattern fits the AI explanation. Juniors get replaced while seniors stay, so the researchers looked closer."
+  },
+  {
+   "id": "s4_01",
+   "scene": "4",
+   "t0": 141.192,
+   "t1": 157.636,
+   "text": "They sorted jobs into two groups. Jobs you can do from home, like software engineering. And jobs where you have to show up, like mechanical engineering. The study uses a published index of how remotable each occupation is."
+  },
+  {
+   "id": "s4_02",
+   "scene": "4",
+   "t0": 158.136,
+   "t1": 161.882,
+   "text": "Then they compared young and older workers inside each group."
+  },
+  {
+   "id": "s4_03",
+   "scene": "4",
+   "t0": 162.382,
+   "t1": 179.707,
+   "text": "In the from-home jobs, unemployment for young graduates rose by almost a full percentage point between the pre-pandemic years and 2022 to 2024. Older workers in those same jobs saw a slight decline."
+  },
+  {
+   "id": "s4_04",
+   "scene": "4",
+   "t0": 180.207,
+   "t1": 188.438,
+   "text": "In the show-up jobs, the gap between young and old widened briefly in 2020, then went back to where it had been."
+  },
+  {
+   "id": "s4_05",
+   "scene": "4",
+   "t0": 188.938,
+   "t1": 202.351,
+   "text": "So the gap opened in the jobs that went remote, and it didn't open in the jobs that stayed in person. Remote work itself, by the study's count, has grown about four-fold since the pandemic."
+  },
+  {
+   "id": "s4_06",
+   "scene": "4",
+   "t0": 202.851,
+   "t1": 225.789,
+   "text": "The timing matters as well. The study's comparison window is the pre-pandemic years against 2022 to 2024. The authors note that the rise in young graduate unemployment began before generative AI was in wide use. ChatGPT launched in November 2022."
+  },
+  {
+   "id": "s5_01",
+   "scene": "5",
+   "t0": 226.789,
+   "t1": 230.638,
+   "text": "Why would working from home hurt new hires more than anyone else?"
+  },
+  {
+   "id": "s5_02",
+   "scene": "5",
+   "t0": 231.138,
+   "t1": 248.059,
+   "text": "The researchers had internal data from one Fortune 500 company. When employees sat near each other, they exchanged more feedback and more mentoring. Even a short physical distance reduced that, and it reduced it more for younger workers."
+  },
+  {
+   "id": "s5_03",
+   "scene": "5",
+   "t0": 248.559,
+   "t1": 257.874,
+   "text": "A junior job is partly work and partly training. In the company data, mentoring and feedback were what dropped when people sat apart."
+  },
+  {
+   "id": "s5_04",
+   "scene": "5",
+   "t0": 258.374,
+   "t1": 281.807,
+   "text": "When that company's offices closed, it hired fewer inexperienced workers. For teams that stayed distributed, it continued to favor experienced hires even after the offices reopened. In the authors' words, a firm \"shies away from employing inexperienced workers if distance creates barriers to training and development.\""
+  },
+  {
+   "id": "s5_05",
+   "scene": "5",
+   "t0": 282.307,
+   "t1": 305.9,
+   "text": "Two cautions apply here. The inside view comes from a single company, so it can't stand in for the whole economy. And the authors' wording is careful: they say remote work \"can explain\" the rise and \"has meaningfully contributed\" to it. The national numbers and the company data point the same direction, but that is still an argument, not a closed case."
+  },
+  {
+   "id": "s6_01",
+   "scene": "6",
+   "t0": 306.9,
+   "t1": 310.216,
+   "text": "How much of the problem does remote work account for?"
+  },
+  {
+   "id": "s6_02",
+   "scene": "6",
+   "t0": 310.716,
+   "t1": 328.187,
+   "text": "The researchers ran what they call a back-of-the-envelope calculation. Their estimate: remote work can explain about 64 percent of the recent increase in unemployment among young college graduates. Treat it as a rough size, not a measurement."
+  },
+  {
+   "id": "s6_03",
+   "scene": "6",
+   "t0": 328.687,
+   "t1": 349.034,
+   "text": "They also tested the obvious objection. Maybe the from-home jobs are simply the same jobs AI is good at. So they held each occupation's AI exposure fixed and ran the comparison again. The gap between young and older workers was still there, in both groups of jobs."
+  },
+  {
+   "id": "s6_04",
+   "scene": "6",
+   "t0": 349.534,
+   "t1": 361.776,
+   "text": "That is the first problem. It shows up in the jobs that went remote, and on the New York Fed's rough estimate it can explain a large share of the rise through 2024."
+  },
+  {
+   "id": "s6_05",
+   "scene": "6",
+   "t0": 362.276,
+   "t1": 368.336,
+   "text": "It isn't the whole picture, because a second study looks at the same years and finds something else."
+  },
+  {
+   "id": "s7_01",
+   "scene": "7",
+   "t0": 369.336,
+   "t1": 387.2,
+   "text": "In August 2026, Erik Brynjolfsson and two colleagues at Stanford updated a study based on payroll records from ADP. They focused on workers aged 22 to 25 in the occupations most exposed to AI."
+  },
+  {
+   "id": "s7_02",
+   "scene": "7",
+   "t0": 387.7,
+   "t1": 403.577,
+   "text": "By June 2026, employment for those young workers was about 19 percent lower, relative to young workers in less exposed jobs. A year earlier the same gap was 15 percent, and it has kept widening."
+  },
+  {
+   "id": "s7_03",
+   "scene": "7",
+   "t0": 404.077,
+   "t1": 418.176,
+   "text": "Two details connect this to the Fed study. The gap holds up when the authors control for interest rates and for remote work. And experienced workers in the same occupations show no comparable gap."
+  },
+  {
+   "id": "s7_04",
+   "scene": "7",
+   "t0": 418.676,
+   "t1": 440.445,
+   "text": "A separate working paper from the U.S. Census Bureau found a related pattern. It looks at workers aged 22 to 24. In the industries most exposed to AI, their employment fell 12 percent in the ten quarters after ChatGPT's release. Industries with less exposure held steady."
+  },
+  {
+   "id": "s7_05",
+   "scene": "7",
+   "t0": 440.945,
+   "t1": 457.916,
+   "text": "The Stanford gap is not spread evenly across jobs. The declines are concentrated in occupations where AI tends to do the task instead of the person. Where AI is mainly used to help workers, young employment is flat or rising."
+  },
+  {
+   "id": "s7_06",
+   "scene": "7",
+   "t0": 458.416,
+   "t1": 484.325,
+   "text": "The Stanford authors attach their own cautions. They describe these as descriptive patterns, not causal estimates. Some of the differences appear before generative AI was widely used. The gap shrinks when education is taken into account. And their payroll sample shows larger gaps than national surveys do, mostly in education, health care, and public administration."
+  },
+  {
+   "id": "s7b_01",
+   "scene": "7b",
+   "t0": 485.325,
+   "t1": 492.836,
+   "text": "There is a third suspect: interest rates. Stanford controls for them, and a Census paper tests them directly."
+  },
+  {
+   "id": "s7b_02",
+   "scene": "7b",
+   "t0": 493.336,
+   "t1": 510.18,
+   "text": "In January 2022, the Federal Reserve's benchmark rate was close to zero, at 0.08 percent. By August 2023 it was 5.33 percent, and it stayed there for about a year."
+  },
+  {
+   "id": "s7b_03",
+   "scene": "7b",
+   "t0": 510.68,
+   "t1": 519.53,
+   "text": "Sharp rate hikes raise the cost of borrowing, and the Census paper asks whether that is what slowed hiring of the youngest workers."
+  },
+  {
+   "id": "s7b_04",
+   "scene": "7b",
+   "t0": 520.03,
+   "t1": 538.936,
+   "text": "Its estimate is that up to a quarter of the decline it measured can be traced to rate shocks through 2023. That leaves at least three quarters unexplained by rates, and the paper notes that rates don't explain the sharp hiring drop at the most AI-exposed firms."
+  },
+  {
+   "id": "s7b_05",
+   "scene": "7b",
+   "t0": 539.436,
+   "t1": 544.226,
+   "text": "Stanford's authors say their gap remains when they control for interest rates."
+  },
+  {
+   "id": "s7b_06",
+   "scene": "7b",
+   "t0": 544.726,
+   "t1": 553.348,
+   "text": "Rates look like a real but partial factor. The Census paper puts their share at no more than a quarter of the decline it measured."
+  },
+  {
+   "id": "s8_01",
+   "scene": "8",
+   "t0": 554.348,
+   "t1": 563.085,
+   "text": "The two studies cover overlapping years, so this isn't a clean handoff from one cause to the next. They ask different questions."
+  },
+  {
+   "id": "s8_02",
+   "scene": "8",
+   "t0": 563.585,
+   "t1": 590.369,
+   "text": "The New York Fed study finds the early gap in jobs that went remote, and the gap is still there when AI exposure is held fixed. The Stanford study finds a newer and growing gap in jobs where AI does the task, and that gap is still there when remote work is controlled for. The simplest reading is that two or more causes are stacking, and the data can't yet say how much weight each carries."
+  },
+  {
+   "id": "s8_03",
+   "scene": "8",
+   "t0": 590.869,
+   "t1": 608.035,
+   "text": "That still leaves a graduate with two questions worth asking about any job. Will this role put me near people who can teach me? And is AI in this job doing the work, or helping someone do it? Both questions come straight from what the two studies measured."
+  },
+  {
+   "id": "s9_01",
+   "scene": "9",
+   "t0": 609.035,
+   "t1": 625.61,
+   "text": "The two studies point to two overlapping problems. One is tied to remote work, and the size of it rests on a rough estimate. The other is newer, and it sits in jobs where AI does the task. How much each one matters is still open."
+  },
+  {
+   "id": "s9_02",
+   "scene": "9",
+   "t0": 626.11,
+   "t1": 631.223,
+   "text": "So, looking at your own job search: which of those two questions applies to you?"
+  }
+ ]
+}

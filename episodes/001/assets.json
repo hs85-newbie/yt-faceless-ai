@@ -1,0 +1,7 @@
+[
+ {"id": "graduate_rejections", "scene": "1", "prompt": "A young graduate in cap and gown seen from behind, standing small at the left, facing a tall stack of envelopes labeled only with a red X mark, no letters."},
+ {"id": "ladder_missing_rung", "scene": "2", "prompt": "A tall ladder leaning against nothing, drawn in ink lines, with the bottom rung clearly missing and a small gap where it should be."},
+ {"id": "empty_desks_row", "scene": "2", "prompt": "A row of five identical office desks with chairs, all empty, one desk lamp on, viewed from a slight angle."},
+ {"id": "two_desks_apart", "scene": "5", "prompt": "Two office desks far apart on an empty floor, one with a person seated, the other empty, a faint dotted line between them."},
+ {"id": "two_paths", "scene": "9", "prompt": "A lone figure seen from behind at a fork where a road splits into two paths toward a flat horizon, one path lit in accent color, the other in secondary color."}
+]
