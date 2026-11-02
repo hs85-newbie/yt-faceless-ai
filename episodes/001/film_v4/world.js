@@ -18,8 +18,32 @@ function deskTex() {   // 나무 책상 상판: 결 무늬
   });
 }
 
+function shelfTex() {   // 뒤쪽 서재 책장(코드로 그림, 사용자 지시 "가상의 서재/책장, 블러"). 블러라 세부는 대략만
+  const raw = tex(2048, 1024, (g, w, h) => {
+    g.fillStyle = '#3b2a1e'; g.fillRect(0, 0, w, h);
+    let s = 11; const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647;
+    const spines = ['#8c3b2e', '#2f4a5c', '#c9a14a', '#e8dfcc', '#4f6b3a', '#6a3a4a', '#b46a3a', '#2a2a2a', '#d9c7a0'];
+    for (let row = 0; row < 7; row++) {
+      const y0 = 20 + row * 145, sh = 112;
+      g.fillStyle = '#5a3d27'; g.fillRect(0, y0 + sh, w, 22);                     // 선반 판
+      for (let x = 20; x < w - 20;) {
+        if (rnd() < 0.05) { x += 50 + rnd() * 80; continue; }                      // 빈 칸·소품 자리
+        const bw = 10 + rnd() * 18, bh = sh * (0.62 + rnd() * 0.36), lean = rnd() < 0.08 ? 0.12 : 0;
+        g.save(); g.translate(x, y0 + sh); g.rotate(lean); g.fillStyle = spines[Math.floor(rnd() * spines.length)];
+        g.fillRect(0, -bh, bw, bh); g.fillStyle = 'rgba(255,240,210,.25)'; g.fillRect(bw * 0.2, -bh * 0.8, bw * 0.6, 6); g.restore();
+        x += bw + 2;
+      }
+    }
+    const lamp = g.createRadialGradient(w * 0.78, h * 0.3, 10, w * 0.78, h * 0.3, 520);   // 스탠드 불빛
+    lamp.addColorStop(0, 'rgba(255,214,150,.55)'); lamp.addColorStop(1, 'rgba(255,214,150,0)'); g.fillStyle = lamp; g.fillRect(0, 0, w, h);
+  });
+  return tex(2048, 1024, (g, w, h) => { g.filter = 'blur(8px) brightness(0.8)'; g.drawImage(raw.image, -40, -40, w + 80, h + 80); });
+}
+
 function makeBase() {   // 책상 + 매트 + 빛. 모든 컷이 같은 바닥을 공유한다
   const g = new THREE.Group();
+  const shelf = new THREE.Mesh(new THREE.PlaneGeometry(72, 36), new THREE.MeshBasicMaterial({ map: shelfTex(), fog: false }));
+  shelf.position.set(0, 18, -11.5); g.add(shelf);   // 매트 뒤끝(-10) 바로 뒤 벽면, 아래끝이 책상에 닿게
   const dt = deskTex(); dt.wrapS = dt.wrapT = THREE.RepeatWrapping; dt.repeat.set(6, 6);
   const desk = new THREE.Mesh(new THREE.PlaneGeometry(160, 160), new THREE.MeshStandardMaterial({ map: dt, roughness: 0.8 }));
   desk.rotation.x = -Math.PI / 2; desk.receiveShadow = true; g.add(desk);
