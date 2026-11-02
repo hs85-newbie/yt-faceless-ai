@@ -23,7 +23,7 @@ for sid, title, txt in blocks:
         if not para or para.startswith("#") or not re.search(r"[A-Za-z]", para):  # 구분선·기호만 있는 줄 제외
             continue
         k += 1
-        lines.append({"id": f"s{sid}_{k:02d}", "scene": sid, "text": para, "voice": voice, "speed": 0.92, "lang": "en-us"})
+        lines.append({"id": f"s{sid}_{k:02d}", "scene": sid, "text": para, "voice": voice, "speed": 1.05, "lang": "en-us"})
     scenes.append({"scene": sid, "title": title, "n_lines": k})
 
 out_dir.mkdir(parents=True, exist_ok=True)

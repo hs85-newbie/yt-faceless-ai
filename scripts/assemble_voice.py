@@ -1,7 +1,7 @@
 """줄별 wav를 하나의 내레이션으로 잇고, 장면 시간표(scenes.txt)와 자막(transcript.srt)을 만든다.
 
 사용: <lemo venv python> scripts/assemble_voice.py output/001/voice output/001
-간격: 같은 장면 안 0.5초, 장면 사이 1.0초, pauses.json이 있으면 해당 줄 뒤에 추가. 장면 경계가 곧 합성·숏폼 자르기 기준이다.
+간격: 같은 장면 안 0.25초, 장면 사이 0.6초, pauses.json이 있으면 해당 줄 뒤에 추가. 장면 경계가 곧 합성·숏폼 자르기 기준이다.
 """
 import json
 import sys
@@ -11,7 +11,7 @@ import numpy as np
 import soundfile as sf
 
 voice_dir, out_dir = Path(sys.argv[1]), Path(sys.argv[2])
-GAP_LINE, GAP_SCENE = 0.5, 1.0
+GAP_LINE, GAP_SCENE = 0.25, 0.6  # A안(2026-11-02): 자연 속도
 lines = json.loads((voice_dir / "lines.json").read_text(encoding="utf-8"))
 words = json.loads((voice_dir / "words.json").read_text(encoding="utf-8")) if (voice_dir / "words.json").exists() else {}
 # 선택: pauses.json {줄 id: 초} — 그 줄 뒤에 쉼을 더한다(제목 드롭처럼 화면만 보여 주는 구간)

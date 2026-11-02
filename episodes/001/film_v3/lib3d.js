@@ -31,7 +31,8 @@ const matTex = () => tex(2048, 1228, (g, w, h) => {
 });
 const paperTex = color => tex(256, 256, (g, w, h) => { g.fillStyle = color; g.fillRect(0, 0, w, h); grain(g, w, h, 0.12, color.length * 31); });
 // 종이 라벨: 찢긴 가장자리 + 굵은 콘덴스드 글자
-function labelTex(lines, { bg = C.paper, fg = C.ink, size = 150, w = 0, h = 300 } = {}) {
+function labelTex(lines, { bg = C.paper, fg = C.ink, size = 150, w = 0, h = 0 } = {}) {
+  h ||= Math.max(300, lines.reduce((a, l) => a + (l.size || size) * 1.05, 0) + 130);   // 여러 줄이면 높이를 늘린다(v3 5.6% 잘림)
   if (!w) { const m = document.createElement('canvas').getContext('2d');
     w = Math.max(...lines.map(l => { m.font = `800 ${l.size || size}px ${FONT}`; return m.measureText(l.text).width; })) + 180; }
   return tex(w, h, (g) => {
@@ -69,4 +70,4 @@ function baseScene() {
 }
 
 
-export { THREE, W, H, C, FONT, lerp, ease, tag, box, baseScene, paperTex };
+export { THREE, W, H, C, FONT, lerp, ease, tag, box, baseScene, paperTex, matTex, tex, grain };

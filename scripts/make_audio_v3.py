@@ -53,7 +53,7 @@ TR = {"wipe": paper, "rip": rip, "whip": lambda: sfx.whoosh(0.32) * 0.5, "punch"
 fx = np.zeros(N, dtype="float32")
 for i, c in enumerate(cuts):
     if i: put(fx, TR[c.get("tr", "cut")](), c["t"] - 0.12)
-    for s in c.get("strips", []): put(fx, tap(), c["t"] + s["at"])
+    for s in c.get("strips", []) + c.get("props", []): put(fx, tap(), c["t"] + s.get("at", 0))   # v4: 소품이 일어설 때
     if "stamp" in c: put(fx, stamp(), c["t"] + c["stamp"]["at"] + 0.2, 0.8)
     if c.get("scene") == "title": put(fx, riser(), c["t"] - 1.6); put(fx, sfx.thump(1.0, 50) * 0.9, c["t"] + 0.5)
 
@@ -68,7 +68,7 @@ for s in np.arange(0.25, dur, 1.0): put(bed, hat, s)
 gain = np.full(N, 10 ** (-25 / 20), dtype="float32")
 a, b = int((title_t - 2) * SR), int(title_t * SR); gain[a:b] = np.linspace(gain[a], 10 ** (-18 / 20), b - a)
 gain[b:int((title_t + 3) * SR)] = 10 ** (-20 / 20)
-close_t = next(c["t"] for c in cuts if c.get("img") == "sb6_conclusion.png")
+close_t = next((c["t"] for c in cuts if c.get("img") == "sb6_conclusion.png" or c.get("scene") == "close"), dur)
 gain[int(close_t * SR):] = 10 ** (-33 / 20)
 bed *= sfx.lp(gain, 2).astype("float32")
 

@@ -7,7 +7,7 @@
 - [x] 5. 음성 — am_michael 확정. 43줄 생성, Whisper 대조(표기 차이 외 불일치 0, 모호 문장 2곳 대본 수정), voice.wav 10.5분 + transcript.srt + scenes.txt (output/001/)
 - [x] 3b. 대본 8분판 v3.1 — 사용자 "8분으로 진행"(2026-11-02). 1,079단어, critic 검토 14건 반영. 음성 재생성(am_michael 0.92) 8분 6초, Whisper 대조 표기 차이 외 이상 없음
 - [x] 4b. 화면 컨셉·레퍼런스 — 6채널 비교(episodes/001/refs/COMPARISON.md). 뼈대 PolyMatter식 데이터 무대, 종이 콜라주는 질감, 종이 졸업생 고정 캐릭터, 훅 리듬 Antidote식. 사용자 승인(2026-10-26). 시안 v2 8장 완성(2026-11-02, episodes/001/styleboard_v2, 3D 4장 + 콜라주 4장, 추가 유료 호출 0) → **게이트 2b 사용자 확인 대기**
-- [ ] 6. 화면·렌더 — **v3 완성본 output/001/long_v3.mp4 (8분 9.8초, 62컷, 전환 6종, −14.2 LUFS). motionmaxxing G0·G2·G3·G5 PASS. 게이트 3 사용자 시청 대기** (노트: episodes/001/film_v3/NOTE.md)
+- [ ] 6. 화면·렌더 — **v4 모션 테스트 output/001/motiontest_v4.mp4 (훅~3절, 105초, 11컷, 하드 컷만). 책상 상판 + 초록 매트 + 서 있는 종이(사용자 지시). 음성 1.05배·쉼 단축(A안, 전체 약 7분 19초). 종이 소재 15장 Gemini 생성. 모션 테스트 게이트 사용자 승인 대기.** v3(반려 2026-11-02): ~~v3 완성본 output/001/long_v3.mp4 (8분 9.8초, 62컷, 전환 6종, −14.2 LUFS). motionmaxxing G0·G2·G3·G5 PASS. 게이트 3 사용자 시청 대기** (노트: episodes/001/film_v3/NOTE.md)
 - [ ] 6(이전). v2 기록 — v2 완성본 output/001/long_v2.mp4 (166컷, 평균 3.7초, 원문 캡처 37·UI 28·차트 28·카드 34, 스톡 25컷은 자리표시, 컷마다 효과음). **게이트 3 재시청 대기.** 1차본 output/001/long.mp4 (1920×1080 24fps, 10분 32초, −14.2 LUFS). 엔진: lemo-opuscar core 렌더러(장면 페이지 episodes/001/film/index.html, 43비트). 컷아웃 3장 Gemini(약 0.36달러), 배경 드론·효과음 합성. **게이트 3 사용자 시청 대기**
   - 내레이션 voice.wav 사용자 승인(2026-10-25)
   - Seedance 실사 컷은 EP002부터 5컷 이내 시험(결정 A, 2026-10-25). EP001은 AI 영상 0 유지
