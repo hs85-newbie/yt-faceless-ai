@@ -1,7 +1,7 @@
 // EP001 v4 — 책상 상판(바닥) 위 초록 매트, 그 위에 종이 소재가 서 있는 하나의 세계(2026-11-02 사용자 지시).
-// 컷마다 매트 위 "자리"를 하나 꾸리고 카메라를 둔다. 전환은 컷(하드 컷)뿐. 카메라는 cam2가 있을 때만 움직인다.
+// 카메라는 모든 컷에서 한 자리에 고정(사용자 지시: 배경과 바닥은 고정). 컷이 바뀌면 소품만 바뀐다. 전환은 하드 컷뿐.
 // 소품은 at 초에 바닥에서 일어선다(종이가 세워지는 움직임). 매끄러운 24fps, 스텝 없음(v3 떨림 원인 제거).
-import { THREE, C, ease, tag, box, matTex, tex, grain } from './lib3d.js';
+import { THREE, C, tag, box, matTex, tex, grain } from './lib3d.js';
 
 const clamp01 = x => Math.min(1, Math.max(0, x));
 const outCubic = p => 1 - Math.pow(1 - p, 3);
@@ -18,35 +18,33 @@ function deskTex() {   // 나무 책상 상판: 결 무늬
   });
 }
 
-function shelfTex() {   // 뒤쪽 서재 책장(코드로 그림, 사용자 지시 "가상의 서재/책장, 블러"). 블러라 세부는 대략만
-  const raw = tex(2048, 1024, (g, w, h) => {
-    g.fillStyle = '#3b2a1e'; g.fillRect(0, 0, w, h);
+function shelfTex() {   // 멀리 있는 서재 책장(레퍼런스: 탁상 촬영의 흐린 배경 — 여러 단, 작은 책등, 선반 줄, 강한 블러)
+  const W = 2048, H = 400, raw = tex(W, H, (g) => {
+    g.fillStyle = '#2e2118'; g.fillRect(0, 0, W, H);
     let s = 11; const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647;
-    const spines = ['#8c3b2e', '#2f4a5c', '#c9a14a', '#e8dfcc', '#4f6b3a', '#6a3a4a', '#b46a3a', '#2a2a2a', '#d9c7a0'];
-    for (let row = 0; row < 7; row++) {
-      const y0 = 20 + row * 145, sh = 112;
-      g.fillStyle = '#5a3d27'; g.fillRect(0, y0 + sh, w, 22);                     // 선반 판
-      for (let x = 20; x < w - 20;) {
-        if (rnd() < 0.05) { x += 50 + rnd() * 80; continue; }                      // 빈 칸·소품 자리
-        const bw = 10 + rnd() * 18, bh = sh * (0.62 + rnd() * 0.36), lean = rnd() < 0.08 ? 0.12 : 0;
-        g.save(); g.translate(x, y0 + sh); g.rotate(lean); g.fillStyle = spines[Math.floor(rnd() * spines.length)];
-        g.fillRect(0, -bh, bw, bh); g.fillStyle = 'rgba(255,240,210,.25)'; g.fillRect(bw * 0.2, -bh * 0.8, bw * 0.6, 6); g.restore();
-        x += bw + 2;
+    const spines = ['#8c3b2e', '#2f4a5c', '#c9a14a', '#e8dfcc', '#4f6b3a', '#6a3a4a', '#b46a3a', '#3a3a3a', '#d9c7a0'];
+    for (let y0 = -20; y0 < H; y0 += 62) {                  // 단 높이 62px ≈ 프레임 안 3~4단
+      for (let x = 0; x < W;) {
+        if (x % 420 < 12) { x += 12; continue; }              // 칸막이(세로 판) 자리
+        if (rnd() < 0.04) { x += 30 + rnd() * 40; continue; }
+        const bw = 5 + rnd() * 5, bh = 44 * (0.7 + rnd() * 0.3);
+        g.fillStyle = spines[Math.floor(rnd() * spines.length)]; g.fillRect(x, y0 + 52 - bh, bw, bh); x += bw + 1;
       }
+      g.fillStyle = '#5a3d27'; g.fillRect(0, y0 + 52, W, 8);   // 선반 판
     }
-    const lamp = g.createRadialGradient(w * 0.78, h * 0.3, 10, w * 0.78, h * 0.3, 520);   // 스탠드 불빛
-    lamp.addColorStop(0, 'rgba(255,214,150,.55)'); lamp.addColorStop(1, 'rgba(255,214,150,0)'); g.fillStyle = lamp; g.fillRect(0, 0, w, h);
+    g.fillStyle = '#4a3222'; for (let x = 0; x < W; x += 420) g.fillRect(x, 0, 12, H);   // 칸막이
+    for (let i = 0; i < 14; i++) { const x = rnd() * W, y = rnd() * H, r = 8 + rnd() * 18;   // 보케(불빛·책 등 반사)
+      const b = g.createRadialGradient(x, y, 0, x, y, r); b.addColorStop(0, 'rgba(255,220,160,.5)'); b.addColorStop(1, 'rgba(255,220,160,0)');
+      g.fillStyle = b; g.fillRect(x - r, y - r, 2 * r, 2 * r); }
   });
-  return tex(2048, 1024, (g, w, h) => { g.filter = 'blur(8px) brightness(0.8)'; g.drawImage(raw.image, -40, -40, w + 80, h + 80); });
+  return tex(W, H, (g) => { g.filter = 'blur(9px) brightness(0.82)'; g.drawImage(raw.image, -20, -20, W + 40, H + 40); });
 }
 
 function makeBase() {   // 책상 + 매트 + 빛. 모든 컷이 같은 바닥을 공유한다
   const g = new THREE.Group();
-  const shelf = new THREE.Mesh(new THREE.PlaneGeometry(72, 36), new THREE.MeshBasicMaterial({ map: shelfTex(), fog: false }));
-  shelf.position.set(0, 18, -11.5); g.add(shelf);   // 매트 뒤끝(-10) 바로 뒤 벽면, 아래끝이 책상에 닿게
   const dt = deskTex(); dt.wrapS = dt.wrapT = THREE.RepeatWrapping; dt.repeat.set(6, 6);
-  const desk = new THREE.Mesh(new THREE.PlaneGeometry(160, 160), new THREE.MeshStandardMaterial({ map: dt, roughness: 0.8 }));
-  desk.rotation.x = -Math.PI / 2; desk.receiveShadow = true; g.add(desk);
+  const desk = new THREE.Mesh(new THREE.BoxGeometry(70, 1.5, 38), new THREE.MeshStandardMaterial({ map: dt, roughness: 0.8 }));
+  desk.position.set(0, -0.75, 5); desk.receiveShadow = true; g.add(desk);   // 매트 뒤로 조금만 이어지고 끝난다(뒤끝 z=-14)
   const mt = matTex();
   const top = new THREE.MeshStandardMaterial({ map: mt, roughness: 1 }), edge = new THREE.MeshStandardMaterial({ color: '#174a3d', roughness: 1 });
   const mat = new THREE.Mesh(new THREE.BoxGeometry(34, MAT_Y, 20), [edge, edge, top, edge, edge, edge]);
@@ -123,6 +121,12 @@ export function makeWorld(canvas, cuts) {
   r.setPixelRatio(1); r.setSize(1920, 1080, false);
   r.toneMapping = THREE.ACESFilmicToneMapping; r.toneMappingExposure = 1.05; r.shadowMap.enabled = true;
   const cam = new THREE.PerspectiveCamera(30, 1920 / 1080, 0.1, 300), base = makeBase();
+  // 고정 카메라: 매트 중앙(0, 2.2, 0)을 앙각 ELEV로 내려다본다
+  const tgt = new THREE.Vector3(0, 2.2, 0), d = 15.3 * DIST;
+  cam.position.set(0, tgt.y + d * Math.sin(ELEV), d * Math.cos(ELEV)); cam.lookAt(tgt);
+  // 책상 뒤끝 너머 화면 윗부분을 채우는 먼 책장. 카메라에 붙여 화면과 평행하게 둔다(깊이 75 = 책상보다 뒤)
+  const shelf = new THREE.Mesh(new THREE.PlaneGeometry(82, 16.4), new THREE.MeshBasicMaterial({ map: shelfTex(), fog: false }));
+  shelf.position.set(0, 13.2, -75); cam.add(shelf);
   const scenes = cuts.map(c => {
     const s = new THREE.Scene(); s.background = new THREE.Color('#2a1d14'); s.fog = new THREE.Fog('#2a1d14', 30, 70);
     s.userData.props = (c.props || []).map(p => { const o = MAKE[p.t](p); s.add(o); return o; });
@@ -132,12 +136,7 @@ export function makeWorld(canvas, cuts) {
     const c = cuts[i], s = scenes[i], tl = t - c.t;
     if (base.parent !== s) s.add(base);
     poseProps(s.userData.props, tl);
-    const a = c.cam, b = c.cam2 || a, q = ease(clamp01(tl / c.d));
-    const L = (k) => a[k] + (b[k] - a[k]) * q, tgt = new THREE.Vector3(L(3), L(4), L(5));
-    // 책상을 내려다보는 시점: 큐시트의 방향·거리는 살리고 앙각만 ELEV로 고정(사용자 지시 "책상 위 매트 위에 선 종이")
-    const off = new THREE.Vector3(L(0), L(1), L(2)).sub(tgt), d = off.length() * DIST, az = Math.atan2(off.x, off.z);
-    cam.position.set(tgt.x + d * Math.cos(ELEV) * Math.sin(az), tgt.y + d * Math.sin(ELEV), tgt.z + d * Math.cos(ELEV) * Math.cos(az));
-    cam.lookAt(tgt);
+    if (cam.parent !== s) s.add(cam);
     r.render(s, cam);
   } };
 }
