@@ -25,7 +25,7 @@ spec = [i for i in spec if not only or i["id"] in only]
 for item in spec:
     style = "" if item.get("raw") else STYLE  # raw: 프롬프트가 자체 스타일을 정할 때(예: 종이 콜라주)
     body = {"contents": [{"parts": [{"text": f"{item['prompt']} {style}"}]}],
-            "generationConfig": {"responseModalities": ["IMAGE"], "imageConfig": {"aspectRatio": "16:9"}}}
+            "generationConfig": {"responseModalities": ["IMAGE"], "imageConfig": {"aspectRatio": item.get("ratio", "16:9")}}}
     req = urllib.request.Request(
         f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent?key={key}",
         data=json.dumps(body).encode(), headers={"Content-Type": "application/json"})
