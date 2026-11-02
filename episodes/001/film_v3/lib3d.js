@@ -42,7 +42,9 @@ function labelTex(lines, { bg = C.paper, fg = C.ink, size = 150, w = 0, h = 0 } 
     for (let x = w - 10; x > 10; x -= 40) g.lineTo(x, h - 6 - (x * 5 % 9));
     g.closePath(); g.fillStyle = bg; g.fill(); grain(g, w, h, 0.08);
     g.fillStyle = fg; g.textAlign = 'center'; g.textBaseline = 'middle';
-    lines.forEach((l, i) => { g.font = `800 ${l.size || size}px ${FONT}`; g.fillText(l.text, w / 2, h / 2 + (i - (lines.length - 1) / 2) * (l.size || size) * 1.02); });
+    // 줄 크기가 서로 달라도 글자 덩어리 전체가 카드 세로 가운데에 오게 쌓는다(대문자는 middle 기준이 살짝 높아 0.06 내림)
+    const lh = lines.map(l => (l.size || size) * 1.1); let y = h / 2 - lh.reduce((a, v) => a + v, 0) / 2;
+    lines.forEach((l, i) => { const sz = l.size || size; g.font = `800 ${sz}px ${FONT}`; g.fillText(l.text, w / 2, y + lh[i] / 2 + sz * 0.06); y += lh[i]; });
   });
 }
 // hUnits = 라벨 높이(월드 단위), 폭은 글자 길이에서 나온다
