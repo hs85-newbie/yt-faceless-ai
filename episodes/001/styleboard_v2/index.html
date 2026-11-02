@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>EP001 style board v2</title>
+<!-- 시안 v2: 뼈대 = 3D 데이터 무대(PolyMatter식), 질감 = 종이 콜라주, 고정 캐릭터 = 종이 졸업생. 숫자는 02_research.md 출처만 -->
+<style>
+  :root{--paper:#f4efe3;--ink:#1a1a1a;--red:#c8392e;--hl:#ffe14d;--mustard:#e5b650;--slate:#6f8fb0}
+  html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:#1f5d4c;font-family:"Avenir Next Condensed","DIN Condensed",sans-serif}
+  .f{position:absolute;inset:0;visibility:hidden}.f.on{visibility:visible}  /* 숨긴 프레임도 배경을 미리 디코드해 두려고 display 대신 visibility */
+  .bg{position:absolute;inset:-2%;background:center/cover no-repeat}
+  #gl{position:absolute;inset:0;width:1920px;height:1080px;display:none}
+  /* 찢긴 종이 띠: 키네틱 타이포의 기본 단위 */
+  .strip{position:absolute;background:var(--paper);color:var(--ink);padding:10px 34px 4px;font-weight:800;line-height:1;letter-spacing:-.005em;text-transform:uppercase;
+    box-shadow:0 12px 26px rgba(0,0,0,.38);clip-path:polygon(0 6%,4% 0,38% 4%,71% 0,100% 6%,98% 52%,100% 95%,62% 100%,28% 96%,0 100%,2% 48%)}
+  .strip,.stamp{white-space:nowrap}.strip br+*,.strip{line-height:1.08}.stamp{text-transform:uppercase}
+  .strip.red{background:var(--red);color:var(--paper)}.strip.yel{background:var(--hl)}
+  .ghost{opacity:.0}
+  .hl{background:linear-gradient(transparent 55%,var(--hl) 55%,var(--hl) 92%,transparent 92%)}
+  .stamp{position:absolute;border:7px solid var(--red);color:var(--red);font-weight:800;padding:6px 24px 0;font-size:64px;letter-spacing:.04em;transform:rotate(-7deg);background:rgba(244,239,227,.9)}
+  .tape{position:absolute;width:160px;height:46px;background:rgba(240,225,170,.78);box-shadow:0 2px 6px rgba(0,0,0,.2)}
+  /* 채널 서명: 출처 표기 형식은 모든 편 공통 */
+  .src{position:absolute;left:40px;bottom:34px;font:500 22px Menlo,monospace;color:var(--paper);background:rgba(0,0,0,.5);padding:7px 14px;border-left:6px solid var(--mustard)}
+  .bug{position:absolute;right:40px;bottom:34px;font:800 26px "Avenir Next Condensed";letter-spacing:.12em;color:var(--paper);opacity:.85}
+  .doc{position:absolute;box-shadow:0 24px 50px rgba(0,0,0,.5);clip-path:polygon(0 1%,4% 0,30% 2%,60% 0,100% 1.5%,99% 40%,100% 99%,70% 100%,40% 98%,0 100%,1% 60%)}
+  .marker{position:absolute;border:8px solid var(--red);border-radius:50%}
+  .chip{position:absolute;font:700 26px Menlo,monospace;background:var(--hl);color:var(--ink);padding:6px 14px;transform:rotate(-3deg)}
+</style></head><body>
+<canvas id="gl" width="1920" height="1080"></canvas>
+
+<!-- 0 훅: 문장 하나를 종이 띠 여러 장으로 쪼갠다(launch-video 기법), 0.5초에 마지막 띠가 떨어지는 중 -->
+<div class="f" id="f0" data-kind="dom"><div class="bg" style="background-image:url(sb1_hook.png)"></div>
+  <div class="strip" style="left:830px;top:150px;font-size:56px;transform:rotate(-2deg)">You've been told</div>
+  <div class="strip" style="left:810px;top:245px;font-size:104px;transform:rotate(1.2deg)"><span style="color:var(--red)">AI</span> is why new grads</div>
+  <div class="strip" style="left:880px;top:385px;font-size:104px;transform:rotate(-1.5deg) translateY(-14px)">can't find jobs.</div>
+  <div class="stamp" style="left:1010px;top:590px;font-size:56px">It started before ChatGPT</div>
+  <div class="tape" style="left:800px;top:232px;transform:rotate(-18deg)"></div>
+  <div class="src">Source: NY Fed, Liberty Street Economics (Jun 1, 2026)</div><div class="bug">COUNTER LEDGER</div></div>
+
+<!-- 1 제목 드롭: 3D 종이 카드(title-sequence-3d 기법), 카메라 낮게 밀고 들어감 -->
+<div class="f" id="f1" data-kind="gl" data-scene="title"><div class="bug">COUNTER LEDGER</div></div>
+
+<!-- 2 데이터 무대 A -->
+<div class="f" id="f2" data-kind="gl" data-scene="dataA">
+  <div class="strip" style="left:70px;top:60px;font-size:64px;transform:rotate(-1deg)">College-grad unemployment</div>
+  <div class="src">Source: NY Fed, Liberty Street Economics · 2017–19 vs 2022–25</div><div class="bug">COUNTER LEDGER</div></div>
+
+<!-- 3 그리드 64% -->
+<div class="f" id="f3" data-kind="gl" data-scene="grid">
+  <div class="strip" style="left:70px;top:70px;font-size:76px;transform:rotate(-1.5deg)">Remote work can explain</div>
+  <div class="strip red" style="left:120px;top:190px;font-size:190px;padding:14px 40px 0;transform:rotate(1deg)">64%</div>
+  <div class="chip" style="left:150px;top:420px">ESTIMATE · "back-of-the-envelope"</div>
+  <div class="strip" style="left:110px;top:500px;font-size:40px;transform:rotate(.6deg)">of the rise in young grads' unemployment</div>
+  <div class="src">Source: NY Fed, Liberty Street Economics (Jun 1, 2026)</div><div class="bug">COUNTER LEDGER</div></div>
+
+<!-- 4 원문: 실제 캡처를 찢은 종이에 붙이고 마커로 동그라미 -->
+<div class="f" id="f4" data-kind="dom"><div class="bg" style="background-image:url(sb3_document.png);transform:scale(1.06) rotate(-.6deg)"></div>
+  <div class="doc" style="left:380px;top:120px;width:1140px;transform:perspective(1800px) rotateX(9deg) rotate(-1.4deg)"><img src="lse_crop.png" style="width:1140px;display:block"></div>
+  <div style="position:absolute;left:430px;top:592px;width:990px;height:36px;background:var(--hl);opacity:.5;mix-blend-mode:multiply;transform:rotate(-1.4deg)"></div>
+  <div class="marker" style="left:1200px;top:560px;width:240px;height:78px;transform:rotate(-4deg)"></div>
+  <div class="strip" style="left:1240px;top:830px;font-size:44px;transform:rotate(3deg)">"can explain" — not "proves"</div>
+  <div class="src">Source: NY Fed, Liberty Street Economics (Jun 1, 2026)</div><div class="bug">COUNTER LEDGER</div></div>
+
+<!-- 5 메커니즘: 고정 캐릭터(종이 졸업생) + 끊어진 실 -->
+<div class="f" id="f5" data-kind="dom"><div class="bg" style="background-image:url(sb5_mechanism.png)"></div>
+  <div class="strip" style="left:520px;top:90px;font-size:92px;transform:rotate(-1deg)">Distance cuts the <span class="hl">training</span></div>
+  <div class="strip" style="left:640px;top:770px;font-size:44px;transform:rotate(1deg)">Less feedback. Less mentoring. Most for younger workers.</div>
+  <div class="stamp" style="left:1440px;top:280px;font-size:40px">One company's data</div>
+  <div class="src">Source: NY Fed, Liberty Street Economics · one Fortune 500 firm</div><div class="bug">COUNTER LEDGER</div></div>
+
+<!-- 6 두 번째 파도: 스탠퍼드 -->
+<div class="f" id="f6" data-kind="gl" data-scene="wave">
+  <div class="strip" style="left:70px;top:60px;font-size:70px;transform:rotate(-1deg)">The second wave</div>
+  <div class="strip" style="left:90px;top:160px;font-size:40px;transform:rotate(.8deg)">Jobs for 22–25 year-olds · Nov 2022 → Jun 2026</div>
+  <div class="chip" style="left:1500px;top:90px;transform:rotate(3deg)">GAP 15% → 19%</div>
+  <div class="src">Source: Stanford Digital Economy Lab (Aug 12, 2026) · descriptive, not causal</div><div class="bug">COUNTER LEDGER</div></div>
+
+<!-- 7 결론: 두 갈래 길 -->
+<div class="f" id="f7" data-kind="dom"><div class="bg" style="background-image:url(sb6_conclusion.png)"></div>
+  <div class="strip" style="left:140px;top:560px;font-size:56px;background:#f2c94c;text-transform:none;transform:rotate(-3deg)">Will this role put me near<br>people who can teach me?</div>
+  <div class="strip" style="left:1150px;top:600px;font-size:56px;background:#a9bfd6;text-transform:none;transform:rotate(2.5deg)">Is AI doing the work,<br>or helping someone do it?</div>
+  <div class="bug">COUNTER LEDGER</div></div>
+
+<script type="module">
+import { makeStage } from './stage.js';
+const fs = [...document.querySelectorAll('.f')], gl = document.getElementById('gl');
+const stage = makeStage(gl);
+window.DUR = fs.length;
+window.render = t => {
+  const i = Math.min(fs.length - 1, Math.floor(t)), f = fs[i];
+  fs.forEach((x, k) => x.classList.toggle('on', k === i));
+  const isGl = f.dataset.kind === 'gl';
+  gl.style.display = isGl ? 'block' : 'none';
+  if (isGl) stage.render(f.dataset.scene, t - i);
+};
+const imgs = [...document.images].map(i => i.complete ? 0 : new Promise(r => { i.onload = i.onerror = r; }));
+const bgs = [...document.querySelectorAll('.bg')].map(b => new Promise(r => { const im = new Image(); im.onload = im.onerror = r; im.src = b.style.backgroundImage.slice(5, -2); }));
+Promise.all([...imgs, ...bgs, document.fonts.ready]).then(() => { window.render(0); window.READY = true; });
+</script></body></html>
