@@ -44,6 +44,8 @@ for i, c in enumerate(cuts):
     assert any(p["t"] != "card" for p in c.get("props", [])), f"컷 #{i}: 글자만 있는 컷"
     for p in c.get("props", []):
         p["at"] = max(0.0, round(resolve(p["at"]) - c["t"] - 0.15, 3)) if isinstance(p.get("at"), str) else p.get("at", 0.0)
+        for k in p.get("keys", []):   # 돋보기 경로: 구절마다 한 자리
+            k["at"] = max(0.0, round(resolve(k["at"]) - c["t"] - 0.15, 3))
         if p["t"] == "cutout":
             src = root / "paper_cut" / f"{p['img']}.png"; w, h = Image.open(src).size
             p["img"] = src.name; p["ar"] = round(w / h, 4); shutil.copy(src, film / src.name)
