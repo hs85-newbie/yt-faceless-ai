@@ -1,6 +1,6 @@
 """v3 믹스: 내레이션 + 바닥 음악 + 전환 종류에 맞춘 종이 효과음 → mix.wav(48 kHz 스테레오). 외부 다운로드 없음.
 
-사용: ~/lemo-opuscar/.venv/bin/python scripts/make_audio_v3.py output/001/v3
+사용: ~/lemo-opuscar/.venv/bin/python scripts/make_audio_v3.py output/001/03_work/v4
 입력: <out>/voice.wav, <out>/film/cuts.json (컷의 tr = 전환 종류, strips/stamp의 at = 등장 시각)
 v2 지적 반영: 전환음이 "쉭" 하나뿐 → 전환 종류마다 다른 소리(종이 넘김·테이프 찢기·휙·도장·종이 떨어짐·틱).
 """

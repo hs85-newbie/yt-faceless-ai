@@ -1,0 +1,255 @@
+<title>Counter Ledger 리뷰 데스크</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans+KR:wght@400;600&display=swap">
+<style>
+/* 편집실 모니터: 어두운 화면 옆에 종이 메모. 프레임 번호가 주인공 */
+:root{
+  --bg:#f3f0e8; --panel:#fbfaf6; --ink:#1d211f; --muted:#6b706a; --line:#d9d4c7;
+  --stage:#141816; --stage-ink:#e9e6dc; --accent:#1f6a52; --accent-ink:#fff; --pin:#c8392e; --done:#7a8f6e;
+  --display:"Archivo","Noto Sans KR",system-ui,sans-serif; --body:"Noto Sans KR",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#101312; --panel:#181c1a; --ink:#e9e6dc; --muted:#9aa096; --line:#2b312e;
+  --stage:#070908; --stage-ink:#e9e6dc; --accent:#3f9a7b; --accent-ink:#06120d; --pin:#e0574b; --done:#8fa883; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#101312; --panel:#181c1a; --ink:#e9e6dc; --muted:#9aa096; --line:#2b312e;
+  --stage:#070908; --stage-ink:#e9e6dc; --accent:#3f9a7b; --accent-ink:#06120d; --pin:#e0574b; --done:#8fa883; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 var(--body)}
+.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 32px;max-width:1440px;margin:0 auto;display:grid;gap:18px}
+header{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px}
+h1{font:800 22px/1.2 var(--display);letter-spacing:-.01em;margin:0}
+.sub{color:var(--muted);font-size:13px}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:18px;align-items:start}
+@media (max-width:900px){.layout{grid-template-columns:minmax(0,1fr)}}
+.stage{background:var(--stage);color:var(--stage-ink);border-radius:10px;overflow:hidden;min-width:0}
+.screen{position:relative;aspect-ratio:16/9;max-width:100%;background:#000;cursor:crosshair}
+.screen video{position:absolute;inset:0;width:100%;height:100%;display:block}
+.empty{position:absolute;inset:0;display:grid;place-content:center;gap:12px;text-align:center;padding:16px;cursor:default}
+.empty p{margin:0;color:#b9b6ac;font-size:14px}
+.pin{position:absolute;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:var(--pin);color:#fff;font:600 11px/22px var(--mono);text-align:center;box-shadow:0 0 0 3px rgba(255,255,255,.85);pointer-events:none}
+.pin.draft{background:transparent;box-shadow:0 0 0 3px var(--pin),0 0 0 6px rgba(255,255,255,.6)}
+.bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding:12px 14px}
+.tc{font:600 26px/1 var(--mono);font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.tc small{font:400 12px var(--mono);color:#9a988f;margin-left:8px}
+.ctrl{display:flex;gap:6px;flex-wrap:wrap}
+button{font:600 13px var(--body);border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:7px;padding:7px 11px;cursor:pointer}
+.stage button{background:#222826;border-color:#343b38;color:var(--stage-ink)}
+button:hover{border-color:var(--accent)}
+button:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.timeline{position:relative;height:30px;margin:0 14px 14px;background:#1f2523;border-radius:5px;cursor:pointer}
+.timeline .head{position:absolute;top:0;bottom:0;width:2px;background:#e9e6dc}
+.timeline .mk{position:absolute;top:5px;width:8px;height:20px;margin-left:-4px;border-radius:2px;background:var(--pin)}
+.timeline .mk.done{background:var(--done)}
+.keys{padding:0 14px 14px;color:#9a988f;font-size:12px;display:flex;flex-wrap:wrap;gap:4px 14px}
+kbd{font:600 11px var(--mono);border:1px solid #3a413e;border-radius:4px;padding:1px 5px;color:#d7d4ca}
+.side{display:grid;gap:12px;min-width:0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px;display:grid;gap:10px}
+.card h2{font:700 15px var(--display);margin:0;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.card h2 span{font:400 12px var(--mono);color:var(--muted)}
+textarea{width:100%;box-sizing:border-box;min-height:84px;resize:vertical;font:14px/1.5 var(--body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:7px;padding:9px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{padding:4px 10px;border-radius:999px;font-weight:500}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.row{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.list{display:grid;gap:8px;max-height:62vh;overflow:auto}
+.note{display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);cursor:pointer}
+.note.done{opacity:.6}
+.note img,.note .nothumb{width:96px;aspect-ratio:16/9;object-fit:cover;border-radius:4px;background:#222}
+.note .meta{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center;font:12px var(--mono);color:var(--muted)}
+.note .meta b{color:var(--ink);font-weight:600}
+.note .cat{font:600 11px var(--body);border:1px solid var(--line);border-radius:999px;padding:0 7px}
+.note .ex{font:600 11px var(--body);color:var(--pin)}
+.note p{margin:4px 0 0;font-size:14px;overflow-wrap:anywhere}
+.note .acts{display:flex;gap:6px;margin-top:6px}
+.note .acts button{padding:3px 8px;font-size:12px}
+.status{font-size:12px;color:var(--muted)}
+.hint{font-size:13px;color:var(--muted);margin:0}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Counter Ledger 리뷰 데스크</h1>
+    <span class="sub" id="vidname">영상을 열면 프레임 단위로 메모를 남길 수 있습니다 · 24fps</span>
+  </header>
+  <div class="layout">
+    <section class="stage" aria-label="영상">
+      <div class="screen" id="screen">
+        <video id="video" playsinline preload="auto" hidden></video>
+        <div class="empty" id="empty">
+          <p>EP001_v4_motiontest.mp4 같은 내 컴퓨터의 영상 파일을 엽니다.<br>파일은 업로드되지 않고 이 브라우저 안에서만 재생됩니다.</p>
+          <div><button class="primary" id="openBtn">영상 파일 열기</button></div>
+          <p>여기로 파일을 끌어다 놓아도 됩니다.</p>
+        </div>
+        <div id="pins"></div>
+      </div>
+      <div class="bar">
+        <div class="tc" id="tc">F 0<small>00:00:00</small></div>
+        <div class="ctrl">
+          <button id="b-1s" title="1초 뒤로 (Shift+←)">−1초</button>
+          <button id="b-1f" title="1프레임 뒤로 (←)">−1F</button>
+          <button id="bPlay" title="재생/정지 (Space)">재생</button>
+          <button id="b+1f" title="1프레임 앞으로 (→)">+1F</button>
+          <button id="b+1s" title="1초 앞으로 (Shift+→)">+1초</button>
+        </div>
+      </div>
+      <div class="timeline" id="timeline" aria-label="타임라인"><div class="head" id="head" style="left:0"></div></div>
+      <div class="keys"><span><kbd>Space</kbd> 재생</span><span><kbd>←</kbd><kbd>→</kbd> 1프레임</span><span><kbd>Shift</kbd>+<kbd>←</kbd><kbd>→</kbd> 1초</span><span>화면 클릭 = 그 위치에 메모</span><span><kbd>N</kbd> 위치 없이 메모</span><span><kbd>[</kbd><kbd>]</kbd> 이전·다음 메모</span></div>
+      <input type="file" id="file" accept="video/*" hidden>
+    </section>
+
+    <aside class="side">
+      <div class="card" id="composer" hidden>
+        <h2>새 메모 <span id="cAt"></span></h2>
+        <div class="chips" id="cats"></div>
+        <textarea id="cText" placeholder="이 프레임에서 고칠 점을 적어 주세요. 예: 이 푯말이 다음 컷에서 사라져서 튑니다."></textarea>
+        <div class="row"><button id="cCancel">취소</button><button class="primary" id="cSave">저장</button></div>
+      </div>
+      <div class="card">
+        <h2>메모 <span id="count">불러오는 중</span></h2>
+        <p class="hint" id="listHint">저장소에 연결하는 중입니다.</p>
+        <div class="list" id="list"></div>
+      </div>
+      <p class="status" id="status"></p>
+    </aside>
+  </div>
+</div>
+
+<script>
+const FPS = 24, CATS = ["전환", "카메라", "글자·라벨", "숫자·그래프", "소품·배경", "음성·소리", "기타"];
+const $ = id => document.getElementById(id);
+const v = $("video");
+let notes = [], col = null, videoName = "", draft = null, cat = CATS[0];
+
+const frameOf = t => Math.floor(t * FPS + 1e-4);
+const tcOf = f => { const s = Math.floor(f / FPS), ff = f % FPS; return `${String(Math.floor(s / 60)).padStart(2, "0")}:${String(s % 60).padStart(2, "0")}:${String(ff).padStart(2, "0")}`; };
+const seekFrame = f => { if (!v.duration) return; v.pause(); v.currentTime = Math.min(v.duration - 1 / FPS, Math.max(0, (f + 0.5) / FPS)); };
+const status = msg => { $("status").textContent = msg; };
+
+// 카테고리 칩
+CATS.forEach(c => { const b = document.createElement("button"); b.textContent = c; b.setAttribute("aria-pressed", c === cat); b.onclick = () => { cat = c; [...$("cats").children].forEach(x => x.setAttribute("aria-pressed", x === b)); }; $("cats").appendChild(b); });
+
+// 영상 열기
+function openFile(f) {
+  if (!f || !f.type.startsWith("video")) { status("영상 파일만 열 수 있습니다."); return; }
+  videoName = f.name; v.src = URL.createObjectURL(f); v.hidden = false; $("empty").hidden = true;
+  $("vidname").textContent = `${videoName} · 24fps`; render();
+}
+$("openBtn").onclick = () => $("file").click();
+$("file").onchange = e => openFile(e.target.files[0]);
+$("screen").addEventListener("dragover", e => e.preventDefault());
+$("screen").addEventListener("drop", e => { e.preventDefault(); openFile(e.dataTransfer.files[0]); });
+
+// 재생·이동
+const step = n => seekFrame(frameOf(v.currentTime) + n);
+$("bPlay").onclick = () => v.paused ? v.play() : v.pause();
+$("b-1f").onclick = () => step(-1); $("b+1f").onclick = () => step(1);
+$("b-1s").onclick = () => step(-FPS); $("b+1s").onclick = () => step(FPS);
+v.addEventListener("play", () => $("bPlay").textContent = "정지");
+v.addEventListener("pause", () => $("bPlay").textContent = "재생");
+function tick() {
+  const f = frameOf(v.currentTime || 0);
+  $("tc").innerHTML = `F ${f}<small>${tcOf(f)}</small>`;
+  if (v.duration) $("head").style.left = (100 * v.currentTime / v.duration) + "%";
+  drawPins(f);
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+$("timeline").onclick = e => { if (!v.duration) return; const r = e.currentTarget.getBoundingClientRect(); seekFrame(frameOf(v.duration * (e.clientX - r.left) / r.width)); };
+
+// 화면 클릭 → 그 위치·프레임에 메모 초안
+$("screen").addEventListener("click", e => {
+  if (v.hidden || e.target.closest(".empty")) return;
+  v.pause(); const r = $("screen").getBoundingClientRect();
+  startDraft(+((e.clientX - r.left) / r.width * 100).toFixed(1), +((e.clientY - r.top) / r.height * 100).toFixed(1));
+});
+function startDraft(x, y) {
+  if (v.hidden) { status("먼저 영상을 열어 주세요."); return; }
+  const f = frameOf(v.currentTime); draft = { frame: f, x, y };
+  $("cAt").textContent = `F ${f} · ${tcOf(f)}`; $("composer").hidden = false; $("cText").focus();
+}
+$("cCancel").onclick = () => { draft = null; $("composer").hidden = true; $("cText").value = ""; };
+$("cSave").onclick = async () => {
+  const text = $("cText").value.trim(); if (!draft || !text) { status("메모 내용을 적어 주세요."); return; }
+  if (!col) { status("저장소에 연결되지 않아 저장할 수 없습니다. claude.ai에 로그인한 상태로 열어 주세요."); return; }
+  const doc = { video: videoName, frame: draft.frame, tc: tcOf(draft.frame), x: draft.x, y: draft.y, cat, text, status: "open", thumb: thumb(), createdAt: Date.now() };
+  $("cSave").disabled = true;
+  try { await col.add(doc); status(`F ${doc.frame}에 메모를 저장했습니다.`); $("cCancel").onclick(); }
+  catch (err) { status(`저장하지 못했습니다(${err.code || "오류"}). 잠시 뒤 다시 눌러 주세요.`); }
+  finally { $("cSave").disabled = false; }
+};
+function thumb() {   // 목록용 작은 썸네일(160px)
+  try { const c = document.createElement("canvas"); c.width = 160; c.height = 90; c.getContext("2d").drawImage(v, 0, 0, 160, 90); return c.toDataURL("image/jpeg", 0.6); }
+  catch { return ""; }
+}
+
+// 키보드
+document.addEventListener("keydown", e => {
+  if (e.target.tagName === "TEXTAREA") { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) $("cSave").onclick(); if (e.key === "Escape") $("cCancel").onclick(); return; }
+  if (v.hidden) return;
+  if (e.key === " ") { e.preventDefault(); $("bPlay").onclick(); }
+  else if (e.key === "ArrowLeft") { e.preventDefault(); step(e.shiftKey ? -FPS : -1); }
+  else if (e.key === "ArrowRight") { e.preventDefault(); step(e.shiftKey ? FPS : 1); }
+  else if (e.key === "n" || e.key === "N") { e.preventDefault(); startDraft(null, null); }
+  else if (e.key === "[" || e.key === "]") {
+    const f = frameOf(v.currentTime), mine = visible().map(n => n.frame).sort((a, b) => a - b);
+    const t = e.key === "]" ? mine.find(x => x > f) : [...mine].reverse().find(x => x < f);
+    if (t !== undefined) seekFrame(t);
+  }
+});
+
+// 화면 위 핀: 메모 프레임 ±12프레임 안에서만 보인다
+function drawPins(f) {
+  const html = visible().filter(n => n.x != null && Math.abs(n.frame - f) <= 12).map(n => `<div class="pin" style="left:${n.x}%;top:${n.y}%">${n.idx}</div>`).join("")
+    + (draft && draft.x != null ? `<div class="pin draft" style="left:${draft.x}%;top:${draft.y}%"></div>` : "");
+  if ($("pins").innerHTML !== html) $("pins").innerHTML = html;
+}
+
+const visible = () => videoName ? notes.filter(n => n.video === videoName) : notes;
+function render() {
+  const list = visible();
+  $("count").textContent = `${list.length}개${videoName ? "" : " · 전체 영상"}`;
+  $("listHint").hidden = list.length > 0;
+  $("listHint").textContent = videoName ? "아직 이 영상의 메모가 없습니다. 영상 위를 클릭해 첫 메모를 남겨 보세요." : "영상을 열면 그 영상의 메모만 보입니다.";
+  const box = $("list"); box.textContent = "";
+  list.forEach(n => {
+    const el = document.createElement("div"); el.className = "note" + (n.status === "done" ? " done" : ""); el.tabIndex = 0;
+    const img = n.thumb ? Object.assign(document.createElement("img"), { src: n.thumb, alt: `F ${n.frame} 화면` }) : Object.assign(document.createElement("div"), { className: "nothumb" });
+    const body = document.createElement("div");
+    const meta = document.createElement("div"); meta.className = "meta";
+    meta.innerHTML = `<b>#${n.idx} · F ${n.frame}</b><span>${n.tc}</span>`;
+    const c = document.createElement("span"); c.className = "cat"; c.textContent = n.cat; meta.appendChild(c);
+    if (n.example) { const x = document.createElement("span"); x.className = "ex"; x.textContent = "예시"; meta.appendChild(x); }
+    if (!videoName) { const vn = document.createElement("span"); vn.textContent = n.video; meta.appendChild(vn); }
+    const p = document.createElement("p"); p.textContent = n.text;
+    const acts = document.createElement("div"); acts.className = "acts";
+    const done = document.createElement("button"); done.textContent = n.status === "done" ? "다시 열기" : "반영됨";
+    done.onclick = ev => { ev.stopPropagation(); col.doc(n.id).update({ status: n.status === "done" ? "open" : "done" }).catch(err => status(`바꾸지 못했습니다(${err.code || "오류"}).`)); };
+    const del = document.createElement("button"); del.textContent = "삭제";
+    del.onclick = ev => { ev.stopPropagation(); if (del.dataset.arm) { col.doc(n.id).delete().catch(err => status(`지우지 못했습니다(${err.code || "오류"}).`)); } else { del.dataset.arm = 1; del.textContent = "한 번 더 누르면 삭제"; } };
+    acts.append(done, del); body.append(meta, p, acts); el.append(img, body);
+    el.onclick = () => { if (n.video === videoName) seekFrame(n.frame); else status(`${n.video} 파일을 열면 이 메모로 이동합니다.`); };
+    box.appendChild(el);
+  });
+  // 타임라인 표시
+  [...$("timeline").querySelectorAll(".mk")].forEach(m => m.remove());
+  if (v.duration) list.forEach(n => { const m = document.createElement("div"); m.className = "mk" + (n.status === "done" ? " done" : ""); m.style.left = (100 * (n.frame / FPS) / v.duration) + "%"; m.title = `#${n.idx} ${n.text}`; $("timeline").appendChild(m); });
+}
+v.addEventListener("loadedmetadata", render);
+
+// 저장소 연결: 메모를 프레임 순으로 실시간 구독
+(async () => {
+  const timer = setTimeout(() => { $("count").textContent = "연결 안 됨"; $("listHint").textContent = "저장소에 연결하지 못했습니다. 메모를 보고 남기려면 claude.ai에 로그인한 상태로 이 페이지를 열어 주세요."; }, 10000);
+  const db = await window.claude?.use?.("db");
+  if (!db) { clearTimeout(timer); $("count").textContent = "연결 안 됨"; $("listHint").textContent = "이 화면에서는 저장소를 쓸 수 없습니다. claude.ai에 로그인한 상태로 열어 주세요."; return; }
+  col = db.collection("notes");
+  col.orderBy("frame").onSnapshot(snap => {
+    clearTimeout(timer);
+    const byVideo = {};
+    notes = snap.docs.map(d => ({ id: d.id, ...d.data() })).map(n => { byVideo[n.video] = (byVideo[n.video] || 0) + 1; return { ...n, idx: byVideo[n.video] }; });
+    render();
+  }, err => { clearTimeout(timer); $("count").textContent = "오류"; $("listHint").textContent = `메모를 불러오지 못했습니다(${err.code || "오류"}). 새로고침해 주세요.`; });
+})();
+</script>

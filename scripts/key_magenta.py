@@ -1,6 +1,6 @@
 """마젠타(#FF00FF) 배경을 투명으로 빼고, 남은 종이 조각만 여백 없이 잘라 PNG로 저장한다.
 
-사용: python3 -I scripts/key_magenta.py output/001/paper output/001/paper_cut
+사용: python3 -I scripts/key_magenta.py output/001/02_raw/paper output/001/02_raw/paper_cut
 배경 판정: 분홍(R−G 크고 B−G도 큼). Gemini가 순색 대신 그늘진 분홍 종이를 깔아서 색차로 판정한다.
 종이 조각은 가장 큰 덩어리 하나만 남긴다(구석의 회색 얼룩 등 제거). 가장자리 분홍 번짐은 색을 중화한다.
 """

@@ -1,15 +1,15 @@
 """v4 큐시트(구절 기준)를 음성 시간표에 맞춰 cuts.json(초 기준)으로 바꾸고 렌더 폴더를 꾸린다.
 
-사용: python3 -I scripts/build_film_v4.py episodes/001 output/001/v4 [끝 앵커]
+사용: python3 -I scripts/build_film_v4.py episodes/001 output/001/03_work/v4 [끝 앵커]
   끝 앵커(예: s3_04$)를 주면 그 시각에서 자른다 → 모션 테스트용.
-입력: <ep>/film_v4/cuesheet.json, <out>/transcript.srt, <out>/../voice_v4/{lines,words}.json, <out>/../pages/*_marks.json, <out>/../paper_cut/*.png
+입력: <ep>/film_v4/cuesheet.json, <out>/transcript.srt, output/NNN/02_raw/{voice_v4,pages,paper_cut}/
 규칙: 컷 하나 = 생각 하나 + 그림 하나(글자만 있는 컷 금지), 전환은 하드 컷뿐.
 """
 import json, re, shutil, sys
 from pathlib import Path
 from PIL import Image
 
-ep, out = Path(sys.argv[1]), Path(sys.argv[2]); root = out.parent
+ep, out = Path(sys.argv[1]), Path(sys.argv[2]); root = out.parent.parent / "02_raw"   # out = output/NNN/03_work/vN
 film = out / "film"; film.mkdir(parents=True, exist_ok=True)
 sheet = json.loads((ep / "film_v4" / "cuesheet.json").read_text(encoding="utf-8"))["cuts"]
 lines = json.loads((root / "voice_v4" / "lines.json").read_text(encoding="utf-8"))

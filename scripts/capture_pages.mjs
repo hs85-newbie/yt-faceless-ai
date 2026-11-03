@@ -1,5 +1,5 @@
 // 원문 페이지를 1920×1080(및 긴 페이지 전체)으로 캡처하고, 형광펜 문구마다 그 문구가 보이는 화면과 좌표를 기록한다.
-// 사용: cd ~/lemo-opuscar && node <repo>/scripts/capture_pages.mjs <repo>/episodes/001/pages.json <repo>/output/001/pages
+// 사용: cd ~/lemo-opuscar && node <repo>/scripts/capture_pages.mjs <repo>/episodes/001/pages.json <repo>/output/001/02_raw/pages
 import fs from 'fs'; import path from 'path';
 import { chromium } from '/Users/cjons/lemo-opuscar/node_modules/playwright-core/index.mjs';
 

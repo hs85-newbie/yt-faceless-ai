@@ -1,6 +1,6 @@
 """Gemini 이미지 생성으로 컷아웃 그림을 뽑는다. 색은 brand/tokens.css 팔레트로 제한한다.
 
-사용: python3 -I scripts/gen_images.py episodes/001/assets.json output/001/assets
+사용: python3 -I scripts/gen_images.py episodes/001/assets.json output/001/02_raw/assets
 키: ~/.config/watch/.env 의 GEMINI_API_KEY (프로젝트 전용 키). 비용은 장당 약 0.04달러(gemini-2.5-flash-image).
 배경은 투명 대신 채널 배경색(#0f1115)으로 깔아 어두운 장면에 그대로 얹는다.
 """

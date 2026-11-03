@@ -1,6 +1,6 @@
 # EP001 v3 — 제작 노트 (motionmaxxing 점검 기록)
 
-- 결과물: `output/001/long_v3.mp4` (1920×1080, 24fps, 489.75초 = 8분 9.8초, −14.2 LUFS, true peak −1.1 dBFS). git 제외.
+- 결과물: `output/001/04_exports/EP001_v3_long.mp4` (1920×1080, 24fps, 489.75초 = 8분 9.8초, −14.2 LUFS, true peak −1.1 dBFS). git 제외.
 - 재현: `output/001/voice_v3/pauses.json` = `{"s2_04": 2.5}`(제목 드롭 쉼)을 만든 뒤 assemble_voice → build_film_v3 → video.mjs → make_audio_v3 → mux.sh.
 - 원본: 이 폴더(`index.html`·`film.js`·`scenes3d.js`·`lib3d.js`·`cuesheet.json`), 빌드 `scripts/build_film_v3.py`, 믹스 `scripts/make_audio_v3.py`.
 

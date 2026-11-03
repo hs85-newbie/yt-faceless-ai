@@ -1,6 +1,6 @@
 """줄별 wav를 하나의 내레이션으로 잇고, 장면 시간표(scenes.txt)와 자막(transcript.srt)을 만든다.
 
-사용: <lemo venv python> scripts/assemble_voice.py output/001/voice output/001
+사용: <lemo venv python> scripts/assemble_voice.py output/001/02_raw/voice_v4 output/001/03_work/v4
 간격: 같은 장면 안 0.25초, 장면 사이 0.6초, pauses.json이 있으면 해당 줄 뒤에 추가. 장면 경계가 곧 합성·숏폼 자르기 기준이다.
 """
 import json

@@ -26,6 +26,17 @@ description: >-
 새 에피소드면 `episodes/NNN-slug/`를 만든다(NNN은 기존 최댓값+1). 글은 이 폴더, 음성·영상은 `output/NNN/`(git 제외).
 단계를 끝낼 때마다 `episodes/NNN-slug/STATUS.md` 체크리스트를 갱신한다. 다음 세션은 이것만 보고 이어 간다.
 
+## 폴더 구조 (2026-11-03 사용자 지시)
+
+| 위치 | 무엇을 두나 | git |
+|---|---|---|
+| `episodes/NNN/` | 글(아이디어·리서치·대본·패키징·큐시트), 화면 코드, 진행 상태 | 올림 |
+| `output/NNN/01_references/` | 남의 채널 참고 영상 클립·프레임(분석용, 영상에 쓰지 않음) | 금지 |
+| `output/NNN/02_raw/` | 우리가 모은·만든 원재료: 원문 캡처(`pages`), 생성 이미지(`paper`·`paper_cut`·`assets`·`styleboard`), 음성(`voice_vN`) | 금지 |
+| `output/NNN/03_work/` | 버전별 작업 폴더(`vN/film` 렌더 페이지, `transcript.srt`, `mix.wav`, 점검 스틸) | 금지 |
+| `output/NNN/04_exports/` | 사람이 보는 완성본만: `EPNNN_vN_long.mp4`, `EPNNN_vN_motiontest.mp4`, 숏폼 | 금지 |
+| `toolkit/` | 쓰는·검토한 스킬과 도구 목록(출처·용도·상태) | 올림 |
+
 ## 단계
 
 | # | 단계 | 쓰는 스킬·도구 | 산출물 | 멈춤 |

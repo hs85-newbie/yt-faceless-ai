@@ -9,7 +9,7 @@ import json, re, shutil, sys
 from pathlib import Path
 
 ep, out = Path(sys.argv[1]), Path(sys.argv[2])
-root = out.parent                      # output/001
+root = out.parent.parent / "02_raw"   # out = output/NNN/03_work/v3
 film = out / "film"; film.mkdir(parents=True, exist_ok=True)
 sheet = json.loads((ep / "film_v3" / "cuesheet.json").read_text(encoding="utf-8"))["cuts"]
 lines = json.loads((root / "voice_v3" / "lines.json").read_text(encoding="utf-8"))
