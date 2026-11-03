@@ -1,6 +1,6 @@
 """대본(03_script.md)에서 낭독 문장을 장면별로 뽑아 TTS 입력(lines.json)과 장면 계획(scenes_plan.json)을 만든다.
 
-사용: python3 -I scripts/extract_lines.py episodes/001/03_script.md output/001/voice am_michael
+사용: python3 -I scripts/extract_lines.py episodes/001/03_script.md output/001/02_raw/voice_v4 am_michael
 """
 import json
 import re
@@ -23,7 +23,7 @@ for sid, title, txt in blocks:
         if not para or para.startswith("#") or not re.search(r"[A-Za-z]", para):  # 구분선·기호만 있는 줄 제외
             continue
         k += 1
-        lines.append({"id": f"s{sid}_{k:02d}", "scene": sid, "text": para, "voice": voice, "speed": 0.92, "lang": "en-us"})
+        lines.append({"id": f"s{sid}_{k:02d}", "scene": sid, "text": para, "voice": voice, "speed": 1.26, "lang": "en-us"})
     scenes.append({"scene": sid, "title": title, "n_lines": k})
 
 out_dir.mkdir(parents=True, exist_ok=True)

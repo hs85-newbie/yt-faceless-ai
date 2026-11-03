@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>EP001 v4 — desk, mat, standing paper</title>
+<style>
+  html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:#2a1d14}
+  #gl{width:1920px;height:1080px;display:block}
+  /* 출처 표기는 채널 서명이라 화면 위 글자로 둔다 */
+  .src{position:absolute;left:40px;bottom:34px;font:500 22px Menlo,monospace;color:#f4efe3;background:rgba(0,0,0,.55);padding:7px 14px;border-left:6px solid #e5b650;display:none}
+</style></head><body>
+<canvas id="gl" width="1920" height="1080"></canvas><div class="src" id="src"></div>
+<script type="module">
+import { makeWorld } from './world.js';
+const { cuts } = await (await fetch('cuts.json')).json();
+const imgs = [...new Set(cuts.flatMap(c => (c.props || []).map(p => p.img)).filter(Boolean))];
+await Promise.all(imgs.map(s => { const im = new Image(); im.src = s; return im.decode(); }));
+await document.fonts.ready;
+const world = makeWorld(document.getElementById('gl'), cuts), src = document.getElementById('src');
+await new Promise(r => setTimeout(r, 300));   // 텍스처 업로드 대기
+window.DUR = cuts.at(-1).t + cuts.at(-1).d;
+window.render = t => {
+  let i = cuts.findIndex(c => t < c.t + c.d); if (i < 0) i = cuts.length - 1;
+  world.render(i, t);
+  src.style.display = cuts[i].src ? 'block' : 'none'; src.textContent = 'Source: ' + (cuts[i].src || '');
+};
+window.render(0); window.READY = true;
+</script></body></html>

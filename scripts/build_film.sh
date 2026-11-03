@@ -4,7 +4,7 @@
 set -euo pipefail
 EP="$1"; shift || true
 LIB=/Users/cjons/lemo-opuscar
-SRC="episodes/$EP/film"; OUT="output/$EP/film"
+SRC="episodes/$EP/film"; OUT="output/$EP/03_work/v2/film"
 mkdir -p "$OUT/assets"
 cp "$SRC/index.html" "$SRC/cues.json" "$SRC/cuts.json" "$OUT/"
 mkdir -p "$OUT/pages" && cp output/$EP/pages/*.png output/$EP/pages/*_marks.json "$OUT/pages/" 2>/dev/null || true
