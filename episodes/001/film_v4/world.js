@@ -1,7 +1,7 @@
 // EP001 v4 — 책상 상판(바닥) 위 초록 매트, 그 위에 종이 소재가 서 있는 하나의 세계(2026-11-02 사용자 지시).
 // 카메라는 모든 컷에서 한 자리에 고정(사용자 지시: 배경과 바닥은 고정). 컷이 바뀌면 소품만 바뀐다. 전환은 하드 컷뿐.
 // 소품은 at 초에 바닥에서 일어선다(종이가 세워지는 움직임). 매끄러운 24fps, 스텝 없음(v3 떨림 원인 제거).
-import { THREE, C, tag, box, matTex, tex, grain } from './lib3d.js';
+import { THREE, C, tag, box, matTex, tex, grain, paperTex } from './lib3d.js';
 
 const clamp01 = x => Math.min(1, Math.max(0, x));
 const outCubic = p => 1 - Math.pow(1 - p, 3);
@@ -110,8 +110,17 @@ function doc(p) {       // 원문 캡처를 찢은 종이 한 장으로 세운�
     g.restore(); t.needsUpdate = true;
   });
   const m = new THREE.MeshStandardMaterial({ map: t, alphaTest: 0.5, roughness: 0.9, side: THREE.DoubleSide });
-  const mesh = new THREE.Mesh(new THREE.PlaneGeometry(p.w, p.w * H / W), m); mesh.castShadow = true;
-  return stander(mesh, { lean: 12, ...p });
+  const Hm = p.w * H / W, mesh = new THREE.Mesh(new THREE.PlaneGeometry(p.w, Hm), m); mesh.castShadow = true;
+  const s = stander(mesh, { lean: 12, ...p });
+  if (p.enter === 'unroll') {   // 두루마리: 위끝 고정, 아래 롤이 굴러 내려가며 기사가 드러난다(2026-11-03 사용자 요청)
+    t.repeat.y = 0.001; t.offset.y = 0.999;
+    const roll = new THREE.Mesh(new THREE.CylinderGeometry(1, 1, p.w * 1.01, 32), new THREE.MeshStandardMaterial({ map: paperTex(C.paper), roughness: 0.9 }));
+    roll.rotation.z = Math.PI / 2; roll.castShadow = true; s.add(roll);
+    const rod = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, p.w * 1.04, 16), new THREE.MeshStandardMaterial({ color: '#8a6a45', roughness: 0.6 }));
+    rod.rotation.z = Math.PI / 2; rod.position.set(0, Hm + 0.02, 0.06); rod.castShadow = true; s.add(rod);   // 위끝 막대: 걸린 두루마리로 읽히게
+    s.userData.unroll = { mesh, roll, t, Hm, dur: p.dur ?? 0.9 };
+  }
+  return s;
 }
 function bar(p) {       // 종이 막대: at에 자라난다. v = 값, u = 값 1당 높이
   const b = box(p.wd || 1.8, 1, p.wd || 1.8, C[p.color] || p.color);
@@ -127,6 +136,14 @@ function poseProps(props, tl) {
     // at < 0: 앞 컷에서 이어진 것(완성 상태로 둠). at = 0: 컷 시작부터 서 있음. at > 0: 그 구절에서 일어서거나 자람
     if (u.bar) { const g = u.at < 0 ? 1 : outCubic(clamp01((tl - u.at) / 0.9)), h = Math.max(0.01, u.h * g);
       u.bar.scale.y = h; u.bar.position.y = h / 2; o.visible = g > 0; return; }
+    if (u.unroll) {   // 서 있는 채로, 위에서 아래로 펼친다
+      const { mesh, roll, t, Hm, dur } = u.unroll, q = u.at < 0 ? 1 : outCubic(clamp01((tl - Math.max(0, u.at)) / dur)), sh = Math.max(0.001, q);
+      o.visible = true; o.rotation.x = -u.lean;
+      mesh.scale.y = sh; mesh.position.y = Hm * (1 - sh / 2);   // 위끝(Hm)은 그대로, 보이는 부분만 늘어난다
+      t.repeat.y = sh; t.offset.y = 1 - sh;                    // 늘이지 않고 위쪽부터 잘라 보여 준다
+      const r = 0.06 + 0.22 * (1 - q); roll.scale.set(r, 1, r); roll.position.set(0, Hm * (1 - sh), r + 0.02); roll.visible = q < 0.999;
+      return;
+    }
     const a = u.at <= 0 ? 1 : outCubic(clamp01((tl - u.at) / 0.45));
     o.visible = a > 0; o.rotation.x = -u.lean - (1 - a) * (Math.PI / 2 - u.lean);   // 누워 있다가 일어선다
   });

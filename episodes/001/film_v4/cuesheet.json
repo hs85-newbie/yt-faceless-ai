@@ -69,7 +69,9 @@
      "x": -2.0,
      "z": 1.2,
      "highlight": true,
-     "pad": 55
+     "pad": 55,
+     "enter": "unroll",
+     "at": 0.15
     },
     {
      "t": "cutout",
@@ -236,7 +238,8 @@
      "z": 1.2,
      "highlight": true,
      "pad": 105,
-     "at": "s2_03"
+     "at": "s2_03",
+     "enter": "unroll"
     },
     {
      "t": "cutout",
