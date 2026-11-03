@@ -1,7 +1,7 @@
 // EP001 v4 — 책상 상판(바닥) 위 초록 매트, 그 위에 종이 소재가 서 있는 하나의 세계(2026-11-02 사용자 지시).
 // 카메라는 모든 컷에서 한 자리에 고정(사용자 지시: 배경과 바닥은 고정). 컷이 바뀌면 소품만 바뀐다. 전환은 하드 컷뿐.
 // 소품은 at 초에 바닥에서 일어선다(종이가 세워지는 움직임). 매끄러운 24fps, 스텝 없음(v3 떨림 원인 제거).
-import { THREE, C, tag, box, matTex, tex, grain, paperTex } from './lib3d.js';
+import { THREE, C, tag, box, matTex, tex, grain } from './lib3d.js';
 
 const clamp01 = x => Math.min(1, Math.max(0, x));
 const outCubic = p => 1 - Math.pow(1 - p, 3);
@@ -110,15 +110,18 @@ function doc(p) {       // 원문 캡처를 찢은 종이 한 장으로 세운�
     g.restore(); t.needsUpdate = true;
   });
   const m = new THREE.MeshStandardMaterial({ map: t, alphaTest: 0.5, roughness: 0.9, side: THREE.DoubleSide });
-  const Hm = p.w * H / W, mesh = new THREE.Mesh(new THREE.PlaneGeometry(p.w, Hm), m); mesh.castShadow = true;
+  const Hm = p.w * H / W, seg = p.enter === 'crumple' ? [48, Math.round(48 * Hm / p.w)] : [1, 1];
+  const mesh = new THREE.Mesh(new THREE.PlaneGeometry(p.w, Hm, seg[0], seg[1]), m); mesh.castShadow = true;
   const s = stander(mesh, { lean: 12, ...p });
-  if (p.enter === 'unroll') {   // 두루마리: 위끝 고정, 아래 롤이 굴러 내려가며 기사가 드러난다(2026-11-03 사용자 요청)
-    t.repeat.y = 0.001; t.offset.y = 0.999;
-    const roll = new THREE.Mesh(new THREE.CylinderGeometry(1, 1, p.w * 1.01, 32), new THREE.MeshStandardMaterial({ map: paperTex(C.paper), roughness: 0.9 }));
-    roll.rotation.z = Math.PI / 2; roll.castShadow = true; s.add(roll);
-    const rod = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, p.w * 1.04, 16), new THREE.MeshStandardMaterial({ color: '#8a6a45', roughness: 0.6 }));
-    rod.rotation.z = Math.PI / 2; rod.position.set(0, Hm + 0.02, 0.06); rod.castShadow = true; s.add(rod);   // 위끝 막대: 걸린 두루마리로 읽히게
-    s.userData.unroll = { mesh, roll, t, Hm, dur: p.dur ?? 0.9 };
+  if (p.enter === 'crumple') {   // 구겨진 종이 뭉치가 떨어진 뒤 펴진다(2026-11-03 사용자 선택)
+    const pos = mesh.geometry.attributes.position, flat = Float32Array.from(pos.array), ball = new Float32Array(pos.array.length);
+    const R0 = Math.min(p.w, Hm) * 0.16, hash = i => { const x = Math.sin(i * 12.9898) * 43758.5453; return x - Math.floor(x); };
+    for (let i = 0; i < pos.count; i++) {
+      const u = flat[i * 3] / (p.w / 2), v = flat[i * 3 + 1] / (Hm / 2), th = Math.atan2(v, u), ph = Math.min(1, Math.hypot(u, v) / Math.SQRT2) * Math.PI;
+      const r = R0 * (1 + 0.13 * Math.sin(5 * u + 3 * v) * Math.cos(4 * v - 2 * u));   // 매끈하게 울퉁불퉁한 공(점마다 난수면 가시처럼 뾰족해짐)
+      ball[i * 3] = r * Math.cos(th) * Math.sin(ph); ball[i * 3 + 1] = r * Math.sin(th) * Math.sin(ph); ball[i * 3 + 2] = r * Math.cos(ph);
+    }
+    s.userData.crumple = { mesh, flat, ball, Hm, R0, hash };
   }
   return s;
 }
@@ -128,7 +131,24 @@ function bar(p) {       // 종이 막대: at에 자라난다. v = 값, u = 값 1
   g.userData = { bar: b, at: p.at ?? 0, h: p.v * p.u };
   return g;
 }
-const MAKE = { cutout, card, doc, bar };
+function bubble(p) {    // 말풍선: 둥근 종이 + 아래쪽 꼬리(tail: 'left'|'right'). 화자는 꼬리 방향의 소품
+  const lines = p.lines, size = p.size || 120, W = 1400;
+  const m0 = document.createElement('canvas').getContext('2d'); m0.font = `800 ${size}px "Avenir Next Condensed", "DIN Condensed", sans-serif`;
+  const tw = Math.max(...lines.map(l => m0.measureText(l).width)), w = Math.min(W, tw + 200), bh = lines.length * size * 1.15 + 140, h = bh + 120;
+  const t = tex(w, h, (g) => {
+    const r = 70; g.fillStyle = '#fbf8f0'; g.strokeStyle = '#1a1a1a'; g.lineWidth = 10;
+    g.beginPath(); g.moveTo(r, 8); g.arcTo(w - 8, 8, w - 8, bh, r); g.arcTo(w - 8, bh, 8, bh, r);
+    const tx = p.tail === 'right' ? w * 0.72 : w * 0.22, dir = p.tail === 'right' ? 1 : -1;
+    g.lineTo(tx + 60, bh); g.lineTo(tx + dir * 90, h - 10); g.lineTo(tx - 20, bh);
+    g.arcTo(8, bh, 8, 8, r); g.arcTo(8, 8, w - 8, 8, r); g.closePath(); g.fill(); g.stroke();
+    grain(g, w, h, 0.05); g.fillStyle = '#1a1a1a'; g.textAlign = 'center'; g.textBaseline = 'middle';
+    g.font = `800 ${size}px "Avenir Next Condensed", "DIN Condensed", sans-serif`;
+    lines.forEach((l, i) => g.fillText(l, w / 2, bh / 2 + (i - (lines.length - 1) / 2) * size * 1.15 + size * 0.06));
+  });
+  const mesh = new THREE.Mesh(new THREE.PlaneGeometry(p.h * w / h, p.h), new THREE.MeshStandardMaterial({ map: t, alphaTest: 0.5, roughness: 1, side: THREE.DoubleSide }));
+  mesh.castShadow = true; const st = stander(mesh, p); st.children[0].position.y += p.y || 0; return st;
+}
+const MAKE = { cutout, card, doc, bar, bubble };
 
 function poseProps(props, tl) {
   props.forEach(o => {
@@ -136,12 +156,21 @@ function poseProps(props, tl) {
     // at < 0: 앞 컷에서 이어진 것(완성 상태로 둠). at = 0: 컷 시작부터 서 있음. at > 0: 그 구절에서 일어서거나 자람
     if (u.bar) { const g = u.at < 0 ? 1 : outCubic(clamp01((tl - u.at) / 0.9)), h = Math.max(0.01, u.h * g);
       u.bar.scale.y = h; u.bar.position.y = h / 2; o.visible = g > 0; return; }
-    if (u.unroll) {   // 서 있는 채로, 위에서 아래로 펼친다
-      const { mesh, roll, t, Hm, dur } = u.unroll, q = u.at < 0 ? 1 : outCubic(clamp01((tl - Math.max(0, u.at)) / dur)), sh = Math.max(0.001, q);
-      o.visible = true; o.rotation.x = -u.lean;
-      mesh.scale.y = sh; mesh.position.y = Hm * (1 - sh / 2);   // 위끝(Hm)은 그대로, 보이는 부분만 늘어난다
-      t.repeat.y = sh; t.offset.y = 1 - sh;                    // 늘이지 않고 위쪽부터 잘라 보여 준다
-      const r = 0.06 + 0.22 * (1 - q); roll.scale.set(r, 1, r); roll.position.set(0, Hm * (1 - sh), r + 0.02); roll.visible = q < 0.999;
+    if (u.crumple) {   // 0~0.35초 떨어짐, 0.35~1.25초 펴짐(남는 주름은 끝에서 사라진다)
+      const { mesh, flat, ball, Hm, R0, hash } = u.crumple, t0 = u.at < 0 ? 99 : tl - Math.max(0, u.at);
+      const fall = clamp01(t0 / 0.35), q = outCubic(clamp01((t0 - 0.35) / 0.9)), wr = (1 - q) * 0.22 + (q < 1 ? 0.03 : 0) * (1 - clamp01((t0 - 1.25) / 0.4));
+      o.visible = t0 >= 0; o.rotation.x = -u.lean;
+      const pos = mesh.geometry.attributes.position;
+      for (let i = 0; i < pos.count; i++) {
+        const fu = flat[i * 3], fv = flat[i * 3 + 1];   // 주름도 위치의 부드러운 함수로
+        const n = Math.sin(fu * 2.3 + fv * 1.7) * Math.cos(fv * 2.9 - fu * 1.1) * wr, n2 = Math.sin(fu * 1.3 - fv * 2.1) * wr * 0.5;
+        pos.array[i * 3] = ball[i * 3] + (flat[i * 3] - ball[i * 3]) * q + n2 * 0.4;
+        pos.array[i * 3 + 1] = ball[i * 3 + 1] + (flat[i * 3 + 1] - ball[i * 3 + 1]) * q + n2 * 0.4;
+        pos.array[i * 3 + 2] = ball[i * 3 + 2] * (1 - q) + n;
+      }
+      pos.needsUpdate = true; mesh.geometry.computeVertexNormals();
+      mesh.position.y = (R0 + (1 - fall * fall) * 4) * (1 - q) + (Hm / 2) * q;   // 위에서 떨어져 매트에 닿은 뒤 일어서며 펴짐
+      mesh.rotation.z = (1 - q) * 1.4 * (1 - fall);
       return;
     }
     const a = u.at <= 0 ? 1 : outCubic(clamp01((tl - u.at) / 0.45));

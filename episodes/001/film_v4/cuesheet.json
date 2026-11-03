@@ -70,7 +70,7 @@
      "z": 1.2,
      "highlight": true,
      "pad": 55,
-     "enter": "unroll",
+     "enter": "crumple",
      "at": 0.15
     },
     {
@@ -84,15 +84,25 @@
     {
      "t": "card",
      "lines": [
+      "NEW YORK FED"
+     ],
+     "h": 0.42,
+     "x": 6.1,
+     "z": -1.7,
+     "y": 2.15,
+     "ry": -12
+    },
+    {
+     "t": "bubble",
+     "lines": [
       "IT STARTED",
       "BEFORE CHATGPT"
      ],
-     "h": 1.3,
-     "bg": "red",
-     "fg": "paper",
-     "x": 5.0,
-     "z": 2.6,
-     "y": 1.0,
+     "h": 1.6,
+     "x": 4.6,
+     "z": -0.4,
+     "y": 3.4,
+     "tail": "right",
      "at": "s1_01@before chatgpt"
     }
    ]
@@ -239,7 +249,7 @@
      "highlight": true,
      "pad": 105,
      "at": "s2_03",
-     "enter": "unroll"
+     "enter": "crumple"
     },
     {
      "t": "cutout",
