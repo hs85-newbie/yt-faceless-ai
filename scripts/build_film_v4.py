@@ -53,7 +53,7 @@ for i, c in enumerate(cuts):
             p["crop"] = {"x": x0, "y": y0, "w": min(1920 - x0, m["w"] + 2 * pad), "h": min(1080 - y0, m["h"] + 2 * pad)}
             if p.get("enter") == "laptop":   # 노트북 화면(16:10, 주소창 제외 약 0.578)을 페이지로 꽉 채운다. 표시 문구는 위 3분의 1쯤
                 cw = min(1920, max(m["w"] + 240, 1150)); chh = round(cw * 0.578)
-                cx = max(0, min(1920 - cw, m["x"] + m["w"] / 2 - cw / 2)); cy = max(0, min(1080 - chh, m["y"] - chh * 0.3))
+                cx = max(0, min(1920 - cw, m["x"] + m["w"] / 2 - cw / 2)); cy = 0 if m["y"] + m["h"] < chh * 0.85 else max(0, min(1080 - chh, m["y"] - chh * 0.3))   # 표시 문구가 첫 화면에 들면 페이지 맨 위부터(로고가 잘리지 않게)
                 p["crop"] = {"x": round(cx), "y": round(cy), "w": cw, "h": chh}
             if p.pop("highlight", False): p["hl"] = {k: m[k] for k in "xywh"}
             p["img"] = m["file"]; shutil.copy(root / "pages" / m["file"], film / m["file"])
