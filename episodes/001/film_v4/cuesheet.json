@@ -242,24 +242,60 @@
    "src": "NY Fed, Liberty Street Economics (Jun 1, 2026)",
    "props": [
     {
-     "t": "doc",
-     "page": "nyfed_lse",
-     "mark": "Natalia Emanuel, Emma Harrington, and Amanda Pallais",
-     "w": 6.2,
-     "x": -1.9,
-     "z": -1.0,
-     "highlight": true,
-     "pad": 40,
-     "at": "s2_03",
-     "enter": "laptop"
+     "t": "cutout",
+     "img": "p_res_1",
+     "h": 3.9,
+     "x": -6.0,
+     "z": -0.6,
+     "ry": 8,
+     "at": "s2_03@three"
+    },
+    {
+     "t": "cutout",
+     "img": "p_res_2",
+     "h": 3.7,
+     "x": -3.7,
+     "z": -0.9,
+     "at": "s2_03@economists"
+    },
+    {
+     "t": "cutout",
+     "img": "p_res_3",
+     "h": 3.9,
+     "x": -1.4,
+     "z": -0.6,
+     "ry": -8,
+     "at": "s2_03@published"
+    },
+    {
+     "t": "card",
+     "lines": [
+      {
+       "text": "NATALIA EMANUEL · NEW YORK FED",
+       "size": 110
+      },
+      {
+       "text": "EMMA HARRINGTON · UNIV. OF VIRGINIA",
+       "size": 110
+      },
+      {
+       "text": "AMANDA PALLAIS · HARVARD",
+       "size": 110
+      }
+     ],
+     "h": 0.85,
+     "x": 0.9,
+     "z": 1.9,
+     "at": "s2_03@new york"
     },
     {
      "t": "cutout",
      "img": "p_magnifier",
-     "h": 3.4,
-     "x": 6.0,
-     "z": -1.6,
-     "ry": -18
+     "h": 3.2,
+     "x": 7.0,
+     "z": -1.4,
+     "ry": -18,
+     "at": "s2_03@their study"
     },
     {
      "t": "card",
@@ -268,9 +304,9 @@
       "IT START?"
      ],
      "h": 1.2,
-     "x": 5.0,
-     "z": 2.4,
-     "y": 2.2,
+     "x": 4.9,
+     "z": 0.6,
+     "y": 2.0,
      "at": "s2_03@when the"
     },
     {
@@ -281,8 +317,9 @@
      "h": 0.8,
      "bg": "mustard",
      "x": 5.0,
-     "z": 2.6,
-     "y": 0.9,
+     "z": 1.0,
+     "y": 0.6,
+     "nostick": false,
      "at": "s2_03@in which"
     }
    ]
