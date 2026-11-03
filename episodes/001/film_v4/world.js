@@ -1,7 +1,7 @@
 // EP001 v4 — 책상 상판(바닥) 위 초록 매트, 그 위에 종이 소재가 서 있는 하나의 세계(2026-11-02 사용자 지시).
 // 카메라는 모든 컷에서 한 자리에 고정(사용자 지시: 배경과 바닥은 고정). 컷이 바뀌면 소품만 바뀐다. 전환은 하드 컷뿐.
 // 소품은 at 초에 바닥에서 일어선다(종이가 세워지는 움직임). 매끄러운 24fps, 스텝 없음(v3 떨림 원인 제거).
-import { THREE, C, tag, box, matTex, tex, grain } from './lib3d.js';
+import { THREE, C, tag, box, matTex, tex, grain, paperTex } from './lib3d.js';
 
 const clamp01 = x => Math.min(1, Math.max(0, x));
 const outCubic = p => 1 - Math.pow(1 - p, 3);
@@ -98,6 +98,9 @@ function doc(p) {       // 원문 캡처를 찢은 종이 한 장으로 세운�
   const t = tex(W, H, () => {});
   img.decode().then(() => {
     const g = t.image.getContext('2d');
+    if (p.enter === 'laptop') { g.save(); g.fillStyle = '#fff'; g.fillRect(0, 0, W, H); g.drawImage(img, k.x, k.y, k.w, k.h, 0, 0, W, H);
+      if (p.hl) { g.globalCompositeOperation = 'multiply'; g.fillStyle = 'rgba(255,225,77,.55)'; g.fillRect((p.hl.x - k.x) * W / k.w, (p.hl.y - k.y) * H / k.h, p.hl.w * W / k.w, p.hl.h * H / k.h); }
+      g.restore(); t.needsUpdate = true; return; }
     g.beginPath(); g.moveTo(0, 18);
     for (let x = 0; x <= W; x += 28) g.lineTo(x, 6 + ((x * 7) % 17));
     for (let y = 0; y <= H; y += 28) g.lineTo(W - 4 - ((y * 5) % 9), y);
@@ -110,6 +113,22 @@ function doc(p) {       // 원문 캡처를 찢은 종이 한 장으로 세운�
     g.restore(); t.needsUpdate = true;
   });
   const m = new THREE.MeshStandardMaterial({ map: t, alphaTest: 0.5, roughness: 0.9, side: THREE.DoubleSide });
+  if (p.enter === 'laptop') {   // 종이 공작 노트북: 바닥판 + 경첩에서 열리는 뚜껑 + 화면(2026-11-03 사용자 선택 1번)
+    const Hs = p.w * H / W, bz = 0.22, bw = p.w + 2 * bz, bh = Hs + 2 * bz, D = Hs * 0.62, T = 0.12;
+    const body = paperTex('#cfd6dc'), g = new THREE.Group();
+    g.position.set(p.x || 0, MAT_Y, p.z || 0); g.rotation.y = (p.ry || 0) * Math.PI / 180;
+    const base = new THREE.Mesh(new THREE.BoxGeometry(bw, T, D), new THREE.MeshStandardMaterial({ map: body, roughness: 0.95 }));
+    base.position.set(0, T / 2, D / 2); base.castShadow = base.receiveShadow = true; g.add(base);
+    const keys = new THREE.Mesh(new THREE.PlaneGeometry(bw * 0.86, D * 0.5), new THREE.MeshStandardMaterial({ color: '#a9b3bc', roughness: 1 }));
+    keys.rotation.x = -Math.PI / 2; keys.position.set(0, T + 0.005, D * 0.4); g.add(keys);   // 자판 자리
+    const lid = new THREE.Group(); lid.position.set(0, T, 0.02); g.add(lid);
+    const shell = new THREE.Mesh(new THREE.BoxGeometry(bw, bh, T * 0.7), new THREE.MeshStandardMaterial({ map: body, roughness: 0.95 }));
+    shell.position.set(0, bh / 2, -T * 0.35); shell.castShadow = true; lid.add(shell);
+    const screen = new THREE.Mesh(new THREE.PlaneGeometry(p.w, Hs), new THREE.MeshBasicMaterial({ map: t, toneMapped: false }));
+    screen.position.set(0, bh / 2, 0.006); lid.add(screen);
+    g.userData = { at: p.at ?? 0, laptop: { lid, screen } };
+    return g;
+  }
   const Hm = p.w * H / W, seg = p.enter === 'fold' ? [32, 24] : [1, 1];
   const mesh = new THREE.Mesh(new THREE.PlaneGeometry(p.w, Hm, seg[0], seg[1]), m); mesh.castShadow = true;
   const s = stander(mesh, { lean: 12, ...p });
@@ -152,6 +171,12 @@ function poseProps(props, tl) {
     // at < 0: 앞 컷에서 이어진 것(완성 상태로 둠). at = 0: 컷 시작부터 서 있음. at > 0: 그 구절에서 일어서거나 자람
     if (u.bar) { const g = u.at < 0 ? 1 : outCubic(clamp01((tl - u.at) / 0.9)), h = Math.max(0.01, u.h * g);
       u.bar.scale.y = h; u.bar.position.y = h / 2; o.visible = g > 0; return; }
+    if (u.laptop) {
+      const t0 = u.at < 0 ? 99 : tl - Math.max(0, u.at), q = outCubic(clamp01(t0 / 0.5)), on = clamp01((t0 - 0.35) / 0.2);
+      o.visible = true; u.laptop.lid.rotation.x = Math.PI / 2 * (1 - q) - 0.2 * q;   // 덮인 상태 → 12° 뒤로 젖힘
+      u.laptop.screen.material.color.setScalar(0.15 + 0.85 * on);
+      return;
+    }
     if (u.fold) {   // 0~0.25초 떨어짐, 0.25~0.6초 윗장 펼침, 0.6~0.95초 오른장 펼침
       const { mesh, flat, w, Hm } = u.fold, t0 = u.at < 0 ? 99 : tl - Math.max(0, u.at);
       const drop = outCubic(clamp01(t0 / 0.25)), a2 = Math.PI * (1 - outCubic(clamp01((t0 - 0.25) / 0.35))), a1 = Math.PI * (1 - outCubic(clamp01((t0 - 0.6) / 0.35)));

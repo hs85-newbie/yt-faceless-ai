@@ -65,12 +65,12 @@
      "t": "doc",
      "page": "nyfed_lse",
      "mark": "Remote Work Leaves Younger Workers Sidelined",
-     "w": 9.4,
-     "x": -2.0,
-     "z": 1.2,
+     "w": 7.0,
+     "x": -1.8,
+     "z": -0.6,
      "highlight": true,
      "pad": 55,
-     "enter": "fold",
+     "enter": "laptop",
      "at": 0.15
     },
     {
@@ -245,13 +245,13 @@
      "t": "doc",
      "page": "nyfed_lse",
      "mark": "Natalia Emanuel, Emma Harrington, and Amanda Pallais",
-     "w": 9.4,
-     "x": -2.0,
-     "z": 1.2,
+     "w": 7.0,
+     "x": -1.8,
+     "z": -0.6,
      "highlight": true,
      "pad": 105,
      "at": "s2_03",
-     "enter": "fold"
+     "enter": "laptop"
     },
     {
      "t": "cutout",
