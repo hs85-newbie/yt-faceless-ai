@@ -89,7 +89,7 @@ function card(p) {      // 서 있는 글자 카드
   const mesh = tag(lines, p.h || 1.0, { bg: p.bg ? C[p.bg] || p.bg : C.paper, fg: p.fg ? C[p.fg] || p.fg : C.ink, size: p.size || 150 });
   mesh.material.alphaTest = 0.5; mesh.material.transparent = false;
   const s = stander(mesh, p); s.children[0].position.y += p.y || 0;   // y: 종이 막대에 꽂아 들어 올린 카드
-  if (p.y) { const st = box(0.09, p.y, 0.05, C.paper); st.position.set(0, p.y / 2, -0.03); s.add(st); }
+  if (p.y && !p.nostick) { const st = box(0.09, p.y, 0.05, C.paper); st.position.set(0, p.y / 2, -0.03); s.add(st); }
   return s;
 }
 function doc(p) {       // 원문 캡처를 찢은 종이 한 장으로 세운다
@@ -110,18 +110,14 @@ function doc(p) {       // 원문 캡처를 찢은 종이 한 장으로 세운�
     g.restore(); t.needsUpdate = true;
   });
   const m = new THREE.MeshStandardMaterial({ map: t, alphaTest: 0.5, roughness: 0.9, side: THREE.DoubleSide });
-  const Hm = p.w * H / W, seg = p.enter === 'crumple' ? [48, Math.round(48 * Hm / p.w)] : [1, 1];
+  const Hm = p.w * H / W, seg = p.enter === 'fold' ? [32, 24] : [1, 1];
   const mesh = new THREE.Mesh(new THREE.PlaneGeometry(p.w, Hm, seg[0], seg[1]), m); mesh.castShadow = true;
   const s = stander(mesh, { lean: 12, ...p });
-  if (p.enter === 'crumple') {   // 구겨진 종이 뭉치가 떨어진 뒤 펴진다(2026-11-03 사용자 선택)
-    const pos = mesh.geometry.attributes.position, flat = Float32Array.from(pos.array), ball = new Float32Array(pos.array.length);
-    const R0 = Math.min(p.w, Hm) * 0.16, hash = i => { const x = Math.sin(i * 12.9898) * 43758.5453; return x - Math.floor(x); };
-    for (let i = 0; i < pos.count; i++) {
-      const u = flat[i * 3] / (p.w / 2), v = flat[i * 3 + 1] / (Hm / 2), th = Math.atan2(v, u), ph = Math.min(1, Math.hypot(u, v) / Math.SQRT2) * Math.PI;
-      const r = R0 * (1 + 0.13 * Math.sin(5 * u + 3 * v) * Math.cos(4 * v - 2 * u));   // 매끈하게 울퉁불퉁한 공(점마다 난수면 가시처럼 뾰족해짐)
-      ball[i * 3] = r * Math.cos(th) * Math.sin(ph); ball[i * 3 + 1] = r * Math.sin(th) * Math.sin(ph); ball[i * 3 + 2] = r * Math.cos(ph);
-    }
-    s.userData.crumple = { mesh, flat, ball, Hm, R0, hash };
+  if (p.enter === 'fold') {   // 네 번 접힌 신문이 떨어진 뒤 위아래 → 좌우로 펼쳐진다. 크기는 그대로(2026-11-03 사용자: 구겨짐 어색)
+    m.side = THREE.FrontSide;
+    const back = new THREE.Mesh(mesh.geometry, new THREE.MeshStandardMaterial({ color: '#f4efe3', emissive: '#4a443a', roughness: 1, side: THREE.BackSide }));
+    back.castShadow = true; mesh.add(back);   // 뒷면은 인쇄 없는 종이
+    s.userData.fold = { mesh, flat: Float32Array.from(mesh.geometry.attributes.position.array), w: p.w, Hm };
   }
   return s;
 }
@@ -156,21 +152,20 @@ function poseProps(props, tl) {
     // at < 0: 앞 컷에서 이어진 것(완성 상태로 둠). at = 0: 컷 시작부터 서 있음. at > 0: 그 구절에서 일어서거나 자람
     if (u.bar) { const g = u.at < 0 ? 1 : outCubic(clamp01((tl - u.at) / 0.9)), h = Math.max(0.01, u.h * g);
       u.bar.scale.y = h; u.bar.position.y = h / 2; o.visible = g > 0; return; }
-    if (u.crumple) {   // 0~0.35초 떨어짐, 0.35~1.25초 펴짐(남는 주름은 끝에서 사라진다)
-      const { mesh, flat, ball, Hm, R0, hash } = u.crumple, t0 = u.at < 0 ? 99 : tl - Math.max(0, u.at);
-      const fall = clamp01(t0 / 0.35), q = outCubic(clamp01((t0 - 0.35) / 0.9)), wr = (1 - q) * 0.22 + (q < 1 ? 0.03 : 0) * (1 - clamp01((t0 - 1.25) / 0.4));
+    if (u.fold) {   // 0~0.25초 떨어짐, 0.25~0.6초 윗장 펼침, 0.6~0.95초 오른장 펼침
+      const { mesh, flat, w, Hm } = u.fold, t0 = u.at < 0 ? 99 : tl - Math.max(0, u.at);
+      const drop = outCubic(clamp01(t0 / 0.25)), a2 = Math.PI * (1 - outCubic(clamp01((t0 - 0.25) / 0.35))), a1 = Math.PI * (1 - outCubic(clamp01((t0 - 0.6) / 0.35)));
       o.visible = t0 >= 0; o.rotation.x = -u.lean;
       const pos = mesh.geometry.attributes.position;
       for (let i = 0; i < pos.count; i++) {
-        const fu = flat[i * 3], fv = flat[i * 3 + 1];   // 주름도 위치의 부드러운 함수로
-        const n = Math.sin(fu * 2.3 + fv * 1.7) * Math.cos(fv * 2.9 - fu * 1.1) * wr, n2 = Math.sin(fu * 1.3 - fv * 2.1) * wr * 0.5;
-        pos.array[i * 3] = ball[i * 3] + (flat[i * 3] - ball[i * 3]) * q + n2 * 0.4;
-        pos.array[i * 3 + 1] = ball[i * 3 + 1] + (flat[i * 3 + 1] - ball[i * 3 + 1]) * q + n2 * 0.4;
-        pos.array[i * 3 + 2] = ball[i * 3 + 2] * (1 - q) + n;
+        let x = flat[i * 3], y = flat[i * 3 + 1], z = 0;
+        if (x > 0) { z = x * Math.sin(a1) + 0.004 * (a1 / Math.PI); x = x * Math.cos(a1); }   // 오른쪽 반을 앞으로 접음
+        if (y > 0) { const yy = y * Math.cos(a2) - z * Math.sin(a2), zz = y * Math.sin(a2) + z * Math.cos(a2) + 0.008 * (a2 / Math.PI); y = yy; z = zz; }   // 윗 반을 앞으로 접음
+        pos.array[i * 3] = x; pos.array[i * 3 + 1] = y; pos.array[i * 3 + 2] = z;
       }
       pos.needsUpdate = true; mesh.geometry.computeVertexNormals();
-      mesh.position.y = (R0 + (1 - fall * fall) * 4) * (1 - q) + (Hm / 2) * q;   // 위에서 떨어져 매트에 닿은 뒤 일어서며 펴짐
-      mesh.rotation.z = (1 - q) * 1.4 * (1 - fall);
+      mesh.position.x = (w / 4) * (a1 / Math.PI);                     // 접힌 동안 가운데로
+      mesh.position.y = Hm / 2 + (1 - drop) * 3;                      // 아랫반이 매트에 닿는다
       return;
     }
     const a = u.at <= 0 ? 1 : outCubic(clamp01((tl - u.at) / 0.45));

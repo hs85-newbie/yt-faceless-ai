@@ -70,7 +70,7 @@
      "z": 1.2,
      "highlight": true,
      "pad": 55,
-     "enter": "crumple",
+     "enter": "fold",
      "at": 0.15
     },
     {
@@ -86,24 +86,26 @@
      "lines": [
       "NEW YORK FED"
      ],
-     "h": 0.42,
-     "x": 6.1,
-     "z": -1.7,
-     "y": 2.15,
-     "ry": -12
+     "h": 0.38,
+     "x": 6.183,
+     "z": -2.322,
+     "y": 2.05,
+     "ry": -12,
+     "nostick": true
     },
     {
      "t": "bubble",
      "lines": [
-      "IT STARTED",
-      "BEFORE CHATGPT"
+      "“REMOTE WORK LEAVES",
+      "YOUNGER WORKERS SIDELINED”"
      ],
-     "h": 1.6,
-     "x": 4.6,
+     "h": 1.5,
+     "x": 4.2,
      "z": -0.4,
      "y": 3.4,
      "tail": "right",
-     "at": "s1_01@before chatgpt"
+     "at": "s1_01@study found",
+     "size": 100
     }
    ]
   },
@@ -249,7 +251,7 @@
      "highlight": true,
      "pad": 105,
      "at": "s2_03",
-     "enter": "crumple"
+     "enter": "fold"
     },
     {
      "t": "cutout",
