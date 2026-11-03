@@ -1,6 +1,7 @@
 // EP001 v4 — 책상 상판(바닥) 위 초록 매트, 그 위에 종이 소재가 서 있는 하나의 세계(2026-11-02 사용자 지시).
 // 카메라는 모든 컷에서 한 자리에 고정(사용자 지시: 배경과 바닥은 고정). 컷이 바뀌면 소품만 바뀐다. 전환은 하드 컷뿐.
 // 소품은 at 초에 바닥에서 일어선다(종이가 세워지는 움직임). 매끄러운 24fps, 스텝 없음(v3 떨림 원인 제거).
+import { RoundedBoxGeometry } from './RoundedBoxGeometry.js';
 import { THREE, C, tag, box, matTex, tex, grain, paperTex } from './lib3d.js';
 
 const clamp01 = x => Math.min(1, Math.max(0, x));
@@ -94,13 +95,23 @@ function card(p) {      // 서 있는 글자 카드
 }
 function doc(p) {       // 원문 캡처를 찢은 종이 한 장으로 세운다
   const img = new Image(); img.src = p.img;
-  const k = p.crop, W = 1400, H = Math.round(W * k.h / k.w);
+  const k = p.crop, W = 1400, H = p.enter === 'laptop' ? 875 : Math.round(W * k.h / k.w);
   const t = tex(W, H, () => {});
   img.decode().then(() => {
     const g = t.image.getContext('2d');
-    if (p.enter === 'laptop') { g.save(); g.fillStyle = '#fff'; g.fillRect(0, 0, W, H); g.drawImage(img, k.x, k.y, k.w, k.h, 0, 0, W, H);
-      if (p.hl) { g.globalCompositeOperation = 'multiply'; g.fillStyle = 'rgba(255,225,77,.55)'; g.fillRect((p.hl.x - k.x) * W / k.w, (p.hl.y - k.y) * H / k.h, p.hl.w * W / k.w, p.hl.h * H / k.h); }
-      g.restore(); t.needsUpdate = true; return; }
+    if (p.enter === 'laptop') {   // 16:10 노트북 화면: 브라우저 주소창 + 원문 캡처
+      g.fillStyle = '#ffffff'; g.fillRect(0, 0, W, H);
+      const bar = Math.round(H * 0.075);
+      g.fillStyle = '#e9eaee'; g.fillRect(0, 0, W, bar);
+      [['#ff5f57', 0], ['#febc2e', 1], ['#28c840', 2]].forEach(([c, i]) => { g.fillStyle = c; g.beginPath(); g.arc(bar * 0.6 + i * bar * 0.55, bar / 2, bar * 0.17, 0, 7); g.fill(); });
+      g.fillStyle = '#ffffff'; const ux = bar * 2.6, uw = W - ux - bar * 0.8; g.beginPath(); g.roundRect(ux, bar * 0.2, uw, bar * 0.6, bar * 0.3); g.fill();
+      g.fillStyle = '#5f6368'; g.font = `500 ${Math.round(bar * 0.36)}px -apple-system, "Helvetica Neue", sans-serif`; g.textBaseline = 'middle';
+      g.fillText(p.url || 'libertystreeteconomics.newyorkfed.org', ux + bar * 0.4, bar / 2);
+      const sc = W / k.w, ch = Math.min(H - bar, k.h * sc);
+      g.drawImage(img, k.x, k.y, k.w, ch / sc, 0, bar, W, ch);
+      if (p.hl) { g.globalCompositeOperation = 'multiply'; g.fillStyle = 'rgba(255,225,77,.55)'; g.fillRect((p.hl.x - k.x) * sc, bar + (p.hl.y - k.y) * sc, p.hl.w * sc, p.hl.h * sc); g.globalCompositeOperation = 'source-over'; }
+      t.needsUpdate = true; return;
+    }
     g.beginPath(); g.moveTo(0, 18);
     for (let x = 0; x <= W; x += 28) g.lineTo(x, 6 + ((x * 7) % 17));
     for (let y = 0; y <= H; y += 28) g.lineTo(W - 4 - ((y * 5) % 9), y);
@@ -113,19 +124,29 @@ function doc(p) {       // 원문 캡처를 찢은 종이 한 장으로 세운�
     g.restore(); t.needsUpdate = true;
   });
   const m = new THREE.MeshStandardMaterial({ map: t, alphaTest: 0.5, roughness: 0.9, side: THREE.DoubleSide });
-  if (p.enter === 'laptop') {   // 종이 공작 노트북: 바닥판 + 경첩에서 열리는 뚜껑 + 화면(2026-11-03 사용자 선택 1번)
-    const Hs = p.w * H / W, bz = 0.22, bw = p.w + 2 * bz, bh = Hs + 2 * bz, D = Hs * 0.62, T = 0.12;
-    const body = paperTex('#cfd6dc'), g = new THREE.Group();
-    g.position.set(p.x || 0, MAT_Y, p.z || 0); g.rotation.y = (p.ry || 0) * Math.PI / 180;
-    const base = new THREE.Mesh(new THREE.BoxGeometry(bw, T, D), new THREE.MeshStandardMaterial({ map: body, roughness: 0.95 }));
-    base.position.set(0, T / 2, D / 2); base.castShadow = base.receiveShadow = true; g.add(base);
-    const keys = new THREE.Mesh(new THREE.PlaneGeometry(bw * 0.86, D * 0.5), new THREE.MeshStandardMaterial({ color: '#a9b3bc', roughness: 1 }));
-    keys.rotation.x = -Math.PI / 2; keys.position.set(0, T + 0.005, D * 0.4); g.add(keys);   // 자판 자리
-    const lid = new THREE.Group(); lid.position.set(0, T, 0.02); g.add(lid);
-    const shell = new THREE.Mesh(new THREE.BoxGeometry(bw, bh, T * 0.7), new THREE.MeshStandardMaterial({ map: body, roughness: 0.95 }));
-    shell.position.set(0, bh / 2, -T * 0.35); shell.castShadow = true; lid.add(shell);
-    const screen = new THREE.Mesh(new THREE.PlaneGeometry(p.w, Hs), new THREE.MeshBasicMaterial({ map: t, toneMapped: false }));
-    screen.position.set(0, bh / 2, 0.006); lid.add(screen);
+  if (p.enter === 'laptop') {   // 실제 노트북 형태(2026-11-03 사용자: 종이 노트북 조악)
+    const Ws = p.w, Hs = Ws * H / W, side = 0.16, top = 0.24, bot = 0.34, LW = Ws + 2 * side, LH = Hs + top + bot, LT = 0.09, BT = 0.17, D = LH * 0.72;
+    const alu = new THREE.MeshStandardMaterial({ color: '#c8cbd0', metalness: 0.35, roughness: 0.42 });
+    const g = new THREE.Group(); g.position.set(p.x || 0, MAT_Y, p.z || 0); g.rotation.y = (p.ry || 0) * Math.PI / 180;
+    const base = new THREE.Mesh(new RoundedBoxGeometry(LW, BT, D, 4, 0.07), alu); base.position.set(0, BT / 2, D / 2); base.castShadow = base.receiveShadow = true; g.add(base);
+    const well = new THREE.Mesh(new THREE.PlaneGeometry(LW * 0.9, D * 0.42), new THREE.MeshStandardMaterial({ color: '#2b2d31', roughness: 0.8 }));
+    well.rotation.x = -Math.PI / 2; well.position.set(0, BT + 0.002, D * 0.28); g.add(well);
+    const cols = 15, rows = 5, kw = (LW * 0.9) / cols, kd = (D * 0.42) / rows;
+    const keys = new THREE.InstancedMesh(new RoundedBoxGeometry(kw * 0.82, 0.03, kd * 0.78, 2, 0.012), new THREE.MeshStandardMaterial({ color: '#17181b', roughness: 0.6 }), cols * rows);
+    const mtx = new THREE.Matrix4(); let n = 0;
+    for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) { mtx.makeTranslation(-LW * 0.45 + kw * (c + 0.5), BT + 0.016, D * 0.28 - D * 0.21 + kd * (r + 0.5)); keys.setMatrixAt(n++, mtx); }
+    g.add(keys);
+    const pad = new THREE.Mesh(new RoundedBoxGeometry(LW * 0.34, 0.006, D * 0.3, 2, 0.003), new THREE.MeshStandardMaterial({ color: '#bfc2c7', metalness: 0.3, roughness: 0.3 }));
+    pad.position.set(0, BT + 0.003, D * 0.72); g.add(pad);
+    const hinge = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, LW * 0.8, 20), new THREE.MeshStandardMaterial({ color: '#2b2d31', roughness: 0.5 }));
+    hinge.rotation.z = Math.PI / 2; hinge.position.set(0, BT + 0.02, 0.02); g.add(hinge);
+    const lid = new THREE.Group(); lid.position.set(0, BT, 0.02); g.add(lid);
+    const shell = new THREE.Mesh(new RoundedBoxGeometry(LW, LH, LT, 4, 0.04), alu); shell.position.set(0, LH / 2, -LT / 2); shell.castShadow = true; lid.add(shell);
+    const glass = new THREE.Mesh(new THREE.PlaneGeometry(LW - 0.02, LH - 0.02), new THREE.MeshStandardMaterial({ color: '#0c0d0f', roughness: 0.15, metalness: 0.1 }));
+    glass.position.set(0, LH / 2, 0.002); lid.add(glass);
+    const cam = new THREE.Mesh(new THREE.CircleGeometry(0.025, 16), new THREE.MeshBasicMaterial({ color: '#1f2a33' })); cam.position.set(0, LH - top / 2, 0.003); lid.add(cam);
+    const screen = new THREE.Mesh(new THREE.PlaneGeometry(Ws, Hs), new THREE.MeshBasicMaterial({ map: t, toneMapped: false }));
+    screen.position.set(0, bot + Hs / 2, 0.004); lid.add(screen);
     g.userData = { at: p.at ?? 0, laptop: { lid, screen } };
     return g;
   }
@@ -173,8 +194,8 @@ function poseProps(props, tl) {
       u.bar.scale.y = h; u.bar.position.y = h / 2; o.visible = g > 0; return; }
     if (u.laptop) {
       const t0 = u.at < 0 ? 99 : tl - Math.max(0, u.at), q = outCubic(clamp01(t0 / 0.5)), on = clamp01((t0 - 0.35) / 0.2);
-      o.visible = true; u.laptop.lid.rotation.x = Math.PI / 2 * (1 - q) - 0.2 * q;   // 덮인 상태 → 12° 뒤로 젖힘
-      u.laptop.screen.material.color.setScalar(0.15 + 0.85 * on);
+      o.visible = true; u.laptop.lid.rotation.x = Math.PI / 2 * (1 - q) - 0.33 * q;   // 덮인 상태 → 12° 뒤로 젖힘
+      u.laptop.screen.material.color.setScalar(0.04 + 0.96 * on);
       return;
     }
     if (u.fold) {   // 0~0.25초 떨어짐, 0.25~0.6초 윗장 펼침, 0.6~0.95초 오른장 펼침

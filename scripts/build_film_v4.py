@@ -51,11 +51,16 @@ for i, c in enumerate(cuts):
             m = json.loads((root / "pages" / f"{p['page']}_marks.json").read_text(encoding="utf-8"))[p.pop("mark")]
             pad = p.pop("pad", 90); x0, y0 = max(0, m["x"] - pad), max(0, m["y"] - pad)
             p["crop"] = {"x": x0, "y": y0, "w": min(1920 - x0, m["w"] + 2 * pad), "h": min(1080 - y0, m["h"] + 2 * pad)}
+            if p.get("enter") == "laptop":   # 노트북 화면(16:10, 주소창 제외 약 0.578)을 페이지로 꽉 채운다. 표시 문구는 위 3분의 1쯤
+                cw = min(1920, max(m["w"] + 240, 1150)); chh = round(cw * 0.578)
+                cx = max(0, min(1920 - cw, m["x"] + m["w"] / 2 - cw / 2)); cy = max(0, min(1080 - chh, m["y"] - chh * 0.3))
+                p["crop"] = {"x": round(cx), "y": round(cy), "w": cw, "h": chh}
             if p.pop("highlight", False): p["hl"] = {k: m[k] for k in "xywh"}
             p["img"] = m["file"]; shutil.copy(root / "pages" / m["file"], film / m["file"])
 for f in ("index.html", "world.js"): shutil.copy(ep / "film_v4" / f, film / f)
 shutil.copy(ep / "film_v3" / "lib3d.js", film / "lib3d.js")
 shutil.copy(Path.home() / "lemo-opuscar/node_modules/three/build/three.module.js", film / "three.module.js")
+shutil.copy(Path.home() / "lemo-opuscar/node_modules/three/examples/jsm/geometries/RoundedBoxGeometry.js", film / "RoundedBoxGeometry.js")
 (film / "cuts.json").write_text(json.dumps({"cuts": cuts}, ensure_ascii=False, indent=1), encoding="utf-8")
 lens = [c["d"] for c in cuts]
 print(f"cuts {len(cuts)} · film {cuts[-1]['t'] + cuts[-1]['d']:.1f}s · avg {sum(lens) / len(lens):.1f}s · min {min(lens):.1f}s · max {max(lens):.1f}s")
