@@ -11,7 +11,7 @@ import numpy as np
 import soundfile as sf
 
 voice_dir, out_dir = Path(sys.argv[1]), Path(sys.argv[2])
-GAP_LINE, GAP_SCENE = 0.25, 0.6  # A안(2026-11-02): 자연 속도
+GAP_LINE, GAP_SCENE = 0.12, 0.35  # 2026-11-03 사용자: 중간 쉼 더 줄임
 lines = json.loads((voice_dir / "lines.json").read_text(encoding="utf-8"))
 words = json.loads((voice_dir / "words.json").read_text(encoding="utf-8")) if (voice_dir / "words.json").exists() else {}
 # 선택: pauses.json {줄 id: 초} — 그 줄 뒤에 쉼을 더한다(제목 드롭처럼 화면만 보여 주는 구간)
