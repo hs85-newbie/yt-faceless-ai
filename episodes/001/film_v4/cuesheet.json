@@ -903,24 +903,31 @@
      "zoom": 2.6,
      "keys": [
       {
-       "at": "s3_04@the researchers",
-       "x": 10.5,
-       "y": 1.6,
+       "at": "s3_04@juniors get",
+       "x": -10.5,
+       "y": 1.75,
        "z": 3.3
       },
       {
-       "at": "s3_04@the researchers",
-       "x": -1.2,
+       "at": "s3_04@juniors get",
+       "x": -2.6,
        "y": 1.75,
        "z": 3.3,
-       "dur": 0.55
+       "dur": 0.9
       },
       {
-       "at": "s3_04@check",
+       "at": "s3_04@replaced",
+       "x": 0.6,
+       "y": 1.75,
+       "z": 3.3,
+       "dur": 1.4
+      },
+      {
+       "at": "s3_04@the researchers",
        "x": 2.39,
        "y": 1.52,
        "z": 3.3,
-       "dur": 0.4
+       "dur": 0.8
       }
      ]
     }
