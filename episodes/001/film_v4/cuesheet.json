@@ -998,6 +998,1645 @@
      "at": "s4_01@and jobs where"
     }
    ]
+  },
+  {
+   "at": "s4_02",
+   "src": "NY Fed, Liberty Street Economics (Jun 1, 2026)",
+   "props": [
+    {
+     "t": "card",
+     "lines": [
+      "FROM-HOME JOBS"
+     ],
+     "h": 0.6,
+     "x": 0,
+     "z": -2.4,
+     "at": 0,
+     "y": 4.6
+    },
+    {
+     "t": "cutout",
+     "img": "p_grad_front",
+     "h": 3.6,
+     "x": -3.6,
+     "z": -0.6,
+     "at": 0
+    },
+    {
+     "t": "card",
+     "lines": [
+      "YOUNG GRADS"
+     ],
+     "h": 0.5,
+     "x": -3.6,
+     "z": 1.4,
+     "at": 0
+    },
+    {
+     "t": "card",
+     "lines": [
+      "UP ABOUT",
+      "1 POINT"
+     ],
+     "h": 1.2,
+     "x": -3.6,
+     "z": 0.2,
+     "at": "s4_02@rose by",
+     "bg": "red",
+     "fg": "paper",
+     "y": 3.9
+    },
+    {
+     "t": "card",
+     "lines": [
+      "PRE-PANDEMIC  vs  2022–24"
+     ],
+     "h": 0.55,
+     "x": 0,
+     "z": 2.6,
+     "at": "s4_02@between the",
+     "bg": "mustard"
+    },
+    {
+     "t": "cutout",
+     "img": "p_desk_senior",
+     "h": 3.2,
+     "x": 3.8,
+     "z": -0.6,
+     "at": "s4_02@older workers",
+     "ry": -10
+    },
+    {
+     "t": "card",
+     "lines": [
+      "OLDER WORKERS"
+     ],
+     "h": 0.5,
+     "x": 3.8,
+     "z": 1.4,
+     "at": "s4_02@older workers"
+    },
+    {
+     "t": "card",
+     "lines": [
+      "SLIGHTLY",
+      "DOWN"
+     ],
+     "h": 1.2,
+     "x": 3.8,
+     "z": 0.2,
+     "at": "s4_02@slight",
+     "y": 3.9
+    }
+   ]
+  },
+  {
+   "at": "s4_03",
+   "src": "NY Fed, Liberty Street Economics (Jun 1, 2026)",
+   "props": [
+    {
+     "t": "card",
+     "lines": [
+      "SHOW-UP JOBS"
+     ],
+     "h": 0.6,
+     "x": 0,
+     "z": -2.4,
+     "at": 0,
+     "y": 4.6
+    },
+    {
+     "t": "cutout",
+     "img": "p_engineer",
+     "h": 3.8,
+     "x": -3.4,
+     "z": -0.8,
+     "at": 0
+    },
+    {
+     "t": "cutout",
+     "img": "p_calendar",
+     "h": 2.6,
+     "x": 2.6,
+     "z": -1.0,
+     "at": "s4_03@widened briefly"
+    },
+    {
+     "t": "card",
+     "lines": [
+      "2020: GAP",
+      "WIDENED BRIEFLY"
+     ],
+     "h": 1.1,
+     "x": 2.6,
+     "z": 0.6,
+     "at": "s4_03@widened briefly",
+     "bg": "red",
+     "fg": "paper",
+     "y": 2.4
+    },
+    {
+     "t": "card",
+     "lines": [
+      "THEN BACK TO NORMAL"
+     ],
+     "h": 0.65,
+     "x": 0.4,
+     "z": 2.4,
+     "at": "s4_03@then went back",
+     "bg": "mustard"
+    }
+   ]
+  },
+  {
+   "at": "s4_04",
+   "src": "NY Fed, Liberty Street Economics (Jun 1, 2026)",
+   "props": [
+    {
+     "t": "cutout",
+     "img": "p_remote",
+     "h": 3.0,
+     "x": -3.8,
+     "z": -0.8,
+     "at": 0
+    },
+    {
+     "t": "card",
+     "lines": [
+      "GAP",
+      "OPENED HERE"
+     ],
+     "h": 1.1,
+     "x": -3.8,
+     "z": 0.4,
+     "at": "s4_04@the gap",
+     "bg": "red",
+     "fg": "paper",
+     "y": 3.6
+    },
+    {
+     "t": "cutout",
+     "img": "p_engineer",
+     "h": 3.6,
+     "x": 3.8,
+     "z": -0.8,
+     "at": "s4_04@didn't stay"
+    },
+    {
+     "t": "card",
+     "lines": [
+      "GAP",
+      "DIDN'T STAY"
+     ],
+     "h": 1.1,
+     "x": 3.8,
+     "z": 0.4,
+     "at": "s4_04@didn't stay",
+     "y": 3.6
+    }
+   ]
+  },
+  {
+   "at": "s4_04@by the study's",
+   "src": "NY Fed, Liberty Street Economics (Jun 1, 2026)",
+   "props": [
+    {
+     "t": "doc",
+     "page": "nyfed_lse",
+     "mark": "four-fold",
+     "w": 6.2,
+     "x": -1.9,
+     "z": -1.0,
+     "highlight": true,
+     "pad": 40,
+     "enter": "laptop",
+     "at": 0.15
+    },
+    {
+     "t": "cutout",
+     "img": "p_remote",
+     "h": 2.6,
+     "x": 5.4,
+     "z": -0.4,
+     "at": "s4_04@remote work has"
+    },
+    {
+     "t": "card",
+     "lines": [
+      "REMOTE WORK",
+      "ABOUT 4x"
+     ],
+     "h": 1.1,
+     "x": 5.4,
+     "z": 1.4,
+     "at": "s4_04@four",
+     "bg": "mustard",
+     "y": 2.9
+    }
+   ]
+  },
+  {
+   "at": "s4_04@the timing",
+   "src": "NY Fed, Liberty Street Economics (Jun 1, 2026)",
+   "props": [
+    {
+     "t": "timeline",
+     "years": [
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024
+     ],
+     "w": 9.0,
+     "x": 0,
+     "z": -1.4,
+     "y": 1.5,
+     "at": 0
+    },
+    {
+     "t": "card",
+     "lines": [
+      "YOUTH UNEMPLOYMENT",
+      "RISING SINCE 2020"
+     ],
+     "h": 0.9,
+     "x": -0.5,
+     "z": -0.6,
+     "at": "s4_04@youth unemployment",
+     "bg": "mustard",
+     "y": 3.0,
+     "nostick": true,
+     "lean": 0
+    },
+    {
+     "t": "cutout",
+     "img": "p_robot_task",
+     "h": 2.0,
+     "x": 2.7,
+     "z": 0.6,
+     "at": "s4_04@chat gpt only"
+    },
+    {
+     "t": "card",
+     "lines": [
+      "CHATGPT",
+      "NOV 2022"
+     ],
+     "h": 0.8,
+     "x": 2.7,
+     "z": 1.8,
+     "at": "s4_04@chat gpt only",
+     "bg": "red",
+     "fg": "paper"
+    }
+   ]
+  },
+  {
+   "at": "s5_01",
+   "src": "NY Fed, Liberty Street Economics (Jun 1, 2026)",
+   "props": [
+    {
+     "t": "cutout",
+     "img": "p_grad_back",
+     "h": 4.0,
+     "x": -2.6,
+     "z": -0.4,
+     "at": 0
+    },
+    {
+     "t": "card",
+     "lines": [
+      "WHY DISTANCE",
+      "HURTS JUNIORS"
+     ],
+     "h": 1.3,
+     "x": 2.8,
+     "z": 0.2,
+     "at": 0,
+     "y": 1.6
+    }
+   ]
+  },
+  {
+   "at": "s5_02",
+   "src": "NY Fed, Liberty Street Economics (Jun 1, 2026)",
+   "props": [
+    {
+     "t": "doc",
+     "page": "nyfed_lse",
+     "mark": "Fortune 500",
+     "w": 6.2,
+     "x": -1.9,
+     "z": -1.0,
+     "highlight": true,
+     "pad": 40,
+     "enter": "laptop",
+     "at": 0.15
+    },
+    {
+     "t": "card",
+     "lines": [
+      "ONE COMPANY'S",
+      "DATA"
+     ],
+     "h": 1.0,
+     "x": 5.3,
+     "z": 0.4,
+     "at": "s5_02@fortune",
+     "bg": "red",
+     "fg": "paper",
+     "y": 1.6
+    }
+   ]
+  },
+  {
+   "at": "s5_02@when employees",
+   "src": "NY Fed, Liberty Street Economics (Jun 1, 2026)",
+   "props": [
+    {
+     "t": "cutout",
+     "img": "p_desk_senior",
+     "h": 3.2,
+     "x": -2.6,
+     "z": -0.6,
+     "at": 0,
+     "ry": 8
+    },
+    {
+     "t": "cutout",
+     "img": "p_grad_front",
+     "h": 3.4,
+     "x": 1.4,
+     "z": -0.4,
+     "at": 0
+    },
+    {
+     "t": "cutout",
+     "img": "p_bubbles",
+     "h": 1.8,
+     "x": -0.6,
+     "z": -0.2,
+     "at": "s5_02@exchanged more",
+     "lean": 0
+    },
+    {
+     "t": "card",
+     "lines": [
+      "MORE FEEDBACK + MENTORING"
+     ],
+     "h": 0.6,
+     "x": -0.6,
+     "z": 2.4,
+     "at": "s5_02@exchanged more",
+     "bg": "mustard"
+    },
+    {
+     "t": "card",
+     "lines": [
+      "DISTANCE CUTS IT",
+      "MOST FOR JUNIORS"
+     ],
+     "h": 1.0,
+     "x": 5.2,
+     "z": 0.6,
+     "at": "s5_02@even a short",
+     "bg": "red",
+     "fg": "paper",
+     "y": 2.4
+    }
+   ]
+  },
+  {
+   "at": "s5_03",
+   "src": "NY Fed, Liberty Street Economics (Jun 1, 2026)",
+   "props": [
+    {
+     "t": "cutout",
+     "img": "p_desk_empty",
+     "h": 3.2,
+     "x": -2.4,
+     "z": -0.6,
+     "at": 0
+    },
+    {
+     "t": "card",
+     "lines": [
+      "OFFICES CLOSED",
+      "FEWER NEW HIRES"
+     ],
+     "h": 1.2,
+     "x": 3.0,
+     "z": 0.2,
+     "at": "s5_03@hired fewer",
+     "bg": "red",
+     "fg": "paper",
+     "y": 1.8
+    }
+   ]
+  },
+  {
+   "at": "s5_03@in the author",
+   "src": "NY Fed, Liberty Street Economics (Jun 1, 2026)",
+   "props": [
+    {
+     "t": "doc",
+     "page": "nyfed_lse",
+     "mark": "shies away from employing inexperienced workers",
+     "w": 6.2,
+     "x": -1.9,
+     "z": -1.0,
+     "highlight": true,
+     "pad": 40,
+     "enter": "laptop",
+     "at": 0.15
+    },
+    {
+     "t": "cutout",
+     "img": "p_grad_back",
+     "h": 3.2,
+     "x": 5.4,
+     "z": -0.4,
+     "at": 0.3
+    }
+   ]
+  },
+  {
+   "at": "s5_04",
+   "src": "NY Fed, Liberty Street Economics (Jun 1, 2026)",
+   "props": [
+    {
+     "t": "cutout",
+     "img": "p_signpost",
+     "h": 3.8,
+     "x": -4.6,
+     "z": -0.8,
+     "at": 0
+    },
+    {
+     "t": "card",
+     "lines": [
+      "CAUTION 1",
+      "ONE COMPANY ONLY"
+     ],
+     "h": 1.0,
+     "x": -0.6,
+     "z": 0.0,
+     "at": "s5_04@the inside",
+     "y": 2.6
+    },
+    {
+     "t": "card",
+     "lines": [
+      "CAUTION 2",
+      "\"CAN EXPLAIN\", NOT \"PROVES\""
+     ],
+     "h": 1.0,
+     "x": 3.4,
+     "z": 0.6,
+     "at": "s5_04@and the authors say",
+     "bg": "mustard",
+     "y": 1.0
+    },
+    {
+     "t": "card",
+     "lines": [
+      "THE CASE IS STILL OPEN"
+     ],
+     "h": 0.6,
+     "x": 0.4,
+     "z": 2.6,
+     "at": "s5_04@that makes it",
+     "bg": "red",
+     "fg": "paper"
+    }
+   ]
+  },
+  {
+   "at": "s6_01",
+   "src": "NY Fed, Liberty Street Economics (Jun 1, 2026)",
+   "props": [
+    {
+     "t": "cutout",
+     "img": "p_remote",
+     "h": 3.0,
+     "x": -2.6,
+     "z": -0.6,
+     "at": 0
+    },
+    {
+     "t": "card",
+     "lines": [
+      {
+       "text": "HOW MUCH?",
+       "size": 200
+      }
+     ],
+     "h": 1.4,
+     "x": 3.0,
+     "z": 0.0,
+     "at": 0,
+     "bg": "red",
+     "fg": "paper",
+     "y": 1.6
+    }
+   ]
+  },
+  {
+   "at": "s6_02",
+   "src": "NY Fed, Liberty Street Economics (Jun 1, 2026)",
+   "props": [
+    {
+     "t": "doc",
+     "page": "nyfed_lse",
+     "mark": "back-of-the-envelope",
+     "w": 6.2,
+     "x": -1.9,
+     "z": -1.0,
+     "highlight": true,
+     "pad": 40,
+     "enter": "laptop",
+     "at": 0.15
+    },
+    {
+     "t": "cutout",
+     "img": "p_res_2",
+     "h": 3.4,
+     "x": 5.4,
+     "z": -0.6,
+     "at": 0.3
+    }
+   ]
+  },
+  {
+   "at": "s6_02@their estimate",
+   "src": "NY Fed, Liberty Street Economics (Jun 1, 2026) · back-of-the-envelope",
+   "props": [
+    {
+     "t": "card",
+     "lines": [
+      "RISE IN YOUNG-GRAD UNEMPLOYMENT"
+     ],
+     "h": 0.6,
+     "x": 0,
+     "z": -2.6,
+     "at": 0,
+     "y": 5.6
+    },
+    {
+     "t": "bar",
+     "v": 100,
+     "u": 0.042,
+     "color": "mustardPale",
+     "x": -2.2,
+     "z": 0.0,
+     "at": 0.1
+    },
+    {
+     "t": "card",
+     "lines": [
+      "ALL OF THE RISE"
+     ],
+     "h": 0.5,
+     "x": -2.2,
+     "z": 1.6,
+     "at": 0.1
+    },
+    {
+     "t": "bar",
+     "v": 64,
+     "u": 0.042,
+     "color": "red",
+     "x": 1.6,
+     "z": 0.0,
+     "at": "s6_02@about 64"
+    },
+    {
+     "t": "card",
+     "lines": [
+      {
+       "text": "ABOUT 64%",
+       "size": 170
+      },
+      {
+       "text": "REMOTE WORK",
+       "size": 100
+      }
+     ],
+     "h": 1.2,
+     "x": 1.6,
+     "z": 0.6,
+     "at": "s6_02@about 64",
+     "y": 3.0
+    },
+    {
+     "t": "card",
+     "lines": [
+      "ROUGH ESTIMATE"
+     ],
+     "h": 0.6,
+     "x": 5.4,
+     "z": 1.8,
+     "at": "s6_02@rough size",
+     "bg": "mustard"
+    }
+   ]
+  },
+  {
+   "at": "s6_03",
+   "src": "NY Fed, Liberty Street Economics (Jun 1, 2026)",
+   "props": [
+    {
+     "t": "cutout",
+     "img": "p_remote",
+     "h": 2.8,
+     "x": -4.0,
+     "z": -0.8,
+     "at": 0
+    },
+    {
+     "t": "cutout",
+     "img": "p_robot_task",
+     "h": 2.8,
+     "x": -0.6,
+     "z": -0.8,
+     "at": "s6_03@maybe the"
+    },
+    {
+     "t": "card",
+     "lines": [
+      "SAME JOBS",
+      "AI IS GOOD AT?"
+     ],
+     "h": 1.0,
+     "x": -2.3,
+     "z": 1.4,
+     "at": "s6_03@maybe the",
+     "y": 2.9
+    },
+    {
+     "t": "card",
+     "lines": [
+      "AI EXPOSURE HELD FIXED"
+     ],
+     "h": 0.6,
+     "x": 3.8,
+     "z": 0.4,
+     "at": "s6_03@so they held",
+     "bg": "mustard",
+     "y": 2.4
+    },
+    {
+     "t": "card",
+     "lines": [
+      "GAP",
+      "STILL THERE"
+     ],
+     "h": 1.1,
+     "x": 3.8,
+     "z": 1.6,
+     "at": "s6_03@the gap between",
+     "bg": "red",
+     "fg": "paper"
+    }
+   ]
+  },
+  {
+   "at": "s6_04",
+   "props": [
+    {
+     "t": "cutout",
+     "img": "p_remote",
+     "h": 2.8,
+     "x": -4.4,
+     "z": -0.6,
+     "at": 0
+    },
+    {
+     "t": "card",
+     "lines": [
+      "PROBLEM 1",
+      "REMOTE WORK"
+     ],
+     "h": 1.0,
+     "x": -4.4,
+     "z": 1.4,
+     "at": 0,
+     "bg": "mustard"
+    },
+    {
+     "t": "cutout",
+     "img": "p_calendar",
+     "h": 2.8,
+     "x": 2.6,
+     "z": -0.8,
+     "at": "s6_04@a second study"
+    },
+    {
+     "t": "card",
+     "lines": [
+      "PROBLEM 2?",
+      "AFTER CHATGPT"
+     ],
+     "h": 1.0,
+     "x": 2.6,
+     "z": 1.4,
+     "at": "s6_04@a second study",
+     "bg": "red",
+     "fg": "paper"
+    }
+   ]
+  },
+  {
+   "at": "s7_01",
+   "src": "Stanford Digital Economy Lab (Aug 2026)",
+   "props": [
+    {
+     "t": "card",
+     "lines": [
+      {
+       "text": "SUSPECT",
+       "size": 90
+      },
+      {
+       "text": "2/3",
+       "size": 240
+      },
+      {
+       "text": "AI",
+       "size": 90
+      }
+     ],
+     "h": 1.9,
+     "x": -6.2,
+     "z": -0.4,
+     "at": 0,
+     "bg": "mustard",
+     "y": 1.3,
+     "lean": 0
+    },
+    {
+     "t": "doc",
+     "page": "stanford_canaries",
+     "mark": "Brynjolfsson",
+     "w": 6.2,
+     "x": -1.9,
+     "z": -1.0,
+     "highlight": true,
+     "pad": 40,
+     "enter": "laptop",
+     "at": 0.15
+    },
+    {
+     "t": "card",
+     "lines": [
+      "AGES 22–25",
+      "MOST AI-EXPOSED JOBS"
+     ],
+     "h": 1.0,
+     "x": 5.4,
+     "z": 0.6,
+     "at": "s7_01@they focused",
+     "bg": "mustard",
+     "y": 1.6
+    }
+   ]
+  },
+  {
+   "at": "s7_02",
+   "src": "Stanford Digital Economy Lab (Aug 2026)",
+   "props": [
+    {
+     "t": "card",
+     "lines": [
+      "EMPLOYMENT GAP · AGES 22–25 · MOST vs LESS AI-EXPOSED"
+     ],
+     "h": 0.55,
+     "x": 0,
+     "z": -5.5,
+     "at": 0,
+     "y": 6.3
+    },
+    {
+     "t": "bar",
+     "v": 15,
+     "u": 0.2,
+     "color": "mustardPale",
+     "x": -2.4,
+     "z": 0.0,
+     "at": "s7_02@in july"
+    },
+    {
+     "t": "card",
+     "lines": [
+      "15%"
+     ],
+     "h": 0.7,
+     "x": -2.4,
+     "z": 0.3,
+     "at": "s7_02@in july",
+     "y": 3.3
+    },
+    {
+     "t": "card",
+     "lines": [
+      "JUL 2025"
+     ],
+     "h": 0.42,
+     "x": -2.4,
+     "z": 1.1,
+     "at": "s7_02@in july"
+    },
+    {
+     "t": "bar",
+     "v": 19,
+     "u": 0.2,
+     "color": "red",
+     "x": 1.4,
+     "z": 0.0,
+     "at": "s7_02@about 19"
+    },
+    {
+     "t": "card",
+     "lines": [
+      "19%"
+     ],
+     "h": 0.7,
+     "x": 1.4,
+     "z": 0.3,
+     "at": "s7_02@about 19",
+     "y": 4.1
+    },
+    {
+     "t": "card",
+     "lines": [
+      "JUN 2026"
+     ],
+     "h": 0.42,
+     "x": 1.4,
+     "z": 1.1,
+     "at": "s7_02@about 19"
+    },
+    {
+     "t": "card",
+     "lines": [
+      "GAP",
+      "WIDENING"
+     ],
+     "h": 1.0,
+     "x": 5.2,
+     "z": 0.8,
+     "at": "s7_02@the same gap",
+     "bg": "red",
+     "fg": "paper",
+     "y": 1.6
+    }
+   ]
+  },
+  {
+   "at": "s7_03",
+   "src": "Stanford Digital Economy Lab (Aug 2026)",
+   "props": [
+    {
+     "t": "cutout",
+     "img": "p_robot_task",
+     "h": 2.8,
+     "x": -4.4,
+     "z": -0.6,
+     "at": 0
+    },
+    {
+     "t": "card",
+     "lines": [
+      "HOLDS WITH",
+      "RATES + REMOTE WORK",
+      "CONTROLLED"
+     ],
+     "h": 1.4,
+     "x": -0.8,
+     "z": 0.2,
+     "at": 0,
+     "bg": "mustard",
+     "y": 1.8
+    },
+    {
+     "t": "cutout",
+     "img": "p_desk_senior",
+     "h": 3.0,
+     "x": 4.2,
+     "z": -0.6,
+     "at": "s7_03@experienced workers",
+     "ry": -10
+    },
+    {
+     "t": "card",
+     "lines": [
+      "EXPERIENCED:",
+      "NO SIMILAR GAP"
+     ],
+     "h": 1.0,
+     "x": 4.2,
+     "z": 1.6,
+     "at": "s7_03@experienced workers"
+    }
+   ]
+  },
+  {
+   "at": "s7_04",
+   "src": "Stanford Digital Economy Lab (Aug 2026)",
+   "props": [
+    {
+     "t": "cutout",
+     "img": "p_robot_task",
+     "h": 3.2,
+     "x": -3.6,
+     "z": -0.6,
+     "at": 0
+    },
+    {
+     "t": "card",
+     "lines": [
+      "AI DOES THE TASK",
+      "YOUNG JOBS DOWN"
+     ],
+     "h": 1.0,
+     "x": -3.6,
+     "z": 1.6,
+     "at": "s7_04@do the task",
+     "bg": "red",
+     "fg": "paper"
+    },
+    {
+     "t": "cutout",
+     "img": "p_robot_help",
+     "h": 3.2,
+     "x": 3.6,
+     "z": -0.6,
+     "at": "s7_04@where ai is mainly"
+    },
+    {
+     "t": "card",
+     "lines": [
+      "AI HELPS THE WORKER",
+      "FLAT OR RISING"
+     ],
+     "h": 1.0,
+     "x": 3.6,
+     "z": 1.6,
+     "at": "s7_04@where ai is mainly",
+     "bg": "mustard"
+    }
+   ]
+  },
+  {
+   "at": "s7_05",
+   "src": "Stanford Digital Economy Lab (Aug 2026)",
+   "props": [
+    {
+     "t": "doc",
+     "page": "stanford_canaries",
+     "mark": "descriptive patterns",
+     "w": 6.2,
+     "x": -1.9,
+     "z": -1.0,
+     "highlight": true,
+     "pad": 40,
+     "enter": "laptop",
+     "at": 0.15
+    },
+    {
+     "t": "card",
+     "lines": [
+      "\"NOT CAUSAL",
+      "ESTIMATES\""
+     ],
+     "h": 1.0,
+     "x": 5.4,
+     "z": 0.6,
+     "at": "s7_05@not causal",
+     "bg": "red",
+     "fg": "paper",
+     "y": 1.6
+    }
+   ]
+  },
+  {
+   "at": "s7_05@some of the",
+   "src": "Stanford Digital Economy Lab (Aug 2026)",
+   "props": [
+    {
+     "t": "cutout",
+     "img": "p_signpost",
+     "h": 3.8,
+     "x": -5.0,
+     "z": -0.8,
+     "at": 0
+    },
+    {
+     "t": "card",
+     "lines": [
+      "SOME GAPS PREDATE GENERATIVE AI"
+     ],
+     "h": 0.6,
+     "x": 0.8,
+     "z": -0.4,
+     "at": 0,
+     "y": 3.6
+    },
+    {
+     "t": "card",
+     "lines": [
+      "GAP SHRINKS WITH EDUCATION"
+     ],
+     "h": 0.6,
+     "x": 0.8,
+     "z": 0.4,
+     "at": "s7_05@and the gap shrinks",
+     "bg": "mustard",
+     "y": 2.2
+    },
+    {
+     "t": "card",
+     "lines": [
+      "PAYROLL SAMPLE > NATIONAL SURVEYS"
+     ],
+     "h": 0.6,
+     "x": 0.8,
+     "z": 1.2,
+     "at": "s7_05@their payroll",
+     "y": 0.8
+    }
+   ]
+  },
+  {
+   "at": "s7b_01",
+   "src": "FRED, Federal Funds Effective Rate",
+   "props": [
+    {
+     "t": "card",
+     "lines": [
+      {
+       "text": "SUSPECT",
+       "size": 90
+      },
+      {
+       "text": "3/3",
+       "size": 240
+      },
+      {
+       "text": "INTEREST RATES",
+       "size": 90
+      }
+     ],
+     "h": 1.9,
+     "x": -6.2,
+     "z": -0.4,
+     "at": 0,
+     "bg": "mustard",
+     "y": 1.3,
+     "lean": 0
+    },
+    {
+     "t": "cutout",
+     "img": "p_bank",
+     "h": 3.2,
+     "x": -2.2,
+     "z": -2.0,
+     "at": 0,
+     "ry": 8
+    },
+    {
+     "t": "bar",
+     "v": 0.08,
+     "u": 0.7,
+     "color": "mustardPale",
+     "x": 1.4,
+     "z": 0.0,
+     "at": "s7b_01@in january"
+    },
+    {
+     "t": "card",
+     "lines": [
+      "0.08%"
+     ],
+     "h": 0.6,
+     "x": 1.4,
+     "z": 0.4,
+     "at": "s7b_01@in january",
+     "y": 0.6
+    },
+    {
+     "t": "card",
+     "lines": [
+      "JAN 2022"
+     ],
+     "h": 0.42,
+     "x": 1.4,
+     "z": 1.2,
+     "at": "s7b_01@in january"
+    },
+    {
+     "t": "bar",
+     "v": 5.33,
+     "u": 0.7,
+     "color": "red",
+     "x": 4.6,
+     "z": 0.0,
+     "at": "s7b_01@by august"
+    },
+    {
+     "t": "card",
+     "lines": [
+      "5.33%"
+     ],
+     "h": 0.7,
+     "x": 4.6,
+     "z": 0.4,
+     "at": "s7b_01@by august",
+     "y": 4.2
+    },
+    {
+     "t": "card",
+     "lines": [
+      "AUG 2023"
+     ],
+     "h": 0.42,
+     "x": 4.6,
+     "z": 1.2,
+     "at": "s7b_01@by august"
+    },
+    {
+     "t": "card",
+     "lines": [
+      "THEN ABOUT A YEAR AT THE TOP"
+     ],
+     "h": 0.55,
+     "x": 3.0,
+     "z": 2.6,
+     "at": "s7b_01@stayed there",
+     "bg": "mustard"
+    }
+   ]
+  },
+  {
+   "at": "s7b_02",
+   "src": "U.S. Census Bureau working paper",
+   "props": [
+    {
+     "t": "doc",
+     "page": "census_wp",
+     "mark": "22-24",
+     "w": 6.2,
+     "x": -1.9,
+     "z": -1.0,
+     "highlight": true,
+     "pad": 40,
+     "enter": "laptop",
+     "at": 0.15
+    },
+    {
+     "t": "card",
+     "lines": [
+      "MOST AI-EXPOSED",
+      "INDUSTRIES: -12%"
+     ],
+     "h": 1.0,
+     "x": 5.3,
+     "z": 0.4,
+     "at": "s7b_02@fell 12",
+     "bg": "red",
+     "fg": "paper",
+     "y": 2.4
+    },
+    {
+     "t": "card",
+     "lines": [
+      "LESS EXPOSED:",
+      "STEADY"
+     ],
+     "h": 0.9,
+     "x": 5.3,
+     "z": 1.6,
+     "at": "s7b_02@while less"
+    }
+   ]
+  },
+  {
+   "at": "s7b_03",
+   "src": "U.S. Census Bureau working paper",
+   "props": [
+    {
+     "t": "card",
+     "lines": [
+      "THE DECLINE · WHAT RATES EXPLAIN"
+     ],
+     "h": 0.6,
+     "x": 0,
+     "z": -2.6,
+     "at": 0,
+     "y": 5.6
+    },
+    {
+     "t": "bar",
+     "v": 100,
+     "u": 0.042,
+     "color": "mustardPale",
+     "x": -2.2,
+     "z": 0.0,
+     "at": 0.1
+    },
+    {
+     "t": "card",
+     "lines": [
+      "WHOLE DECLINE"
+     ],
+     "h": 0.5,
+     "x": -2.2,
+     "z": 1.6,
+     "at": 0.1
+    },
+    {
+     "t": "bar",
+     "v": 25,
+     "u": 0.042,
+     "color": "red",
+     "x": 1.6,
+     "z": 0.0,
+     "at": "s7b_03@up to a quarter"
+    },
+    {
+     "t": "card",
+     "lines": [
+      "RATES:",
+      "UP TO 1/4"
+     ],
+     "h": 1.0,
+     "x": 1.6,
+     "z": 0.6,
+     "at": "s7b_03@up to a quarter",
+     "y": 1.6
+    },
+    {
+     "t": "card",
+     "lines": [
+      "SHARP DROP AT AI-EXPOSED FIRMS",
+      "NOT RATES"
+     ],
+     "h": 1.0,
+     "x": 5.0,
+     "z": 0.6,
+     "at": "s7b_03@the paper finds",
+     "bg": "red",
+     "fg": "paper",
+     "y": 2.8
+    }
+   ]
+  },
+  {
+   "at": "s8_01",
+   "props": [
+    {
+     "t": "timeline",
+     "years": [
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+     ],
+     "w": 10.0,
+     "x": 0,
+     "z": -1.4,
+     "y": 1.5,
+     "at": 0
+    },
+    {
+     "t": "card",
+     "lines": [
+      "NY FED: REMOTE WORK (2017–19 vs 2022–24)"
+     ],
+     "h": 0.5,
+     "x": -1.2,
+     "z": -0.6,
+     "at": 0.3,
+     "bg": "mustard",
+     "y": 3.1,
+     "nostick": true,
+     "lean": 0
+    },
+    {
+     "t": "card",
+     "lines": [
+      "STANFORD: AI-EXPOSED (NOV 2022 – JUN 2026)"
+     ],
+     "h": 0.5,
+     "x": 1.6,
+     "z": -0.5,
+     "at": "s8_01@overlapping",
+     "bg": "red",
+     "fg": "paper",
+     "y": 3.75,
+     "nostick": true,
+     "lean": 0
+    },
+    {
+     "t": "card",
+     "lines": [
+      "OVERLAPPING YEARS · DIFFERENT QUESTIONS"
+     ],
+     "h": 0.55,
+     "x": 0,
+     "z": 2.6,
+     "at": "s8_01@they ask"
+    }
+   ]
+  },
+  {
+   "at": "s8_02",
+   "src": "NY Fed, Liberty Street Economics (Jun 1, 2026)",
+   "props": [
+    {
+     "t": "cutout",
+     "img": "p_remote",
+     "h": 3.2,
+     "x": -2.8,
+     "z": -0.6,
+     "at": 0
+    },
+    {
+     "t": "card",
+     "lines": [
+      "NY FED: EARLY GAP",
+      "IN JOBS THAT WENT REMOTE"
+     ],
+     "h": 1.0,
+     "x": 3.0,
+     "z": 0.0,
+     "at": 0,
+     "bg": "mustard",
+     "y": 2.6
+    },
+    {
+     "t": "card",
+     "lines": [
+      "STILL THERE WITH AI EXPOSURE FIXED"
+     ],
+     "h": 0.6,
+     "x": 3.0,
+     "z": 1.4,
+     "at": "s8_02@still there"
+    }
+   ]
+  },
+  {
+   "at": "s8_02@the stanford study",
+   "src": "Stanford Digital Economy Lab (Aug 2026)",
+   "props": [
+    {
+     "t": "cutout",
+     "img": "p_robot_task",
+     "h": 3.2,
+     "x": -2.8,
+     "z": -0.6,
+     "at": 0
+    },
+    {
+     "t": "card",
+     "lines": [
+      "STANFORD: NEWER, GROWING GAP",
+      "WHERE AI DOES THE TASK"
+     ],
+     "h": 1.0,
+     "x": 3.0,
+     "z": 0.0,
+     "at": 0,
+     "bg": "red",
+     "fg": "paper",
+     "y": 2.6
+    },
+    {
+     "t": "card",
+     "lines": [
+      "STILL THERE WITH REMOTE WORK CONTROLLED"
+     ],
+     "h": 0.6,
+     "x": 3.0,
+     "z": 1.4,
+     "at": "s8_02@controlled"
+    }
+   ]
+  },
+  {
+   "at": "s8_02@the simplest",
+   "props": [
+    {
+     "t": "cutout",
+     "img": "p_remote",
+     "h": 2.6,
+     "x": -4.4,
+     "z": -0.6,
+     "at": 0
+    },
+    {
+     "t": "card",
+     "lines": [
+      {
+       "text": "+",
+       "size": 260
+      }
+     ],
+     "h": 0.9,
+     "x": -1.8,
+     "z": 0.0,
+     "at": 0,
+     "nostick": true,
+     "lean": 0,
+     "y": 0.6
+    },
+    {
+     "t": "cutout",
+     "img": "p_robot_task",
+     "h": 2.6,
+     "x": 0.8,
+     "z": -0.6,
+     "at": 0
+    },
+    {
+     "t": "card",
+     "lines": [
+      "MORE THAN ONE CAUSE",
+      "STACKING"
+     ],
+     "h": 1.0,
+     "x": 4.8,
+     "z": 0.2,
+     "at": "s8_02@more than one",
+     "bg": "mustard",
+     "y": 2.0
+    },
+    {
+     "t": "card",
+     "lines": [
+      "WEIGHT OF EACH: NOT KNOWN YET"
+     ],
+     "h": 0.6,
+     "x": 0,
+     "z": 2.6,
+     "at": "s8_02@the data can't",
+     "bg": "red",
+     "fg": "paper"
+    }
+   ]
+  },
+  {
+   "at": "s8_03",
+   "props": [
+    {
+     "t": "cutout",
+     "img": "p_grad_back",
+     "h": 3.6,
+     "x": -4.6,
+     "z": -0.4,
+     "at": 0
+    },
+    {
+     "t": "cutout",
+     "img": "p_signpost",
+     "h": 3.6,
+     "x": -1.6,
+     "z": -1.2,
+     "at": 0
+    },
+    {
+     "t": "card",
+     "lines": [
+      "WILL THIS ROLE PUT ME NEAR",
+      "PEOPLE WHO CAN TEACH ME?"
+     ],
+     "h": 1.0,
+     "x": 3.4,
+     "z": -0.4,
+     "at": "s8_03@will this",
+     "bg": "mustard",
+     "y": 2.6
+    },
+    {
+     "t": "card",
+     "lines": [
+      "IS AI DOING THE WORK",
+      "OR HELPING SOMEONE DO IT?"
+     ],
+     "h": 1.0,
+     "x": 3.4,
+     "z": 0.8,
+     "at": "s8_03@and is ai",
+     "bg": "red",
+     "fg": "paper",
+     "y": 0.8
+    }
+   ]
+  },
+  {
+   "at": "s9_01",
+   "props": [
+    {
+     "t": "cutout",
+     "img": "p_remote",
+     "h": 3.0,
+     "x": -4.2,
+     "z": -0.6,
+     "at": 0
+    },
+    {
+     "t": "card",
+     "lines": [
+      "REMOTE WORK",
+      "ROUGH ESTIMATE"
+     ],
+     "h": 1.0,
+     "x": -4.2,
+     "z": 1.6,
+     "at": 0,
+     "bg": "mustard"
+    },
+    {
+     "t": "cutout",
+     "img": "p_robot_task",
+     "h": 3.0,
+     "x": 4.2,
+     "z": -0.6,
+     "at": "s9_01@the other is"
+    },
+    {
+     "t": "card",
+     "lines": [
+      "NEWER",
+      "AI DOES THE TASK"
+     ],
+     "h": 1.0,
+     "x": 4.2,
+     "z": 1.6,
+     "at": "s9_01@the other is",
+     "bg": "red",
+     "fg": "paper"
+    },
+    {
+     "t": "card",
+     "lines": [
+      "HOW MUCH EACH MATTERS:",
+      "STILL OPEN"
+     ],
+     "h": 1.1,
+     "x": 0,
+     "z": 0.6,
+     "at": "s9_01@how much each",
+     "y": 2.6
+    }
+   ]
+  },
+  {
+   "at": "s9_02",
+   "props": [
+    {
+     "t": "cutout",
+     "img": "p_grad_back",
+     "h": 3.8,
+     "x": -3.4,
+     "z": -0.4,
+     "at": 0
+    },
+    {
+     "t": "cutout",
+     "img": "p_signpost",
+     "h": 3.8,
+     "x": 0.2,
+     "z": -1.2,
+     "at": 0
+    },
+    {
+     "t": "card",
+     "lines": [
+      {
+       "text": "COUNTER LEDGER",
+       "size": 170
+      }
+     ],
+     "h": 1.0,
+     "x": 4.2,
+     "z": 0.6,
+     "at": "s9_02@search",
+     "bg": "mustard",
+     "y": 1.6
+    }
+   ]
   }
  ]
 }

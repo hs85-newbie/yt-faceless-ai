@@ -196,7 +196,7 @@ function timeline(p) {  // 종이 연표 띠(두 막대에 꽂힘): 가로선 + 
     g.strokeStyle = g.fillStyle = C.ink; g.lineWidth = 10;
     g.beginPath(); g.moveTo(m - 80, ly); g.lineTo(W - m + 70, ly); g.stroke();
     g.beginPath(); g.moveTo(W - m + 110, ly); g.lineTo(W - m + 55, ly - 30); g.lineTo(W - m + 55, ly + 30); g.fill();   // 화살표 머리
-    g.textAlign = 'center'; g.textBaseline = 'middle'; g.font = `800 104px ${FONT}`; g.lineWidth = 8;
+    g.textAlign = 'center'; g.textBaseline = 'middle'; g.font = `800 ${Math.round(Math.min(104, step * 0.36))}px ${FONT}`; g.lineWidth = 8;   // 연도가 많으면 글자를 줄여 서로 붙지 않게
     yrs.forEach((y, i) => { const x = m + i * step; g.beginPath(); g.moveTo(x, ly - 42); g.lineTo(x, ly + 42); g.stroke(); g.fillText(String(y), x, H * 0.74); });
   });
   const mesh = new THREE.Mesh(new THREE.PlaneGeometry(p.w, p.w * H / W), new THREE.MeshStandardMaterial({ map: t, alphaTest: 0.5, roughness: 1, side: THREE.DoubleSide }));
