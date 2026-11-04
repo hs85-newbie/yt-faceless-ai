@@ -482,11 +482,11 @@
      "t": "card",
      "lines": [
       {
-       "text": "WHAT REALLY HIT",
+       "text": "IS AI TAKING",
        "size": 150
       },
       {
-       "text": "ENTRY-LEVEL JOBS",
+       "text": "ENTRY-LEVEL JOBS?",
        "size": 190
       }
      ],
@@ -499,7 +499,7 @@
     {
      "t": "card",
      "lines": [
-      "IN 2022"
+      "IT STARTED BEFORE CHATGPT"
      ],
      "h": 1.2,
      "bg": "red",
@@ -658,7 +658,7 @@
     {
      "t": "card",
      "lines": [
-      "+0.6 PT · ABOUT A FIFTH HIGHER"
+      "ABOUT A FIFTH HIGHER"
      ],
      "h": 0.6,
      "bg": "red",
@@ -757,7 +757,7 @@
     {
      "t": "card",
      "lines": [
-      "+0.6 PT · ABOUT A FIFTH HIGHER"
+      "ABOUT A FIFTH HIGHER"
      ],
      "h": 0.6,
      "bg": "red",
@@ -1260,8 +1260,8 @@
     {
      "t": "card",
      "lines": [
-      "YOUTH UNEMPLOYMENT",
-      "RISING SINCE 2020"
+      "THE FIRST SHOCK",
+      "CAME BEFORE CHATGPT"
      ],
      "h": 0.9,
      "x": -0.5,
@@ -1492,7 +1492,7 @@
      "t": "card",
      "lines": [
       "CAUTION 2",
-      "\"CAN EXPLAIN\", NOT \"PROVES\""
+      "\"CAN EXPLAIN\", NOT PROVES"
      ],
      "h": 1.0,
      "x": 3.4,
