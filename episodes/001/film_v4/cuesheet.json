@@ -876,16 +876,34 @@
      "bg": "mustard",
      "x": 0,
      "z": 2.6,
-     "at": "s3_04@juniors get"
+     "at": "s3_04@juniors get",
+     "board": true,
+     "lean": 0,
+     "y": 0.9
     },
     {
-     "t": "cutout",
-     "img": "p_magnifier",
-     "h": 3.0,
-     "x": 6.4,
-     "z": 1.0,
-     "ry": -20,
-     "at": "s3_04@the researchers"
+     "t": "magnifier",
+     "keys": [
+      {
+       "at": "s3_04@the researchers",
+       "x": 10.5,
+       "y": 1.55,
+       "z": 3.3
+      },
+      {
+       "at": "s3_04@the researchers",
+       "x": 1.9,
+       "y": 1.55,
+       "z": 3.3,
+       "dur": 0.6
+      },
+      {
+       "at": "s3_04@check",
+       "x": -1.6,
+       "y": 1.55,
+       "z": 3.3
+      }
+     ]
     }
    ]
   },
