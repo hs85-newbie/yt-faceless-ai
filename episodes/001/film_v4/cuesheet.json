@@ -870,7 +870,7 @@
     {
      "t": "card",
      "lines": [
-      "JUNIORS REPLACED, SENIORS STAY"
+      "JUNIORS REPLACED, SENIORS STAY*"
      ],
      "h": 0.7,
      "bg": "mustard",
@@ -879,29 +879,48 @@
      "at": "s3_04@juniors get",
      "board": true,
      "lean": 0,
-     "y": 0.9
+     "y": 1.2
+    },
+    {
+     "t": "card",
+     "lines": [
+      "*ONLY IN",
+      "JOBS THAT",
+      "WENT REMOTE"
+     ],
+     "h": 0.3,
+     "x": 2.5,
+     "z": 2.66,
+     "y": 1.11,
+     "nostick": true,
+     "lean": 0,
+     "board": true,
+     "fineprint": true,
+     "at": "s3_04@juniors get"
     },
     {
      "t": "magnifier",
+     "zoom": 2.6,
      "keys": [
       {
        "at": "s3_04@the researchers",
        "x": 10.5,
-       "y": 1.55,
+       "y": 1.6,
        "z": 3.3
       },
       {
        "at": "s3_04@the researchers",
-       "x": 1.9,
-       "y": 1.55,
+       "x": -1.2,
+       "y": 1.75,
        "z": 3.3,
-       "dur": 0.6
+       "dur": 0.55
       },
       {
        "at": "s3_04@check",
-       "x": -1.6,
-       "y": 1.55,
-       "z": 3.3
+       "x": 2.39,
+       "y": 1.52,
+       "z": 3.3,
+       "dur": 0.4
       }
      ]
     }
