@@ -1267,7 +1267,7 @@
      "h": 0.9,
      "x": -0.5,
      "z": -0.6,
-     "at": "s4_04@youth unemployment",
+     "at": "s4_04@the first shock",
      "bg": "mustard",
      "y": 3.0,
      "nostick": true,
@@ -1279,7 +1279,7 @@
      "h": 2.0,
      "x": 2.7,
      "z": 0.6,
-     "at": "s4_04@chat gpt only"
+     "at": "s4_04@which only"
     },
     {
      "t": "card",
@@ -1290,7 +1290,7 @@
      "h": 0.8,
      "x": 2.7,
      "z": 1.8,
-     "at": "s4_04@chat gpt only",
+     "at": "s4_04@which only",
      "bg": "red",
      "fg": "paper"
     }

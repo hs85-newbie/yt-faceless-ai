@@ -231,481 +231,481 @@ briefly in 2020,
 then went back to where it had been.
 
 59
-00:01:50,417 --> 00:01:52,747
+00:01:50,417 --> 00:01:52,767
 So the gap opened in the jobs that went remote,
 
 60
-00:01:52,787 --> 00:01:54,387
+00:01:52,807 --> 00:01:54,467
 and it didn't stay open in the jobs that
 
 61
-00:01:54,427 --> 00:01:55,407
+00:01:54,507 --> 00:01:55,497
 stayed in person.
 
 62
-00:01:55,447 --> 00:01:56,277
+00:01:55,537 --> 00:01:56,377
 By the study's count,
 
 63
-00:01:56,317 --> 00:01:58,137
+00:01:56,417 --> 00:01:58,247
 remote work has grown about four-fold
 
 64
-00:01:58,177 --> 00:01:59,207
+00:01:58,287 --> 00:01:59,347
 since the pandemic.
 
 65
-00:01:59,247 --> 00:02:00,907
+00:01:59,387 --> 00:02:00,867
 The timing points the same way.
 
 66
-00:02:00,947 --> 00:02:03,497
-Youth unemployment had been rising since the pandemic,
+00:02:00,907 --> 00:02:03,507
+The first shock came before ChatGPT,
 
 67
-00:02:03,537 --> 00:02:07,162
-and ChatGPT only launched in November 2022.
+00:02:03,547 --> 00:02:06,202
+which only launched in November 2022.
 
 68
-00:02:07,512 --> 00:02:09,980
+00:02:06,552 --> 00:02:09,021
 Here is why distance seems to hurt new hires most.
 
 69
-00:02:10,100 --> 00:02:12,040
+00:02:09,141 --> 00:02:11,081
 The researchers had internal data from one
 
 70
-00:02:12,080 --> 00:02:13,950
+00:02:11,121 --> 00:02:12,991
 Fortune 500 company.
 
 71
-00:02:13,990 --> 00:02:15,580
+00:02:13,031 --> 00:02:14,621
 When employees sat near each other,
 
 72
-00:02:15,620 --> 00:02:18,410
+00:02:14,661 --> 00:02:17,451
 they exchanged more feedback and more mentoring.
 
 73
-00:02:18,450 --> 00:02:20,510
+00:02:17,491 --> 00:02:19,551
 Even a short physical distance reduced that,
 
 74
-00:02:20,550 --> 00:02:22,714
+00:02:19,591 --> 00:02:21,754
 and it reduced it more for younger workers.
 
 75
-00:02:22,834 --> 00:02:24,524
+00:02:21,874 --> 00:02:23,564
 When that company's offices closed,
 
 76
-00:02:24,564 --> 00:02:26,804
+00:02:23,604 --> 00:02:25,844
 it hired fewer inexperienced workers.
 
 77
-00:02:26,844 --> 00:02:27,984
+00:02:25,884 --> 00:02:27,024
 In the authors' words,
 
 78
-00:02:28,024 --> 00:02:29,944
+00:02:27,064 --> 00:02:28,984
 a firm "shies away from employing
 
 79
-00:02:29,984 --> 00:02:32,384
+00:02:29,024 --> 00:02:31,424
 inexperienced workers if distance creates
 
 80
-00:02:32,424 --> 00:02:34,317
+00:02:31,464 --> 00:02:33,357
 barriers to training and development."
 
 81
-00:02:34,437 --> 00:02:35,697
+00:02:33,477 --> 00:02:34,737
 Two cautions apply.
 
 82
-00:02:35,737 --> 00:02:37,937
+00:02:34,777 --> 00:02:36,977
 The inside view comes from a single company,
 
 83
-00:02:37,977 --> 00:02:40,097
+00:02:37,017 --> 00:02:39,137
 so it can't stand in for the whole economy.
 
 84
-00:02:40,137 --> 00:02:41,917
+00:02:39,177 --> 00:02:40,957
 And the authors say remote work "can
 
 85
-00:02:41,957 --> 00:02:43,227
+00:02:40,997 --> 00:02:42,267
 explain" the rise.
 
 86
-00:02:43,267 --> 00:02:44,087
+00:02:42,307 --> 00:02:43,127
 That makes it an argument,
 
 87
-00:02:44,127 --> 00:02:45,740
+00:02:43,167 --> 00:02:44,780
 and the case is still open.
 
 88
-00:02:46,090 --> 00:02:48,681
+00:02:45,130 --> 00:02:47,722
 How much of the problem does remote work account for?
 
 89
-00:02:48,801 --> 00:02:50,381
+00:02:47,842 --> 00:02:49,422
 The researchers ran what they call a
 
 90
-00:02:50,421 --> 00:02:52,861
+00:02:49,462 --> 00:02:51,902
 back-of-the-envelope calculation. Their estimate:
 
 91
-00:02:52,901 --> 00:02:55,521
+00:02:51,942 --> 00:02:54,562
 remote work can explain about 64 percent
 
 92
-00:02:55,561 --> 00:02:57,041
+00:02:54,602 --> 00:02:56,082
 of the recent increase in unemployment
 
 93
-00:02:57,081 --> 00:02:59,211
+00:02:56,122 --> 00:02:58,252
 among young college graduates.
 
 94
-00:02:59,251 --> 00:03:00,943
+00:02:58,292 --> 00:02:59,983
 So read it as a rough size.
 
 95
-00:03:01,063 --> 00:03:02,653
+00:03:00,103 --> 00:03:01,693
 They also tested an objection.
 
 96
-00:03:02,693 --> 00:03:04,373
+00:03:01,733 --> 00:03:03,413
 Maybe the from-home jobs are simply the
 
 97
-00:03:04,413 --> 00:03:06,283
+00:03:03,453 --> 00:03:05,323
 same jobs AI is good at.
 
 98
-00:03:06,323 --> 00:03:08,733
+00:03:05,363 --> 00:03:07,773
 So they held each occupation's AI exposure
 
 99
-00:03:08,773 --> 00:03:10,983
+00:03:07,813 --> 00:03:10,023
 fixed and ran the comparison again.
 
 100
-00:03:11,023 --> 00:03:12,783
+00:03:10,063 --> 00:03:11,823
 The gap between young and older workers
 
 101
-00:03:12,823 --> 00:03:13,747
+00:03:11,863 --> 00:03:12,787
 was still there.
 
 102
-00:03:13,867 --> 00:03:15,017
+00:03:12,907 --> 00:03:14,057
 That is the first problem.
 
 103
-00:03:15,057 --> 00:03:16,837
+00:03:14,097 --> 00:03:15,877
 A second study looks at the years after
 
 104
-00:03:16,877 --> 00:03:19,336
+00:03:15,917 --> 00:03:18,376
 ChatGPT and finds something else.
 
 105
-00:03:19,686 --> 00:03:20,707
+00:03:18,726 --> 00:03:19,747
 In August 2026,
 
 106
-00:03:20,747 --> 00:03:23,456
+00:03:19,787 --> 00:03:22,496
 Erik Brynjolfsson and two colleagues at
 
 107
-00:03:23,496 --> 00:03:25,676
+00:03:22,536 --> 00:03:24,716
 Stanford updated a study based on payroll
 
 108
-00:03:25,716 --> 00:03:27,456
+00:03:24,756 --> 00:03:26,496
 records from ADP.
 
 109
-00:03:27,496 --> 00:03:30,506
+00:03:26,536 --> 00:03:29,546
 They focused on workers aged 22 to 25 in
 
 110
-00:03:30,546 --> 00:03:32,915
+00:03:29,586 --> 00:03:31,955
 the occupations most exposed to AI.
 
 111
-00:03:33,035 --> 00:03:34,855
+00:03:32,075 --> 00:03:33,895
 By June 2026,
 
 112
-00:03:34,895 --> 00:03:36,695
+00:03:33,935 --> 00:03:35,735
 employment for those young workers was
 
 113
-00:03:36,735 --> 00:03:38,725
+00:03:35,775 --> 00:03:37,765
 about 19 percent lower,
 
 114
-00:03:38,765 --> 00:03:41,265
+00:03:37,805 --> 00:03:40,305
 relative to young workers in less exposed jobs.
 
 115
-00:03:41,305 --> 00:03:44,922
+00:03:40,345 --> 00:03:43,963
 In July 2025, the same gap was 15 percent.
 
 116
-00:03:45,042 --> 00:03:46,722
+00:03:44,083 --> 00:03:45,763
 The gap holds up when the authors control
 
 117
-00:03:46,762 --> 00:03:49,262
+00:03:45,803 --> 00:03:48,303
 for interest rates and for remote work.
 
 118
-00:03:49,302 --> 00:03:50,722
+00:03:48,343 --> 00:03:49,763
 Experienced workers in the same
 
 119
-00:03:50,762 --> 00:03:53,179
+00:03:49,803 --> 00:03:52,220
 occupations show no comparable gap.
 
 120
-00:03:53,299 --> 00:03:54,699
+00:03:52,340 --> 00:03:53,740
 The declines are concentrated in
 
 121
-00:03:54,739 --> 00:03:57,059
+00:03:53,780 --> 00:03:56,100
 occupations where AI tends to do the task
 
 122
-00:03:57,099 --> 00:03:58,279
+00:03:56,140 --> 00:03:57,320
 instead of the person.
 
 123
-00:03:58,319 --> 00:04:00,529
+00:03:57,360 --> 00:03:59,570
 Where AI is mainly used to help workers,
 
 124
-00:04:00,569 --> 00:04:02,851
+00:03:59,610 --> 00:04:01,891
 young employment is flat or rising.
 
 125
-00:04:02,971 --> 00:04:05,491
+00:04:02,011 --> 00:04:04,531
 The Stanford authors attach their own cautions.
 
 126
-00:04:05,531 --> 00:04:07,231
+00:04:04,571 --> 00:04:06,271
 They call these descriptive patterns,
 
 127
-00:04:07,271 --> 00:04:08,761
+00:04:06,311 --> 00:04:07,801
 not causal estimates.
 
 128
-00:04:08,801 --> 00:04:10,021
+00:04:07,841 --> 00:04:09,061
 Some of the differences appear before
 
 129
-00:04:10,061 --> 00:04:12,351
+00:04:09,101 --> 00:04:11,391
 generative AI was widely used,
 
 130
-00:04:12,391 --> 00:04:14,121
+00:04:11,431 --> 00:04:13,161
 and the gap shrinks when education is
 
 131
-00:04:14,161 --> 00:04:15,201
+00:04:13,201 --> 00:04:14,241
 taken into account.
 
 132
-00:04:15,241 --> 00:04:17,281
+00:04:14,281 --> 00:04:16,321
 Their payroll sample also shows a bigger
 
 133
-00:04:17,321 --> 00:04:19,022
+00:04:16,361 --> 00:04:18,062
 gap than national surveys do.
 
 134
-00:04:19,372 --> 00:04:21,582
+00:04:18,412 --> 00:04:20,622
 There is a third suspect: interest rates.
 
 135
-00:04:21,622 --> 00:04:23,002
+00:04:20,662 --> 00:04:22,042
 In January 2022,
 
 136
-00:04:23,042 --> 00:04:25,342
+00:04:22,082 --> 00:04:24,382
 the Federal Reserve's benchmark rate was
 
 137
-00:04:25,382 --> 00:04:26,182
+00:04:24,422 --> 00:04:25,222
 close to zero,
 
 138
-00:04:26,162 --> 00:04:28,342
+00:04:25,202 --> 00:04:27,382
 at 0.08 percent.
 
 139
-00:04:28,382 --> 00:04:32,042
+00:04:27,422 --> 00:04:31,082
 By August 2023 it was 5.33 percent,
 
 140
-00:04:32,082 --> 00:04:33,916
+00:04:31,122 --> 00:04:32,956
 and it stayed there for about a year.
 
 141
-00:04:34,036 --> 00:04:36,236
+00:04:33,076 --> 00:04:35,276
 A working paper from the U.S.
 
 142
-00:04:36,276 --> 00:04:39,136
+00:04:35,316 --> 00:04:38,176
 Census Bureau looks at workers aged 22 to 24.
 
 143
-00:04:39,176 --> 00:04:41,546
+00:04:38,216 --> 00:04:40,586
 In the industries most exposed to AI,
 
 144
-00:04:41,586 --> 00:04:43,284
+00:04:40,626 --> 00:04:42,324
 their employment fell 12 percent in the
 
 145
-00:04:43,324 --> 00:04:45,946
+00:04:42,364 --> 00:04:44,986
 ten quarters after ChatGPT's release,
 
 146
-00:04:45,986 --> 00:04:48,215
+00:04:45,026 --> 00:04:47,256
 while less exposed industries held steady.
 
 147
-00:04:48,335 --> 00:04:50,845
+00:04:47,376 --> 00:04:49,886
 The paper then asks whether rising rates did that.
 
 148
-00:04:50,885 --> 00:04:52,505
+00:04:49,926 --> 00:04:51,546
 Its estimate is that up to a quarter of
 
 149
-00:04:52,545 --> 00:04:54,025
+00:04:51,586 --> 00:04:53,066
 the decline can be traced to the rate
 
 150
-00:04:54,065 --> 00:04:56,165
+00:04:53,106 --> 00:04:55,206
 hikes through 2023.
 
 151
-00:04:56,205 --> 00:04:57,945
+00:04:55,246 --> 00:04:56,986
 The paper finds rates can't account for
 
 152
-00:04:57,985 --> 00:05:01,236
+00:04:57,026 --> 00:05:00,276
 the sharp hiring drop at the most AI-exposed firms.
 
 153
-00:05:01,586 --> 00:05:03,666
+00:05:00,626 --> 00:05:02,706
 The two studies cover overlapping years,
 
 154
-00:05:03,706 --> 00:05:05,536
+00:05:02,746 --> 00:05:04,576
 so this isn't a clean handoff from one
 
 155
-00:05:05,576 --> 00:05:06,736
+00:05:04,616 --> 00:05:05,776
 cause to the next.
 
 156
-00:05:06,776 --> 00:05:07,969
+00:05:05,816 --> 00:05:07,009
 They ask different questions.
 
 157
-00:05:08,089 --> 00:05:09,949
+00:05:07,129 --> 00:05:08,989
 The New York Fed study finds the early gap
 
 158
-00:05:09,989 --> 00:05:11,479
+00:05:09,029 --> 00:05:10,519
 in jobs that went remote,
 
 159
-00:05:11,519 --> 00:05:14,399
+00:05:10,559 --> 00:05:13,439
 and it is still there when AI exposure is held fixed.
 
 160
-00:05:14,439 --> 00:05:15,839
+00:05:13,479 --> 00:05:14,879
 The Stanford study finds a newer,
 
 161
-00:05:15,879 --> 00:05:18,739
+00:05:14,919 --> 00:05:17,779
 growing gap in jobs where AI does the task,
 
 162
-00:05:18,779 --> 00:05:20,529
+00:05:17,819 --> 00:05:19,569
 and it is still there when remote work is
 
 163
-00:05:20,569 --> 00:05:21,399
+00:05:19,609 --> 00:05:20,439
 controlled for.
 
 164
-00:05:21,439 --> 00:05:23,299
+00:05:20,479 --> 00:05:22,339
 The simplest reading is that more than one
 
 165
-00:05:23,339 --> 00:05:24,409
+00:05:22,379 --> 00:05:23,449
 cause is stacking,
 
 166
-00:05:24,449 --> 00:05:27,319
+00:05:23,489 --> 00:05:26,359
 and the data can't yet say how much weight each carries.
 
 167
-00:05:27,439 --> 00:05:29,019
+00:05:26,479 --> 00:05:28,059
 That still leaves a graduate with two
 
 168
-00:05:29,059 --> 00:05:31,279
+00:05:28,099 --> 00:05:30,319
 questions worth asking about any job.
 
 169
-00:05:31,319 --> 00:05:33,609
+00:05:30,359 --> 00:05:32,649
 Will this role put me near people who can teach me?
 
 170
-00:05:33,649 --> 00:05:35,529
+00:05:32,689 --> 00:05:34,569
 And is AI in this job doing the work,
 
 171
-00:05:35,569 --> 00:05:37,175
+00:05:34,609 --> 00:05:36,215
 or helping someone do it?
 
 172
-00:05:37,525 --> 00:05:39,185
+00:05:36,565 --> 00:05:38,225
 One problem is tied to remote work,
 
 173
-00:05:39,225 --> 00:05:41,515
+00:05:38,265 --> 00:05:40,555
 and its size rests on a rough estimate.
 
 174
-00:05:41,555 --> 00:05:42,355
+00:05:40,595 --> 00:05:41,395
 The other is newer,
 
 175
-00:05:42,255 --> 00:05:45,325
+00:05:41,295 --> 00:05:44,365
 and it sits in jobs where AI does the task.
 
 176
-00:05:45,365 --> 00:05:47,369
+00:05:44,405 --> 00:05:46,409
 How much each one matters is still open.
 
 177
-00:05:47,489 --> 00:05:49,249
+00:05:46,529 --> 00:05:48,289
 Which of those two questions applies to
 
 178
-00:05:49,289 --> 00:05:50,493
+00:05:48,329 --> 00:05:49,533
 your own job search?

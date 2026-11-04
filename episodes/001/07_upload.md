@@ -1,8 +1,8 @@
 # EP001 — 업로드 패키지 (7단계 챕터·설명 + 9단계 업로드 준비)
 
-- 영상: `output/001/04_exports/EP001_v4_full_r3.mp4` (5:51, 1920x1080 24fps, -14.2 LUFS)
+- 영상: `output/001/04_exports/EP001_v4_full_r5.mp4` (5:50, 1920x1080 24fps, -14.2 LUFS)
 - 자막: `episodes/001/subs/en.srt`(영어), `episodes/001/subs/ko.srt`(한국어). 178조각, 시각 동일
-- 썸네일 후보: `output/001/04_exports/EP001_thumb_A_64.jpg`, `EP001_thumb_B_suspect.jpg`
+- 썸네일: `output/001/04_exports/EP001_thumb_A_64.jpg` (A안, 2026-11-04 사용자 선택)
 
 ## 제목
 Is AI Taking Entry-Level Jobs? It Started Before ChatGPT
@@ -15,13 +15,13 @@ Is AI really why new grads can't find jobs? A New York Fed study finds the first
 0:00 Is AI to blame?
 0:44 The gap is real
 1:23 Suspect 1: remote work
-2:07 Why distance hurts juniors
-2:46 The 64 percent
-3:19 Suspect 2: AI
-4:19 Suspect 3: interest rates
-5:01 Putting it together
-5:27 Two questions for any job
-5:37 What's still open
+2:06 Why distance hurts juniors
+2:45 The 64 percent
+3:18 Suspect 2: AI
+4:18 Suspect 3: interest rates
+5:00 Putting it together
+5:26 Two questions for any job
+5:36 What's still open
 
 Sources
 - New York Fed, Liberty Street Economics (Jun 1, 2026), "Remote Work Leaves Younger Workers Sidelined": https://libertystreeteconomics.newyorkfed.org/2026/06/remote-work-leaves-younger-workers-sidelined/
