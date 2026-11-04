@@ -499,13 +499,14 @@
     {
      "t": "card",
      "lines": [
-      "IT STARTED BEFORE CHATGPT"
+      "IT STARTED",
+      "BEFORE CHATGPT"
      ],
-     "h": 1.2,
+     "h": 1.5,
      "bg": "red",
      "fg": "paper",
-     "x": 4.3,
-     "z": 1.0,
+     "x": 4.6,
+     "z": 1.4,
      "ry": -8,
      "at": 0.6
     }
