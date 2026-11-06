@@ -24,11 +24,11 @@ Is AI really why new grads can't find jobs? A New York Fed study finds the first
 5:36 What's still open
 
 Sources
-- New York Fed, Liberty Street Economics (Jun 1, 2026), "Remote Work Leaves Younger Workers Sidelined": https://libertystreeteconomics.newyorkfed.org/2026/06/remote-work-leaves-younger-workers-sidelined/
-- New York Fed, The Labor Market for Recent College Graduates: https://www.newyorkfed.org/research/college-labor-market
-- Stanford Digital Economy Lab (Aug 2026), Canaries in the Coal Mine update: https://digitaleconomy.stanford.edu/news/canariesaug26/
-- U.S. Census Bureau working paper CES-WP-26-27: https://www.census.gov/library/working-papers/2026/adrm/CES-WP-26-27.html
-- FRED, Federal Funds Effective Rate: https://fred.stlouisfed.org/series/FEDFUNDS
+- New York Fed, Liberty Street Economics (Jun 1, 2026), "Remote Work Leaves Younger Workers Sidelined"
+- New York Fed, The Labor Market for Recent College Graduates
+- Stanford Digital Economy Lab (Aug 2026), Canaries in the Coal Mine update
+- U.S. Census Bureau working paper CES-WP-26-27
+- FRED, Federal Funds Effective Rate
 
 Narration uses a synthetic (AI) voice. Visuals are paper props built and rendered in 3D. No AI-generated video.
 ```
@@ -37,6 +37,8 @@ Narration uses a synthetic (AI) voice. Visuals are paper props built and rendere
 ai taking entry level jobs, college graduates struggle to find jobs, why is it so hard to find a job after college, entry level jobs disappearing, unemployment rate for college graduates, remote work young workers, new york fed study, stanford ai jobs study, chatgpt jobs
 
 (태그 앞 5개는 2026-11-04 유튜브 자동완성에서 실제로 받은 검색어)
+
+> 2026-11-06: 설명란 링크는 사용자가 지우고 공개함. 이후 링크 금지(CLAUDE.md).
 
 ## 설정
 - 카테고리: Education / 언어: English / 아동용 아님
