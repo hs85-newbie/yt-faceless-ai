@@ -1,0 +1,200 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #a9c97c; overflow: hidden; font-family: Inter, sans-serif; }
+    #map { position: absolute; inset: 0; }
+    .ground { fill: #efe6d2; } .lawn { fill: #b9d68c; }
+    .bld .t { fill: #e7e2d8; } .bld .l { fill: #c9c2b6; } .bld .r { fill: #aaa397; } .bld .sh { fill: #1d2421; opacity: .18; }
+    .bld.cs .t { fill: #f0703f; } .bld.cs .l { fill: #d24e28; } .bld.cs .r { fill: #b8401e; }
+    .bld.ce .t, .bld.ce .l, .bld.ce .r { stroke: #e4572e; stroke-width: 4; stroke-linejoin: round; }
+    .lvl { fill: none; stroke: #1d2421; stroke-opacity: .6; stroke-width: 3; stroke-dasharray: 10 8; }
+    #road, #road-case { fill: none; stroke-linecap: round; stroke-linejoin: round; }   /* 지도 경로선: 건물 위 레이어 */
+    #road { stroke: #1d2421; stroke-width: 12; } #road-case { stroke: #efe6d2; stroke-width: 24; }
+    .lbl { position: absolute; transform: translate(-50%, -100%); display: flex; flex-direction: column; align-items: center; color: #1d2421; }
+    .lbl .big { font-family: "Archivo Black", sans-serif; font-size: 84px; line-height: .95; font-variant-numeric: tabular-nums;
+                 background: #efe6d2; padding: 6px 16px 2px; border: 3px solid #1d2421; }
+    .lbl .small { font-weight: 700; font-size: 30px; letter-spacing: 0; background: #1d2421; color: #efe6d2; padding: 4px 12px; margin-top: -3px; white-space: nowrap; }
+    .lbl .lead { width: 3px; height: 26px; background: #1d2421; }
+    .lbl.rank .big { background: #e4572e; color: #fff; border-color: #e4572e; }
+    .lbl.safe .big { background: #3f8f5b; color: #fff; border-color: #3f8f5b; }
+    #title { position: absolute; left: 50%; top: 150px; transform: translateX(-50%); background: #1d2421; color: #efe6d2;
+              font-family: "Archivo Black", sans-serif; font-size: 72px; line-height: 1; padding: 24px 44px; white-space: nowrap; }
+    #sign-level { position: absolute; left: 1380px; top: 150px; background: #efe6d2; border: 3px solid #1d2421; padding: 14px 22px;
+                   font-weight: 700; font-size: 34px; color: #1d2421; }
+    #sign-road { position: absolute; background: #1d2421; color: #efe6d2; font-family: "Archivo Black", sans-serif; font-size: 44px; padding: 16px 26px;
+                  transform: translate(-50%, -100%); white-space: nowrap; }
+    #src { position: absolute; left: 40px; bottom: 34px; background: rgba(29,36,33,.82); color: #efe6d2; font-size: 28px; padding: 7px 14px; }
+  </style>
+  <div id="root" data-composition-id="campus" data-width="1920" data-height="1080">
+    <svg id="map" viewBox="0 0 1920 1080" data-layout-ignore>
+      <g id="world" transform="translate(584.3 439.7) scale(1.3661)">
+        <polygon class="ground" points="0.0,-66.0 902.0,385.0 275.0,698.5 -627.0,247.5"/><polygon class="lawn" points="0.0,-13.8 247.5,110.0 0.0,233.8 -247.5,110.0"/><polygon class="lawn" points="275.0,123.8 522.5,247.5 275.0,371.2 27.5,247.5"/><polygon class="lawn" points="550.0,261.2 797.5,385.0 550.0,508.8 302.5,385.0"/><polygon class="lawn" points="-275.0,123.8 -27.5,247.5 -275.0,371.2 -522.5,247.5"/><polygon class="lawn" points="0.0,261.2 247.5,385.0 0.0,508.8 -247.5,385.0"/><polygon class="lawn" points="275.0,398.8 522.5,522.5 275.0,646.2 27.5,522.5"/>
+        <g id="shadows"></g><g id="b-fine-arts" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-english-language" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-performing-arts" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-history" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-foreign-language" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-commercial-art-graphic-design" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-journalism" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-ethnic-studies" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-liberal-arts" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-theology-and-religion" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-art-history" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-interdisciplinary-studies" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-philosophy" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-nutrition-sciences" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-mass-media" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-communications" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-general-engineering" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-pharmacy" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-nursing" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-advertising-and-public-relations" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-chemical-engineering" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-electrical-engineering" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-early-childhood-education" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-treatment-therapy" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-health-services" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-engineering-technologies" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-civil-engineering" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-aerospace-engineering" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-miscellaneous-education" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-elementary-education" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-family-and-consumer-sciences" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-medical-technicians" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-computer-science" class="bld cs"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-miscellaneous-technologies" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-industrial-engineering" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-mechanical-engineering" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-secondary-education" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-general-education" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-construction-services" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-information-systems-management" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-miscellaneous-engineering" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-special-education" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-psychology" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-computer-engineering" class="bld ce"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-architecture" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-physics" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-anthropology" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-criminal-justice" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-miscellaneous-biological-science" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-biology" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-general-social-sciences" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-economics" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-public-policy-and-law" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-agriculture" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-chemistry" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-biochemistry" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-international-affairs" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-political-science" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-social-services" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-animal-and-plant-sciences" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-earth-sciences" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-mathematics" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-sociology" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-environmental-studies" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-miscellaneous-physical-sciences" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-finance" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-geography" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-business-analytics" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-general-business" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-marketing" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-accounting" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-leisure-and-hospitality" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g><g id="b-business-management" class="bld"><polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g>
+        <g id="levels" opacity="0"><polyline class="lvl" points="70.4,62.7 110.0,82.5 149.6,62.7"/><polyline class="lvl" points="180.4,117.7 220.0,137.5 259.6,117.7"/><polyline class="lvl" points="290.4,7.7 330.0,27.5 369.6,7.7"/><polyline class="lvl" points="400.4,62.7 440.0,82.5 479.6,62.7"/></g>
+        <polyline id="road-case" pathLength="100" stroke-dasharray="100 120" stroke-dashoffset="110" points="148.5,228.3 379.5,112.7 616.0,165.0"/>
+        <polyline id="road" pathLength="100" stroke-dasharray="100 120" stroke-dashoffset="110" points="148.5,228.3 379.5,112.7 616.0,165.0"/>
+      </g>
+    </svg>
+    <div id="lbl-computer-science-10" class="clip lbl num" data-start="1.0" data-duration="10.67" data-track-index="2" data-wx="110.0" data-wy="-60.5" data-oy="0" style="left:0;top:0"><span class="small">COMPUTER SCIENCE</span><i class="lead"></i></div>
+    <div id="lbl-computer-science-90" class="clip lbl safe" data-start="9.04" data-duration="2.63" data-track-index="2" data-wx="110.0" data-wy="-60.5" data-oy="-70" style="left:0;top:0"><b class="big">SAFE</b><span class="small">LEARN TO CODE</span><i class="lead"></i></div>
+    <div id="lbl-computer-engineering-197" class="clip lbl rank" data-start="19.73" data-duration="6.36" data-track-index="2" data-wx="220.0" data-wy="-40.7" data-oy="-200" style="left:0;top:0"><b class="big">#2</b><span class="small">COMPUTER ENG. 7.8%</span><i class="lead"></i></div>
+    <div id="lbl-computer-science-242" class="clip lbl rank" data-start="24.2" data-duration="1.89" data-track-index="2" data-wx="110.0" data-wy="-60.5" data-oy="0" style="left:0;top:0"><b class="big">#4</b><span class="small">COMPUTER SCI. 7.0%</span><i class="lead"></i></div>
+    <div id="lbl-computer-science-268" class="clip lbl num" data-start="26.81" data-duration="7.88" data-track-index="2" data-wx="110.0" data-wy="-60.5" data-oy="-10" style="left:0;top:0"><b class="big">7.0%</b><span class="small">COMPUTER SCIENCE</span><i class="lead"></i></div>
+    <div id="lbl-art-history-286" class="clip lbl num" data-start="28.67" data-duration="6.02" data-track-index="2" data-wx="-110.0" data-wy="-157.3" data-oy="0" style="left:0;top:0"><b class="big">6.7%</b><span class="small">ART HISTORY</span><i class="lead"></i></div>
+    <div id="lbl-philosophy-307" class="clip lbl num" data-start="30.75" data-duration="3.94" data-track-index="2" data-wx="110.0" data-wy="-86.9" data-oy="-170" style="left:0;top:0"><b class="big">5.1%</b><span class="small">PHILOSOPHY</span><i class="lead"></i></div>
+    <div id="lbl-nutrition-sciences-325" class="clip lbl num" data-start="32.57" data-duration="2.12" data-track-index="2" data-wx="-275.0" data-wy="-33.0" data-oy="0" style="left:0;top:0"><b class="big">4.5%</b><span class="small">NUTRITION</span><i class="lead"></i></div>
+    <div id="lbl-computer-science-416" class="clip lbl num" data-start="41.650000000000006" data-duration="21.69" data-track-index="2" data-wx="110.0" data-wy="-60.5" data-oy="0" style="left:0;top:0"><b class="big">7.0%</b><span class="small">COMPUTER SCIENCE</span><i class="lead"></i></div>
+    <div id="lbl-computer-engineering-418" class="clip lbl num" data-start="41.85" data-duration="21.49" data-track-index="2" data-wx="220.0" data-wy="-40.7" data-oy="-170" style="left:0;top:0"><b class="big">7.8%</b><span class="small">COMPUTER ENGINEERING</span><i class="lead"></i></div>
+    <div id="lbl-electrical-engineering-452" class="clip lbl num" data-start="45.23" data-duration="18.11" data-track-index="2" data-wx="330.0" data-wy="51.7" data-oy="0" style="left:0;top:0"><b class="big">3.2%</b><span class="small">ELECTRICAL ENGINEERING</span><i class="lead"></i></div>
+    <div id="lbl-mechanical-engineering-516" class="clip lbl num" data-start="51.64" data-duration="11.7" data-track-index="2" data-wx="440.0" data-wy="53.9" data-oy="-170" style="left:0;top:0"><b class="big">4.4%</b><span class="small">MECHANICAL ENGINEERING</span><i class="lead"></i></div>
+    <div id="lbl-physics-651" class="clip lbl num" data-start="65.14" data-duration="15.97" data-track-index="2" data-wx="550.0" data-wy="12.1" data-oy="0" style="left:0;top:0"><b class="big">6.6%</b><span class="small">PHYSICS</span><i class="lead"></i></div>
+    <div id="lbl-information-systems-management-669" class="clip lbl num" data-start="66.96" data-duration="14.15" data-track-index="2" data-wx="275.0" data-wy="11.0" data-oy="0" style="left:0;top:0"><b class="big">6.0%</b><span class="small">INFO SYSTEMS</span><i class="lead"></i></div>
+    <div id="lbl-mathematics-697" class="clip lbl num" data-start="69.76" data-duration="11.35" data-track-index="2" data-wx="715.0" data-wy="129.8" data-oy="0" style="left:0;top:0"><b class="big">5.8%</b><span class="small">MATHEMATICS</span><i class="lead"></i></div>
+    <div id="lbl-finance-710" class="clip lbl num" data-start="71.04" data-duration="10.07" data-track-index="2" data-wx="275.0" data-wy="316.8" data-oy="0" style="left:0;top:0"><b class="big">2.8%</b><span class="small">FINANCE</span><i class="lead"></i></div>
+    <div id="lbl-nursing-741" class="clip lbl num" data-start="74.19" data-duration="6.92" data-track-index="2" data-wx="-220.0" data-wy="100.1" data-oy="0" style="left:0;top:0"><b class="big">2.1%</b><span class="small">NURSING</span><i class="lead"></i></div>
+    <div id="lbl-computer-science-811" class="clip lbl num" data-start="81.11" data-duration="7.89" data-track-index="2" data-wx="110.0" data-wy="-60.5" data-oy="0" style="left:0;top:0"><span class="small">COMPUTER SCIENCE</span><i class="lead"></i></div>
+    <div id="lbl-computer-engineering-813" class="clip lbl num" data-start="81.31" data-duration="7.69" data-track-index="2" data-wx="220.0" data-wy="-40.7" data-oy="-90" style="left:0;top:0"><span class="small">COMPUTER ENGINEERING</span><i class="lead"></i></div>
+    <div id="title" class="clip" data-hold data-start="34.69" data-duration="5.76" data-track-index="3">IS COMPUTER SCIENCE STILL WORTH IT?</div>
+    <div id="sign-level" class="clip" data-start="55.74" data-duration="7.6" data-track-index="3">ALL MAJORS: 4.2%</div>
+    <div id="sign-road" class="clip" data-start="86.44" data-duration="2.56" data-track-index="3"
+         style="left:1353.0px;top:633.4px">ENTRY-LEVEL SOFTWARE JOBS</div>
+    <div id="src">Source: NY Fed, The Labor Market for Recent College Graduates (2024 data)</div>
+  </div>
+  <script>
+    const B = [{"id": "fine-arts", "gx": 0, "gy": 0}, {"id": "english-language", "gx": 0, "gy": 1}, {"id": "performing-arts", "gx": 1, "gy": 0}, {"id": "history", "gx": 0, "gy": 2}, {"id": "foreign-language", "gx": 1, "gy": 1}, {"id": "commercial-art-graphic-design", "gx": 2, "gy": 0}, {"id": "journalism", "gx": 0, "gy": 3}, {"id": "ethnic-studies", "gx": 1, "gy": 2}, {"id": "liberal-arts", "gx": 2, "gy": 1}, {"id": "theology-and-religion", "gx": 3, "gy": 0}, {"id": "art-history", "gx": 1, "gy": 3}, {"id": "interdisciplinary-studies", "gx": 2, "gy": 2}, {"id": "philosophy", "gx": 3, "gy": 1}, {"id": "nutrition-sciences", "gx": 0, "gy": 5}, {"id": "mass-media", "gx": 2, "gy": 3}, {"id": "communications", "gx": 3, "gy": 2}, {"id": "general-engineering", "gx": 5, "gy": 0}, {"id": "pharmacy", "gx": 0, "gy": 6}, {"id": "nursing", "gx": 1, "gy": 5}, {"id": "advertising-and-public-relations", "gx": 3, "gy": 3}, {"id": "chemical-engineering", "gx": 5, "gy": 1}, {"id": "electrical-engineering", "gx": 6, "gy": 0}, {"id": "early-childhood-education", "gx": 0, "gy": 7}, {"id": "treatment-therapy", "gx": 1, "gy": 6}, {"id": "health-services", "gx": 2, "gy": 5}, {"id": "engineering-technologies", "gx": 5, "gy": 2}, {"id": "civil-engineering", "gx": 6, "gy": 1}, {"id": "aerospace-engineering", "gx": 7, "gy": 0}, {"id": "miscellaneous-education", "gx": 0, "gy": 8}, {"id": "elementary-education", "gx": 1, "gy": 7}, {"id": "family-and-consumer-sciences", "gx": 2, "gy": 6}, {"id": "medical-technicians", "gx": 3, "gy": 5}, {"id": "computer-science", "gx": 5, "gy": 3}, {"id": "miscellaneous-technologies", "gx": 6, "gy": 2}, {"id": "industrial-engineering", "gx": 7, "gy": 1}, {"id": "mechanical-engineering", "gx": 8, "gy": 0}, {"id": "secondary-education", "gx": 2, "gy": 7}, {"id": "general-education", "gx": 3, "gy": 6}, {"id": "construction-services", "gx": 6, "gy": 3}, {"id": "information-systems-management", "gx": 7, "gy": 2}, {"id": "miscellaneous-engineering", "gx": 8, "gy": 1}, {"id": "special-education", "gx": 3, "gy": 7}, {"id": "psychology", "gx": 5, "gy": 5}, {"id": "computer-engineering", "gx": 7, "gy": 3}, {"id": "architecture", "gx": 8, "gy": 2}, {"id": "physics", "gx": 10, "gy": 0}, {"id": "anthropology", "gx": 5, "gy": 6}, {"id": "criminal-justice", "gx": 6, "gy": 5}, {"id": "miscellaneous-biological-science", "gx": 10, "gy": 1}, {"id": "biology", "gx": 11, "gy": 0}, {"id": "general-social-sciences", "gx": 5, "gy": 7}, {"id": "economics", "gx": 6, "gy": 6}, {"id": "public-policy-and-law", "gx": 7, "gy": 5}, {"id": "agriculture", "gx": 10, "gy": 2}, {"id": "chemistry", "gx": 11, "gy": 1}, {"id": "biochemistry", "gx": 12, "gy": 0}, {"id": "international-affairs", "gx": 6, "gy": 7}, {"id": "political-science", "gx": 7, "gy": 6}, {"id": "social-services", "gx": 8, "gy": 5}, {"id": "animal-and-plant-sciences", "gx": 11, "gy": 2}, {"id": "earth-sciences", "gx": 12, "gy": 1}, {"id": "mathematics", "gx": 13, "gy": 0}, {"id": "sociology", "gx": 8, "gy": 6}, {"id": "environmental-studies", "gx": 12, "gy": 2}, {"id": "miscellaneous-physical-sciences", "gx": 13, "gy": 1}, {"id": "finance", "gx": 10, "gy": 5}, {"id": "geography", "gx": 13, "gy": 2}, {"id": "business-analytics", "gx": 10, "gy": 6}, {"id": "general-business", "gx": 11, "gy": 5}, {"id": "marketing", "gx": 11, "gy": 6}, {"id": "accounting", "gx": 12, "gy": 5}, {"id": "leisure-and-hospitality", "gx": 12, "gy": 6}, {"id": "business-management", "gx": 13, "gy": 5}];
+    const H = Object.fromEntries(B.map(b => [b.id, 0]));
+    const TW = 110, TH = 55, A = 0.14;
+    const iso = (x, y, h) => [(x - y) * TW / 2, (x + y) * TH / 2 - h];
+    const pts = a => a.map(p => p[0].toFixed(1) + "," + p[1].toFixed(1)).join(" ");
+    function hull(P) {   // 그림자 = 바닥 + 높이만큼 오른쪽 아래로 민 바닥의 볼록 껍질
+      P = P.slice().sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+      const c = (o, a, b) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+      const lo = [], up = [];
+      for (const p of P) { while (lo.length > 1 && c(lo[lo.length - 2], lo[lo.length - 1], p) <= 0) lo.pop(); lo.push(p); }
+      for (const p of P.slice().reverse()) { while (up.length > 1 && c(up[up.length - 2], up[up.length - 1], p) <= 0) up.pop(); up.push(p); }
+      return lo.slice(0, -1).concat(up.slice(0, -1));
+    }
+    const shadows = document.querySelector("#shadows");
+    function draw() {
+      for (const b of B) {
+        const h = H[b.id], g = document.getElementById("b-" + b.id);
+        const f = [[b.gx + A, b.gy + A], [b.gx + 1 - A, b.gy + A], [b.gx + 1 - A, b.gy + 1 - A], [b.gx + A, b.gy + 1 - A]];
+        const lo = f.map(([x, y]) => iso(x, y, 0)), hi = f.map(([x, y]) => iso(x, y, h));
+        g.querySelector(".l").setAttribute("points", pts([lo[3], lo[2], hi[2], hi[3]]));
+        g.querySelector(".r").setAttribute("points", pts([lo[2], lo[1], hi[1], hi[2]]));
+        g.querySelector(".t").setAttribute("points", pts(hi));
+        const off = lo.map(p => [p[0] + h * 0.55, p[1] + h * 0.18]);
+        g.querySelector(".sh").setAttribute("points", h > 0 ? pts(hull(lo.concat(off))) : "");
+      }
+    }
+    draw();
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo(H, {"computer-science": 0}, {"computer-science": 308.0, duration: 0.8, ease: "power3.out", onUpdate: draw}, 0.3);
+    tl.fromTo(H, {"fine-arts": 0}, {"fine-arts": 338.8, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.08);
+    tl.fromTo(H, {"english-language": 0}, {"english-language": 268.4, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.12);
+    tl.fromTo(H, {"performing-arts": 0}, {"performing-arts": 308.0, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.12);
+    tl.fromTo(H, {"history": 0}, {"history": 189.2, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.16);
+    tl.fromTo(H, {"foreign-language": 0}, {"foreign-language": 70.4, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.16);
+    tl.fromTo(H, {"commercial-art-graphic-design": 0}, {"commercial-art-graphic-design": 250.8, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.16);
+    tl.fromTo(H, {"journalism": 0}, {"journalism": 101.2, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.2);
+    tl.fromTo(H, {"ethnic-studies": 0}, {"ethnic-studies": 215.6, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.2);
+    tl.fromTo(H, {"liberal-arts": 0}, {"liberal-arts": 167.2, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.2);
+    tl.fromTo(H, {"theology-and-religion": 0}, {"theology-and-religion": 136.4, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.2);
+    tl.fromTo(H, {"art-history": 0}, {"art-history": 294.8, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.24);
+    tl.fromTo(H, {"interdisciplinary-studies": 0}, {"interdisciplinary-studies": 171.6, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.24);
+    tl.fromTo(H, {"philosophy": 0}, {"philosophy": 224.4, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.24);
+    tl.fromTo(H, {"nutrition-sciences": 0}, {"nutrition-sciences": 198.0, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.28);
+    tl.fromTo(H, {"mass-media": 0}, {"mass-media": 228.8, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.28);
+    tl.fromTo(H, {"communications": 0}, {"communications": 171.6, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.28);
+    tl.fromTo(H, {"general-engineering": 0}, {"general-engineering": 198.0, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.28);
+    tl.fromTo(H, {"pharmacy": 0}, {"pharmacy": 246.4, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.32);
+    tl.fromTo(H, {"nursing": 0}, {"nursing": 92.4, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.32);
+    tl.fromTo(H, {"advertising-and-public-relations": 0}, {"advertising-and-public-relations": 250.8, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.32);
+    tl.fromTo(H, {"chemical-engineering": 0}, {"chemical-engineering": 206.8, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.32);
+    tl.fromTo(H, {"electrical-engineering": 0}, {"electrical-engineering": 140.8, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.32);
+    tl.fromTo(H, {"early-childhood-education": 0}, {"early-childhood-education": 290.4, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.36);
+    tl.fromTo(H, {"treatment-therapy": 0}, {"treatment-therapy": 114.4, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.36);
+    tl.fromTo(H, {"health-services": 0}, {"health-services": 167.2, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.36);
+    tl.fromTo(H, {"engineering-technologies": 0}, {"engineering-technologies": 74.8, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.36);
+    tl.fromTo(H, {"civil-engineering": 0}, {"civil-engineering": 101.2, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.36);
+    tl.fromTo(H, {"aerospace-engineering": 0}, {"aerospace-engineering": 96.8, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.36);
+    tl.fromTo(H, {"miscellaneous-education": 0}, {"miscellaneous-education": 48.4, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.4);
+    tl.fromTo(H, {"elementary-education": 0}, {"elementary-education": 52.8, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.4);
+    tl.fromTo(H, {"family-and-consumer-sciences": 0}, {"family-and-consumer-sciences": 189.2, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.4);
+    tl.fromTo(H, {"medical-technicians": 0}, {"medical-technicians": 272.8, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.4);
+    tl.fromTo(H, {"miscellaneous-technologies": 0}, {"miscellaneous-technologies": 158.4, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.4);
+    tl.fromTo(H, {"industrial-engineering": 0}, {"industrial-engineering": 184.8, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.4);
+    tl.fromTo(H, {"mechanical-engineering": 0}, {"mechanical-engineering": 193.6, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.4);
+    tl.fromTo(H, {"secondary-education": 0}, {"secondary-education": 92.4, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.44);
+    tl.fromTo(H, {"general-education": 0}, {"general-education": 114.4, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.44);
+    tl.fromTo(H, {"construction-services": 0}, {"construction-services": 96.8, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.44);
+    tl.fromTo(H, {"information-systems-management": 0}, {"information-systems-management": 264.0, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.44);
+    tl.fromTo(H, {"miscellaneous-engineering": 0}, {"miscellaneous-engineering": 162.8, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.44);
+    tl.fromTo(H, {"special-education": 0}, {"special-education": 30.8, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.48);
+    tl.fromTo(H, {"psychology": 0}, {"psychology": 220.0, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.48);
+    tl.fromTo(H, {"computer-engineering": 0}, {"computer-engineering": 343.2, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.48);
+    tl.fromTo(H, {"architecture": 0}, {"architecture": 299.2, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.48);
+    tl.fromTo(H, {"physics": 0}, {"physics": 290.4, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.48);
+    tl.fromTo(H, {"anthropology": 0}, {"anthropology": 347.6, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.52);
+    tl.fromTo(H, {"criminal-justice": 0}, {"criminal-justice": 158.4, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.52);
+    tl.fromTo(H, {"miscellaneous-biological-science": 0}, {"miscellaneous-biological-science": 193.6, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.52);
+    tl.fromTo(H, {"biology": 0}, {"biology": 189.2, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.52);
+    tl.fromTo(H, {"general-social-sciences": 0}, {"general-social-sciences": 101.2, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.56);
+    tl.fromTo(H, {"economics": 0}, {"economics": 154.0, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.56);
+    tl.fromTo(H, {"public-policy-and-law": 0}, {"public-policy-and-law": 96.8, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.56);
+    tl.fromTo(H, {"agriculture": 0}, {"agriculture": 61.6, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.56);
+    tl.fromTo(H, {"chemistry": 0}, {"chemistry": 189.2, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.56);
+    tl.fromTo(H, {"biochemistry": 0}, {"biochemistry": 118.8, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.56);
+    tl.fromTo(H, {"international-affairs": 0}, {"international-affairs": 268.4, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.6);
+    tl.fromTo(H, {"political-science": 0}, {"political-science": 198.0, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.6);
+    tl.fromTo(H, {"social-services": 0}, {"social-services": 83.6, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.6);
+    tl.fromTo(H, {"animal-and-plant-sciences": 0}, {"animal-and-plant-sciences": 110.0, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.6);
+    tl.fromTo(H, {"earth-sciences": 0}, {"earth-sciences": 167.2, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.6);
+    tl.fromTo(H, {"mathematics": 0}, {"mathematics": 255.2, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.6);
+    tl.fromTo(H, {"sociology": 0}, {"sociology": 202.4, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.64);
+    tl.fromTo(H, {"environmental-studies": 0}, {"environmental-studies": 277.2, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.64);
+    tl.fromTo(H, {"miscellaneous-physical-sciences": 0}, {"miscellaneous-physical-sciences": 110.0, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.64);
+    tl.fromTo(H, {"finance": 0}, {"finance": 123.2, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.68);
+    tl.fromTo(H, {"geography": 0}, {"geography": 70.4, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.68);
+    tl.fromTo(H, {"business-analytics": 0}, {"business-analytics": 220.0, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.72);
+    tl.fromTo(H, {"general-business": 0}, {"general-business": 189.2, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.72);
+    tl.fromTo(H, {"marketing": 0}, {"marketing": 193.6, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.76);
+    tl.fromTo(H, {"accounting": 0}, {"accounting": 114.4, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.76);
+    tl.fromTo(H, {"leisure-and-hospitality": 0}, {"leisure-and-hospitality": 118.8, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.8);
+    tl.fromTo(H, {"business-management": 0}, {"business-management": 167.2, duration: 0.8, ease: "power3.out", onUpdate: draw}, 16.8);
+    tl.to("#world", {attr: {transform: "translate(845.1 506.7) scale(0.8358)"}, duration: 1.6, ease: "power2.inOut"}, 11.673);
+    tl.to("#world", {attr: {transform: "translate(1073.2 543.1) scale(1.3726)"}, duration: 1.4, ease: "power2.inOut"}, 26.09);
+    tl.to("#world", {attr: {transform: "translate(867.1 603.7) scale(0.6755)"}, duration: 1.4, ease: "power2.inOut"}, 34.69);
+    tl.to("#world", {attr: {transform: "translate(543.3 421.7) scale(1.5152)"}, duration: 1.6, ease: "power2.inOut"}, 40.45);
+    tl.to("#world", {attr: {transform: "translate(637.8 311.5) scale(1.3017)"}, duration: 1.6, ease: "power2.inOut"}, 63.336);
+    tl.to("#world", {attr: {transform: "translate(465.6 415.7) scale(1.4406)"}, duration: 1.4, ease: "power2.inOut"}, 81.11);
+    tl.to("#world", {attr: {transform: "translate(571.2 436.2) scale(1.4139)"}, duration: 11.62, ease: "sine.inOut"}, 0.0);
+    tl.to("#world", {attr: {transform: "translate(841.1 505.5) scale(0.8651)"}, duration: 12.77, ease: "sine.inOut"}, 13.27);
+    tl.to("#world", {attr: {transform: "translate(1077.2 543.2) scale(1.4206)"}, duration: 7.15, ease: "sine.inOut"}, 27.49);
+    tl.to("#world", {attr: {transform: "translate(863.8 605.9) scale(0.6991)"}, duration: 4.31, ease: "sine.inOut"}, 36.09);
+    tl.to("#world", {attr: {transform: "translate(528.7 417.6) scale(1.5682)"}, duration: 21.24, ease: "sine.inOut"}, 42.05);
+    tl.to("#world", {attr: {transform: "translate(626.5 303.5) scale(1.3473)"}, duration: 16.12, ease: "sine.inOut"}, 64.94);
+    tl.to("#world", {attr: {transform: "translate(448.3 411.3) scale(1.491)"}, duration: 6.44, ease: "sine.inOut"}, 82.51);
+    const world = document.querySelector("#world"), LBL = [...document.querySelectorAll(".lbl")];
+    function syncLabels() {   // 라벨을 월드 지붕 점에 붙인다(카메라가 밀려도 따라감)
+      const m = world.transform.baseVal.consolidate().matrix;
+      for (const el of LBL) {
+        const x = +el.dataset.wx, y = +el.dataset.wy;
+        el.style.left = (m.a * x + m.c * y + m.e).toFixed(1) + "px";
+        el.style.top = (m.b * x + m.d * y + m.f - 26 + +el.dataset.oy).toFixed(1) + "px";
+      }
+    }
+    tl.eventCallback("onUpdate", syncLabels); syncLabels();
+    tl.fromTo("#levels", {opacity: 0}, {opacity: 1, duration: 0.3}, 55.74);
+    tl.to("#levels", {opacity: 0, duration: 0.2}, 63.14);
+    tl.to(["#b-finance .t", "#b-nursing .t"], {fill: "#3f8f5b", duration: 0.3}, 79.53);   // CSS 클래스 색을 이기려면 인라인 스타일
+    tl.to(["#b-finance .l", "#b-finance .r", "#b-nursing .l", "#b-nursing .r"], {fill: "#2f6e45", duration: 0.3}, 79.53);
+    tl.fromTo(["#road-case", "#road"], {attr: {"stroke-dashoffset": 110}}, {attr: {"stroke-dashoffset": 0}, duration: 1.0, ease: "power1.inOut"}, 85.64);
+
+    document.querySelectorAll(".lbl, #title, #sign-level, #sign-road").forEach(el => {
+      const t0 = parseFloat(el.dataset.start);
+      tl.fromTo(el.children.length ? el.children : el, {opacity: 0, scale: 0.85}, {opacity: 1, scale: 1, duration: 0.25, ease: "power4.out", stagger: 0.04}, t0);
+    });
+    tl.to({}, {duration: 0.01}, 88.99);
+    window.__timelines["campus"] = tl;
+  </script>
+</template>
