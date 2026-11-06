@@ -15,7 +15,9 @@ DATA = R / "output/002/02_raw/data/bymajor.csv"
 VOICE = R / "output/002/02_raw/voice_v1"
 WORK = R / "output/002/03_work/v1"
 END = 89.0
-TW, TH, PX = 110, 55, 44          # 타일 폭·높이(px), 실업률 1%p당 높이(px)
+TW, TH, PX = 110, 55, 30          # 타일 폭·높이(px), 실업률 1%p당 높이(px) — 2026-11-06 사용자: 고층 빌딩처럼 보여 캠퍼스로 안 읽힘 → 낮고 넓게
+FA = 0.07                         # 대지 안쪽 여백(작을수록 건물이 넓다)
+QNAME = {"hum": "ARTS & HUMANITIES", "eng": "ENGINEERING", "sci": "SCIENCES", "hed": "HEALTH & EDUCATION", "soc": "SOCIAL SCIENCES", "bus": "BUSINESS"}
 
 # ── 데이터: 전공 → 구역 ──────────────────────────────
 QUADS = {   # 구역: (블록 원점 gx, gy), 4x4 칸
@@ -57,7 +59,7 @@ BY = {b["name"]: b for b in B}
 
 # ── 기하: 등각 투영(월드 px) ──────────────────────────
 def iso(gx, gy, h=0.0): return ((gx - gy) * TW / 2, (gx + gy) * TH / 2 - h)
-def corners(b, h, a=0.14):
+def corners(b, h, a=FA):
     g = [(b["gx"] + a, b["gy"] + a), (b["gx"] + 1 - a, b["gy"] + a), (b["gx"] + 1 - a, b["gy"] + 1 - a), (b["gx"] + a, b["gy"] + 1 - a)]
     return [iso(x, y, hh) for x, y in g for hh in (0, h)]
 def roof(b): x, y = iso(b["gx"] + .5, b["gy"] + .5, b["u"] * PX); return x, y
@@ -88,9 +90,11 @@ def scr(cam, p): return cam["s"] * p[0] + cam["x"], cam["s"] * p[1] + cam["y"]
 
 ALL = [b["name"] for b in B]
 ROAD_END = iso(8.6, -2.6)   # 공학 구역 위쪽 캠퍼스 밖
+GATE = iso(13.6, 11.2)   # 정문: 화면 맨 앞(아래 가운데) 모서리
 CS, CE, EE, ME = ENG
 SHOTS = [   # (시작 시각, 이동 길이, 대상)
-    (0.0, 0.0, fit([CS, CE, EE, ME, "Architecture"], pad=(420, 330, 200))),
+    (0.0, 0.0, fit(ALL, extra=[GATE], pad=(120, 140, 210))),   # 정문·광장·구역 이름판이 보이는 캠퍼스 전경으로 시작
+    (2.6, 1.6, fit([CS, CE, EE, ME, "Architecture"], pad=(420, 330, 200))),
     (at("s2_01"), 1.6, fit(ALL, pad=(150, 230, 120))),
     (at("s2_02@grad"), 1.4, fit([CS, "Art History", "Philosophy", "Nutrition Sciences"])),
     (at("s2_03"), 1.4, fit(ALL, pad=(220, 380, 110))),
@@ -116,7 +120,7 @@ label(CS, at("s2_02@7"), dy=-10)
 label("Art History", at("s2_02@art history"))
 label("Philosophy", at("s2_02@philosophy"), dy=-170)   # CS와 화면 같은 세로줄
 label("Nutrition Sciences", at("s2_02@nutrition"), small="NUTRITION")
-label(CS, at("s3_01") + 1.2); label(CE, at("s3_01") + 1.4, dy=-170)
+label(CS, at("s3_01") + 1.2); label(CE, at("s3_01") + 1.4, dy=-210)
 label(EE, at("s3_01@electrical")); label(ME, at("s3_01@mechanical"), dy=-170)
 label("Physics", at("s3_03@physics")); label("Information Systems & Management", at("s3_03@information systems"), small="INFO SYSTEMS")
 label("Mathematics", at("s3_03@mathematics")); label("Finance", at("s3_03@finance")); label("Nursing", at("s3_03@nursing"))
@@ -133,11 +137,22 @@ def label_html(l):
     return (f'<div id="{i}" class="clip lbl {kind}" data-start="{t}" data-duration="{round(e - t, 2)}" data-track-index="2" '
             f'data-wx="{x}" data-wy="{y}" data-oy="{dy}" style="left:0;top:0">{big_html}<span class="small">{small}</span><i class="lead"></i></div>')
 
-ground = [iso(-1.2, -1.2), iso(15.2, -1.2), iso(15.2, 10.2), iso(-1.2, 10.2)]
+ground = [iso(-1.2, -1.2), iso(15.2, -1.2), iso(15.2, 11.4), iso(-1.2, 11.4)]
+TREES = sorted({(round(x, 2), round(y, 2)) for ox, oy in QUADS.values() for k in range(5)
+                for x, y in [(ox - .55, oy + k), (ox + 4.55, oy + k), (ox + k, oy - .55), (ox + k, oy + 4.55)]})
 quads = "".join(f'<polygon class="lawn" points="{" ".join(f"{x:.1f},{y:.1f}" for x, y in [iso(ox - .25, oy - .25), iso(ox + 4.25, oy - .25), iso(ox + 4.25, oy + 4.25), iso(ox - .25, oy + 4.25)])}"/>' for ox, oy in QUADS.values())
 road = [iso(BY[CS]["gx"] + .5, BY[CS]["gy"] - .2), iso(BY[CS]["gx"] + .5, -1.4), ROAD_END]
-bld = "".join(f'<g id="b-{b["id"]}" class="bld{" cs" if b["name"] == CS else " ce" if b["name"] == CE else ""}">'
-              f'<polygon class="sh"/><polygon class="l"/><polygon class="r"/><polygon class="t"/></g>' for b in B)
+def tree_svg(x, y):   # 막대사탕 나무: 줄기 + 둥근 수관(캠퍼스 광장 둘레)
+    bx, by = iso(x, y); return (f'<g class="tree"><line x1="{bx:.1f}" y1="{by:.1f}" x2="{bx:.1f}" y2="{by - 22:.1f}"/>'
+                                f'<circle cx="{bx:.1f}" cy="{by - 34:.1f}" r="17"/></g>')
+ITEMS = sorted([(b["gx"] + b["gy"] + 1, 0, b) for b in B] + [(x + y, 1, (x, y)) for x, y in TREES], key=lambda i: (i[0], i[1]))
+bld = "".join(f'<g id="b-{it["id"]}" class="bld{" cs" if it["name"] == CS else " ce" if it["name"] == CE else ""}">'
+              f'<polygon class="sh"/><polygon class="l"/><polygon class="r"/><path class="win"/><polygon class="t"/></g>'
+              if kind == 0 else tree_svg(*it) for _, kind, it in ITEMS)
+qsigns = "".join(f'<div id="q-{q}" class="clip qsign" data-start="{round(at("s2_01"), 2) if q == "bus" else 0}" '   # 정문이 있는 동안 BUSINESS는 정문에 가림
+                 f'data-duration="{round(at("s2_02@grad") - (at("s2_01") if q == "bus" else 0), 2)}" data-track-index="4" '
+                 f'data-wx="{(iso(ox + 4.6, oy + 2) if q == "bus" else iso(ox + 2, oy + 4.6))[0]:.1f}" data-wy="{(iso(ox + 4.6, oy + 2) if q == "bus" else iso(ox + 2, oy + 4.6))[1]:.1f}" data-oy="0">{QNAME[q]}</div>'
+                 for q, (ox, oy) in QUADS.items())
 camera_tl = "\n".join(f'    tl.to("#world", {{attr: {{transform: "translate({c["x"]} {c["y"]}) scale({c["s"]})"}}, duration: {d}, ease: "power2.inOut"}}, {s});'
                       for s, d, c in SHOTS[1:])
 c0 = SHOTS[0][2]
@@ -164,7 +179,14 @@ comp = f"""<template>
     #root {{ position: absolute; inset: 0; background: #a9c97c; overflow: hidden; font-family: Inter, sans-serif; }}
     #map {{ position: absolute; inset: 0; }}
     .ground {{ fill: #efe6d2; }} .lawn {{ fill: #b9d68c; }}
-    .bld .t {{ fill: #e7e2d8; }} .bld .l {{ fill: #c9c2b6; }} .bld .r {{ fill: #aaa397; }} .bld .sh {{ fill: #1d2421; opacity: .18; }}
+    .bld .t {{ fill: #6b6f75; }} .bld.flat .t {{ fill: #ddd3bd; }}   /* 솟기 전 대지는 밝은 포장(짙으면 주차장처럼 보임) */ .bld .l {{ fill: #eadfc8; }} .bld .r {{ fill: #cfc3aa; }} .bld .sh {{ fill: #1d2421; opacity: .18; }}
+    .bld .win {{ fill: none; stroke: #6c7f8c; stroke-width: 7; stroke-dasharray: 7 7; }}   /* 층마다 창문 줄 */
+    .tree line {{ stroke: #6b4f36; stroke-width: 5; }} .tree circle {{ fill: #4f8a45; stroke: #3d6f36; stroke-width: 3; }}
+    .qsign {{ position: absolute; transform: translate(-50%, -50%); background: #24453a; color: #fff; font-weight: 700; font-size: 30px;
+              padding: 8px 16px; border-radius: 3px; white-space: nowrap; }}
+    #gate {{ position: absolute; transform: translate(-50%, -100%); display: flex; flex-direction: column; align-items: center; }}
+    #gate .lintel {{ background: #8a3b2b; color: #f4ead7; font-family: "Archivo Black", sans-serif; font-size: 40px; padding: 10px 34px; border: 4px solid #5e2a1f; }}
+    #gate .posts {{ display: flex; justify-content: space-between; width: 100%; }} #gate .posts i {{ width: 36px; height: 90px; background: #8a3b2b; border: 4px solid #5e2a1f; border-top: 0; }}
     .bld.cs .t {{ fill: #f0703f; }} .bld.cs .l {{ fill: #d24e28; }} .bld.cs .r {{ fill: #b8401e; }}
     .bld.ce .t, .bld.ce .l, .bld.ce .r {{ stroke: #e4572e; stroke-width: 4; stroke-linejoin: round; }}
     .lvl {{ fill: none; stroke: #1d2421; stroke-opacity: .6; stroke-width: 3; stroke-dasharray: 10 8; }}
@@ -200,12 +222,15 @@ comp = f"""<template>
     <div id="sign-level" class="clip" data-start="{SIGN['t']}" data-duration="{round(SIGN['end'] - SIGN['t'], 2)}" data-track-index="3">ALL MAJORS: 4.2%</div>
     <div id="sign-road" class="clip" data-start="{round(ROAD_T + 0.8, 2)}" data-duration="{round(END - ROAD_T - 0.8, 2)}" data-track-index="3"
          style="left:{scr(SHOTS[-1][2], ROAD_END)[0]:.1f}px;top:{scr(SHOTS[-1][2], ROAD_END)[1] - 20:.1f}px">ENTRY-LEVEL SOFTWARE JOBS</div>
+    {qsigns}
+    <div id="gate" class="clip" data-start="0" data-duration="{round(at("s2_01"), 2)}" data-track-index="4" data-wx="{GATE[0]:.1f}" data-wy="{GATE[1]:.1f}" data-oy="0">
+      <div class="lintel">STATE UNIVERSITY</div><div class="posts"><i></i><i></i></div></div>
     <div id="src">Source: NY Fed, The Labor Market for Recent College Graduates (2024 data)</div>
   </div>
   <script>
     const B = {json.dumps([{"id": b["id"], "gx": b["gx"], "gy": b["gy"]} for b in B])};
     const H = Object.fromEntries(B.map(b => [b.id, 0]));
-    const TW = {TW}, TH = {TH}, A = 0.14;
+    const TW = {TW}, TH = {TH}, A = {FA};
     const iso = (x, y, h) => [(x - y) * TW / 2, (x + y) * TH / 2 - h];
     const pts = a => a.map(p => p[0].toFixed(1) + "," + p[1].toFixed(1)).join(" ");
     function hull(P) {{   // 그림자 = 바닥 + 높이만큼 오른쪽 아래로 민 바닥의 볼록 껍질
@@ -227,6 +252,13 @@ comp = f"""<template>
         g.querySelector(".t").setAttribute("points", pts(hi));
         const off = lo.map(p => [p[0] + h * 0.55, p[1] + h * 0.18]);
         g.querySelector(".sh").setAttribute("points", h > 0 ? pts(hull(lo.concat(off))) : "");
+        let d = "";   // 층마다 창문 줄(왼쪽·오른쪽 벽, 양끝 12% 띄움)
+        for (let f = 13; f < h - 9; f += 19) for (const [a, c] of [[lo[3], lo[2]], [lo[2], lo[1]]]) {{
+          const ax = a[0] + (c[0] - a[0]) * .12, ay = a[1] + (c[1] - a[1]) * .12 - f, cx = a[0] + (c[0] - a[0]) * .88, cy = a[1] + (c[1] - a[1]) * .88 - f;
+          d += `M${{ax.toFixed(1)}} ${{ay.toFixed(1)}}L${{cx.toFixed(1)}} ${{cy.toFixed(1)}}`;
+        }}
+        g.querySelector(".win").setAttribute("d", d);
+        g.classList.toggle("flat", h < 1);
       }}
     }}
     draw();
@@ -235,7 +267,7 @@ comp = f"""<template>
 {rise_all}
 {camera_tl}
 {push_tl}
-    const world = document.querySelector("#world"), LBL = [...document.querySelectorAll(".lbl")];
+    const world = document.querySelector("#world"), LBL = [...document.querySelectorAll(".lbl, .qsign, #gate")];
     function syncLabels() {{   // 라벨을 월드 지붕 점에 붙인다(카메라가 밀려도 따라감)
       const m = world.transform.baseVal.consolidate().matrix;
       for (const el of LBL) {{
