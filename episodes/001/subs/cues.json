@@ -1,0 +1,1248 @@
+[
+ {
+  "id": "s1_01.0",
+  "start": 0.0,
+  "end": 2.18,
+  "en": "You've been told AI is why new grads are",
+  "ko": "갓 졸업한 사람들이 일자리를 못 구하는 건"
+ },
+ {
+  "id": "s1_01.1",
+  "start": 2.22,
+  "end": 3.85,
+  "en": "struggling to find jobs.",
+  "ko": "AI 때문이라고들 합니다."
+ },
+ {
+  "id": "s1_01.2",
+  "start": 3.89,
+  "end": 5.45,
+  "en": "A New York Fed study found the trouble",
+  "ko": "그런데 뉴욕 연준 연구에 따르면 문제는"
+ },
+ {
+  "id": "s1_01.3",
+  "start": 5.49,
+  "end": 8.026,
+  "en": "started before ChatGPT existed.",
+  "ko": "ChatGPT가 나오기 전부터 시작됐습니다."
+ },
+ {
+  "id": "s2_01.0",
+  "start": 8.376,
+  "end": 10.086,
+  "en": "The common version goes like this.",
+  "ko": "흔히 듣는 설명은 이렇습니다."
+ },
+ {
+  "id": "s2_01.1",
+  "start": 10.126,
+  "end": 12.426,
+  "en": "Companies adopted ChatGPT,",
+  "ko": "기업들이 ChatGPT를 도입했고,"
+ },
+ {
+  "id": "s2_01.2",
+  "start": 12.466,
+  "end": 13.886,
+  "en": "junior work got automated,",
+  "ko": "신입이 하던 일이 자동화됐고,"
+ },
+ {
+  "id": "s2_01.3",
+  "start": 13.926,
+  "end": 16.246,
+  "en": "so the first rung of the career ladder disappeared.",
+  "ko": "그래서 경력 사다리의 첫 칸이 사라졌다는 거죠."
+ },
+ {
+  "id": "s2_01.4",
+  "start": 16.286,
+  "end": 17.766,
+  "en": "Videos telling that story have been",
+  "ko": "이 이야기를 다룬 영상들은"
+ },
+ {
+  "id": "s2_01.5",
+  "start": 17.806,
+  "end": 19.371,
+  "en": "watched millions of times.",
+  "ko": "수백만 번 재생됐습니다."
+ },
+ {
+  "id": "s2_02.0",
+  "start": 19.491,
+  "end": 21.021,
+  "en": "Young graduates are struggling.",
+  "ko": "젊은 졸업생들이 힘든 건 맞습니다."
+ },
+ {
+  "id": "s2_02.1",
+  "start": 21.061,
+  "end": 22.061,
+  "en": "That part is true.",
+  "ko": "그 부분은 사실이에요."
+ },
+ {
+  "id": "s2_02.2",
+  "start": 22.101,
+  "end": 22.901,
+  "en": "The question is why,",
+  "ko": "문제는 그 이유입니다."
+ },
+ {
+  "id": "s2_02.3",
+  "start": 22.901,
+  "end": 24.821,
+  "en": "because the answer changes what a graduate",
+  "ko": "답에 따라 졸업생이"
+ },
+ {
+  "id": "s2_02.4",
+  "start": 24.861,
+  "end": 25.847,
+  "en": "should do about it.",
+  "ko": "해야 할 일이 달라지니까요."
+ },
+ {
+  "id": "s2_03.0",
+  "start": 25.967,
+  "end": 27.727,
+  "en": "In June 2026,",
+  "ko": "2026년 6월,"
+ },
+ {
+  "id": "s2_03.1",
+  "start": 27.767,
+  "end": 29.757,
+  "en": "three economists published a study on the",
+  "ko": "경제학자 세 명이 연구를 발표했습니다."
+ },
+ {
+  "id": "s2_03.2",
+  "start": 29.797,
+  "end": 31.447,
+  "en": "New York Fed's research blog.",
+  "ko": "뉴욕 연준의 연구 블로그에서요."
+ },
+ {
+  "id": "s2_03.3",
+  "start": 31.487,
+  "end": 33.127,
+  "en": "Their study looks at when the problem started,",
+  "ko": "연구는 문제가 언제 시작됐는지,"
+ },
+ {
+  "id": "s2_03.4",
+  "start": 33.167,
+  "end": 35.091,
+  "en": "and in which kinds of jobs.",
+  "ko": "어떤 일자리에서 생겼는지를 봅니다."
+ },
+ {
+  "id": "s2_04.0",
+  "start": 35.211,
+  "end": 36.871,
+  "en": "Their answer points at a change that came",
+  "ko": "답은 한 가지 변화를 가리킵니다."
+ },
+ {
+  "id": "s2_04.1",
+  "start": 36.911,
+  "end": 39.421,
+  "en": "before AI tools were in wide use.",
+  "ko": "AI 도구가 널리 쓰이기 전에 일어난 변화요."
+ },
+ {
+  "id": "s2_04.2",
+  "start": 39.461,
+  "end": 40.581,
+  "en": "A second study, from Stanford,",
+  "ko": "그리고 스탠퍼드의 두 번째 연구가"
+ },
+ {
+  "id": "s2_04.3",
+  "start": 40.621,
+  "end": 42.948,
+  "en": "then adds a newer problem on top.",
+  "ko": "그 위에 더 새로운 문제를 얹습니다."
+ },
+ {
+  "id": "s3_01.0",
+  "start": 44.298,
+  "end": 45.598,
+  "en": "Start with the gap itself.",
+  "ko": "먼저 격차 자체부터 보죠."
+ },
+ {
+  "id": "s3_01.1",
+  "start": 45.638,
+  "end": 47.878,
+  "en": "The New York Fed tracks recent college graduates,",
+  "ko": "뉴욕 연준은 최근 대졸자를 추적합니다."
+ },
+ {
+  "id": "s3_01.2",
+  "start": 47.918,
+  "end": 49.948,
+  "en": "aged 22 to 27.",
+  "ko": "22세에서 27세까지요."
+ },
+ {
+  "id": "s3_01.3",
+  "start": 49.988,
+  "end": 52.378,
+  "en": "In the second quarter of 2026,",
+  "ko": "2026년 2분기,"
+ },
+ {
+  "id": "s3_01.4",
+  "start": 52.418,
+  "end": 55.378,
+  "en": "their unemployment rate was about 5.6 percent.",
+  "ko": "이들의 실업률은 약 5.6%였습니다."
+ },
+ {
+  "id": "s3_01.5",
+  "start": 55.418,
+  "end": 57.788,
+  "en": "And 42 percent of them were underemployed,",
+  "ko": "그리고 42%는 하향 취업 상태였습니다."
+ },
+ {
+  "id": "s3_01.6",
+  "start": 57.828,
+  "end": 60.134,
+  "en": "meaning they held a job that doesn't need a degree.",
+  "ko": "학위가 필요 없는 일을 하고 있었다는 뜻이에요."
+ },
+ {
+  "id": "s3_02.0",
+  "start": 60.254,
+  "end": 61.934,
+  "en": "For graduates under 29,",
+  "ko": "29세 미만 졸업생의"
+ },
+ {
+  "id": "s3_02.1",
+  "start": 61.974,
+  "end": 64.514,
+  "en": "the unemployment rate averaged about 3.1",
+  "ko": "실업률은 팬데믹 이전 몇 년간"
+ },
+ {
+  "id": "s3_02.2",
+  "start": 64.554,
+  "end": 66.574,
+  "en": "percent in the years before the pandemic.",
+  "ko": "평균 약 3.1%였습니다."
+ },
+ {
+  "id": "s3_02.3",
+  "start": 66.614,
+  "end": 67.574,
+  "en": "In the years after,",
+  "ko": "그 이후 몇 년간은"
+ },
+ {
+  "id": "s3_02.4",
+  "start": 67.614,
+  "end": 69.874,
+  "en": "it averaged about 3.7 percent,",
+  "ko": "평균 약 3.7%였고요."
+ },
+ {
+  "id": "s3_02.5",
+  "start": 69.914,
+  "end": 71.588,
+  "en": "a rise of roughly a fifth.",
+  "ko": "대략 5분의 1 오른 겁니다."
+ },
+ {
+  "id": "s3_03.0",
+  "start": 71.708,
+  "end": 72.648,
+  "en": "Over the same years,",
+  "ko": "같은 기간,"
+ },
+ {
+  "id": "s3_03.1",
+  "start": 72.688,
+  "end": 74.388,
+  "en": "older graduates went the other way.",
+  "ko": "나이 든 졸업생은 반대로 움직였습니다."
+ },
+ {
+  "id": "s3_03.2",
+  "start": 74.428,
+  "end": 76.034,
+  "en": "Their rate edged down slightly.",
+  "ko": "실업률이 조금 내려갔어요."
+ },
+ {
+  "id": "s3_04.0",
+  "start": 76.154,
+  "end": 76.954,
+  "en": "On its own,",
+  "ko": "이것만 보면"
+ },
+ {
+  "id": "s3_04.1",
+  "start": 76.574,
+  "end": 78.944,
+  "en": "that pattern fits the AI explanation.",
+  "ko": "AI 설명과 딱 맞아떨어집니다."
+ },
+ {
+  "id": "s3_04.2",
+  "start": 78.984,
+  "end": 81.134,
+  "en": "Juniors get replaced while seniors stay.",
+  "ko": "신입은 대체되고 경력자는 남는다."
+ },
+ {
+  "id": "s3_04.3",
+  "start": 81.174,
+  "end": 82.378,
+  "en": "The researchers checked that.",
+  "ko": "연구진은 그걸 확인해 봤습니다."
+ },
+ {
+  "id": "s4_01.0",
+  "start": 83.228,
+  "end": 85.178,
+  "en": "They sorted jobs into two groups.",
+  "ko": "일자리를 두 무리로 나눴습니다."
+ },
+ {
+  "id": "s4_01.1",
+  "start": 85.218,
+  "end": 86.378,
+  "en": "Jobs you can do from home,",
+  "ko": "집에서 할 수 있는 일,"
+ },
+ {
+  "id": "s4_01.2",
+  "start": 86.418,
+  "end": 87.988,
+  "en": "like software engineering.",
+  "ko": "예를 들면 소프트웨어 엔지니어링."
+ },
+ {
+  "id": "s4_01.3",
+  "start": 88.028,
+  "end": 89.488,
+  "en": "And jobs where you have to show up,",
+  "ko": "그리고 출근해야 하는 일,"
+ },
+ {
+  "id": "s4_01.4",
+  "start": 89.528,
+  "end": 91.233,
+  "en": "like mechanical engineering.",
+  "ko": "예를 들면 기계 공학이요."
+ },
+ {
+  "id": "s4_02.0",
+  "start": 91.353,
+  "end": 92.563,
+  "en": "In the from-home jobs,",
+  "ko": "재택이 가능한 일자리에서는"
+ },
+ {
+  "id": "s4_02.1",
+  "start": 92.603,
+  "end": 95.395,
+  "en": "unemployment for young graduates rose by",
+  "ko": "젊은 졸업생의 실업률이"
+ },
+ {
+  "id": "s4_02.2",
+  "start": 95.435,
+  "end": 96.623,
+  "en": "about one percentage point between the",
+  "ko": "약 1%포인트 올랐습니다."
+ },
+ {
+  "id": "s4_02.3",
+  "start": 96.663,
+  "end": 101.013,
+  "en": "pre-pandemic years and 2022 to 2024.",
+  "ko": "팬데믹 이전과 2022~2024년 사이에요."
+ },
+ {
+  "id": "s4_02.4",
+  "start": 101.053,
+  "end": 103.863,
+  "en": "Older workers in those same jobs saw a slight decline.",
+  "ko": "같은 일자리의 경력자는 조금 내려갔고요."
+ },
+ {
+  "id": "s4_03.0",
+  "start": 103.983,
+  "end": 105.263,
+  "en": "In the show-up jobs,",
+  "ko": "출근해야 하는 일자리에서는"
+ },
+ {
+  "id": "s4_03.1",
+  "start": 105.303,
+  "end": 107.003,
+  "en": "the gap between young and old widened",
+  "ko": "젊은 층과 경력자의 격차가"
+ },
+ {
+  "id": "s4_03.2",
+  "start": 107.043,
+  "end": 108.823,
+  "en": "briefly in 2020,",
+  "ko": "2020년에 잠깐 벌어졌다가"
+ },
+ {
+  "id": "s4_03.3",
+  "start": 108.863,
+  "end": 110.297,
+  "en": "then went back to where it had been.",
+  "ko": "원래대로 돌아왔습니다."
+ },
+ {
+  "id": "s4_04.0",
+  "start": 110.417,
+  "end": 112.767,
+  "en": "So the gap opened in the jobs that went remote,",
+  "ko": "그러니까 격차는 원격으로 바뀐 일자리에서 벌어졌고,"
+ },
+ {
+  "id": "s4_04.1",
+  "start": 112.807,
+  "end": 114.467,
+  "en": "and it didn't stay open in the jobs that",
+  "ko": "대면으로 남은 일자리에서는"
+ },
+ {
+  "id": "s4_04.2",
+  "start": 114.507,
+  "end": 115.497,
+  "en": "stayed in person.",
+  "ko": "벌어진 채로 남지 않았습니다."
+ },
+ {
+  "id": "s4_04.3",
+  "start": 115.537,
+  "end": 116.377,
+  "en": "By the study's count,",
+  "ko": "연구 집계로는"
+ },
+ {
+  "id": "s4_04.4",
+  "start": 116.417,
+  "end": 118.247,
+  "en": "remote work has grown about four-fold",
+  "ko": "원격 근무가 약 4배로 늘었습니다."
+ },
+ {
+  "id": "s4_04.5",
+  "start": 118.287,
+  "end": 119.347,
+  "en": "since the pandemic.",
+  "ko": "팬데믹 이후에요."
+ },
+ {
+  "id": "s4_04.6",
+  "start": 119.387,
+  "end": 120.867,
+  "en": "The timing points the same way.",
+  "ko": "시점도 같은 쪽을 가리킵니다."
+ },
+ {
+  "id": "s4_04.7",
+  "start": 120.907,
+  "end": 123.507,
+  "en": "The first shock came before ChatGPT,",
+  "ko": "첫 충격은 ChatGPT보다 먼저 왔습니다."
+ },
+ {
+  "id": "s4_04.8",
+  "start": 123.547,
+  "end": 126.202,
+  "en": "which only launched in November 2022.",
+  "ko": "ChatGPT는 2022년 11월에야 나왔으니까요."
+ },
+ {
+  "id": "s5_01.0",
+  "start": 126.552,
+  "end": 129.021,
+  "en": "Here is why distance seems to hurt new hires most.",
+  "ko": "거리가 왜 신입에게 특히 해로운지 보죠."
+ },
+ {
+  "id": "s5_02.0",
+  "start": 129.141,
+  "end": 131.081,
+  "en": "The researchers had internal data from one",
+  "ko": "연구진은 한 회사의 내부 데이터를 갖고 있었습니다."
+ },
+ {
+  "id": "s5_02.1",
+  "start": 131.121,
+  "end": 132.991,
+  "en": "Fortune 500 company.",
+  "ko": "포춘 500대 기업이요."
+ },
+ {
+  "id": "s5_02.2",
+  "start": 133.031,
+  "end": 134.621,
+  "en": "When employees sat near each other,",
+  "ko": "직원들이 가까이 앉아 있으면"
+ },
+ {
+  "id": "s5_02.3",
+  "start": 134.661,
+  "end": 137.451,
+  "en": "they exchanged more feedback and more mentoring.",
+  "ko": "피드백과 멘토링을 더 많이 주고받았습니다."
+ },
+ {
+  "id": "s5_02.4",
+  "start": 137.491,
+  "end": 139.551,
+  "en": "Even a short physical distance reduced that,",
+  "ko": "조금만 떨어져 앉아도 그게 줄었고,"
+ },
+ {
+  "id": "s5_02.5",
+  "start": 139.591,
+  "end": 141.754,
+  "en": "and it reduced it more for younger workers.",
+  "ko": "젊은 직원일수록 더 많이 줄었습니다."
+ },
+ {
+  "id": "s5_03.0",
+  "start": 141.874,
+  "end": 143.564,
+  "en": "When that company's offices closed,",
+  "ko": "그 회사가 사무실을 닫자"
+ },
+ {
+  "id": "s5_03.1",
+  "start": 143.604,
+  "end": 145.844,
+  "en": "it hired fewer inexperienced workers.",
+  "ko": "경험 없는 사람을 덜 뽑았습니다."
+ },
+ {
+  "id": "s5_03.2",
+  "start": 145.884,
+  "end": 147.024,
+  "en": "In the authors' words,",
+  "ko": "저자들의 표현으로는,"
+ },
+ {
+  "id": "s5_03.3",
+  "start": 147.064,
+  "end": 148.984,
+  "en": "a firm \"shies away from employing",
+  "ko": "기업은 \"거리가 교육과 성장을 가로막으면"
+ },
+ {
+  "id": "s5_03.4",
+  "start": 149.024,
+  "end": 151.424,
+  "en": "inexperienced workers if distance creates",
+  "ko": "경험 없는 사람을"
+ },
+ {
+  "id": "s5_03.5",
+  "start": 151.464,
+  "end": 153.357,
+  "en": "barriers to training and development.\"",
+  "ko": "고용하길 꺼린다\"고 합니다."
+ },
+ {
+  "id": "s5_04.0",
+  "start": 153.477,
+  "end": 154.737,
+  "en": "Two cautions apply.",
+  "ko": "주의할 점이 두 가지 있습니다."
+ },
+ {
+  "id": "s5_04.1",
+  "start": 154.777,
+  "end": 156.977,
+  "en": "The inside view comes from a single company,",
+  "ko": "내부 사정은 한 회사에서 나온 것이라,"
+ },
+ {
+  "id": "s5_04.2",
+  "start": 157.017,
+  "end": 159.137,
+  "en": "so it can't stand in for the whole economy.",
+  "ko": "경제 전체를 대변할 수는 없습니다."
+ },
+ {
+  "id": "s5_04.3",
+  "start": 159.177,
+  "end": 160.957,
+  "en": "And the authors say remote work \"can",
+  "ko": "그리고 저자들은 원격 근무가"
+ },
+ {
+  "id": "s5_04.4",
+  "start": 160.997,
+  "end": 162.267,
+  "en": "explain\" the rise.",
+  "ko": "상승을 \"설명할 수 있다\"고 말합니다."
+ },
+ {
+  "id": "s5_04.5",
+  "start": 162.307,
+  "end": 163.127,
+  "en": "That makes it an argument,",
+  "ko": "즉 하나의 주장이고,"
+ },
+ {
+  "id": "s5_04.6",
+  "start": 163.167,
+  "end": 164.78,
+  "en": "and the case is still open.",
+  "ko": "아직 결론이 난 건 아닙니다."
+ },
+ {
+  "id": "s6_01.0",
+  "start": 165.13,
+  "end": 167.722,
+  "en": "How much of the problem does remote work account for?",
+  "ko": "원격 근무는 문제의 얼마만큼을 설명할까요?"
+ },
+ {
+  "id": "s6_02.0",
+  "start": 167.842,
+  "end": 169.422,
+  "en": "The researchers ran what they call a",
+  "ko": "연구진은 이른바"
+ },
+ {
+  "id": "s6_02.1",
+  "start": 169.462,
+  "end": 171.902,
+  "en": "back-of-the-envelope calculation. Their estimate:",
+  "ko": "어림 계산을 했습니다. 추정치는 이렇습니다."
+ },
+ {
+  "id": "s6_02.2",
+  "start": 171.942,
+  "end": 174.562,
+  "en": "remote work can explain about 64 percent",
+  "ko": "원격 근무가 약 64%를 설명할 수 있다."
+ },
+ {
+  "id": "s6_02.3",
+  "start": 174.602,
+  "end": 176.082,
+  "en": "of the recent increase in unemployment",
+  "ko": "최근 젊은 대졸자 실업률"
+ },
+ {
+  "id": "s6_02.4",
+  "start": 176.122,
+  "end": 178.252,
+  "en": "among young college graduates.",
+  "ko": "상승분 가운데서요."
+ },
+ {
+  "id": "s6_02.5",
+  "start": 178.292,
+  "end": 179.983,
+  "en": "So read it as a rough size.",
+  "ko": "그러니 대략적인 크기로 읽으세요."
+ },
+ {
+  "id": "s6_03.0",
+  "start": 180.103,
+  "end": 181.693,
+  "en": "They also tested an objection.",
+  "ko": "반론도 하나 검증했습니다."
+ },
+ {
+  "id": "s6_03.1",
+  "start": 181.733,
+  "end": 183.413,
+  "en": "Maybe the from-home jobs are simply the",
+  "ko": "재택 가능한 일자리가 그냥"
+ },
+ {
+  "id": "s6_03.2",
+  "start": 183.453,
+  "end": 185.323,
+  "en": "same jobs AI is good at.",
+  "ko": "AI가 잘하는 일자리와 같은 게 아닐까?"
+ },
+ {
+  "id": "s6_03.3",
+  "start": 185.363,
+  "end": 187.773,
+  "en": "So they held each occupation's AI exposure",
+  "ko": "그래서 직업별 AI 노출 정도를"
+ },
+ {
+  "id": "s6_03.4",
+  "start": 187.813,
+  "end": 190.023,
+  "en": "fixed and ran the comparison again.",
+  "ko": "고정하고 다시 비교했습니다."
+ },
+ {
+  "id": "s6_03.5",
+  "start": 190.063,
+  "end": 191.823,
+  "en": "The gap between young and older workers",
+  "ko": "젊은 층과 경력자의 격차는"
+ },
+ {
+  "id": "s6_03.6",
+  "start": 191.863,
+  "end": 192.787,
+  "en": "was still there.",
+  "ko": "여전히 남아 있었습니다."
+ },
+ {
+  "id": "s6_04.0",
+  "start": 192.907,
+  "end": 194.057,
+  "en": "That is the first problem.",
+  "ko": "이게 첫 번째 문제입니다."
+ },
+ {
+  "id": "s6_04.1",
+  "start": 194.097,
+  "end": 195.877,
+  "en": "A second study looks at the years after",
+  "ko": "두 번째 연구는 ChatGPT 이후의 몇 년을"
+ },
+ {
+  "id": "s6_04.2",
+  "start": 195.917,
+  "end": 198.376,
+  "en": "ChatGPT and finds something else.",
+  "ko": "보고 다른 것을 찾아냅니다."
+ },
+ {
+  "id": "s7_01.0",
+  "start": 198.726,
+  "end": 199.747,
+  "en": "In August 2026,",
+  "ko": "2026년 8월,"
+ },
+ {
+  "id": "s7_01.1",
+  "start": 199.787,
+  "end": 202.496,
+  "en": "Erik Brynjolfsson and two colleagues at",
+  "ko": "에릭 브린욜프슨과 동료 두 명이"
+ },
+ {
+  "id": "s7_01.2",
+  "start": 202.536,
+  "end": 204.716,
+  "en": "Stanford updated a study based on payroll",
+  "ko": "스탠퍼드에서 연구를 업데이트했습니다."
+ },
+ {
+  "id": "s7_01.3",
+  "start": 204.756,
+  "end": 206.496,
+  "en": "records from ADP.",
+  "ko": "ADP 급여 기록을 바탕으로 한 연구죠."
+ },
+ {
+  "id": "s7_01.4",
+  "start": 206.536,
+  "end": 209.546,
+  "en": "They focused on workers aged 22 to 25 in",
+  "ko": "22세에서 25세 노동자,"
+ },
+ {
+  "id": "s7_01.5",
+  "start": 209.586,
+  "end": 211.955,
+  "en": "the occupations most exposed to AI.",
+  "ko": "그중에서도 AI 노출이 가장 큰 직업을 봤습니다."
+ },
+ {
+  "id": "s7_02.0",
+  "start": 212.075,
+  "end": 213.895,
+  "en": "By June 2026,",
+  "ko": "2026년 6월 기준,"
+ },
+ {
+  "id": "s7_02.1",
+  "start": 213.935,
+  "end": 215.735,
+  "en": "employment for those young workers was",
+  "ko": "이 젊은 노동자들의 고용은"
+ },
+ {
+  "id": "s7_02.2",
+  "start": 215.775,
+  "end": 217.765,
+  "en": "about 19 percent lower,",
+  "ko": "약 19% 낮았습니다."
+ },
+ {
+  "id": "s7_02.3",
+  "start": 217.805,
+  "end": 220.305,
+  "en": "relative to young workers in less exposed jobs.",
+  "ko": "노출이 적은 일자리의 젊은 층과 비교해서요."
+ },
+ {
+  "id": "s7_02.4",
+  "start": 220.345,
+  "end": 223.963,
+  "en": "In July 2025, the same gap was 15 percent.",
+  "ko": "2025년 7월에는 같은 격차가 15%였습니다."
+ },
+ {
+  "id": "s7_03.0",
+  "start": 224.083,
+  "end": 225.763,
+  "en": "The gap holds up when the authors control",
+  "ko": "저자들이 금리와 원격 근무를"
+ },
+ {
+  "id": "s7_03.1",
+  "start": 225.803,
+  "end": 228.303,
+  "en": "for interest rates and for remote work.",
+  "ko": "통제해도 격차는 유지됩니다."
+ },
+ {
+  "id": "s7_03.2",
+  "start": 228.343,
+  "end": 229.763,
+  "en": "Experienced workers in the same",
+  "ko": "같은 직업의 경력자에게는"
+ },
+ {
+  "id": "s7_03.3",
+  "start": 229.803,
+  "end": 232.22,
+  "en": "occupations show no comparable gap.",
+  "ko": "비슷한 격차가 없습니다."
+ },
+ {
+  "id": "s7_04.0",
+  "start": 232.34,
+  "end": 233.74,
+  "en": "The declines are concentrated in",
+  "ko": "감소는 특정 직업에 몰려 있습니다."
+ },
+ {
+  "id": "s7_04.1",
+  "start": 233.78,
+  "end": 236.1,
+  "en": "occupations where AI tends to do the task",
+  "ko": "AI가 사람 대신"
+ },
+ {
+  "id": "s7_04.2",
+  "start": 236.14,
+  "end": 237.32,
+  "en": "instead of the person.",
+  "ko": "일을 하는 경향이 있는 직업이요."
+ },
+ {
+  "id": "s7_04.3",
+  "start": 237.36,
+  "end": 239.57,
+  "en": "Where AI is mainly used to help workers,",
+  "ko": "AI가 주로 사람을 돕는 데 쓰이는 곳에선"
+ },
+ {
+  "id": "s7_04.4",
+  "start": 239.61,
+  "end": 241.891,
+  "en": "young employment is flat or rising.",
+  "ko": "젊은 층 고용이 그대로거나 늘었습니다."
+ },
+ {
+  "id": "s7_05.0",
+  "start": 242.011,
+  "end": 244.531,
+  "en": "The Stanford authors attach their own cautions.",
+  "ko": "스탠퍼드 저자들도 스스로 단서를 답니다."
+ },
+ {
+  "id": "s7_05.1",
+  "start": 244.571,
+  "end": 246.271,
+  "en": "They call these descriptive patterns,",
+  "ko": "이건 서술적 패턴이지,"
+ },
+ {
+  "id": "s7_05.2",
+  "start": 246.311,
+  "end": 247.801,
+  "en": "not causal estimates.",
+  "ko": "인과 추정치가 아니라고요."
+ },
+ {
+  "id": "s7_05.3",
+  "start": 247.841,
+  "end": 249.061,
+  "en": "Some of the differences appear before",
+  "ko": "일부 차이는"
+ },
+ {
+  "id": "s7_05.4",
+  "start": 249.101,
+  "end": 251.391,
+  "en": "generative AI was widely used,",
+  "ko": "생성형 AI가 널리 쓰이기 전에도 보이고,"
+ },
+ {
+  "id": "s7_05.5",
+  "start": 251.431,
+  "end": 253.161,
+  "en": "and the gap shrinks when education is",
+  "ko": "학력을 고려하면"
+ },
+ {
+  "id": "s7_05.6",
+  "start": 253.201,
+  "end": 254.241,
+  "en": "taken into account.",
+  "ko": "격차가 줄어듭니다."
+ },
+ {
+  "id": "s7_05.7",
+  "start": 254.281,
+  "end": 256.321,
+  "en": "Their payroll sample also shows a bigger",
+  "ko": "또 이들의 급여 표본은"
+ },
+ {
+  "id": "s7_05.8",
+  "start": 256.361,
+  "end": 258.062,
+  "en": "gap than national surveys do.",
+  "ko": "전국 조사보다 격차를 크게 보여 줍니다."
+ },
+ {
+  "id": "s7b_01.0",
+  "start": 258.412,
+  "end": 260.622,
+  "en": "There is a third suspect: interest rates.",
+  "ko": "세 번째 용의자가 있습니다. 금리요."
+ },
+ {
+  "id": "s7b_01.1",
+  "start": 260.662,
+  "end": 262.042,
+  "en": "In January 2022,",
+  "ko": "2022년 1월,"
+ },
+ {
+  "id": "s7b_01.2",
+  "start": 262.082,
+  "end": 264.382,
+  "en": "the Federal Reserve's benchmark rate was",
+  "ko": "연준의 기준금리는"
+ },
+ {
+  "id": "s7b_01.3",
+  "start": 264.422,
+  "end": 265.222,
+  "en": "close to zero,",
+  "ko": "거의 0이었습니다."
+ },
+ {
+  "id": "s7b_01.4",
+  "start": 265.202,
+  "end": 267.382,
+  "en": "at 0.08 percent.",
+  "ko": "0.08%였죠."
+ },
+ {
+  "id": "s7b_01.5",
+  "start": 267.422,
+  "end": 271.082,
+  "en": "By August 2023 it was 5.33 percent,",
+  "ko": "2023년 8월에는 5.33%였고,"
+ },
+ {
+  "id": "s7b_01.6",
+  "start": 271.122,
+  "end": 272.956,
+  "en": "and it stayed there for about a year.",
+  "ko": "약 1년 동안 그 수준에 머물렀습니다."
+ },
+ {
+  "id": "s7b_02.0",
+  "start": 273.076,
+  "end": 275.276,
+  "en": "A working paper from the U.S.",
+  "ko": "미국 인구조사국의"
+ },
+ {
+  "id": "s7b_02.1",
+  "start": 275.316,
+  "end": 278.176,
+  "en": "Census Bureau looks at workers aged 22 to 24.",
+  "ko": "연구 논문은 22~24세 노동자를 봅니다."
+ },
+ {
+  "id": "s7b_02.2",
+  "start": 278.216,
+  "end": 280.586,
+  "en": "In the industries most exposed to AI,",
+  "ko": "AI 노출이 가장 큰 산업에서"
+ },
+ {
+  "id": "s7b_02.3",
+  "start": 280.626,
+  "end": 282.324,
+  "en": "their employment fell 12 percent in the",
+  "ko": "이들의 고용은 12% 줄었습니다."
+ },
+ {
+  "id": "s7b_02.4",
+  "start": 282.364,
+  "end": 284.986,
+  "en": "ten quarters after ChatGPT's release,",
+  "ko": "ChatGPT 출시 후 10개 분기 동안요."
+ },
+ {
+  "id": "s7b_02.5",
+  "start": 285.026,
+  "end": 287.256,
+  "en": "while less exposed industries held steady.",
+  "ko": "노출이 적은 산업은 그대로였고요."
+ },
+ {
+  "id": "s7b_03.0",
+  "start": 287.376,
+  "end": 289.886,
+  "en": "The paper then asks whether rising rates did that.",
+  "ko": "논문은 이어서 금리 인상 탓인지 묻습니다."
+ },
+ {
+  "id": "s7b_03.1",
+  "start": 289.926,
+  "end": 291.546,
+  "en": "Its estimate is that up to a quarter of",
+  "ko": "추정치로는 감소분의 최대 4분의 1이"
+ },
+ {
+  "id": "s7b_03.2",
+  "start": 291.586,
+  "end": 293.066,
+  "en": "the decline can be traced to the rate",
+  "ko": "금리 인상으로"
+ },
+ {
+  "id": "s7b_03.3",
+  "start": 293.106,
+  "end": 295.206,
+  "en": "hikes through 2023.",
+  "ko": "설명될 수 있습니다. 2023년까지의 인상이요."
+ },
+ {
+  "id": "s7b_03.4",
+  "start": 295.246,
+  "end": 296.986,
+  "en": "The paper finds rates can't account for",
+  "ko": "논문은 금리로는 설명이 안 된다고 봅니다."
+ },
+ {
+  "id": "s7b_03.5",
+  "start": 297.026,
+  "end": 300.276,
+  "en": "the sharp hiring drop at the most AI-exposed firms.",
+  "ko": "AI 노출이 가장 큰 기업들의 급격한 채용 감소는요."
+ },
+ {
+  "id": "s8_01.0",
+  "start": 300.626,
+  "end": 302.706,
+  "en": "The two studies cover overlapping years,",
+  "ko": "두 연구는 기간이 겹칩니다."
+ },
+ {
+  "id": "s8_01.1",
+  "start": 302.746,
+  "end": 304.576,
+  "en": "so this isn't a clean handoff from one",
+  "ko": "그러니 한 원인에서 다음 원인으로"
+ },
+ {
+  "id": "s8_01.2",
+  "start": 304.616,
+  "end": 305.776,
+  "en": "cause to the next.",
+  "ko": "깔끔하게 넘어가는 그림이 아닙니다."
+ },
+ {
+  "id": "s8_01.3",
+  "start": 305.816,
+  "end": 307.009,
+  "en": "They ask different questions.",
+  "ko": "둘은 서로 다른 질문을 던집니다."
+ },
+ {
+  "id": "s8_02.0",
+  "start": 307.129,
+  "end": 308.989,
+  "en": "The New York Fed study finds the early gap",
+  "ko": "뉴욕 연준 연구는 초기 격차를 찾습니다."
+ },
+ {
+  "id": "s8_02.1",
+  "start": 309.029,
+  "end": 310.519,
+  "en": "in jobs that went remote,",
+  "ko": "원격으로 바뀐 일자리에서요."
+ },
+ {
+  "id": "s8_02.2",
+  "start": 310.559,
+  "end": 313.439,
+  "en": "and it is still there when AI exposure is held fixed.",
+  "ko": "AI 노출을 고정해도 그 격차는 남습니다."
+ },
+ {
+  "id": "s8_02.3",
+  "start": 313.479,
+  "end": 314.879,
+  "en": "The Stanford study finds a newer,",
+  "ko": "스탠퍼드 연구는 더 새롭고"
+ },
+ {
+  "id": "s8_02.4",
+  "start": 314.919,
+  "end": 317.779,
+  "en": "growing gap in jobs where AI does the task,",
+  "ko": "커지는 격차를 AI가 일을 하는 일자리에서 찾습니다."
+ },
+ {
+  "id": "s8_02.5",
+  "start": 317.819,
+  "end": 319.569,
+  "en": "and it is still there when remote work is",
+  "ko": "원격 근무를 통제해도"
+ },
+ {
+  "id": "s8_02.6",
+  "start": 319.609,
+  "end": 320.439,
+  "en": "controlled for.",
+  "ko": "그 격차는 남습니다."
+ },
+ {
+  "id": "s8_02.7",
+  "start": 320.479,
+  "end": 322.339,
+  "en": "The simplest reading is that more than one",
+  "ko": "가장 단순하게 읽으면"
+ },
+ {
+  "id": "s8_02.8",
+  "start": 322.379,
+  "end": 323.449,
+  "en": "cause is stacking,",
+  "ko": "원인이 하나가 아니라 겹쳐 있다는 겁니다."
+ },
+ {
+  "id": "s8_02.9",
+  "start": 323.489,
+  "end": 326.359,
+  "en": "and the data can't yet say how much weight each carries.",
+  "ko": "각각의 비중은 데이터로 아직 알 수 없고요."
+ },
+ {
+  "id": "s8_03.0",
+  "start": 326.479,
+  "end": 328.059,
+  "en": "That still leaves a graduate with two",
+  "ko": "그래도 졸업생에게는"
+ },
+ {
+  "id": "s8_03.1",
+  "start": 328.099,
+  "end": 330.319,
+  "en": "questions worth asking about any job.",
+  "ko": "어떤 일자리든 던져 볼 질문이 두 개 남습니다."
+ },
+ {
+  "id": "s8_03.2",
+  "start": 330.359,
+  "end": 332.649,
+  "en": "Will this role put me near people who can teach me?",
+  "ko": "이 자리는 나를 가르쳐 줄 사람 곁에 있게 해 주는가?"
+ },
+ {
+  "id": "s8_03.3",
+  "start": 332.689,
+  "end": 334.569,
+  "en": "And is AI in this job doing the work,",
+  "ko": "그리고 이 일에서 AI는 일을 대신하는가,"
+ },
+ {
+  "id": "s8_03.4",
+  "start": 334.609,
+  "end": 336.215,
+  "en": "or helping someone do it?",
+  "ko": "아니면 사람을 돕는가?"
+ },
+ {
+  "id": "s9_01.0",
+  "start": 336.565,
+  "end": 338.225,
+  "en": "One problem is tied to remote work,",
+  "ko": "한 문제는 원격 근무와 연결돼 있고,"
+ },
+ {
+  "id": "s9_01.1",
+  "start": 338.265,
+  "end": 340.555,
+  "en": "and its size rests on a rough estimate.",
+  "ko": "그 크기는 대략적인 추정에 기대고 있습니다."
+ },
+ {
+  "id": "s9_01.2",
+  "start": 340.595,
+  "end": 341.395,
+  "en": "The other is newer,",
+  "ko": "다른 하나는 더 새롭고,"
+ },
+ {
+  "id": "s9_01.3",
+  "start": 341.295,
+  "end": 344.365,
+  "en": "and it sits in jobs where AI does the task.",
+  "ko": "AI가 일을 대신하는 일자리에 있습니다."
+ },
+ {
+  "id": "s9_01.4",
+  "start": 344.405,
+  "end": 346.409,
+  "en": "How much each one matters is still open.",
+  "ko": "각각이 얼마나 중요한지는 아직 열려 있습니다."
+ },
+ {
+  "id": "s9_02.0",
+  "start": 346.529,
+  "end": 348.289,
+  "en": "Which of those two questions applies to",
+  "ko": "이 두 질문 중 어느 쪽이"
+ },
+ {
+  "id": "s9_02.1",
+  "start": 348.329,
+  "end": 349.533,
+  "en": "your own job search?",
+  "ko": "당신의 구직에 해당하나요?"
+ }
+]
