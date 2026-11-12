@@ -18,7 +18,7 @@ THEMES = {   # 3D 색(T)과 HTML 카드 규격(C). golden 값은 brand/golden.cs
            "C": {"bg": "#f1ece2", "ink": "#1d2421", "card": "#fffdf8", "num": 92, "lab": 30, "sub": 32, "tick": 30, "cap": 54,
                  "card_pos": "left: 50%; bottom: 96px; transform: translateX(-50%);", "pad": "18px 34px", "font": "Inter, sans-serif"}},
     "golden": {"T": {"bg": "#f2ebdd", "ground": "#ece4d4", "danger": "#f6c1a8", "safe": "#c3cbe0", "ink": "#1e2a44", "pay": "#3e64a8",
-                     "base": "#cfc7b6", "bad": "#f2622e", "focus": "#fbf8f1", "good": "#3e64a8"},   # GOLDEN.md §5 후보 A(추천, 미확정)
+                     "base": "#cfc7b6", "bad": "#f2622e", "focus": "#fbf8f1", "good": "#3e64a8"},   # GOLDEN.md §5 팔레트 A(확정)
                "C": {"bg": "#f2ebdd", "ink": "#1b2233", "card": "#fbf8f1", "num": 144, "lab": 34, "sub": 34, "tick": 34, "cap": 55,
                      "card_pos": "left: 89px; top: 89px;", "pad": "21px 34px", "font": "'Source Sans 3', 'Helvetica Neue', Arial, sans-serif"}},
 }
@@ -50,7 +50,7 @@ PROTO = {"B": [{k: b[k] for k in ("id", "name", "u", "w", "gx", "gy")} for b in 
          "EV": EV, "HL": HL, "END": END, "THEME": TH["T"]}
 tick_html = "\n".join(f'    <div class="tick fade" data-in="{a}" data-out="{o}" data-wx="{x}" data-wy="{y}" data-wz="{z}">{t}</div>'
                       for t, x, y, z, a, o in TICKS)
-card_html = "\n".join(f'    <div id="card-{c}" class="card {k}"><b>{big}</b><span><i>{m.upper()}</i>{small}</span></div>'
+card_html = "\n".join(f'    <div id="card-{c}" class="card {k}{" pay" if big.startswith("$") else ""}"><b>{big}</b><span><i>{m.upper()}</i>{small}</span></div>'
                       for c, m, big, small, k, *_ in CARDS)
 caps = [("73 MAJORS, ONE CAMPUS", 0.3, 1.9), ("LINE THEM UP BY UNEMPLOYMENT", 2.2, 5.2), ("NOW ADD STARTING PAY", 25.4, 29.3)]
 cap_html = "\n".join(f'    <div class="cap fade" data-in="{a}" data-out="{o}">{t}</div>' for t, a, o in caps)
@@ -69,6 +69,7 @@ comp = f"""<template>
     .card span {{ display: flex; flex-direction: column; font-size: {C["sub"]}px; font-weight: 600; line-height: 1.236; }}
     .card i {{ font-style: normal; font-weight: 900; font-size: {C["lab"]}px; letter-spacing: .04em; }}
     .card.red b {{ color: {TH["T"]["bad"]}; }} .card.green b {{ color: {TH["T"]["good"]}; }}
+    .card.pay b {{ color: {TH["T"]["pay"]}; }}   /* 숫자 색은 지표를 따른다: 초봉 = 좋은 지표 */
     #pin {{ position: absolute; left: 0; top: 0; width: 4px; height: 70px; background: #1d2421; }}
     #pin::before {{ content: ""; position: absolute; left: -9px; top: -18px; width: 22px; height: 22px; border-radius: 50%; background: #1d2421; }}
     #src {{ position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); font-size: 28px; color: #5b5f5a; white-space: nowrap; }}
