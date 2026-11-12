@@ -60,17 +60,18 @@ for (const b of P.B) {
 }
 
 // ── 카메라: 세 구도 사이를 섞는다 ───────────────────────
-const K = [
+const K = P.CAMS || [
   { p: [17, 14, 19], t: [6.5, 0, 4] },          // 0 캠퍼스 내려다보기
   { p: [6.2, 10.5, 15.5], t: [6.2, 0, 2.2] },    // 1 실업률 축 정면 위
   { p: [6.2, 7.5, 19.5], t: [6.2, 1.6, 2.0] },   // 2 산점도: 앞에서 조금 높게(뒤 줄 건물이 가려지지 않게)
 ];
-const cam = { k: 0 };
+const cam = { k: 0, z: 1 };   // k = 구도 사이 위치(0~K.length-1), z = 대상 쪽으로 다가가는 비율(1 = 그대로)
 const lerp = (a, b, t) => a + (b - a) * t;
 function placeCamera() {
-  const i = Math.min(1, Math.floor(cam.k)), t = cam.k - i, A = K[i], Bk = K[i + 1];
-  camera.position.set(...A.p.map((v, j) => lerp(v, Bk.p[j], t)));
-  camera.lookAt(...A.t.map((v, j) => lerp(v, Bk.t[j], t))); camera.updateMatrixWorld();
+  const i = Math.min(K.length - 2, Math.floor(cam.k)), t = cam.k - i, A = K[i], Bk = K[i + 1];
+  const tg = A.t.map((v, j) => lerp(v, Bk.t[j], t)), ps = A.p.map((v, j) => lerp(v, Bk.p[j], t));
+  camera.position.set(...ps.map((v, j) => tg[j] + (v - tg[j]) * cam.z));
+  camera.lookAt(...tg); camera.updateMatrixWorld();
 }
 
 // ── HTML: 눈금(투영) · 고정 카드 · 사분면 이름 ───────────
@@ -107,26 +108,24 @@ for (const b of P.B) b.delay = (b.gx + b.gy) / 22 * 0.6;
 
 // ── 타임라인 ───────────────────────────────────────────
 const tl = gsap.timeline({ paused: true, onUpdate: render });
-const E = P.EV;
-tl.to(st, { mix: 1, duration: 3.2, ease: "none" }, E.lineup);
-tl.to(cam, { k: 1, duration: 3.2, ease: "power2.inOut" }, E.lineup);
-tl.to(st, { zone: 1, duration: 0.6, ease: "power2.out" }, E.zone);
-// 강조: 카드가 바뀔 때마다 그 건물만 색, 핀 하나만
+// 장면 계획(P.TL): 생성기가 정한 {at, obj: "st"|"cam", to, d, ease}를 그대로 건다
+const OBJ = { st, cam };
+for (const s of P.TL) tl.to(OBJ[s.obj], { ...s.to, duration: s.d, ease: s.ease || "power2.inOut" }, s.at);
+// 강조: 카드가 바뀔 때마다 그 건물만 색, 핀 하나만. id가 없으면 카드만
 for (const h of P.HL) {
-  const k = bld[h.id];
-  tl.set(k, { kind: h.kind }, h.t);
-  tl.fromTo(k, { tint: 0 }, { tint: 1, duration: 0.35, ease: "power2.out", immediateRender: false }, h.t);
-  if (!h.keep) tl.to(k, { tint: 0, duration: 0.3 }, h.e);
-  tl.set(st, { pinId: h.id }, h.t);
-  tl.fromTo(st, { pinOn: 0 }, { pinOn: 1, duration: 0.25, immediateRender: false }, h.t);
+  const k = h.id ? bld[h.id] : null;
+  if (k) {
+    tl.set(k, { kind: h.kind }, h.t);
+    tl.fromTo(k, { tint: 0 }, { tint: 1, duration: 0.35, ease: "power2.out", immediateRender: false }, h.t);
+    if (!h.keep) tl.to(k, { tint: 0, duration: 0.3 }, h.e);
+    tl.set(st, { pinId: h.id }, h.t);
+    tl.fromTo(st, { pinOn: 0 }, { pinOn: 1, duration: 0.25, immediateRender: false }, h.t);
+    tl.to(st, { pinOn: 0, duration: 0.2 }, h.e);
+  }
   const card = root.querySelector("#" + h.card);
   tl.fromTo(card, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out", immediateRender: false }, h.t);
   tl.to(card, { opacity: 0, duration: 0.2 }, h.e);
 }
-tl.set(st, { pinOn: 0 }, E.grow - 0.01);
-tl.to(st, { grow: 1, duration: 2.2, ease: "power3.inOut" }, E.grow);
-tl.to(cam, { k: 2, duration: 2.6, ease: "power2.inOut" }, E.grow);
-tl.to(st, { pay: 1, duration: 0.6 }, E.grow + 2.2);
 for (const el of root.querySelectorAll(".fade"))
   tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.4, immediateRender: false }, +el.dataset.in).to(el, { opacity: 0, duration: 0.3 }, +el.dataset.out);
 tl.to({}, { duration: 0.01 }, P.END - 0.01);

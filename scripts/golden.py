@@ -67,7 +67,7 @@ for f in ("hyperframes.json", "meta.json", "package.json"): shutil.copy(R / "epi
 <html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=1920, height=1080" />
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
 <style>{root_css()}
-:root {{ --gb-sans: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif; --gb-mono: 'IBM Plex Mono', Menlo, monospace; }}
+:root {{ --gb-sans: Inter, 'Helvetica Neue', Arial, sans-serif; --gb-mono: 'IBM Plex Mono', Menlo, monospace; }}
 * {{ margin: 0; padding: 0; box-sizing: border-box; }} html, body {{ width: 1920px; height: 1080px; overflow: hidden; background: var(--g-main); font-family: var(--gb-sans); }}
 </style></head><body>
 <div id="root" data-composition-id="main" data-start="0" data-duration="{len(blocks)}" data-width="1920" data-height="1080">
