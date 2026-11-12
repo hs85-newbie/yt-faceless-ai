@@ -4,7 +4,7 @@
 // 생성기 scripts/ep002_proto.py가 window.__PROTO(전공 73개·평균·장면 시각)를 넣는다.
 import * as THREE from "three";
 
-const P = window.__PROTO, root = document.querySelector('[data-composition-id="proto"]');
+const P = window.__PROTO, T = P.THEME, root = document.querySelector('[data-composition-id="proto"]');
 const XS = 1.3, FOOT = 0.42, GAP = 0.5, HW = 4.2 / 100000;   // 실업률 1%p당 가로 1.3, 초봉 $10만 = 높이 4.2
 const ux = (u) => u * XS;
 
@@ -13,7 +13,7 @@ const renderer = new THREE.WebGLRenderer({ canvas: root.querySelector("#gl"), an
 renderer.setPixelRatio(1); renderer.setSize(1920, 1080, false);
 renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-const scene = new THREE.Scene(); scene.background = new THREE.Color("#f1ece2");
+const scene = new THREE.Scene(); scene.background = new THREE.Color(T.bg);
 const camera = new THREE.PerspectiveCamera(24, 1920 / 1080, 0.1, 200);
 scene.add(new THREE.HemisphereLight("#ffffff", "#c9c2b4", 1.4));
 const sun = new THREE.DirectionalLight("#fff4e6", 1.8);
@@ -23,25 +23,25 @@ Object.assign(sun.shadow.camera, { left: -14, right: 14, top: 14, bottom: -14, n
 scene.add(sun, sun.target);
 
 // ── 바닥: 크림 + 평균선 오른쪽 위험 구역 ─────────────────
-const ground = new THREE.Mesh(new THREE.PlaneGeometry(80, 80), new THREE.MeshStandardMaterial({ color: "#efe9dd", roughness: 1 }));
+const ground = new THREE.Mesh(new THREE.PlaneGeometry(80, 80), new THREE.MeshStandardMaterial({ color: T.ground, roughness: 1 }));
 ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; scene.add(ground);
 const zoneMat = (c) => new THREE.MeshBasicMaterial({ color: c, transparent: true, opacity: 0, depthWrite: false });
 const AVG = ux(P.avgU), XMAX = ux(9.5);
-const danger = new THREE.Mesh(new THREE.PlaneGeometry(XMAX - AVG, 7), zoneMat("#e9a796"));
+const danger = new THREE.Mesh(new THREE.PlaneGeometry(XMAX - AVG, 7), zoneMat(T.danger));
 danger.rotation.x = -Math.PI / 2; danger.position.set((AVG + XMAX) / 2, 0.005, 1.6); scene.add(danger);
-const safe = new THREE.Mesh(new THREE.PlaneGeometry(AVG, 7), zoneMat("#bcd9b2"));
+const safe = new THREE.Mesh(new THREE.PlaneGeometry(AVG, 7), zoneMat(T.safe));
 safe.rotation.x = -Math.PI / 2; safe.position.set(AVG / 2, 0.005, 1.6); scene.add(safe);
-const axis = new THREE.Mesh(new THREE.BoxGeometry(XMAX, 0.02, 0.05), new THREE.MeshBasicMaterial({ color: "#1d2421", transparent: true, opacity: 0 }));
+const axis = new THREE.Mesh(new THREE.BoxGeometry(XMAX, 0.02, 0.05), new THREE.MeshBasicMaterial({ color: T.ink, transparent: true, opacity: 0 }));
 axis.position.set(XMAX / 2, 0.012, 5.1); scene.add(axis);
-const avgLine = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.02, 7.4), new THREE.MeshBasicMaterial({ color: "#1d2421", transparent: true, opacity: 0 }));
+const avgLine = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.02, 7.4), new THREE.MeshBasicMaterial({ color: T.ink, transparent: true, opacity: 0 }));
 avgLine.position.set(AVG, 0.014, 1.5); scene.add(avgLine);
 // 장면 2: 평균 초봉 높이의 얇은 유리판
-const payPlane = new THREE.Mesh(new THREE.PlaneGeometry(XMAX, 7), new THREE.MeshBasicMaterial({ color: "#2c5f8a", transparent: true, opacity: 0, side: THREE.DoubleSide, depthWrite: false }));
+const payPlane = new THREE.Mesh(new THREE.PlaneGeometry(XMAX, 7), new THREE.MeshBasicMaterial({ color: T.pay, transparent: true, opacity: 0, side: THREE.DoubleSide, depthWrite: false }));
 payPlane.rotation.x = -Math.PI / 2; payPlane.position.set(XMAX / 2, P.avgW * HW, 1.6); scene.add(payPlane);
-const payLine = new THREE.Mesh(new THREE.BoxGeometry(XMAX + 0.6, 0.035, 0.035), new THREE.MeshBasicMaterial({ color: "#2c5f8a", transparent: true, opacity: 0 }));
+const payLine = new THREE.Mesh(new THREE.BoxGeometry(XMAX + 0.6, 0.035, 0.035), new THREE.MeshBasicMaterial({ color: T.pay, transparent: true, opacity: 0 }));
 payLine.position.set(XMAX / 2 - 0.3, P.avgW * HW, 4.8); scene.add(payLine);   // 판은 옅게, 앞 가장자리에 선 하나로 읽힌다
 // 장면 2: 옆에서 보면 바닥의 평균선이 안 보이므로 4.2% 자리에 얇은 세로 벽을 세운다
-const avgWall = new THREE.Mesh(new THREE.PlaneGeometry(7, 4.6), new THREE.MeshBasicMaterial({ color: "#1d2421", transparent: true, opacity: 0, side: THREE.DoubleSide, depthWrite: false }));
+const avgWall = new THREE.Mesh(new THREE.PlaneGeometry(7, 4.6), new THREE.MeshBasicMaterial({ color: T.ink, transparent: true, opacity: 0, side: THREE.DoubleSide, depthWrite: false }));
 avgWall.rotation.y = Math.PI / 2; avgWall.position.set(AVG, 2.3, 1.6); scene.add(avgWall);
 
 // ── 건물: 캠퍼스 칸 → 실업률 축 위 벌떼 배치(겹치면 뒤 줄로) ──
@@ -50,7 +50,7 @@ for (const b of sorted) {   // 같은 줄 안에서 가로로 FOOT+여유만큼 
   let r = 0; while ((rows[r] ?? -9) > ux(b.u) - (FOOT + 0.06)) r++;
   rows[r] = ux(b.u); b.ax = ux(b.u); b.az = 4.4 - r * GAP;
 }
-const COL = { base: new THREE.Color("#c9c4ba"), red: new THREE.Color("#d9452b"), white: new THREE.Color("#ffffff"), green: new THREE.Color("#3f8f5b") };
+const COL = { base: new THREE.Color(T.base), red: new THREE.Color(T.bad), white: new THREE.Color(T.focus), green: new THREE.Color(T.good) };
 const bld = {};
 for (const b of P.B) {
   const mat = new THREE.MeshStandardMaterial({ color: COL.base.clone(), roughness: .75 });

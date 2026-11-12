@@ -1,0 +1,16 @@
+/* 황금비·피보나치 토큰 — 규칙과 근거는 brand/GOLDEN.md. tokens.css(EP001 다크 장부)는 그대로 둔다. */
+:root {
+  --phi: 1.618034;
+  /* 화면 황금선 (1920×1080) */
+  --g-x1: 733px; --g-x2: 1187px; --g-y1: 413px; --g-y2: 667px;
+  /* 여백 */
+  --g-8: 8px; --g-13: 13px; --g-21: 21px; --g-34: 34px; --g-55: 55px; --g-89: 89px; --g-144: 144px;
+  /* 글자 */
+  --g-type-thumb: 233px; --g-type-number: 144px; --g-type-title: 89px; --g-type-sub: 55px; --g-type-label: 34px;
+  /* 움직임 (30fps 피보나치 프레임) */
+  --g-t8: 267ms; --g-t13: 433ms; --g-t21: 700ms; --g-t34: 1133ms; --g-t55: 1833ms;
+  --g-ease: cubic-bezier(0.382, 0, 0.146, 1);
+  /* 색 (면적 61.8 : 23.6 : 14.6) */
+  --g-paper: #f3ead8; --g-walnut: #2b1f17; --g-gold: #b8862b; --g-gold-on-dark: #e5b650;
+  --g-bad: #c4432b; --g-good: #3f7d4f; --g-ink: #1d1a16; --g-ink-soft: #7a6a5a;
+}
