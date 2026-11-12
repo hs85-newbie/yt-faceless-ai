@@ -1,7 +1,7 @@
 """EP002 시안 두 장면(무음, 약 30초): 캠퍼스 → 실업률 축 줄서기 → 초봉 산점도. 승인용 시안이지 최종본이 아니다.
 
 사용: python3 -I scripts/ep002_proto.py [v1|golden] → output/002/03_work/proto[_golden]/ (git 제외) 에서 npx hyperframes render
-      golden = brand/GOLDEN.md 규칙(황금비·피보나치, macromalt 분위기 참고 팔레트)
+      golden = brand/GOLDEN.md 규칙(황금비·피보나치, 팔레트 A)
 조합: HyperFrames + three.js r170(episodes/002/film/assets/lib 재사용) + 레퍼런스 문법(docs/research/ep002-major-viz-references.md):
       정렬 축 + 평균선 + 한 전공만 색, 숫자는 고정 카드 한 자리, 좋은 지표(초봉)만 높이에 싣는다.
 숫자: 카드 문구는 episodes/002/02_research.md 7·9·17번 항목, 높이·위치는 같은 NY Fed 전공별 CSV 원값.
