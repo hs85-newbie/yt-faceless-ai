@@ -34,11 +34,26 @@ def fill(name, **vals):
     return out
 
 
-def fit_size(html_text, width, sizes=(144, 89, 55)):
-    """가장 긴 줄이 width에 들어가는 가장 큰 피보나치 글자 크기.
-    shortcut: Archivo Black 대문자 평균 폭 ≈ 0.62em(EP002 렌더로 맞춤 — 144px에서 11자 들어가고 13자 넘침). 소문자 많은 제목이면 다시 맞춘다."""
-    longest = max(len(re.sub(r"&\w+;", "x", l)) for l in re.split(r"<br\s*/?>", html_text))
-    return next((s for s in sizes if longest * 0.62 * s <= width), sizes[-1])
+# shortcut: Archivo Black 대문자 글자 폭(em) 근사. 기본 0.70, 넓은 M·W, 좁은 I·J·구두점. 소문자 많은 제목이면 표를 늘린다.
+_W = {**dict.fromkeys("MW", 0.95), "I": 0.33, "J": 0.55, "L": 0.62, " ": 0.28, "-": 0.40, ".": 0.30, ",": 0.30, "?": 0.60, "%": 0.90}
+
+
+def _em(s):
+    return sum(_W.get(ch, 0.70) for ch in re.sub(r"&\w+;", "-", s).upper())
+
+
+def fit_size(html_text, width, sizes=(144, 89, 55), by="line"):
+    """가장 긴 줄(by="line", 줄바꿈 금지 제목) 또는 가장 긴 단어(by="word", 단어 단위로 접히는 제목)가
+    width에 들어가는 가장 큰 피보나치 글자 크기."""
+    parts = re.split(r"<br\s*/?>", html_text)
+    if by == "word": parts = [w for p in parts for w in p.split()]
+    longest = max(_em(p) for p in parts)
+    return next((s for s in sizes if longest * s <= width), sizes[-1])
+
+
+def no_break_hyphen(html_text):
+    """ENTRY-LEVEL이 하이픈에서 줄바뀌지 않게(U+2011)."""
+    return html_text.replace("-", "&#8209;")
 
 
 def _secs(s):
@@ -82,5 +97,7 @@ if __name__ == "__main__":   # 자기 점검
     assert round(1920 / PHI) == 1187 and round(1080 / PHI) == 667
     p = time_plan({"a": 0.0, "b": 100.0, "c": 170.0}, 270.5, "c")
     assert p[1 / PHI]["line"] == "c" and abs(p["climax"]["off"] - 2.8) < 0.1, p
+    # 렌더로 확인한 경우: 'IS COLLEGE/STILL/WORTH IT?' 144 들어감, 'SCIENCE STILL' 144 넘침, 'ENTRY-LEVEL' 144 넘침(하이픈에서 접힘)
     assert fit_size("IS COLLEGE<br/>STILL<br/>WORTH IT?", 1009) == 144 and fit_size("IS COMPUTER<br/>SCIENCE STILL", 1009) == 89
+    assert fit_size("IS COMPUTER<br/>SCIENCE STILL", 1009, by="word") == 144 and fit_size("IS AI TAKING<br/>ENTRY-LEVEL", 1009, by="word") == 89
     print("ok", t["main"], t["second"], t["loud"])

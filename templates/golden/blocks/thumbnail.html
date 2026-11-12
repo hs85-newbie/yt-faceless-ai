@@ -1,7 +1,7 @@
 <!-- 썸네일 1920×1080: 1187 : 733 황금 분할. 왼쪽 보조색 면에 질문, 오른쪽 시트에 핵심 숫자 233px.
-     칸: title(줄바꿈 <br/>), kicker, number, number_color(var(--g-bad)|var(--g-good)), caption -->
+     칸: title(줄바꿈 <br/>, 단어 단위로 접힘), title_size(fit_size by="word"), kicker, number, number_color(var(--g-bad)|var(--g-good)), caption -->
 <div class="gb-thumb">
-  <div class="l"><div class="q">{{title}}</div><div class="k">{{kicker}}</div></div>
+  <div class="l"><div class="q" style="font-size:{{title_size}}px">{{title}}</div><div class="k">{{kicker}}</div></div>
   <div class="r"><div class="n" style="color:{{number_color}}">{{number}}</div><div class="c">{{caption}}</div></div>
 </div>
 <style>

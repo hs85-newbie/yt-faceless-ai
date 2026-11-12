@@ -9,7 +9,7 @@
 import json, shutil, subprocess, sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))   # python3 -I는 스크립트 폴더를 경로에 넣지 않는다
-from golden_kit import R, PHI, fill, fit_size, line_starts, root_css, spiral, time_plan
+from golden_kit import R, PHI, fill, fit_size, line_starts, no_break_hyphen, root_css, spiral, time_plan
 
 EP = sys.argv[1]
 CFG = json.loads((R / f"episodes/{EP}/golden.json").read_text())
@@ -51,9 +51,9 @@ fib = "".join(f'<div class="fb" style="width:{s * 21}px">{s}s</div>' for s in (3
 sq, path = spiral((1920 - round(1080 * PHI)) / 2, 0, round(1080 * PHI), 1080)
 blocks = [
     fill("rules-grid", squares="".join(f'<rect x="{x:.1f}" y="{y:.1f}" width="{s:.1f}" height="{s:.1f}"/>' for x, y, s in sq), path=path),
-    fill("title-card", doc_title=CFG["doc_title"], episode_tag=CFG["episode_tag"], title=CFG["title_card"], tag=CFG["tag"],
+    fill("title-card", doc_title=CFG["doc_title"], episode_tag=CFG["episode_tag"], title=no_break_hyphen(CFG["title_card"]), tag=CFG["tag"],
          title_size=fit_size(CFG["title_card"], 1920 - 822 - 89)),   # 제목 왼쪽 822, 오른쪽 여백 89
-    fill("thumbnail", title=CFG["title"], kicker=CFG["kicker"], number=CFG["number"], number_color=NUM_COLOR, caption=CFG["number_caption"]),
+    fill("thumbnail", title=no_break_hyphen(CFG["title"]), title_size=fit_size(CFG["title"], 1187 - 2 * 89, by="word"), kicker=CFG["kicker"], number=CFG["number"], number_color=NUM_COLOR, caption=CFG["number_caption"]),
     '<div style="position:absolute;inset:0;background:var(--g-main)"></div>' +
     fill("number-card", number=CFG["number"], number_color=NUM_COLOR, label=CFG["card_label"], desc=CFG["card_desc"]),
     fill("time-plan", ep=f"EP{EP}", T=T, bars=bars, marks=marks, climax=climax, legend=legend, fib=fib),
