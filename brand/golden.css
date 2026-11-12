@@ -11,6 +11,7 @@
   --g-t8: 267ms; --g-t13: 433ms; --g-t21: 700ms; --g-t34: 1133ms; --g-t55: 1833ms;
   --g-ease: cubic-bezier(0.382, 0, 0.146, 1);
   /* 색 (면적 61.8 : 23.6 : 14.6) */
-  --g-paper: #f3ead8; --g-walnut: #2b1f17; --g-gold: #b8862b; --g-gold-on-dark: #e5b650;
-  --g-bad: #c4432b; --g-good: #3f7d4f; --g-ink: #1d1a16; --g-ink-soft: #7a6a5a;
+  --g-paper: #f3efe4; --g-sheet: #fbf9f3; --g-forest: #234a33; --g-forest-deep: #1b3425;
+  --g-gold: #b8862b; --g-gold-on-dark: #e5b650;
+  --g-bad: #c8352b; --g-good: #2459c9; --g-ink: #1f2420; --g-ink-soft: #5c6457; --g-rule: #d8d1bf;
 }

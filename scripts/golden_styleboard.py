@@ -34,7 +34,7 @@ sq_svg = "".join(f'<rect x="{x:.1f}" y="{y:.1f}" width="{s:.1f}" height="{s:.1f}
 pts = "".join(f'<circle cx="{x}" cy="{y}" r="13"/>' for x in (733, 1187) for y in (413, 667))
 scale = "".join(f'<div style="font-size:{n}px">{n}</div>' for n in (34, 55, 89, 144))
 swatch = "".join(f'<div style="flex:{f};background:{c}"><span>{f}%</span></div>'
-                 for f, c in ((61.8, "#f3ead8"), (23.6, "#2b1f17"), (14.6, "#b8862b")))
+                 for f, c in ((61.8, "#f3efe4"), (23.6, "#234a33"), (14.6, "#b8862b")))
 
 S1 = f"""
 <div id="s1" class="clip slide paper" data-start="0" data-duration="1" data-track-index="1">
@@ -70,42 +70,42 @@ S3 = """
 
 CSS = """
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { width: 1920px; height: 1080px; overflow: hidden; background: #f3ead8; }
-  .slide { position: absolute; inset: 0; overflow: hidden; font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif; color: #1d1a16; }
-  .paper { background: #f3ead8; } .walnut { background: radial-gradient(circle at 1187px 413px, #3b2b20 0, #2b1f17 610px, #1f1610 1080px); color: #f3ead8; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; background: #f3efe4; }
+  .slide { position: absolute; inset: 0; overflow: hidden; font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif; color: #1f2420; }
+  .paper { background: #f3efe4; } .walnut { background: radial-gradient(circle at 1187px 413px, #2c5a40 0, #234a33 610px, #1b3425 1080px); color: #f3efe4; }
   .grid { position: absolute; inset: 0; width: 1920px; height: 1080px; fill: none; }
   .grid .sq rect { stroke: #b8862b; stroke-width: 2; stroke-dasharray: 8 13; opacity: .55; }
   .grid .sp { stroke: #b8862b; stroke-width: 5; }
-  .grid line { stroke: #1d1a16; stroke-width: 3; opacity: .35; }
-  .grid .pt circle { fill: #c4432b; }
+  .grid line { stroke: #1f2420; stroke-width: 3; opacity: .35; }
+  .grid .pt circle { fill: #c8352b; }
   .s1-title { position: absolute; left: 89px; top: 89px; font-family: "Archivo Black", sans-serif; font-size: 89px; line-height: 1.236; }
-  .s1-title small { font-family: 'IBM Plex Mono', Menlo, monospace; font-size: 34px; font-weight: 600; color: #7a6a5a; }
+  .s1-title small { font-family: 'IBM Plex Mono', Menlo, monospace; font-size: 34px; font-weight: 600; color: #5c6457; }
   .s1-scale { position: absolute; left: 1242px; top: 433px; display: flex; align-items: baseline; gap: 34px; font-family: "Archivo Black", sans-serif; line-height: 1; }
-  .s1-sw { position: absolute; left: 89px; right: 89px; bottom: 89px; height: 89px; display: flex; border: 3px solid #1d1a16; }
+  .s1-sw { position: absolute; left: 89px; right: 89px; bottom: 89px; height: 89px; display: flex; border: 3px solid #1f2420; }
   .s1-sw div { display: flex; align-items: center; padding-left: 21px; } .s1-sw span { font: 700 34px 'IBM Plex Mono', Menlo, monospace; color: #b8862b; mix-blend-mode: normal; }
-  .s1-sw div:first-child span { color: #1d1a16; } .s1-sw div:nth-child(2) span { color: #f3ead8; } .s1-sw div:last-child span { color: #1d1a16; }
-  .s1-note { position: absolute; left: 754px; top: 680px; font: 600 34px 'IBM Plex Mono', Menlo, monospace; color: #7a6a5a; }
+  .s1-sw div:first-child span { color: #1f2420; } .s1-sw div:nth-child(2) span { color: #f3efe4; } .s1-sw div:last-child span { color: #1f2420; }
+  .s1-note { position: absolute; left: 754px; top: 680px; font: 600 34px 'IBM Plex Mono', Menlo, monospace; color: #5c6457; }
   /* S2 콜라주: 종이 문서 + 망점 + 기울인 이름표. 제목은 황금점(1187,413) 왼쪽 위에 걸친다 */
-  .doc { position: absolute; left: 144px; top: 144px; width: 589px; height: 754px; background: #f3ead8; color: #1d1a16; padding: 55px;
+  .doc { position: absolute; left: 144px; top: 144px; width: 589px; height: 754px; background: #f3efe4; color: #1f2420; padding: 55px;
          transform: rotate(-2.618deg); box-shadow: 8px 8px 13px rgba(0,0,0,.35);
          clip-path: polygon(0 0, 100% 0, 100% 92%, 94% 95%, 88% 92%, 81% 96%, 73% 93%, 64% 97%, 55% 93%, 47% 96%, 38% 92%, 30% 96%, 21% 93%, 13% 97%, 6% 93%, 0 96%); }
   .doc-h { font: 800 34px/1.236 'Source Sans 3', Arial, sans-serif; letter-spacing: .02em; margin-bottom: 34px; }
-  .doc-l { height: 13px; background: #cbbca5; margin-bottom: 21px; } .doc-l.s { width: 61.8%; }
-  .doc-bars { display: flex; align-items: flex-end; gap: 21px; height: 233px; margin-top: 55px; border-bottom: 3px solid #1d1a16; }
-  .doc-bars i { flex: 1; background: #7a6a5a; } .doc-bars i.hot { background: #c4432b; }
+  .doc-l { height: 13px; background: #d8d1bf; margin-bottom: 21px; } .doc-l.s { width: 61.8%; }
+  .doc-bars { display: flex; align-items: flex-end; gap: 21px; height: 233px; margin-top: 55px; border-bottom: 3px solid #1f2420; }
+  .doc-bars i { flex: 1; background: #5c6457; } .doc-bars i.hot { background: #c8352b; }
   .dots { position: absolute; right: 0; bottom: 0; width: 377px; height: 233px; opacity: .35;
-          background: radial-gradient(circle, #1d1a16 3px, transparent 3.5px) 0 0 / 13px 13px; }
-  .title { position: absolute; left: 822px; top: 233px; font-family: "Archivo Black", sans-serif; font-size: 144px; line-height: 1.0; color: #f3ead8; white-space: nowrap; }
-  .tag { position: absolute; background: #fffaf0; color: #1d1a16; font: 800 34px 'Source Sans 3', Arial, sans-serif; padding: 13px 21px; box-shadow: 8px 8px 13px rgba(0,0,0,.35); }
+          background: radial-gradient(circle, #1f2420 3px, transparent 3.5px) 0 0 / 13px 13px; }
+  .title { position: absolute; left: 822px; top: 233px; font-family: "Archivo Black", sans-serif; font-size: 144px; line-height: 1.0; color: #f3efe4; white-space: nowrap; }
+  .tag { position: absolute; background: #fbf9f3; color: #1f2420; font: 800 34px 'Source Sans 3', Arial, sans-serif; padding: 13px 21px; box-shadow: 8px 8px 13px rgba(0,0,0,.35); }
   .t1 { left: 822px; top: 144px; transform: rotate(-2.618deg); background: #e5b650; }
   .t2 { left: 1187px; top: 754px; transform: rotate(1.618deg); }
   .rule { position: absolute; left: 822px; top: 699px; width: 233px; height: 5px; background: #e5b650; }
   /* S3 썸네일: 1187 : 733 분할. 숫자는 데이터색(나쁨) 233px */
-  .th-left { position: absolute; left: 0; top: 0; width: 1187px; height: 1080px; padding: 89px; display: flex; flex-direction: column; justify-content: center; }
+  .th-left { position: absolute; left: 0; top: 0; width: 1187px; height: 1080px; padding: 89px; display: flex; flex-direction: column; justify-content: center; background: #234a33; color: #f3efe4; }
   .th-q { font-family: "Archivo Black", sans-serif; font-size: 144px; line-height: 1.0; }
-  .th-k { margin-top: 55px; align-self: flex-start; background: #b8862b; color: #fffaf0; font: 800 55px 'Source Sans 3', Arial, sans-serif; padding: 8px 21px; transform: rotate(-1.618deg); }
-  .th-right { position: absolute; left: 1187px; top: 0; width: 733px; height: 1080px; background: #2b1f17; color: #f3ead8; display: flex; flex-direction: column; justify-content: center; padding: 55px; }
-  .th-n { font-family: "Archivo Black", sans-serif; font-size: 233px; line-height: 1.0; color: #e0563f; letter-spacing: -.02em; }
+  .th-k { margin-top: 55px; align-self: flex-start; background: #e5b650; color: #1f2420; font: 800 55px 'Source Sans 3', Arial, sans-serif; padding: 8px 21px; transform: rotate(-1.618deg); }
+  .th-right { position: absolute; left: 1187px; top: 0; width: 733px; height: 1080px; background: #fbf9f3; color: #1f2420; display: flex; flex-direction: column; justify-content: center; padding: 55px; }
+  .th-n { font-family: "Archivo Black", sans-serif; font-size: 233px; line-height: 1.0; color: #c8352b; letter-spacing: -.02em; }
   .th-c { margin-top: 34px; font: 700 55px/1.236 'Source Sans 3', Arial, sans-serif; }
 """
 
