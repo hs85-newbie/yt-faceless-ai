@@ -17,9 +17,9 @@ THEMES = {   # 3D 색(T)과 HTML 카드 규격(C). golden 값은 brand/golden.cs
                  "base": "#c9c4ba", "bad": "#d9452b", "focus": "#ffffff", "good": "#3f8f5b"},
            "C": {"bg": "#f1ece2", "ink": "#1d2421", "card": "#fffdf8", "num": 92, "lab": 30, "sub": 32, "tick": 30, "cap": 54,
                  "card_pos": "left: 50%; bottom: 96px; transform: translateX(-50%);", "pad": "18px 34px", "font": "Inter, sans-serif"}},
-    "golden": {"T": {"bg": "#f3efe4", "ground": "#ece6d6", "danger": "#e8b2a6", "safe": "#bccbe8", "ink": "#234a33", "pay": "#b8862b",
-                     "base": "#cfc6b2", "bad": "#c8352b", "focus": "#fbf9f3", "good": "#2459c9"},   # 좋음 = 파랑(초록은 브랜드 면)
-               "C": {"bg": "#f3efe4", "ink": "#1f2420", "card": "#fbf9f3", "num": 144, "lab": 34, "sub": 34, "tick": 34, "cap": 55,
+    "golden": {"T": {"bg": "#f2ebdd", "ground": "#ece4d4", "danger": "#f6c1a8", "safe": "#c3cbe0", "ink": "#1e2a44", "pay": "#3e64a8",
+                     "base": "#cfc7b6", "bad": "#f2622e", "focus": "#fbf8f1", "good": "#3e64a8"},   # GOLDEN.md §5 후보 A(추천, 미확정)
+               "C": {"bg": "#f2ebdd", "ink": "#1b2233", "card": "#fbf8f1", "num": 144, "lab": 34, "sub": 34, "tick": 34, "cap": 55,
                      "card_pos": "left: 89px; top: 89px;", "pad": "21px 34px", "font": "'Source Sans 3', 'Helvetica Neue', Arial, sans-serif"}},
 }
 TH = THEMES[NAME]
