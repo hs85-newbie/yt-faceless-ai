@@ -11,7 +11,9 @@
   --g-t8: 267ms; --g-t13: 433ms; --g-t21: 700ms; --g-t34: 1133ms; --g-t55: 1833ms;
   --g-ease: cubic-bezier(0.382, 0, 0.146, 1);
   /* 색: 팔레트 A 확정(2026-11-12, GOLDEN.md §5). 면적 61.8 주색 : 23.6 보조 : 14.6 튀는 색 */
-  --g-main: #f2ebdd; --g-sheet: #fbf8f1; --g-second: #1e2a44; --g-second-deep: #16203a;
+  --g-main: #f2ebdd; --g-sheet: #fbf8f1; --g-second: #1e2a44; --g-second-deep: #16203a; --g-second-tint: #2c3d63;   /* 틴트 = 보조색 + 흰, 셰이드 = 보조색 + 검정 */
   --g-loud: #f2622e; --g-gold: #e5b650;   /* gold = 채널 서명(로고·작은 표지만) */
   --g-bad: #f2622e; --g-good: #3e64a8; --g-ink: #1b2233; --g-ink-soft: #5b6478; --g-rule: #d9d0bf;
+  /* 틴트·셰이드(새 색 아님 — 위 색에 흰·회·검을 섞은 것). 3D 바닥·구역·중립 물체 */
+  --g-main-shade: #ece4d4; --g-loud-tint: #f6c1a8; --g-good-tint: #c3cbe0; --g-neutral: #cfc7b6;
 }

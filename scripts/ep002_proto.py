@@ -10,6 +10,8 @@ import json, shutil, sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))   # python3 -I는 스크립트 폴더를 경로에 넣지 않는다
 from ep002_common import R, CS, CE, buildings
+from golden_kit import tokens
+G = tokens()
 
 NAME = sys.argv[1] if len(sys.argv) > 1 else "v1"
 THEMES = {   # 3D 색(T)과 HTML 카드 규격(C). golden 값은 brand/golden.css와 같다
@@ -17,9 +19,9 @@ THEMES = {   # 3D 색(T)과 HTML 카드 규격(C). golden 값은 brand/golden.cs
                  "base": "#c9c4ba", "bad": "#d9452b", "focus": "#ffffff", "good": "#3f8f5b"},
            "C": {"bg": "#f1ece2", "ink": "#1d2421", "card": "#fffdf8", "num": 92, "lab": 30, "sub": 32, "tick": 30, "cap": 54,
                  "card_pos": "left: 50%; bottom: 96px; transform: translateX(-50%);", "pad": "18px 34px", "font": "Inter, sans-serif"}},
-    "golden": {"T": {"bg": "#f2ebdd", "ground": "#ece4d4", "danger": "#f6c1a8", "safe": "#c3cbe0", "ink": "#1e2a44", "pay": "#3e64a8",
-                     "base": "#cfc7b6", "bad": "#f2622e", "focus": "#fbf8f1", "good": "#3e64a8"},   # GOLDEN.md §5 팔레트 A(확정)
-               "C": {"bg": "#f2ebdd", "ink": "#1b2233", "card": "#fbf8f1", "num": 144, "lab": 34, "sub": 34, "tick": 34, "cap": 55,
+    "golden": {"T": {"bg": G["main"], "ground": G["main-shade"], "danger": G["loud-tint"], "safe": G["good-tint"], "ink": G["second"],
+                     "pay": G["good"], "base": G["neutral"], "bad": G["bad"], "focus": G["sheet"], "good": G["good"]},   # 색은 brand/golden.css에서만
+               "C": {"bg": G["main"], "ink": G["ink"], "card": G["sheet"], "num": 144, "lab": 34, "sub": 34, "tick": 34, "cap": 55,
                      "card_pos": "left: 89px; top: 89px;", "pad": "21px 34px", "font": "'Source Sans 3', 'Helvetica Neue', Arial, sans-serif"}},
 }
 TH = THEMES[NAME]

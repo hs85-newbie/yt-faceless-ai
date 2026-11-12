@@ -1,0 +1,24 @@
+<!-- 규칙판: 황금선·황금점·나선·글자 단계·색 면적. 화면 구도를 잡을 때 위에 겹쳐 보는 안내판으로도 쓴다.
+     칸: squares(SVG rect들), path(나선 경로) — scripts/golden.py가 채운다 -->
+<div class="gb-rules">
+  <svg viewBox="0 0 1920 1080"><g class="sq">{{squares}}</g><path class="sp" d="{{path}}"/>
+    <line x1="733" y1="0" x2="733" y2="1080"/><line x1="1187" y1="0" x2="1187" y2="1080"/>
+    <line x1="0" y1="413" x2="1920" y2="413"/><line x1="0" y1="667" x2="1920" y2="667"/>
+    <g class="pt"><circle cx="733" cy="413" r="13"/><circle cx="1187" cy="413" r="13"/><circle cx="733" cy="667" r="13"/><circle cx="1187" cy="667" r="13"/></g></svg>
+  <div class="t">GOLDEN RULES<br/><small>&phi; = 1.618 &middot; 8 13 21 34 55 89 144</small></div>
+  <div class="scale"><div style="font-size:34px">34</div><div style="font-size:55px">55</div><div style="font-size:89px">89</div><div style="font-size:144px">144</div></div>
+  <div class="sw"><div style="flex:61.8;background:var(--g-main)"><span>61.8%</span></div><div style="flex:23.6;background:var(--g-second)"><span class="inv">23.6%</span></div><div style="flex:14.6;background:var(--g-loud)"><span>14.6%</span></div></div>
+</div>
+<style>
+  .gb-rules { position: absolute; inset: 0; background: var(--g-main); color: var(--g-ink); }
+  .gb-rules svg { position: absolute; inset: 0; width: 1920px; height: 1080px; fill: none; }
+  .gb-rules .sq rect { stroke: var(--g-loud); stroke-width: 2; stroke-dasharray: 8 13; opacity: .55; }
+  .gb-rules .sp { stroke: var(--g-loud); stroke-width: 5; } .gb-rules line { stroke: var(--g-ink); stroke-width: 3; opacity: .35; }
+  .gb-rules .pt circle { fill: var(--g-second); }
+  .gb-rules .t { position: absolute; left: 89px; top: 89px; font-family: "Archivo Black", sans-serif; font-size: 89px; line-height: 1.236; }
+  .gb-rules .t small { font: 600 34px var(--gb-mono); color: var(--g-ink-soft); }
+  .gb-rules .scale { position: absolute; left: 1242px; top: 433px; display: flex; align-items: baseline; gap: 34px; font-family: "Archivo Black", sans-serif; line-height: 1; }
+  .gb-rules .sw { position: absolute; left: 89px; right: 89px; bottom: 89px; height: 89px; display: flex; border: 3px solid var(--g-ink); }
+  .gb-rules .sw div { display: flex; align-items: center; padding-left: 21px; }
+  .gb-rules .sw span { font: 700 34px var(--gb-mono); } .gb-rules .sw span.inv { color: var(--g-main); }
+</style>

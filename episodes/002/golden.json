@@ -1,0 +1,20 @@
+{
+  "_": "scripts/golden.py 입력. 숫자는 02_research.md 출처가 있는 것만. 색은 쓰지 않는다(brand/golden.css).",
+  "voice": "output/002/02_raw/voice_v1",
+  "work": "output/002/03_work/v1",
+  "title": "IS COMPUTER<br/>SCIENCE STILL<br/>WORTH IT?",
+  "title_card": "IS COMPUTER<br/>SCIENCE STILL<br/>WORTH IT?",
+  "episode_tag": "EPISODE 2",
+  "kicker": "FOR PARENTS",
+  "tag": "FOR PARENTS &middot; NY FED DATA",
+  "doc_title": "THE LABOR MARKET FOR RECENT COLLEGE GRADUATES",
+  "number": "7.0%",
+  "number_metric": "bad",
+  "number_caption": "of recent CS grads<br/>are unemployed",
+  "card_label": "COMPUTER SCIENCE",
+  "card_desc": "7 in 100 recent grads are unemployed",
+  "sections": [["HOOK", "s1_01"], ["FLIP", "s2_01"], ["PILLAR 1", "s3_01"], ["PILLAR 2", "s4_01"], ["PILLAR 3 &middot; PAY", "s5_01"],
+               ["PILLAR 4", "s6_01"], ["COUNTER", "s7_01"], ["CHART", "s8_01"], ["CLOSE", "s9_01"]],
+  "climax": "s5_03",
+  "climax_note": "And the pay. — 건물이 초봉만큼 솟기 시작, 0.618T에 산점도 완성"
+}

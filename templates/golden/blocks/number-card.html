@@ -1,0 +1,10 @@
+<!-- 숫자 카드: 바깥 여백 89 자리(왼쪽 위), 숫자 144 · 라벨 34. 숫자 색은 지표를 따른다(나쁨 = --g-bad, 좋은 지표 = --g-good).
+     장면 위에 겹쳐 쓴다. 칸: number, number_color, label, desc -->
+<div class="gb-card"><b style="color:{{number_color}}">{{number}}</b><span><i>{{label}}</i>{{desc}}</span></div>
+<style>
+  .gb-card { position: absolute; left: 89px; top: 89px; display: flex; align-items: center; gap: 34px; padding: 21px 34px; white-space: nowrap;
+             background: var(--g-sheet); color: var(--g-ink); border: 3px solid var(--g-ink); box-shadow: 8px 8px 0 rgba(0,0,0,.18); }
+  .gb-card b { font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: 144px; line-height: 1; font-variant-numeric: tabular-nums; }
+  .gb-card span { display: flex; flex-direction: column; font: 600 34px/1.236 var(--gb-sans); }
+  .gb-card i { font-style: normal; font-weight: 900; letter-spacing: .04em; }
+</style>

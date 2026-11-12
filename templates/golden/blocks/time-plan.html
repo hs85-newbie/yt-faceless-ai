@@ -1,0 +1,25 @@
+<!-- 시간 설계도: 실제 내레이션 절 경계 위에 0.382T·0.618T와 클라이맥스 줄.
+     칸: ep, T, bars, marks, climax, legend, fib — scripts/golden.py가 채운다 -->
+<div class="gb-time">
+  <div class="t">{{ep}} IN GOLDEN TIME<br/><small>T = {{T}}s &middot; real narration timings</small></div>
+  <div class="tl">{{bars}}{{marks}}{{climax}}</div>
+  <div class="lg">{{legend}}</div>
+  <div class="fib"><em>SHOT RHYTHM</em>{{fib}}</div>
+</div>
+<style>
+  .gb-time { position: absolute; inset: 0; background: var(--g-main); color: var(--g-ink); }
+  .gb-time .t { position: absolute; left: 89px; top: 89px; font-family: "Archivo Black", sans-serif; font-size: 89px; line-height: 1.236; }
+  .gb-time .t small { font: 600 34px var(--gb-mono); color: var(--g-ink-soft); }
+  .gb-time .tl { position: absolute; left: 0; top: 489px; width: 1920px; height: 89px; }
+  .gb-time .sec { position: absolute; top: 0; height: 89px; background: var(--g-second); border-right: 3px solid var(--g-main); display: flex; align-items: center; justify-content: center; }
+  .gb-time .sec.alt { background: var(--g-second-tint); } .gb-time .sec span { font: 800 34px var(--gb-mono); color: var(--g-main); }
+  .gb-time .gm { position: absolute; top: -144px; height: 233px; border-left: 5px solid var(--g-loud); padding-left: 13px; white-space: nowrap; }
+  .gb-time .cm { position: absolute; top: 89px; height: 144px; display: flex; flex-direction: column; justify-content: flex-end; white-space: nowrap;
+                 border-left: 3px dashed var(--g-ink-soft); padding-left: 13px; }
+  .gb-time b { display: block; font: 800 34px var(--gb-sans); } .gb-time .tl i { font: 600 34px var(--gb-mono); font-style: normal; color: var(--g-ink-soft); }
+  .gb-time .lg { position: absolute; left: 89px; right: 89px; top: 787px; display: flex; flex-wrap: wrap; gap: 13px 34px; font: 600 34px var(--gb-sans); }
+  .gb-time .lg b { display: inline; font-family: var(--gb-mono); color: var(--g-loud); }
+  .gb-time .fib { position: absolute; left: 89px; bottom: 89px; display: flex; align-items: center; gap: 8px; font: 800 34px var(--gb-mono); }
+  .gb-time .fib em { font-style: normal; margin-right: 21px; color: var(--g-ink-soft); }
+  .gb-time .fb { height: 55px; background: var(--g-second); color: var(--g-main); display: flex; align-items: center; justify-content: center; }
+</style>

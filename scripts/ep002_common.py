@@ -3,7 +3,10 @@
 배치 규칙: 6개 구역(4x4 칸, 칸 사이 1칸 길), 같은 숏에 라벨이 함께 뜨는 건물은 화면 가로로 떨어뜨린다(POS).
 """
 import csv, json, re
+import sys
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent))   # python3 -I 단독 실행에서도 golden_kit을 찾게
+from golden_kit import line_starts
 
 R = Path(__file__).resolve().parents[1]
 DATA = R / "output/002/02_raw/data/bymajor.csv"
@@ -50,10 +53,9 @@ def buildings():
     return out
 
 
-_secs = lambda s: (lambda h, m, r: int(h) * 3600 + int(m) * 60 + float(r.replace(",", ".")))(*s.split(":"))
-_lines = json.loads((VOICE / "lines.json").read_text())
+
 _words = json.loads((VOICE / "words.json").read_text())
-LINE = {l["id"]: _secs(a) for l, (a, _) in zip(_lines, re.findall(r"(\S+) --> (\S+)", (WORK / "transcript.srt").read_text()))}
+LINE = line_starts(VOICE, WORK)   # 줄 id → 시작 초 (공용: golden_kit)
 _norm = lambda s: re.sub(r"[^a-z0-9]", "", s.lower())
 
 

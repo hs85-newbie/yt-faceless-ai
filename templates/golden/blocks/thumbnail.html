@@ -1,0 +1,18 @@
+<!-- 썸네일 1920×1080: 1187 : 733 황금 분할. 왼쪽 보조색 면에 질문, 오른쪽 시트에 핵심 숫자 233px.
+     칸: title(줄바꿈 <br/>), kicker, number, number_color(var(--g-bad)|var(--g-good)), caption -->
+<div class="gb-thumb">
+  <div class="l"><div class="q">{{title}}</div><div class="k">{{kicker}}</div></div>
+  <div class="r"><div class="n" style="color:{{number_color}}">{{number}}</div><div class="c">{{caption}}</div></div>
+</div>
+<style>
+  .gb-thumb { position: absolute; inset: 0; }
+  .gb-thumb .l { position: absolute; left: 0; top: 0; width: 1187px; height: 1080px; padding: 89px; display: flex; flex-direction: column;
+                 justify-content: center; background: var(--g-second); color: var(--g-main); }
+  .gb-thumb .q { font-family: "Archivo Black", sans-serif; font-size: 144px; line-height: 1.0; }
+  .gb-thumb .k { margin-top: 55px; align-self: flex-start; background: var(--g-loud); color: var(--g-ink); font: 800 55px var(--gb-sans);
+                 padding: 8px 21px; transform: rotate(-1.618deg); }
+  .gb-thumb .r { position: absolute; left: 1187px; top: 0; width: 733px; height: 1080px; background: var(--g-sheet); color: var(--g-ink);
+                 display: flex; flex-direction: column; justify-content: center; padding: 55px; }
+  .gb-thumb .n { font-family: "Archivo Black", sans-serif; font-size: 233px; line-height: 1.0; letter-spacing: -.02em; }
+  .gb-thumb .c { margin-top: 34px; font: 700 55px/1.236 var(--gb-sans); }
+</style>
