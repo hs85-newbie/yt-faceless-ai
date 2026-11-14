@@ -1,7 +1,7 @@
 {
   "_": "scripts/golden.py 입력. 숫자는 02_research.md 출처가 있는 것만. 색은 쓰지 않는다(brand/golden.css).",
-  "voice": "output/002/02_raw/voice_v1",
-  "work": "output/002/03_work/v1",
+  "voice": "output/002/02_raw/voice_v2",
+  "work": "output/002/03_work/v2",
   "title": "IS COMPUTER<br/>SCIENCE STILL<br/>WORTH IT?",
   "title_card": "IS COMPUTER<br/>SCIENCE STILL<br/>WORTH IT?",
   "episode_tag": "EPISODE 2",

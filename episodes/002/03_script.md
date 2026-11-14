@@ -29,7 +29,7 @@ So is computer science still worth it? The answer is more interesting than yes o
 
 ## 3. Pillar 1 — It's not "tech" or "engineering" (0:50~1:50)
 
-The first thing to notice is how narrow this is. Not every hard major has this problem. Electrical engineering grads, on the same campuses, doing much of the same math, had a 3.2 percent unemployment rate. Mechanical engineering, 4.4. [#4]
+The first thing to notice is how narrow this is. Not every hard major has this problem. Electrical engineering grads, on the same campuses, doing much of the same math, had a 3.2 percent unemployment rate. Mechanical engineering, 4.4 percent. [#4]
 
 `[CHART] engineering family: Electrical 3.2 · Mechanical 4.4 · Computer Science 7.0 · Computer Engineering 7.8`
 

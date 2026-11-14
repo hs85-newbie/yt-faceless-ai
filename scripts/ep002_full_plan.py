@@ -14,7 +14,9 @@ from ep002_common import CS, CE, EE, ME, LINE, WORK, at
 from ep002_scene import AVG_U, AVG_W, HW, XS, build, plate, statement
 from golden_kit import fill, fit_size
 
-END = 270.5   # output/002/03_work/v1/voice.wav
+import subprocess
+END = round(float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(WORK / "voice.wav")],
+                                 capture_output=True, text=True, check=True).stdout), 1)   # 실제 내레이션 길이(음성 버전이 바뀌면 따라감)
 L = LINE
 def until(t): return round(t - 0.05, 2)   # 다음 카드가 뜨기 직전에 끈다
 

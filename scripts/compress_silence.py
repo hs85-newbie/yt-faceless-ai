@@ -41,6 +41,7 @@ for l in lines:
 (d / "words.json").write_text(json.dumps(words, ensure_ascii=False), encoding="utf-8")
 print(f"removed {total:.1f}s of pauses across {len(lines)} lines")
 # 자체 점검: 단어 시각이 줄 길이를 넘지 않는다
+# WHY 0.1초: Whisper가 마지막 단어 끝을 음성보다 수십 ms 길게 잡는다(EP002 v2 s4_01 +0.057초). 그보다 크면 진짜 어긋남
 for l in lines:
     n = len(sf.read(d / f"{l['id']}.wav")[0]) / sr
-    assert all(b <= n + 0.05 for _, _, b in words[l["id"]]), l["id"]
+    assert all(b <= n + 0.1 for _, _, b in words[l["id"]]), l["id"]

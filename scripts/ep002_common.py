@@ -10,8 +10,8 @@ from golden_kit import line_starts
 
 R = Path(__file__).resolve().parents[1]
 DATA = R / "output/002/02_raw/data/bymajor.csv"
-VOICE = R / "output/002/02_raw/voice_v1"
-WORK = R / "output/002/03_work/v1"
+VOICE = R / "output/002/02_raw/voice_v2"
+WORK = R / "output/002/03_work/v2"
 
 QUADS = {"hum": (0, 0), "eng": (5, 0), "sci": (10, 0), "hed": (0, 5), "soc": (5, 5), "bus": (10, 5)}
 QNAME = {"hum": "ARTS & HUMANITIES", "eng": "ENGINEERING", "sci": "SCIENCES", "hed": "HEALTH & EDUCATION", "soc": "SOCIAL SCIENCES", "bus": "BUSINESS"}
