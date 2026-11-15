@@ -122,7 +122,8 @@ PLATES = [
 ]
 
 build({"name": "full", "end": END, "cards": c, "ticks": TICKS, "caps": CAPS, "tl": TL, "cams": CAMS, "plates": PLATES,
-       "audio": WORK / "voice.wav", "draft": "DRAFT &middot; FULL LENGTH",
+       "audio": WORK / "mix.wav", "draft": "DRAFT &middot; FULL LENGTH",   # mix = 내레이션 + BGM 덕킹(scripts/ep002_bgm.py)
+       "credit": (L["s9_02"], END, "Original score. Piano samples: &ldquo;Salamander Grand Piano V3&rdquo; by Alexander Holm, CC BY 3.0 (creativecommons.org/licenses/by/3.0). Orchestral samples: VS Chamber Orchestra: Community Edition, Versilian Studios (CC0)."),
        "src": "Source: NY Fed, The Labor Market for Recent College Graduates (by major, 2024)"}, "golden")
 assert all(x["t"] < x["e"] for x in c), [x["id"] for x in c if x["t"] >= x["e"]]
 print(f"0.382T = {END * 0.382:.1f}s (s4_01 {L['s4_01']:.1f}) · 0.618T = {GOLD}s · pay rises from {PAY:.1f}s")

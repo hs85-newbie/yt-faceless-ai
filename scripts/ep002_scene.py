@@ -90,6 +90,7 @@ def build(plan, theme="golden"):
     .stmt.dark {{ background: {G["second"]}; color: {G["main"]}; }}
     .stmt .st {{ font-family: "Archivo Black", sans-serif; font-size: 89px; line-height: 1.0; text-wrap: balance; }}
     .stmt .ss {{ font: 600 34px/1.236 {SANS}; opacity: .8; }}
+    .credit {{ position: absolute; left: 89px; right: 89px; bottom: 34px; font: 500 28px/1.236 {SANS}; color: {G["main"]}; opacity: .85; }}
   </style>
   <div id="root" data-composition-id="proto" data-width="1920" data-height="1080">
     <canvas id="gl" width="1920" height="1080" data-layout-ignore></canvas>
@@ -99,6 +100,7 @@ def build(plan, theme="golden"):
     <div id="pin"></div>
     <div id="src">{plan.get("src", "Source: NY Fed, recent college graduates by major (2024 data)")}</div>
 {chr(10).join("    " + p for p in plan.get("plates", []))}
+    {f'<div class="credit fade" data-in="{plan["credit"][0]}" data-out="{plan["credit"][1]}">{plan["credit"][2]}</div>' if plan.get("credit") else ""}
     <div id="draft">{plan["draft"]}</div>
   </div>
   <script type="module">
