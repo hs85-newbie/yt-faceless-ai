@@ -94,11 +94,13 @@ description: >-
 - 문단 단위로 `POST /generate`(`language: "en"`, 확정된 `profile_id`) → 이어 붙여 `voice.wav`.
 - 받아쓰기로 시간표를 만든다(`POST /transcribe` 또는 `hyperframes transcribe`) → `transcript.srt`. 7·8단계가 이걸 쓴다.
 - 음성 프로필은 첫 편에서 3개 샘플을 사용자가 듣고 고른다. 이후 고정.
+- **황금 시간 계획(2026-11-12 사용자 지시)**: `episodes/NNN/golden.json`을 쓰고 `python3 -I scripts/golden.py NNN` → `GOLDEN_PLAN.md`. 클라이맥스 대사가 0.618T에서 13초 넘게 떨어지면 화면 배치를 옮기거나 대본 구성을 다시 본다(`templates/golden/README.md`).
 
 **6. 화면·렌더**
 - 롱폼 본편 장면은 `/hyperframes`로 만든다. 차트·비교표·타임라인·기사 캡처 무빙은 직접 만들기 전에 `/hyperframes-registry`에서 먼저 찾는다.
 - 훅·제목 드롭·펀치라인 같은 강조 장면(합계 3분 이내)은 lemo-opuscar로 만든다. 길이 제한은 이 엔진이 장면을 코드로 그려 사용량을 많이 쓰기 때문이다.
 - 두 엔진은 색·글꼴을 각자 정하지 않는다. `brand/tokens.css`와 `brand/fonts/`를 둘 다 읽는다(이슈 #5).
+- 구조는 `brand/GOLDEN.md`(황금비·피보나치)를 지킨다. 색 값은 `brand/golden.css`에서만 읽고 바뀔 수 있지만 규칙은 고정. 썸네일·제목 카드·숫자 카드는 `templates/golden/blocks/`에서 시작한다.
 - 스톡·BGM·효과음은 `/media-use`. 뉴스·영화·남의 영상 클립은 쓰지 않는다.
 - 컷 다양성 규칙(2026-10-26 사용자 승인): 연속 5컷 안에 같은 틀은 2회까지, 전환은 한 편에 4종 이상, 글자만 나오는 화면은 키네틱 타이포(글자가 움직이는 부품)로만 만든다. 큐시트 단계에서 검사하고 어기면 렌더 전에 고친다.
 - 장면 구성·색·질감은 4b에서 고른 방향을 따른다. 매 편 달라도 된다. 채널 서명(로고·출처 표기·엔드카드)만 고정한다.

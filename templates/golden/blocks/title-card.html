@@ -1,0 +1,27 @@
+<!-- 콜라주 제목 카드: 보조색 바탕(황금점 1187,413에서 번지는 틴트), 찢긴 문서(망점·막대), 기울인 이름표(−2.618° / +1.618°).
+     생성 이미지 없음. 칸: doc_title, episode_tag, title(<br/>), title_size(golden_kit.fit_size: 144|89|55), tag -->
+<div class="gb-title">
+  <div class="doc"><div class="h">{{doc_title}}</div>
+    <div class="ln"></div><div class="ln s"></div><div class="ln"></div><div class="ln s"></div>
+    <div class="bars"><i style="height:89px"></i><i style="height:144px"></i><i style="height:55px"></i><i class="hot" style="height:233px"></i><i style="height:89px"></i></div>
+    <div class="dots"></div></div>
+  <div class="tag t1">{{episode_tag}}</div><div class="ttl" style="font-size:{{title_size}}px">{{title}}</div><div class="tag t2">{{tag}}</div><div class="rule"></div>
+</div>
+<style>
+  .gb-title { position: absolute; inset: 0; color: var(--g-main);
+              background: radial-gradient(circle at 1187px 413px, var(--g-second-tint) 0, var(--g-second) 610px, var(--g-second-deep) 1080px); }
+  .gb-title .doc { position: absolute; left: 144px; top: 144px; width: 589px; height: 754px; background: var(--g-main); color: var(--g-ink); padding: 55px;
+                   transform: rotate(-2.618deg); box-shadow: 8px 8px 13px rgba(0,0,0,.35);
+                   clip-path: polygon(0 0, 100% 0, 100% 92%, 94% 95%, 88% 92%, 81% 96%, 73% 93%, 64% 97%, 55% 93%, 47% 96%, 38% 92%, 30% 96%, 21% 93%, 13% 97%, 6% 93%, 0 96%); }
+  .gb-title .h { font: 800 34px/1.236 var(--gb-sans); letter-spacing: .02em; margin-bottom: 34px; }
+  .gb-title .ln { height: 13px; background: var(--g-rule); margin-bottom: 21px; } .gb-title .ln.s { width: 61.8%; }
+  .gb-title .bars { display: flex; align-items: flex-end; gap: 21px; height: 233px; margin-top: 55px; border-bottom: 3px solid var(--g-ink); }
+  .gb-title .bars i { flex: 1; background: var(--g-ink-soft); } .gb-title .bars i.hot { background: var(--g-bad); }
+  .gb-title .dots { position: absolute; right: 0; bottom: 0; width: 377px; height: 233px; opacity: .35;
+                    background: radial-gradient(circle, var(--g-ink) 3px, transparent 3.5px) 0 0 / 13px 13px; }
+  .gb-title .ttl { position: absolute; left: 822px; top: 233px; font-family: "Archivo Black", sans-serif; font-size: 144px; line-height: 1.0; white-space: nowrap; }
+  .gb-title .tag { position: absolute; background: var(--g-sheet); color: var(--g-ink); font: 800 34px var(--gb-sans); padding: 13px 21px; box-shadow: 8px 8px 13px rgba(0,0,0,.35); }
+  .gb-title .t1 { left: 822px; top: 144px; transform: rotate(-2.618deg); background: var(--g-loud); }
+  .gb-title .t2 { left: 1187px; top: 754px; transform: rotate(1.618deg); }
+  .gb-title .rule { position: absolute; left: 822px; top: 699px; width: 233px; height: 5px; background: var(--g-loud); }
+</style>

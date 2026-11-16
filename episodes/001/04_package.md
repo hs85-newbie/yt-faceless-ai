@@ -11,7 +11,20 @@
 | 2 | The New York Fed Checked: 64% of the Grad Job Slump Isn't AI | 60 | 94 | 데스크톱 한계. 모바일에선 "64% of the…"까지만 보임 |
 | 3 | Why New Grads Can't Get Hired (It Started Before AI) | 52 | 80 | 숫자 없음 |
 
-**선택: 1번.** 짝이 되는 썸네일 문구가 "AI가 아니다"를 맡으므로 제목은 "무엇이 쳤나"만 묻는다. 제목과 썸네일이 같은 말을 반복하지 않는다(도구 검사 통과).
+~~**선택: 1번.** 짝이 되는 썸네일 문구가 "AI가 아니다"를 맡으므로 제목은 "무엇이 쳤나"만 묻는다. 제목과 썸네일이 같은 말을 반복하지 않는다(도구 검사 통과).~~
+
+## 제목 변경 (2026-11-04, 사용자 확정)
+
+**`Is AI Taking Entry-Level Jobs? It Started Before ChatGPT`** (56자)
+
+- 이유: 타깃을 검색으로 들어오는 미국 부모로 정했다(오피스 아워 2026-11-04). 그래서 제목을 실제 유튜브 자동완성 검색어로 시작하게 했다.
+- 근거 검색어: "ai taking entry level jobs". 시드 56개로 자동완성 약 230개 문장을 모아 1위로 뽑은 문장이다.
+- 부모는 "my son can't…" 같은 부모 말투가 아니라 3인칭으로 검색한다(자동완성에 부모 말투 문장이 거의 없음).
+- 앞부분 질문에 뒷부분 "It Started Before ChatGPT"가 바로 답한다. 훅 첫 문장과 같은 메시지다.
+- 함께 고려한 후보:
+  - "Why College Graduates Struggle to Find Jobs (Not Just AI)"
+  - "Entry-Level Jobs Disappearing: Remote Work, AI, or Rates?" — "Disappearing"이 대본(격차가 생겼다)보다 과장이라 제외했다.
+- **남은 문제:** 새 제목이 이미 "AI 탓만은 아니다"를 말하기 때문에, 썸네일 "NOT THE ROBOT"과 같은 메시지가 겹친다. 원래 원칙(제목과 썸네일이 같은 말을 반복하지 않는다)에 어긋나므로 썸네일 문구를 다시 정해야 한다.
 
 ## 썸네일 브리프 (16:9, 피드 크기에서 읽히게)
 

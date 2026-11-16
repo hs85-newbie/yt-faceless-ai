@@ -63,7 +63,7 @@ In the show-up jobs, the gap between young and old widened briefly in 2020, then
 
 `[3D] show-up lane: small bump at 2020, back to baseline`
 
-So the gap opened in the jobs that went remote, and it didn't stay open in the jobs that stayed in person. By the study's count, remote work has grown about four-fold since the pandemic. The timing points the same way. Youth unemployment had been rising since the pandemic, and ChatGPT only launched in November 2022.
+So the gap opened in the jobs that went remote, and it didn't stay open in the jobs that stayed in person. By the study's count, remote work has grown about four-fold since the pandemic. The timing points the same way. The first shock came before ChatGPT, which only launched in November 2022.
 
 `[3D] paper timeline on the mat: 2017–19 · 2020 · Nov 2022 ChatGPT · 2022–24`
 

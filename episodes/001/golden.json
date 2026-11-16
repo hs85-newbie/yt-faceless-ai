@@ -1,0 +1,20 @@
+{
+  "_": "scripts/golden.py 입력(템플릿 시연·재사용 확인용). 64%는 02_research.md 8번 — 저자 표현 'back-of-the-envelope' [추정]이라 화면에 estimate 표시.",
+  "voice": "output/001/02_raw/voice_v4",
+  "work": "output/001/03_work/v4",
+  "title": "IS AI TAKING<br/>ENTRY-LEVEL<br/>JOBS?",
+  "title_card": "IS AI TAKING<br/>ENTRY-LEVEL<br/>JOBS?",
+  "episode_tag": "EPISODE 1",
+  "kicker": "IT STARTED BEFORE CHATGPT",
+  "tag": "NY FED &middot; STANFORD DATA",
+  "doc_title": "WORKING FROM HOME AND THE YOUNG COLLEGE GRADUATE",
+  "number": "64%",
+  "number_metric": "bad",
+  "number_caption": "of the rise in young-grad<br/>joblessness: remote work<br/>(estimate)",
+  "card_label": "REMOTE WORK",
+  "card_desc": "explains ~64% of the rise (authors' estimate)",
+  "sections": [["HOOK", "s1_01"], ["TURN", "s2_01"], ["GAP", "s3_01"], ["TIMING", "s4_01"], ["DISTANCE", "s5_01"],
+               ["THE 64%", "s6_01"], ["2ND PROBLEM", "s7_01"], ["RATES?", "s7b_01"], ["TOGETHER", "s8_01"], ["CLOSE", "s9_01"]],
+  "climax": "s6_02",
+  "climax_note": "64 percent 공개"
+}
