@@ -128,6 +128,8 @@ for (const h of P.HL) {
 }
 for (const el of root.querySelectorAll(".fade"))
   tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.4, immediateRender: false }, +el.dataset.in).to(el, { opacity: 0, duration: 0.3 }, +el.dataset.out);
+for (const el of root.querySelectorAll(".grow"))   // 장표 그래프 막대: 제 시각에 기준선에서 자란다
+  tl.fromTo(el, { scaleY: 0 }, { scaleY: 1, duration: 0.8, ease: "power2.out", immediateRender: false }, +el.dataset.in);
 tl.to({}, { duration: 0.01 }, P.END - 0.01);
 render();
 window.__timelines["proto"] = tl;

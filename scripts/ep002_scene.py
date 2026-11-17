@@ -27,19 +27,23 @@ THEMES = {   # 3D 색(T)과 HTML 카드 규격(C). golden 값은 brand/golden.cs
 }
 
 
-def plate(t_in, t_out, title, rows, foot, note=""):
-    """전면 데이터 판(크림 바탕). rows = [(숫자, bad|good|neutral, 설명)] — 숫자 144px, 설명 34px, 제목 55px, 여백 89."""
+def plate(t_in, t_out, title, rows, foot, note="", chart=""):
+    """전면 데이터 판(크림 바탕). rows = [(숫자, bad|good|neutral, 설명)] — 숫자 144px, 설명 34px, 제목 55px, 여백 89.
+    chart = SVG(ep002_charts) — 있으면 숫자 칸 대신 그래프(값은 그래프에 직접 표기)."""
     # 숫자 7자 넘으면(1,905,400 · $134,040) 피보나치 한 단계 아래 89px — 옆 칸과 겹치지 않게
     cells = "".join(f'<div class="pr"><b class="n-{c}"{" style=\"font-size:89px\"" if len(n) > 7 else ""}>{n}</b><span>{lab}</span></div>'
                     for n, c, lab in rows)
     nt = f'<div class="pn">{note}</div>' if note else ""
+    body = f'<div class="pc">{chart}</div>' if chart else f'<div class="pg">{cells}</div>'
     return (f'<div class="plate fade" data-in="{t_in}" data-out="{t_out}"><div class="pt">{title}</div>'
-            f'<div class="pg">{cells}</div>{nt}<div class="pf">{foot}</div></div>')
+            f'{body}{nt}<div class="pf">{foot}</div></div>')
 
 
-def statement(t_in, t_out, text, sub="", dark=False):
-    """문장 하나를 크게(89px) — 황금점(733, 413) 기준 왼쪽 정렬. dark = 보조색(네이비) 바탕."""
+def statement(t_in, t_out, text, sub="", dark=False, art=""):
+    """문장 하나를 크게(89px) — 황금점(733, 413) 기준 왼쪽 정렬. dark = 보조색(네이비) 바탕.
+    art = 손그림 삽화 파일 이름(assets/art/) — 왼쪽 빈 칸(x 89~644)에 종이 한 장으로 붙인다."""
     s = f'<div class="ss">{sub}</div>' if sub else ""
+    s += f'<img class="art" src="assets/art/{art}" alt="">' if art else ""
     return f'<div class="stmt fade{" dark" if dark else ""}" data-in="{t_in}" data-out="{t_out}"><div class="st">{text}</div>{s}</div>'
 
 
@@ -89,6 +93,8 @@ def build(plan, theme="golden"):
     .stmt {{ position: absolute; inset: 0; background: {G["main"]}; padding: 0 89px 0 733px; display: flex; flex-direction: column; justify-content: center; gap: 34px; }}
     .stmt.dark {{ background: {G["second"]}; color: {G["main"]}; }}
     .stmt .st {{ font-family: "Archivo Black", sans-serif; font-size: 89px; line-height: 1.0; text-wrap: balance; }}
+    .plate .pc {{ height: 560px; }}
+    .stmt .art {{ position: absolute; left: 89px; top: 50%; width: 555px; transform: translateY(-50%) rotate(-2deg); box-shadow: 8px 13px 0 rgba(0,0,0,.22); }}
     .stmt .ss {{ font: 600 34px/1.236 {SANS}; opacity: .8; }}
     .credit {{ position: absolute; left: 89px; right: 89px; bottom: 34px; font: 500 28px/1.236 {SANS}; color: {G["main"]}; }}  /* WHY: opacity를 여기 두면 .fade{{opacity:0}}을 덮어 처음부터 흐리게 보인다(v3 버그) */
   </style>
@@ -113,6 +119,9 @@ def build(plan, theme="golden"):
     (out / "compositions/proto.html").write_text(comp)
     shutil.copytree(FILM / "assets/lib", out / "assets/lib", dirs_exist_ok=True)
     for f in ("hyperframes.json", "meta.json", "package.json"): shutil.copy(FILM / f, out / f)
+    if plan.get("art"):   # 손그림 삽화 PNG(anidoodle 렌더, git 제외)
+        (out / "assets/art").mkdir(parents=True, exist_ok=True)
+        for f in plan["art"]: shutil.copy(f, out / "assets/art" / Path(f).name)
     audio = ""
     if plan.get("audio"):
         (out / "assets").mkdir(exist_ok=True); shutil.copy(plan["audio"], out / "assets/voice.wav")
