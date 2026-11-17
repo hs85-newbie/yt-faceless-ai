@@ -90,7 +90,7 @@ def build(plan, theme="golden"):
     .stmt.dark {{ background: {G["second"]}; color: {G["main"]}; }}
     .stmt .st {{ font-family: "Archivo Black", sans-serif; font-size: 89px; line-height: 1.0; text-wrap: balance; }}
     .stmt .ss {{ font: 600 34px/1.236 {SANS}; opacity: .8; }}
-    .credit {{ position: absolute; left: 89px; right: 89px; bottom: 34px; font: 500 28px/1.236 {SANS}; color: {G["main"]}; opacity: .85; }}
+    .credit {{ position: absolute; left: 89px; right: 89px; bottom: 34px; font: 500 28px/1.236 {SANS}; color: {G["main"]}; }}  /* WHY: opacity를 여기 두면 .fade{{opacity:0}}을 덮어 처음부터 흐리게 보인다(v3 버그) */
   </style>
   <div id="root" data-composition-id="proto" data-width="1920" data-height="1080">
     <canvas id="gl" width="1920" height="1080" data-layout-ignore></canvas>
