@@ -71,17 +71,17 @@ def build(plan, theme="golden"):
     #gl {{ position: absolute; inset: 0; width: 1920px; height: 1080px; }}
     .fade, .card, #pin {{ opacity: 0; }}
     .tick {{ position: absolute; left: 0; top: 0; font-weight: 800; font-size: {C["tick"]}px; white-space: nowrap; letter-spacing: .02em; }}
-    .cap {{ position: absolute; left: 50%; top: 70px; transform: translateX(-50%); font-family: "Archivo Black", sans-serif; font-size: {C["cap"]}px; white-space: nowrap; }}
+    .cap {{ position: absolute; left: 50%; top: 89px; transform: translateX(-50%); font-family: "Archivo Black", sans-serif; font-size: {C["cap"]}px; white-space: nowrap; }}
     .card {{ position: absolute; {C["card_pos"]} display: flex; align-items: center; gap: 34px;
              background: {C["card"]}; border: 3px solid {C["ink"]}; padding: {C["pad"]}; box-shadow: 8px 8px 0 rgba(29,26,22,.18); white-space: nowrap; }}
     .card b {{ font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: {C["num"]}px; line-height: 1; font-variant-numeric: tabular-nums; }}
     .card span {{ display: flex; flex-direction: column; font-size: {C["sub"]}px; font-weight: 600; line-height: 1.236; }}
     .card i {{ font-style: normal; font-weight: 900; font-size: {C["lab"]}px; letter-spacing: .04em; }}
     .n-bad b, b.n-bad {{ color: {T["bad"]}; }} .n-good b, b.n-good {{ color: {T["good"]}; }} .n-pay b, b.n-pay {{ color: {T["pay"]}; }}
-    #pin {{ position: absolute; left: 0; top: 0; width: 4px; height: 70px; background: {C["ink"]}; }}
-    #pin::before {{ content: ""; position: absolute; left: -9px; top: -18px; width: 22px; height: 22px; border-radius: 50%; background: {C["ink"]}; }}
-    #src {{ position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); font-size: 28px; color: {G["ink-soft"]}; white-space: nowrap; }}
-    #draft {{ position: absolute; right: 40px; top: 36px; font-size: 28px; font-weight: 800; color: {G["main"]}; background: {G["second"]}; padding: 4px 13px; z-index: 5; }}
+    #pin {{ position: absolute; left: 0; top: 0; width: 5px; height: 89px; background: {C["ink"]}; }}
+    #pin::before {{ content: ""; position: absolute; left: -8px; top: -13px; width: 21px; height: 21px; border-radius: 50%; background: {C["ink"]}; }}
+    #src {{ position: absolute; left: 50%; bottom: 21px; transform: translateX(-50%); font-size: 34px; color: {G["ink-soft"]}; white-space: nowrap; }}
+    #draft {{ position: absolute; right: 34px; top: 34px; font-size: 34px; font-weight: 800; color: {G["main"]}; background: {G["second"]}; padding: 5px 13px; z-index: 5; }}
     .plate {{ position: absolute; inset: 0; background: {G["main"]}; padding: 89px; display: flex; flex-direction: column; gap: 55px; }}
     .plate .pt {{ font-family: "Archivo Black", sans-serif; font-size: 55px; line-height: 1.236; max-width: 1187px; }}
     .plate .pg {{ display: flex; flex-wrap: wrap; gap: 55px 89px; align-items: flex-start; }}
@@ -89,21 +89,20 @@ def build(plan, theme="golden"):
     .plate .pr b {{ font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: 144px; line-height: 1; color: {G["ink"]}; }}
     .plate .pr span {{ font: 600 34px/1.236 {SANS}; }}
     .plate .pn {{ font: 700 34px/1.236 {SANS}; color: {G["second"]}; border-left: 8px solid {G["loud"]}; padding-left: 21px; max-width: 1187px; }}
-    .plate .pf {{ margin-top: auto; font: 600 28px {SANS}; color: {G["ink-soft"]}; }}
+    .plate .pf {{ margin-top: auto; font: 600 34px/1.236 {SANS}; color: {G["ink-soft"]}; }}
     .stmt {{ position: absolute; inset: 0; background: {G["main"]}; padding: 0 89px 0 733px; display: flex; flex-direction: column; justify-content: center; gap: 34px; }}
     .stmt.dark {{ background: {G["second"]}; color: {G["main"]}; }}
     .stmt .st {{ font-family: "Archivo Black", sans-serif; font-size: 89px; line-height: 1.0; text-wrap: balance; }}
     .plate .pb {{ display: flex; gap: 55px; align-items: flex-start; }}
     .plate .pg.col {{ flex-direction: column; flex-wrap: nowrap; gap: 34px; width: 589px; flex: none; }}
     .plate .pg.col .pr b {{ font-size: 89px; }}
-    .plate .pg.col .pr span {{ font-size: 28px; }}
-    .plate.wide .pt {{ max-width: none; }}
+        .plate.wide .pt {{ max-width: none; }}
     /* WHY: .plate .pr b(검정)가 지표 색(.n-*)을 덮어 숫자가 전부 검정이었다 — GOLDEN 규칙(숫자 색 = 지표)을 되살린다 */
     .plate .pr b.n-bad {{ color: {T["bad"]}; }} .plate .pr b.n-good, .plate .pr b.n-pay {{ color: {T["good"]}; }}
-    .plate .pc {{ height: 560px; flex: none; width: 1098px; }}
-    .stmt .art {{ position: absolute; left: 89px; top: 50%; width: 555px; transform: translateY(-50%) rotate(-2deg); box-shadow: 8px 13px 0 rgba(0,0,0,.22); }}
+    .plate .pc {{ height: 610px; flex: none; width: 1098px; }}
+    .stmt .art {{ position: absolute; left: 89px; top: 50%; width: 555px; transform: translateY(-50%) rotate(-2.618deg); box-shadow: 8px 8px 13px rgba(0,0,0,.22); }}
     .stmt .ss {{ font: 600 34px/1.236 {SANS}; opacity: .8; }}
-    .credit {{ position: absolute; left: 89px; right: 89px; bottom: 34px; font: 500 28px/1.236 {SANS}; color: {G["main"]}; }}  /* WHY: opacity를 여기 두면 .fade{{opacity:0}}을 덮어 처음부터 흐리게 보인다(v3 버그) */
+    .credit {{ position: absolute; left: 89px; right: 89px; bottom: 34px; font: 500 34px/1.236 {SANS}; color: {G["main"]}; }}  /* WHY: opacity를 여기 두면 .fade{{opacity:0}}을 덮어 처음부터 흐리게 보인다(v3 버그) */
   </style>
   <div id="root" data-composition-id="proto" data-width="1920" data-height="1080">
     <canvas id="gl" width="1920" height="1080" data-layout-ignore></canvas>

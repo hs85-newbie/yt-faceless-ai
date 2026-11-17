@@ -28,19 +28,20 @@ CAMS = [{"p": [17, 14, 19], "t": [6.5, 0, 4]}, {"p": [6.2, 10.5, 15.5], "t": [6.
 
 S2, S3, S5, S8 = L["s2_01"], L["s3_01"], L["s5_01"], L["s8_01"]
 PAY = L["s5_03"]                      # "And the pay." 159.5초 — 여기서 솟기 시작
+F = lambda n: round(n / 30, 3)        # GOLDEN §4: 길이는 30fps 피보나치 프레임
 GOLD = round(END * 0.618, 1)          # 167.2초: 산점도 완성, 카메라가 CS 구석으로
 TL = [
     {"at": 0.0, "obj": "cam", "to": {"z": 0.86}, "d": S2 - 0.5, "ease": "sine.inOut"},          # 훅 동안 천천히 다가감
-    {"at": S2, "obj": "st", "to": {"mix": 1}, "d": 3.4, "ease": "none"},
-    {"at": S2, "obj": "cam", "to": {"k": 1, "z": 1}, "d": 3.4},
-    {"at": S2 + 3.6, "obj": "st", "to": {"zone": 1}, "d": 0.7, "ease": "power2.out"},
+    {"at": S2, "obj": "st", "to": {"mix": 1}, "d": F(89), "ease": "none"},
+    {"at": S2, "obj": "cam", "to": {"k": 1, "z": 1}, "d": F(89)},
+    {"at": S2 + F(89), "obj": "st", "to": {"zone": 1}, "d": F(21)},
     {"at": S3, "obj": "cam", "to": {"z": 0.9}, "d": L["s3_05"] - S3, "ease": "sine.inOut"},        # 1기둥 동안 천천히
-    {"at": S5, "obj": "cam", "to": {"z": 1}, "d": 2.1},
-    {"at": PAY, "obj": "st", "to": {"grow": 1}, "d": 5.5, "ease": "power3.inOut"},              # 클라이맥스: 솟음
+    {"at": S5, "obj": "cam", "to": {"z": 1}, "d": F(55)},
+    {"at": PAY, "obj": "st", "to": {"grow": 1}, "d": F(144)},              # 클라이맥스: 솟음
     {"at": PAY, "obj": "cam", "to": {"k": 2}, "d": GOLD - PAY - 0.2},
-    {"at": PAY + 4.4, "obj": "st", "to": {"pay": 1}, "d": 0.7},
-    {"at": GOLD, "obj": "cam", "to": {"k": 3}, "d": 3.4, "ease": "power3.inOut"},               # 0.618T: CS가 황금점으로
-    {"at": S8, "obj": "cam", "to": {"k": 2}, "d": 2.8},                                         # 요약: 산점도 전체
+    {"at": PAY + F(144), "obj": "st", "to": {"pay": 1}, "d": F(21)},
+    {"at": GOLD, "obj": "cam", "to": {"k": 3}, "d": F(89)},               # 0.618T: CS가 황금점으로
+    {"at": S8, "obj": "cam", "to": {"k": 2}, "d": F(89)},                                         # 요약: 산점도 전체
 ]
 
 def card(i, major, big, small, kind, num, t, e, label=None, keep=False):
@@ -118,8 +119,8 @@ PLATES = [
           [("5.2%", "good", "recent grads unemployed, Sept 2026"), ("7.4%", "bad", "young workers without a degree, Sept 2026"),
            ("$60,000", "pay", "recent grads, median pay 2025"), ("$40,000", "neutral", "young high-school grads, 2025")],
           "Source: NY Fed, The Labor Market for Recent College Graduates",
-          chart=paired_bars([("UNEMPLOYED, SEPT 2026", [("5.2%", 5.2, "good", "RECENT GRADS"), ("7.4%", 7.4, "bad", "NO DEGREE")]),
-                             ("MEDIAN PAY, 2025", [("$60K", 60000, "pay", "RECENT GRADS"), ("$40K", 40000, "neutral", "HIGH-SCHOOL|GRADS")])],
+          chart=paired_bars([("UNEMPLOYED, SEPT 2026", [("5.2%", 5.2, "good", "RECENT|GRADS"), ("7.4%", 7.4, "bad", "NO|DEGREE")]),
+                             ("MEDIAN PAY, 2025", [("$60K", 60000, "pay", "RECENT|GRADS"), ("$40K", 40000, "neutral", "HIGH-SCHOOL|GRADS")])],
                             L["s7_01"])),
     statement(L["s7_02"], until(S8), "Not whether to go to college. Which major.",
               "For the first job, the major now matters more than the old advice admitted.", dark=True),

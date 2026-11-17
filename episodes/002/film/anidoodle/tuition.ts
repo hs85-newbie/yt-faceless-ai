@@ -11,7 +11,12 @@ import { letter } from "./drafting";
 // 같은 그림을 두 번 쓴다: tuition = 완성 정지 화면, tuitionhook = 내레이션 단어에 맞춰 획 순서대로 그려지는 11.7초 영상.
 // WHY: 페이드인이 아니라 획 순서대로(RSA Animate 원칙, docs/research/hand-drawn-references.md). 정지 화면은 모든 진행도가 1이라 v3와 같다.
 const BILL_C: P = [820, 540], BILL_A = -6;
-const FPS = 30, HOOK_S = 12.0;   // 3D 캠퍼스로 넘어가는 컷: s2_01(11.67초) 직후, 이전 장면의 SAFE? 카드가 다 사라진 12.0초
+const FPS = 30, HOOK_S = 13;   // GOLDEN §5-1 "훅은 첫 13초"(피보나치 초). 13초에 3D 캠퍼스로 넘어간다
+// 손글씨 크기: cap(대문자 높이) = 글자 크기 × 0.7(Inter 대문자 높이 비율). GOLDEN §3 글자 크기 34 → cap 24, 55 → cap 38
+const CAP34 = 24, CAP55 = 38;
+// GOLDEN §4: 움직임 길이는 피보나치 프레임. 시작 시각은 내레이션 단어에 맞추고, 길이만 가장 가까운 피보나치 프레임으로
+const FIB = [8, 13, 21, 34, 55, 89];
+const snap = (sec: number) => FIB.reduce((p, c) => (Math.abs(c - sec * FPS) < Math.abs(p - sec * FPS) ? c : p)) / FPS;
 
 const rot = (pts: P[]) => turn(pts, BILL_C[0], BILL_C[1], BILL_A);
 
@@ -22,7 +27,7 @@ const BASE: P[] = [[1238, 562], [1818, 574], [1872, 756], [1186, 742]];
 // 획 순서표(초). 내레이션 단어 시각(voice_v2): tuition 0.77 · computer science 1.81 · first job 6.07 · s1_02 7.13 · learn to code 8.88 · never 10.01
 const make = (anim: boolean) => (ctx: Ctx, frame: number, env: Env) => {
   const t = anim ? frame / FPS : Infinity;
-  const at = (a: number, b: number) => (t === Infinity ? 1 : clamp((t - a) / (b - a)));
+  const at = (a: number, b: number) => (t === Infinity ? 1 : clamp((t - a) / snap(b - a)));
   const g = new Gfx(ctx, env, 0, INK_M);
   ctx.setTransform(env.scale, 0, 0, env.scale, 0, 0);
   ctx.fillStyle = PAPER; ctx.fillRect(0, 0, env.W, env.H);
@@ -73,7 +78,7 @@ const make = (anim: boolean) => (ctx: Ctx, frame: number, env: Env) => {
     pen(g, over(b, m1, 0.02), 2.4, 23, 0.92, 0.9, at(2.4, 2.6)); pen(g, over(m2, c, 0.03), 2.4, 26, 0.92, 0.9, at(2.6, 2.8)); pen(g, over(c, d), 2.6, 24, 0.92, 0.9, at(2.8, 3.05));   // 긴 변은 한 번 끊김, 그늘 쪽은 굵게
     pen(g, over(d, [d[0] + (a[0] - d[0]) * 0.6, d[1] + (a[1] - d[1]) * 0.6]), 1.4, 25, 0.8, 0.9, at(3.05, 3.25));   // 왼변은 아래만
     for (let i = 0; i < 6; i++) {   // 본문 줄: 글자 대신 손으로 그은 줄
-      const y = 452 + i * 42, x2 = i % 2 ? 960 : 1040;
+      const y = 487 + i * 34, x2 = i % 2 ? 960 : 1040;   // 줄 간격 34(피보나치), 글자가 커진 만큼 아래로
       pen(g, rot(line([600, y], [x2, y], (i % 3) - 1)), 0.9, 30 + i, 0.5, 0.6, at(4.1 + i * 0.12, 4.22 + i * 0.12));
     }
     hatch(g, 1060, 300, 1110, 900, 22, 200, at(4.85, 5.5));                                    // 고지서 그림자 해칭
@@ -102,11 +107,11 @@ const make = (anim: boolean) => (ctx: Ctx, frame: number, env: Env) => {
   g.push(BILL_C[0], BILL_C[1], fit, R);
   g.group("plain", () => {
     const xy = (x: number, y: number): [number, number] => [x - BILL_C[0], y - BILL_C[1]];
-    letter(g, "TUITION & FEES", ...xy(588, 318), { cap: 32, color: INK, seed: 402, slant: 0.05, w: 2.6, progress: at(0.8, 1.75) });
-    letter(g, "B.S. COMPUTER SCIENCE", ...xy(590, 394), { cap: 15, color: INK, seed: 404, slant: 0.05, progress: at(1.8, 2.4) });
-    letter(g, "STATE UNIVERSITY", ...xy(606, 250), { cap: 24, color: PAPER, seed: 401, slant: 0.05, progress: at(3.0, 3.5) });
-    letter(g, "FALL SEMESTER", ...xy(590, 366), { cap: 15, color: INK, seed: 403, slant: 0.05, progress: at(3.5, 4.0) });
-    letter(g, "AMOUNT DUE", ...xy(672, 728), { cap: 24, color: INK, seed: 405, slant: 0.05, w: 2.4, progress: at(6.0, 6.6) });
+    letter(g, "TUITION & FEES", ...xy(588, 318), { cap: CAP55, color: INK, seed: 402, slant: 0.05, w: 2.6, progress: at(0.8, 1.75) });
+    letter(g, "B.S. COMPUTER SCIENCE", ...xy(590, 422), { cap: CAP34, color: INK, seed: 404, slant: 0.05, progress: at(1.8, 2.4) });
+    letter(g, "STATE UNIVERSITY", ...xy(606, 250), { cap: CAP34, color: PAPER, seed: 401, slant: 0.05, progress: at(3.0, 3.5) });
+    letter(g, "FALL SEMESTER", ...xy(590, 377), { cap: CAP34, color: INK, seed: 403, slant: 0.05, progress: at(3.5, 4.0) });
+    letter(g, "AMOUNT DUE", ...xy(672, 728), { cap: CAP34, color: INK, seed: 405, slant: 0.05, w: 2.4, progress: at(6.0, 6.6) });
   });
   g.pop();
   g.push(0, 0, fit);
@@ -117,8 +122,8 @@ const make = (anim: boolean) => (ctx: Ctx, frame: number, env: Env) => {
       let cx = x;
       for (let i = 0; i < n; i++, n0++) { const w = 28 + r() * 60; g.pen(line([cx, y], [cx + w, y + (r() - 0.5) * 3]), { w: 3, color: "#8fa3c4", seed: 420 + k * 10 + i, opacity: 0.8, boil: 0, retrace: false, wobble: 0.6, progress: at(8.0 + n0 * 0.06, 8.06 + n0 * 0.06) }); cx += w + 14; }
     });
-    letter(g, "LEARN TO CODE", 1312, 330, { cap: 28, color: C.loud, seed: 406, slant: 0.1, w: 2.8, progress: at(8.9, 9.85) });
-    letter(g, "= NEVER OUT OF WORK?", 1330, 392, { cap: 20, color: PAPER, seed: 407, slant: 0.1, progress: at(10.0, 10.95) });
+    letter(g, "LEARN TO CODE", 1312, 330, { cap: CAP55, color: C.loud, seed: 406, slant: 0.1, w: 2.8, progress: at(8.9, 9.85) });
+    letter(g, "= NEVER OUT OF WORK?", 1330, 392, { cap: CAP34, color: PAPER, seed: 407, slant: 0.1, progress: at(10.0, 10.95) });
   });
   g.pop();
 
@@ -136,7 +141,7 @@ export const tuition: Film = {
 // 훅 영상: 2장 1프레임(on twos, 초당 그림 15장) — 손으로 그린 애니메이션의 박자
 const HOOK_F = Math.ceil(HOOK_S * FPS);
 export const tuitionhook: Film = {
-  meta: { title: "tuitionhook", W: 1920, H: 1080, fps: FPS, bpm: 60, durationFrames: HOOK_F, step: 2, holds: [[Math.round(11.1 * FPS), HOOK_F, "다음 장면 전, 완성 그림을 읽는 시간"]] },
+  meta: { title: "tuitionhook", W: 1920, H: 1080, fps: FPS, bpm: 60, durationFrames: HOOK_F, step: 2, holds: [[Math.round(11.2 * FPS), HOOK_F, "다음 장면 전, 완성 그림을 읽는 시간"]] },
   assets: { images: {} },
   shots: [{ id: "hook", start: 0, end: HOOK_F, draw: make(true) }],
 };
