@@ -102,7 +102,7 @@ PLATES = [
           [("15%", "bad", "lower employment than young workers in less-exposed jobs, July 2025"),
            ("19%", "bad", "lower by June 2026")],
           "Source: Brynjolfsson, Chandar &amp; Chen, &ldquo;Canaries in the Coal Mine,&rdquo; Stanford Digital Economy Lab (rev. Aug 2026), ADP payroll data",
-          chart=gap_bars([("15%", 15, "bad", "lower, July 2025", True), ("19%", 19, "bad", "lower by June 2026", False)],
+          chart=gap_bars([("15%", 15, "bad", "JULY 2025", True), ("19%", 19, "bad", "JUNE 2026", False)],
                          L["s4_01"], "0 = young workers in less-exposed jobs")),
     statement(L["s4_02"], until(L["s4_03"]), "Fewer hires. Not more layoffs.",
               "And no evidence of widespread job loss across the whole economy.", dark=True),

@@ -29,13 +29,13 @@ THEMES = {   # 3D 색(T)과 HTML 카드 규격(C). golden 값은 brand/golden.cs
 
 def plate(t_in, t_out, title, rows, foot, note="", chart=""):
     """전면 데이터 판(크림 바탕). rows = [(숫자, bad|good|neutral, 설명)] — 숫자 144px, 설명 34px, 제목 55px, 여백 89.
-    chart = SVG(ep002_charts) — 있으면 숫자 칸 대신 그래프(값은 그래프에 직접 표기)."""
+    chart = SVG(ep002_charts) — 있으면 숫자 칸을 왼쪽 세로 한 줄(황금선 x 733 안쪽, 숫자 89px)로 두고 오른쪽에 그래프를 곁들인다."""
     # 숫자 7자 넘으면(1,905,400 · $134,040) 피보나치 한 단계 아래 89px — 옆 칸과 겹치지 않게
     cells = "".join(f'<div class="pr"><b class="n-{c}"{" style=\"font-size:89px\"" if len(n) > 7 else ""}>{n}</b><span>{lab}</span></div>'
                     for n, c, lab in rows)
     nt = f'<div class="pn">{note}</div>' if note else ""
-    body = f'<div class="pc">{chart}</div>' if chart else f'<div class="pg">{cells}</div>'
-    return (f'<div class="plate fade" data-in="{t_in}" data-out="{t_out}"><div class="pt">{title}</div>'
+    body = f'<div class="pb"><div class="pg col">{cells}</div><div class="pc">{chart}</div></div>' if chart else f'<div class="pg">{cells}</div>'
+    return (f'<div class="plate fade{" wide" if chart else ""}" data-in="{t_in}" data-out="{t_out}"><div class="pt">{title}</div>'
             f'{body}{nt}<div class="pf">{foot}</div></div>')
 
 
@@ -93,7 +93,14 @@ def build(plan, theme="golden"):
     .stmt {{ position: absolute; inset: 0; background: {G["main"]}; padding: 0 89px 0 733px; display: flex; flex-direction: column; justify-content: center; gap: 34px; }}
     .stmt.dark {{ background: {G["second"]}; color: {G["main"]}; }}
     .stmt .st {{ font-family: "Archivo Black", sans-serif; font-size: 89px; line-height: 1.0; text-wrap: balance; }}
-    .plate .pc {{ height: 560px; }}
+    .plate .pb {{ display: flex; gap: 55px; align-items: flex-start; }}
+    .plate .pg.col {{ flex-direction: column; flex-wrap: nowrap; gap: 34px; width: 589px; flex: none; }}
+    .plate .pg.col .pr b {{ font-size: 89px; }}
+    .plate .pg.col .pr span {{ font-size: 28px; }}
+    .plate.wide .pt {{ max-width: none; }}
+    /* WHY: .plate .pr b(검정)가 지표 색(.n-*)을 덮어 숫자가 전부 검정이었다 — GOLDEN 규칙(숫자 색 = 지표)을 되살린다 */
+    .plate .pr b.n-bad {{ color: {T["bad"]}; }} .plate .pr b.n-good, .plate .pr b.n-pay {{ color: {T["good"]}; }}
+    .plate .pc {{ height: 560px; flex: none; width: 1098px; }}
     .stmt .art {{ position: absolute; left: 89px; top: 50%; width: 555px; transform: translateY(-50%) rotate(-2deg); box-shadow: 8px 13px 0 rgba(0,0,0,.22); }}
     .stmt .ss {{ font: 600 34px/1.236 {SANS}; opacity: .8; }}
     .credit {{ position: absolute; left: 89px; right: 89px; bottom: 34px; font: 500 28px/1.236 {SANS}; color: {G["main"]}; }}  /* WHY: opacity를 여기 두면 .fade{{opacity:0}}을 덮어 처음부터 흐리게 보인다(v3 버그) */
