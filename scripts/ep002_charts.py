@@ -17,8 +17,15 @@ F = lambda n: round(n / 30, 3)   # 피보나치 프레임 → 초
 
 def _bar(x, y, w, h, color, t_in, origin):
     """막대 하나. origin = top(아래로 매달림) | bottom(위로 솟음) — 자라는 기준점."""
-    return (f'<rect class="grow" data-in="{t_in}" x="{x}" y="{y}" width="{w}" height="{h:.1f}" rx="4" fill="{color}" '
-            f'style="transform-box:fill-box;transform-origin:{origin}"/>')
+    # WHY: GSAP는 SVG에 CSS transform-origin을 무시하고 그래프 좌상단(0,0) 기준으로 키워 막대가 바닥을 뚫고 올라왔다(v5 버그).
+    #      기준점은 data-origin으로 넘겨 proto.js가 GSAP transformOrigin으로 건다.
+    return f'<rect class="grow" data-in="{t_in}" data-origin="{origin}" x="{x}" y="{y}" width="{w}" height="{h:.1f}" rx="4" fill="{color}"/>'
+
+
+def _value(x, y, text, kind, t_in, anchor="start"):
+    """막대 끝 값(55px, 지표 색). 막대가 다 자란 뒤(t_in) 13프레임 동안 나타난다 — 빈 공중에 숫자가 먼저 뜨지 않게."""
+    return (f'<text class="pop" data-in="{t_in}" x="{x}" y="{y:.1f}" text-anchor="{anchor}" font-size="55" '
+            f'style="{FONT}" fill="{NUM[kind]}">{text}</text>')
 
 
 def _label(x, y, text, size=34, anchor="start", weight=700, color=None):
@@ -36,10 +43,11 @@ def gap_bars(rows, t_in, base_label):
     out.append(_label(0, by - 21, base_label, weight=600, color=G["ink-soft"]))
     for i, (txt, v, kind, lab, faint) in enumerate(rows):
         x, h = 89 + i * (bw + 377), v / mx * LONG
-        out.append(_bar(x, by + 3, bw, h, G["loud-tint"] if faint else COL[kind], t_in + F(21) + i * F(34), "top"))
+        t0 = t_in + F(21) + i * F(34)
+        out.append(_bar(x, by + 3, bw, h, G["loud-tint"] if faint else COL[kind], t0, "top"))
         tx, ty = x + bw + 21, by + h
-        out.append(f'<text x="{tx}" y="{ty - 21:.1f}" font-size="55" style="{FONT}" fill="{NUM[kind]}">{txt}</text>')
-        out.append(_label(tx, f"{ty + 34:.1f}", lab))
+        out.append(_value(tx, ty - 21, txt, kind, t0 + F(34)))
+        out.append(_label(tx, f"{ty + 34:.1f}", lab).replace("<text ", f'<text class="pop" data-in="{t0 + F(34)}" ', 1))   # 시점도 막대 끝에 붙으므로 값과 함께
     return _svg(out)
 
 
@@ -53,8 +61,9 @@ def paired_bars(panels, t_in):
         out.append(f'<line x1="{ox}" y1="{by}" x2="{ox + pw}" y2="{by}" stroke="{G["ink"]}" stroke-width="3"/>')
         for i, (txt, v, kind, lab) in enumerate(bars):
             cx, h, bw = ox + (144, 377)[i], v / mx * LONG, 89
-            out.append(_bar(cx - bw / 2, by - h, bw, h, COL[kind], t_in + F(21) + p * F(34) + i * F(13), "bottom"))
-            out.append(f'<text x="{cx}" y="{by - h - 21:.1f}" text-anchor="middle" font-size="55" style="{FONT}" fill="{NUM[kind]}">{txt}</text>')
+            t0 = t_in + F(21) + p * F(34) + i * F(13)
+            out.append(_bar(cx - bw / 2, by - h, bw, h, COL[kind], t0, "bottom"))
+            out.append(_value(cx, by - h - 21, txt, kind, t0 + F(34), "middle"))
             for k, part in enumerate(lab.split("|")):   # 줄 간격 42 = 34 × 1.236(제목 줄 간격 규칙)
                 out.append(_label(cx, by + 55 + k * 42, part, anchor="middle"))
     return _svg(out)

@@ -137,7 +137,11 @@ for (const h of P.HL) {
 for (const el of root.querySelectorAll(".fade"))
   tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: F(13), ease: GOLD, immediateRender: false }, +el.dataset.in).to(el, { opacity: 0, duration: F(8), ease: GOLD }, +el.dataset.out);
 for (const el of root.querySelectorAll(".grow"))   // 장표 그래프 막대: 제 시각에 기준선에서 자란다
-  tl.fromTo(el, { scaleY: 0 }, { scaleY: 1, duration: F(34), ease: GOLD, immediateRender: false }, +el.dataset.in);
+  // 기준점은 막대 자기 상자 기준(아래로 매달림 = 윗변, 솟음 = 아랫변). 시작 전엔 0으로 두어 다 자란 막대가 먼저 비치지 않게
+  tl.fromTo(el, { scaleY: 0, transformOrigin: el.dataset.origin === "top" ? "50% 0%" : "50% 100%" },
+    { scaleY: 1, duration: F(34), ease: GOLD, immediateRender: true }, +el.dataset.in);
+for (const el of root.querySelectorAll(".pop"))   // 막대 끝 값: 막대가 다 자란 뒤 나타난다
+  tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: F(13), ease: GOLD, immediateRender: true }, +el.dataset.in);
 tl.to({}, { duration: 0.01 }, P.END - 0.01);
 render();
 window.__timelines["proto"] = tl;
