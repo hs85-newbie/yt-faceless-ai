@@ -107,27 +107,41 @@ function render() {
 for (const b of P.B) b.delay = (b.gx + b.gy) / 22 * 0.6;
 
 // ── 타임라인 ───────────────────────────────────────────
+// GOLDEN.md §4: 움직임 길이는 30fps 피보나치 프레임, 이징은 cubic-bezier(0.382, 0, 0.146, 1)
+const F = (n) => n / 30;
+const GOLD = (() => {
+  const x1 = 0.382, y1 = 0, x2 = 0.146, y2 = 1;
+  const b = (t, p1, p2) => 3 * p1 * t * (1 - t) ** 2 + 3 * p2 * t * t * (1 - t) + t ** 3;
+  return (x) => { let lo = 0, hi = 1; for (let i = 0; i < 24; i++) { const m = (lo + hi) / 2; if (b(m, x1, x2) < x) lo = m; else hi = m; } return b((lo + hi) / 2, y1, y2); };
+})();
+const EASE = (e) => (e === "none" ? "none" : GOLD);   // 선형 섞임(none)만 예외
 const tl = gsap.timeline({ paused: true, onUpdate: render });
 // 장면 계획(P.TL): 생성기가 정한 {at, obj: "st"|"cam", to, d, ease}를 그대로 건다
 const OBJ = { st, cam };
-for (const s of P.TL) tl.to(OBJ[s.obj], { ...s.to, duration: s.d, ease: s.ease || "power2.inOut" }, s.at);
+for (const s of P.TL) tl.to(OBJ[s.obj], { ...s.to, duration: s.d, ease: EASE(s.ease) }, s.at);
 // 강조: 카드가 바뀔 때마다 그 건물만 색, 핀 하나만. id가 없으면 카드만
 for (const h of P.HL) {
   const k = h.id ? bld[h.id] : null;
   if (k) {
     tl.set(k, { kind: h.kind }, h.t);
-    tl.fromTo(k, { tint: 0 }, { tint: 1, duration: 0.35, ease: "power2.out", immediateRender: false }, h.t);
-    if (!h.keep) tl.to(k, { tint: 0, duration: 0.3 }, h.e);
+    tl.fromTo(k, { tint: 0 }, { tint: 1, duration: F(13), ease: GOLD, immediateRender: false }, h.t);
+    if (!h.keep) tl.to(k, { tint: 0, duration: F(8), ease: GOLD }, h.e);
     tl.set(st, { pinId: h.id }, h.t);
-    tl.fromTo(st, { pinOn: 0 }, { pinOn: 1, duration: 0.25, immediateRender: false }, h.t);
-    tl.to(st, { pinOn: 0, duration: 0.2 }, h.e);
+    tl.fromTo(st, { pinOn: 0 }, { pinOn: 1, duration: F(8), ease: GOLD, immediateRender: false }, h.t);
+    tl.to(st, { pinOn: 0, duration: F(8), ease: GOLD }, h.e);
   }
   const card = root.querySelector("#" + h.card);
-  tl.fromTo(card, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out", immediateRender: false }, h.t);
-  tl.to(card, { opacity: 0, duration: 0.2 }, h.e);
+  tl.fromTo(card, { opacity: 0, y: 21 }, { opacity: 1, y: 0, duration: F(13), ease: GOLD, immediateRender: false }, h.t);
+  tl.to(card, { opacity: 0, duration: F(8), ease: GOLD }, h.e);
 }
 for (const el of root.querySelectorAll(".fade"))
-  tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.4, immediateRender: false }, +el.dataset.in).to(el, { opacity: 0, duration: 0.3 }, +el.dataset.out);
+  tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: F(13), ease: GOLD, immediateRender: false }, +el.dataset.in).to(el, { opacity: 0, duration: F(8), ease: GOLD }, +el.dataset.out);
+for (const el of root.querySelectorAll(".grow"))   // 장표 그래프 막대: 제 시각에 기준선에서 자란다
+  // 기준점은 막대 자기 상자 기준(아래로 매달림 = 윗변, 솟음 = 아랫변). 시작 전엔 0으로 두어 다 자란 막대가 먼저 비치지 않게
+  tl.fromTo(el, { scaleY: 0, transformOrigin: el.dataset.origin === "top" ? "50% 0%" : "50% 100%" },
+    { scaleY: 1, duration: F(34), ease: GOLD, immediateRender: true }, +el.dataset.in);
+for (const el of root.querySelectorAll(".pop"))   // 막대 끝 값: 막대가 다 자란 뒤 나타난다
+  tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: F(13), ease: GOLD, immediateRender: true }, +el.dataset.in);
 tl.to({}, { duration: 0.01 }, P.END - 0.01);
 render();
 window.__timelines["proto"] = tl;

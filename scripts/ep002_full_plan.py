@@ -13,6 +13,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))   # python3 -I는 스�
 from ep002_common import CS, CE, EE, ME, LINE, WORK, at
 from ep002_scene import AVG_U, AVG_W, HW, XS, build, plate, statement
 from golden_kit import fill, fit_size
+from ep002_charts import gap_bars, paired_bars
+ART = Path(__file__).resolve().parents[1] / "output/anidoodle_test/out"   # 손그림 삽화 렌더(git 제외)
 
 import subprocess
 END = round(float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(WORK / "voice.wav")],
@@ -26,19 +28,20 @@ CAMS = [{"p": [17, 14, 19], "t": [6.5, 0, 4]}, {"p": [6.2, 10.5, 15.5], "t": [6.
 
 S2, S3, S5, S8 = L["s2_01"], L["s3_01"], L["s5_01"], L["s8_01"]
 PAY = L["s5_03"]                      # "And the pay." 159.5초 — 여기서 솟기 시작
+F = lambda n: round(n / 30, 3)        # GOLDEN §4: 길이는 30fps 피보나치 프레임
 GOLD = round(END * 0.618, 1)          # 167.2초: 산점도 완성, 카메라가 CS 구석으로
 TL = [
     {"at": 0.0, "obj": "cam", "to": {"z": 0.86}, "d": S2 - 0.5, "ease": "sine.inOut"},          # 훅 동안 천천히 다가감
-    {"at": S2, "obj": "st", "to": {"mix": 1}, "d": 3.4, "ease": "none"},
-    {"at": S2, "obj": "cam", "to": {"k": 1, "z": 1}, "d": 3.4},
-    {"at": S2 + 3.6, "obj": "st", "to": {"zone": 1}, "d": 0.7, "ease": "power2.out"},
+    {"at": S2, "obj": "st", "to": {"mix": 1}, "d": F(89), "ease": "none"},
+    {"at": S2, "obj": "cam", "to": {"k": 1, "z": 1}, "d": F(89)},
+    {"at": S2 + F(89), "obj": "st", "to": {"zone": 1}, "d": F(21)},
     {"at": S3, "obj": "cam", "to": {"z": 0.9}, "d": L["s3_05"] - S3, "ease": "sine.inOut"},        # 1기둥 동안 천천히
-    {"at": S5, "obj": "cam", "to": {"z": 1}, "d": 2.1},
-    {"at": PAY, "obj": "st", "to": {"grow": 1}, "d": 5.5, "ease": "power3.inOut"},              # 클라이맥스: 솟음
+    {"at": S5, "obj": "cam", "to": {"z": 1}, "d": F(55)},
+    {"at": PAY, "obj": "st", "to": {"grow": 1}, "d": F(144)},              # 클라이맥스: 솟음
     {"at": PAY, "obj": "cam", "to": {"k": 2}, "d": GOLD - PAY - 0.2},
-    {"at": PAY + 4.4, "obj": "st", "to": {"pay": 1}, "d": 0.7},
-    {"at": GOLD, "obj": "cam", "to": {"k": 3}, "d": 3.4, "ease": "power3.inOut"},               # 0.618T: CS가 황금점으로
-    {"at": S8, "obj": "cam", "to": {"k": 2}, "d": 2.8},                                         # 요약: 산점도 전체
+    {"at": PAY + F(144), "obj": "st", "to": {"pay": 1}, "d": F(21)},
+    {"at": GOLD, "obj": "cam", "to": {"k": 3}, "d": F(89)},               # 0.618T: CS가 황금점으로
+    {"at": S8, "obj": "cam", "to": {"k": 2}, "d": F(89)},                                         # 요약: 산점도 전체
 ]
 
 def card(i, major, big, small, kind, num, t, e, label=None, keep=False):
@@ -99,7 +102,9 @@ PLATES = [
     plate(L["s4_01"], until(L["s4_02"]), "Workers aged 22&ndash;25 in the most AI-exposed jobs, incl. software developers",
           [("15%", "bad", "lower employment than young workers in less-exposed jobs, July 2025"),
            ("19%", "bad", "lower by June 2026")],
-          "Source: Brynjolfsson, Chandar &amp; Chen, &ldquo;Canaries in the Coal Mine,&rdquo; Stanford Digital Economy Lab (rev. Aug 2026), ADP payroll data"),
+          "Source: Brynjolfsson, Chandar &amp; Chen, &ldquo;Canaries in the Coal Mine,&rdquo; Stanford Digital Economy Lab (rev. Aug 2026), ADP payroll data",
+          chart=gap_bars([("15%", 15, "bad", "JULY 2025", True), ("19%", 19, "bad", "JUNE 2026", False)],
+                         L["s4_01"], "0 = young workers in less-exposed jobs")),
     statement(L["s4_02"], until(L["s4_03"]), "Fewer hires. Not more layoffs.",
               "And no evidence of widespread job loss across the whole economy.", dark=True),
     statement(L["s4_03"], until(S5), "Patterns, not proof of cause.",
@@ -109,11 +114,14 @@ PLATES = [
            ("+10%", "good", "PROJECTION: growth 2025&ndash;35, much faster than average")],
           "Source: U.S. Bureau of Labor Statistics, Occupational Outlook Handbook", note="A projection, not a promise."),
     statement(L["s6_02"], until(L["s7_01"]), "Is the career still there? Forecast: yes.<br/>Is the first job harder now? Data: yes.",
-              "Two questions parents often mix up.", dark=True),
+              "Two questions parents often mix up.", dark=True, art="ladder.png"),
     plate(L["s7_01"], until(L["s7_02"]), "A degree still beats no degree (ages 22&ndash;27)",
           [("5.2%", "good", "recent grads unemployed, Sept 2026"), ("7.4%", "bad", "young workers without a degree, Sept 2026"),
            ("$60,000", "pay", "recent grads, median pay 2025"), ("$40,000", "neutral", "young high-school grads, 2025")],
-          "Source: NY Fed, The Labor Market for Recent College Graduates"),
+          "Source: NY Fed, The Labor Market for Recent College Graduates",
+          chart=paired_bars([("UNEMPLOYED, SEPT 2026", [("5.2%", 5.2, "good", "RECENT|GRADS"), ("7.4%", 7.4, "bad", "NO|DEGREE")]),
+                             ("MEDIAN PAY, 2025", [("$60K", 60000, "pay", "RECENT|GRADS"), ("$40K", 40000, "neutral", "HIGH-SCHOOL|GRADS")])],
+                            L["s7_01"])),
     statement(L["s7_02"], until(S8), "Not whether to go to college. Which major.",
               "For the first job, the major now matters more than the old advice admitted.", dark=True),
     statement(L["s9_01"], until(L["s9_02"]), "Harder to get than almost any other. Paid better than almost any other.",
@@ -121,7 +129,7 @@ PLATES = [
     statement(L["s9_02"], END, "What&rsquo;s their plan for the first job?", "Not &ldquo;should they switch?&rdquo;", dark=True),
 ]
 
-build({"name": "full", "end": END, "cards": c, "ticks": TICKS, "caps": CAPS, "tl": TL, "cams": CAMS, "plates": PLATES,
+build({"name": "full", "end": END, "cards": c, "ticks": TICKS, "caps": CAPS, "tl": TL, "cams": CAMS, "plates": PLATES, "art": [ART / "ladder.png"],
        "audio": WORK / "mix.wav", "draft": "DRAFT &middot; FULL LENGTH",   # mix = 내레이션 + BGM 덕킹(scripts/ep002_bgm.py)
        "credit": (L["s9_02"], END, "Original score. Piano samples: &ldquo;Salamander Grand Piano V3&rdquo; by Alexander Holm, CC BY 3.0 (creativecommons.org/licenses/by/3.0). Orchestral samples: VS Chamber Orchestra: Community Edition, Versilian Studios (CC0)."),
        "src": "Source: NY Fed, The Labor Market for Recent College Graduates (by major, 2024)"}, "golden")
