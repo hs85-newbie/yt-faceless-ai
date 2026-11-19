@@ -1,5 +1,9 @@
 # EP002 — 업로드 패키지 (7단계 챕터·설명 + 9단계 업로드 준비)
 
+> **비공개 업로드 2026-11-19, https://youtu.be/u5BlSFFWP2c (Counter Ledger).** 제목·설명(챕터 10·출처 3)·태그 9·영어·교육·아동용 아님·AI 사용 아니요·자막 en/ko 게시, 저작권 검사 문제 없음.
+> **남은 것:** 맞춤 썸네일(사용자가 Studio에서 `~/Downloads/EP002_thumb.jpg` 직접 선택 — 브라우저 도구로 넣은 파일은 썸네일 칸이 받지 않음, 3회 실패) → 처리·자막·챕터 확인 → 공개 전환(컨펌 게이트)
+> 영상 파일은 브라우저 도구 한도(10MB)를 넘어 사용자가 파일 선택(26.8MB).
+
 - 영상: `output/002/04_exports/EP002_final.mp4` (4:31, 1920x1080 30fps). DRAFT 표시 없는 업로드본(`python3 -I scripts/ep002_full_plan.py final`) + 손그림 훅 13초
 - 자막: `episodes/002/subs/en.srt`(영어), `episodes/002/subs/ko.srt`(한국어). 95조각, 시각 동일. `scripts/srt_split.py`로 내레이션 줄을 2줄×42자 이하로 나눔
 - 썸네일: `output/002/04_exports/EP002_thumb.jpg` (1280x720, `templates/golden/blocks/thumbnail.html`, 7.0% = 지표 색 오렌지)
