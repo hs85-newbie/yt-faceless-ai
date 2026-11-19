@@ -113,7 +113,7 @@ def build(plan, theme="golden"):
     <div id="src">{plan.get("src", "Source: NY Fed, recent college graduates by major (2024 data)")}</div>
 {chr(10).join("    " + p for p in plan.get("plates", []))}
     {f'<div class="credit fade" data-in="{plan["credit"][0]}" data-out="{plan["credit"][1]}">{plan["credit"][2]}</div>' if plan.get("credit") else ""}
-    <div id="draft">{plan["draft"]}</div>
+    {f'<div id="draft">{plan["draft"]}</div>' if plan.get("draft") else ""}
   </div>
   <script type="module">
     window.__PROTO = {json.dumps(data)};

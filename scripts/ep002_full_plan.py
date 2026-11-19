@@ -1,6 +1,6 @@
 """EP002 풀 길이 드래프트(270.5초, 내레이션 포함): 캠퍼스 → 실업률 축 → 데이터 판 → 0.618T에 초봉이 솟는 산점도 → 요약.
 
-사용: python3 -I scripts/ep002_full_plan.py → output/002/03_work/full/ 에서 npx hyperframes render
+사용: python3 -I scripts/ep002_full_plan.py [final] → output/002/03_work/full/ 에서 npx hyperframes render (final = 업로드본, DRAFT 표시 없음)
 구조: episodes/002/03_script.md "화면 구조 확정" 절 · brand/GOLDEN.md §5-1 (0.382T = 103초 2막, 0.618T = 167초 클라이맥스)
 숫자 출처(episodes/002/02_research.md 표 번호 — 화면에는 번호를 내보내지 않는다):
       1·2·3 전공별 실업률·순위 · 4 전기·기계공학 · 6 하향 취업 · 7·8 초봉·중간 경력 · 9·17 간호·물리·수학·금융 ·
@@ -130,7 +130,7 @@ PLATES = [
 ]
 
 build({"name": "full", "end": END, "cards": c, "ticks": TICKS, "caps": CAPS, "tl": TL, "cams": CAMS, "plates": PLATES, "art": [ART / "ladder.png"],
-       "audio": WORK / "mix.wav", "draft": "DRAFT &middot; FULL LENGTH",   # mix = 내레이션 + BGM 덕킹(scripts/ep002_bgm.py)
+       "audio": WORK / "mix.wav", "draft": None if "final" in sys.argv else "DRAFT &middot; FULL LENGTH",   # mix = 내레이션 + BGM 덕킹(scripts/ep002_bgm.py)
        "credit": (L["s9_02"], END, "Original score. Piano samples: &ldquo;Salamander Grand Piano V3&rdquo; by Alexander Holm, CC BY 3.0 (creativecommons.org/licenses/by/3.0). Orchestral samples: VS Chamber Orchestra: Community Edition, Versilian Studios (CC0)."),
        "src": "Source: NY Fed, The Labor Market for Recent College Graduates (by major, 2024)"}, "golden")
 assert all(x["t"] < x["e"] for x in c), [x["id"] for x in c if x["t"] >= x["e"]]

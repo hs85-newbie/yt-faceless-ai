@@ -1,0 +1,379 @@
+1
+00:00:00,000 --> 00:00:03,502
+Before you pay another tuition bill for a computer science degree,
+
+2
+00:00:03,502 --> 00:00:07,005
+look at where it ranks among 73 majors for getting that first job.
+
+3
+00:00:07,125 --> 00:00:09,029
+For twenty years the advice was simple.
+
+4
+00:00:09,029 --> 00:00:11,323
+Learn to code, and you'll never be out of work.
+
+5
+00:00:11,673 --> 00:00:16,691
+The New York Fed tracks recent college graduates, aged 22 to 27, major by major.
+
+6
+00:00:16,691 --> 00:00:18,071
+In its latest numbers,
+
+7
+00:00:18,071 --> 00:00:23,026
+computer engineering has the second-highest unemployment rate of all 73 majors.
+
+8
+00:00:23,026 --> 00:00:24,719
+Computer science is fourth.
+
+9
+00:00:24,839 --> 00:00:29,281
+That puts a new computer science grad, at 7 percent unemployed,
+
+10
+00:00:29,281 --> 00:00:34,570
+behind art history at 6.7, philosophy at 5.1, and nutrition science at 4.5.
+
+11
+00:00:34,690 --> 00:00:36,685
+So is computer science still worth it?
+
+12
+00:00:36,685 --> 00:00:39,100
+The answer is more interesting than yes or no.
+
+13
+00:00:40,450 --> 00:00:43,126
+The first thing to notice is how narrow this is.
+
+14
+00:00:43,126 --> 00:00:45,245
+Not every hard major has this problem.
+
+15
+00:00:45,245 --> 00:00:48,089
+Electrical engineering grads, on the same campuses,
+
+16
+00:00:48,089 --> 00:00:51,714
+doing much of the same math, had a 3.2 percent unemployment rate.
+
+17
+00:00:51,714 --> 00:00:54,390
+Mechanical engineering, four point four percent.
+
+18
+00:00:54,510 --> 00:00:57,172
+The overall rate for all recent grads was 4.2.
+
+19
+00:00:57,172 --> 00:01:00,182
+So the trouble isn't engineering, and it isn't math.
+
+20
+00:01:00,182 --> 00:01:04,117
+It's concentrated in the majors that feed entry-level software jobs.
+
+21
+00:01:04,237 --> 00:01:06,932
+Other number-heavy majors are spread out.
+
+22
+00:01:06,932 --> 00:01:11,927
+Physics sits at 6.6 percent, information systems at 6.0, mathematics at 5.8.
+
+23
+00:01:11,927 --> 00:01:14,951
+But finance, just as heavy on math, is at 2.8.
+
+24
+00:01:14,951 --> 00:01:17,974
+Nursing, a demanding science major, is at 2.1.
+
+25
+00:01:18,094 --> 00:01:20,292
+So hard math doesn't predict the trouble.
+
+26
+00:01:20,292 --> 00:01:22,329
+Finance and nursing are proof of that.
+
+27
+00:01:22,329 --> 00:01:25,545
+What sets computer science and computer engineering apart is
+
+28
+00:01:25,545 --> 00:01:29,029
+where they usually lead: straight into entry-level software jobs.
+
+29
+00:01:29,149 --> 00:01:30,364
+One caution up front.
+
+30
+00:01:30,364 --> 00:01:34,586
+These figures are for 2024, one year, and some majors have small samples.
+
+31
+00:01:34,586 --> 00:01:36,494
+Treat the exact ranking as rough.
+
+32
+00:01:36,494 --> 00:01:40,427
+The gap between software and the rest is the part to take seriously.
+
+33
+00:01:40,777 --> 00:01:42,674
+Why would software be different?
+
+34
+00:01:42,674 --> 00:01:45,402
+A Stanford team led by Erik Brynjolfsson looks
+
+35
+00:01:45,402 --> 00:01:48,070
+at payroll records for workers aged 22 to 25.
+
+36
+00:01:48,070 --> 00:01:52,399
+In the occupations most exposed to AI, which include software developers,
+
+37
+00:01:52,399 --> 00:01:56,550
+employment for that age group was about 19 percent lower by June 2026,
+
+38
+00:01:56,550 --> 00:01:59,337
+relative to young workers in less exposed jobs.
+
+39
+00:01:59,337 --> 00:02:01,590
+A year earlier the gap was 15 percent.
+
+40
+00:02:01,710 --> 00:02:05,692
+The same study finds the drop comes from fewer hires, not more layoffs,
+
+41
+00:02:05,692 --> 00:02:09,787
+and it finds no evidence of widespread job loss across the whole economy.
+
+42
+00:02:09,907 --> 00:02:13,956
+That fits what the New York Fed table shows: the first job is harder to get.
+
+43
+00:02:13,956 --> 00:02:17,419
+But the authors call their findings patterns, not proof of cause.
+
+44
+00:02:17,419 --> 00:02:20,616
+Remote work and interest rates were moving at the same time,
+
+45
+00:02:20,616 --> 00:02:22,321
+as we covered in our last video.
+
+46
+00:02:22,671 --> 00:02:24,831
+Here is the part that usually gets left out.
+
+47
+00:02:24,831 --> 00:02:28,168
+Look at what happens to the computer science grads who do get hired.
+
+48
+00:02:28,288 --> 00:02:32,188
+Underemployment means working a job that doesn't need a degree.
+
+49
+00:02:32,188 --> 00:02:34,541
+For all recent grads, it's 39 percent.
+
+50
+00:02:34,541 --> 00:02:35,779
+For art history, 45.
+
+51
+00:02:35,779 --> 00:02:36,955
+For philosophy, 47.
+
+52
+00:02:36,955 --> 00:02:38,503
+For computer science, 19.
+
+53
+00:02:38,503 --> 00:02:40,298
+For computer engineering, 16.
+
+54
+00:02:40,418 --> 00:02:41,210
+And the pay.
+
+55
+00:02:41,210 --> 00:02:46,027
+The typical early-career computer science grad earns 87 thousand dollars.
+
+56
+00:02:46,027 --> 00:02:48,271
+Computer engineering, 90 thousand.
+
+57
+00:02:48,271 --> 00:02:49,261
+All majors, 58.
+
+58
+00:02:49,261 --> 00:02:50,317
+Art history, 45.
+
+59
+00:02:50,317 --> 00:02:55,464
+By mid-career, computer science is at 120 thousand, against 87 for all majors.
+
+60
+00:02:55,584 --> 00:02:58,321
+So computer science didn't turn into a bad major.
+
+61
+00:02:58,321 --> 00:03:00,778
+It turned into a high-risk, high-reward one.
+
+62
+00:03:00,778 --> 00:03:02,565
+The first job is harder to land.
+
+63
+00:03:02,565 --> 00:03:04,129
+The jobs that land pay well.
+
+64
+00:03:04,479 --> 00:03:07,683
+The government's long-range outlook is more optimistic.
+
+65
+00:03:07,683 --> 00:03:10,188
+The Bureau of Labor Statistics counts about
+
+66
+00:03:10,188 --> 00:03:12,576
+1.9 million jobs for software developers,
+
+67
+00:03:12,576 --> 00:03:17,295
+testers and quality analysts, with a median salary of about 134 thousand dollars.
+
+68
+00:03:17,295 --> 00:03:21,082
+It projects those jobs will grow 10 percent over the next decade,
+
+69
+00:03:21,082 --> 00:03:22,538
+much faster than average.
+
+70
+00:03:22,658 --> 00:03:24,504
+That's a projection, not a promise.
+
+71
+00:03:24,504 --> 00:03:27,247
+But it separates two questions parents often mix up.
+
+72
+00:03:27,247 --> 00:03:28,618
+Is the career still there?
+
+73
+00:03:28,618 --> 00:03:29,778
+The forecast says yes.
+
+74
+00:03:29,778 --> 00:03:31,941
+Is the first job harder to get right now?
+
+75
+00:03:31,941 --> 00:03:33,101
+The data says yes too.
+
+76
+00:03:33,451 --> 00:03:37,870
+You could argue none of this matters, because a degree still beats no degree.
+
+77
+00:03:37,870 --> 00:03:38,559
+That's true.
+
+78
+00:03:38,559 --> 00:03:43,150
+Young workers without a degree had a 7.4 percent unemployment rate in September,
+
+79
+00:03:43,150 --> 00:03:44,929
+worse than recent grads at 5.2.
+
+80
+00:03:44,929 --> 00:03:48,258
+And grads earned about 60 thousand dollars a year in 2025,
+
+81
+00:03:48,258 --> 00:03:51,013
+against 40 thousand for young high school grads.
+
+82
+00:03:51,133 --> 00:03:53,947
+But that comparison is about whether to go to college.
+
+83
+00:03:53,947 --> 00:03:56,864
+The question here is which major, and for the first job,
+
+84
+00:03:56,864 --> 00:03:59,782
+the major now matters more than the old advice admitted.
+
+85
+00:04:00,132 --> 00:04:03,043
+Put the two numbers on one chart and computer science
+
+86
+00:04:03,043 --> 00:04:05,735
+sits in a corner by itself: near the top for pay,
+
+87
+00:04:05,735 --> 00:04:06,944
+near the top for risk.
+
+88
+00:04:06,944 --> 00:04:11,503
+A few majors, like nursing and electrical engineering, pay well with far less risk.
+
+89
+00:04:11,853 --> 00:04:14,184
+What the data can say is narrow: in 2024,
+
+90
+00:04:14,184 --> 00:04:18,676
+the first job out of a software degree was harder to get than almost any other,
+
+91
+00:04:18,676 --> 00:04:21,007
+and it paid better than almost any other.
+
+92
+00:04:21,007 --> 00:04:25,044
+What it can't say yet is whether AI is the reason, or whether it lasts.
+
+93
+00:04:25,164 --> 00:04:27,015
+So if your kid is in computer science,
+
+94
+00:04:27,015 --> 00:04:29,305
+the useful question isn't "should they switch?"
+
+95
+00:04:29,305 --> 00:04:31,400
+It's "what's their plan for the first job?"
