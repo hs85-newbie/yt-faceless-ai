@@ -64,12 +64,13 @@ Narration uses a synthetic (AI) voice. No AI-generated video or images. Piano sa
 
 | 파일 | 길이 | 제목 | 설명 첫 줄 |
 |---|---|---|---|
-| `EP002_short_1.mp4` | 34초 | Computer Science Has the 4th-Highest Unemployment of 73 Majors | New York Fed data: recent CS grads are unemployed at 7.0%, higher than art history (6.7%) and philosophy (5.1%). |
-| `EP002_short_2.mp4` | 42초 | CS Grads Who Get Hired: High Risk, High Pay | Only 19% of employed CS grads are underemployed (39% across all majors), and they start around $87,000 (all majors: $58,000). |
-| `EP002_short_3.mp4` | 29초 | The Software Career Is Still There. The First Job Is Harder. | BLS projects software jobs to grow 10% over the next decade. The first job is harder to land right now. |
+| `EP002_short_1.mp4` | 34초 | Is Computer Science Still Worth It? Part 1/3: 4th-Highest Unemployment of 73 Majors | Is computer science still worth it? Part 1 of 3. New York Fed data: recent CS grads are unemployed at 7.0%, higher than art history (6.7%) and philosophy (5.1%). |
+| `EP002_short_2.mp4` | 42초 | Is Computer Science Still Worth It? Part 2/3: High Risk, High Pay | Is computer science still worth it? Part 2 of 3. Only 19% of employed CS grads are underemployed (39% across all majors), and they start around $87,000 (all majors: $58,000). |
+| `EP002_short_3.mp4` | 29초 | Is Computer Science Still Worth It? Part 3/3: The Career Is There, the First Job Is Harder | Is computer science still worth it? Part 3 of 3. BLS projects software jobs to grow 10% over the next decade. The first job is harder to land right now. |
 
 - 롱폼 연결: 업로드 후 각 숏 "관련 동영상"에 롱폼 지정(스튜디오 설정, 외부 링크 아님)
 - 썸네일: 숏 첫 화면이 제목 칸이라 그대로 표지가 됨
+- 시리즈(2026-11-19 사용자 숏츠 가이드): 이어 볼 순서 1→2→3, 마지막 89프레임은 다음 편 예고, 제목·설명 첫 줄은 검색어 "Is computer science still worth it"로 시작. '내 경험 훅'은 얼굴 없는 채널이라 지어내지 않고 부모에게 묻는 2인칭 질문으로 대신
 
 ## 롱폼 교체본 (영상 안 썸네일 구간)
 - `EP002_final2.mp4`: 0:34~0:40 제목 장면이 썸네일과 같은 구성(제목 + 7.0%). 맞춤 썸네일 대신 스튜디오 "동영상에서 선택"으로 이 구간을 고른다(채널 전화 인증 불가, 2026-11-19 사용자)

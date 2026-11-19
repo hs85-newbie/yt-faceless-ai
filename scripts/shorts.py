@@ -50,6 +50,10 @@ def page(s, dur, caps):
     """숏 한 편의 index.html."""
     size = title_size(re.sub(r"<[^>]+>", "", s["title"]))
     cap_html = "\n".join(f'<div id="cap{i}" class="clip cap" data-start="{a}" data-duration="{d}" data-track-index="2">{t}</div>' for i, (a, d, t) in enumerate(caps))
+    # 끝까지 볼 이유: 마지막 89프레임(2.97초)에 제목 칸이 다음 편 예고로 바뀐다(이어 보기 순서, 2026-11-19 사용자 가이드)
+    nxt_t = round(dur - 89 / 30, 3)
+    nxt = (f'<div id="nxt" class="clip nxt" data-start="{nxt_t}" data-duration="{round(dur - nxt_t, 3)}" data-track-index="3">'
+           f'<div class="kick">{s["next_kicker"]}</div><div class="ttl" style="font-size:{title_size(s["next"])}px">{no_break_hyphen(s["next"])}</div></div>') if s.get("next") else ""
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width={W}, height={H}" />
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
@@ -66,12 +70,16 @@ html, body {{ width: {W}px; height: {H}px; overflow: hidden; background: var(--g
 .band {{ position: absolute; left: 0; top: {VID_Y + VID_H}px; width: {W}px; height: {CAP_H}px; background: var(--g-second); }}
 .cap {{ position: absolute; left: 0; top: {VID_Y + VID_H}px; width: {W}px; height: {CAP_H}px; padding: 0 {PAD_R}px 0 {PAD_L}px;
         display: flex; align-items: center; font: 800 55px/1.236 var(--gb-sans); color: var(--g-main); }}
+.nxt {{ position: absolute; left: 0; top: 0; width: {W}px; height: {VID_Y}px; padding: 89px {PAD_R}px 55px {PAD_L}px; background: var(--g-second);
+        display: flex; flex-direction: column; justify-content: flex-end; gap: 21px; color: var(--g-main); }}
+.nxt .kick {{ color: var(--g-loud); }}
 </style></head><body>
 <div id="root" data-composition-id="main" data-start="0" data-duration="{dur}" data-width="{W}" data-height="{H}">
 <div class="top"><div class="kick">{s["kicker"]}</div><div class="ttl">{no_break_hyphen(s["title"])}</div></div>
 <video id="v" class="clip" src="assets/clip.mp4" data-start="0" data-duration="{dur}" data-track-index="1" data-has-audio="true" data-fade-in="0.267" data-fade-out="0.433"></video>
 <div class="band"></div>
 {cap_html}
+{nxt}
 </div>
 <script>
 window.__timelines = window.__timelines || {{}};
