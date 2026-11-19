@@ -52,3 +52,25 @@ is computer science worth it, is computer science still worth it, computer scien
 - 무엇을: 위 영상 + 제목·설명·태그·썸네일 1장·자막 2개
 - 어디로: YouTube @Counter_Ledger
 - 되돌릴 수 있나: 비공개 단계에선 완전 되돌림. 공개 후엔 비공개 전환·삭제 가능하나 조회·노출 기록은 남음
+
+## 숏폼 3개 (2026-11-19, `python3 -I scripts/shorts.py 002 output/002/04_exports/EP002_final2.mp4`)
+
+설명란 공통 끝부분(외부 링크 없음):
+```
+Full video on this channel: "Is Computer Science Still Worth It? What the Job Data Says"
+Sources: New York Fed, The Labor Market for Recent College Graduates (2024 by-major data); U.S. Bureau of Labor Statistics, Occupational Outlook Handbook; Stanford Digital Economy Lab, "Canaries in the Coal Mine" (Aug 2026).
+Narration uses a synthetic (AI) voice. No AI-generated video or images. Piano samples: "Salamander Grand Piano V3" by Alexander Holm, CC BY 3.0.
+```
+
+| 파일 | 길이 | 제목 | 설명 첫 줄 |
+|---|---|---|---|
+| `EP002_short_1.mp4` | 34초 | Computer Science Has the 4th-Highest Unemployment of 73 Majors | New York Fed data: recent CS grads are unemployed at 7.0%, higher than art history (6.7%) and philosophy (5.1%). |
+| `EP002_short_2.mp4` | 42초 | CS Grads Who Get Hired: High Risk, High Pay | Only 19% of employed CS grads are underemployed (39% across all majors), and they start around $87,000 (all majors: $58,000). |
+| `EP002_short_3.mp4` | 29초 | The Software Career Is Still There. The First Job Is Harder. | BLS projects software jobs to grow 10% over the next decade. The first job is harder to land right now. |
+
+- 롱폼 연결: 업로드 후 각 숏 "관련 동영상"에 롱폼 지정(스튜디오 설정, 외부 링크 아님)
+- 썸네일: 숏 첫 화면이 제목 칸이라 그대로 표지가 됨
+
+## 롱폼 교체본 (영상 안 썸네일 구간)
+- `EP002_final2.mp4`: 0:34~0:40 제목 장면이 썸네일과 같은 구성(제목 + 7.0%). 맞춤 썸네일 대신 스튜디오 "동영상에서 선택"으로 이 구간을 고른다(채널 전화 인증 불가, 2026-11-19 사용자)
+- 유튜브는 올린 영상 파일을 바꿀 수 없어 새로 올리고, 기존 비공개본(u5BlSFFWP2c, 조회 0)을 지워야 한다
