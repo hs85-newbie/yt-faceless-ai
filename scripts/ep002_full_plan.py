@@ -7,12 +7,12 @@
       10·11·12 학위 유무 비교 · 13·14 BLS(14는 [전망] → 화면에 PROJECTION) · 15·16 스탠퍼드 Canaries.
 시각: ep002_common.at() — 내레이션 단어가 들리기 0.15초 전.
 """
-import sys
+import json, sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))   # python3 -I는 스크립트 폴더를 경로에 넣지 않는다
 from ep002_common import CS, CE, EE, ME, LINE, WORK, at
 from ep002_scene import AVG_U, AVG_W, HW, XS, build, plate, statement
-from golden_kit import fill, fit_size
+from golden_kit import fill, fit_size, no_break_hyphen
 from ep002_charts import gap_bars, paired_bars
 ART = Path(__file__).resolve().parents[1] / "output/anidoodle_test/out"   # 손그림 삽화 렌더(git 제외)
 
@@ -90,11 +90,13 @@ CAPS = [("73 MAJORS, ONE CAMPUS", at("s1_01@among 73"), until(at("s1_02@learn to
         ("HIGH RISK, HIGH REWARD", L["s5_04"], until(L["s6_01"])),
         ("ONE CORNER BY ITSELF", S8, until(at("s8_01@nursing")))]
 
-title_txt = "IS COMPUTER<br/>SCIENCE STILL<br/>WORTH IT?"
+# WHY: 맞춤 썸네일은 채널 전화 인증이 필요해 쓸 수 없다(2026-11-19 사용자). 제목 장면("So is computer science still worth it?")을
+#      썸네일과 같은 구성(templates/golden/blocks/thumbnail.html, episodes/002/golden.json 값)으로 그려 스튜디오 '동영상에서 선택'으로 고른다.
+GCFG = json.loads((Path(__file__).resolve().parents[1] / "episodes/002/golden.json").read_text())
 PLATES = [
     f'<div class="fade" data-in="{L["s2_03"]}" data-out="{until(S3)}" style="position:absolute;inset:0">'
-    + fill("title-card", doc_title="THE LABOR MARKET FOR RECENT COLLEGE GRADUATES", episode_tag="EPISODE 2", title=title_txt,
-           tag="FOR PARENTS &middot; NY FED DATA", title_size=fit_size(title_txt, 1920 - 822 - 89)) + "</div>",
+    + fill("thumbnail", title=no_break_hyphen(GCFG["title"]), title_size=fit_size(GCFG["title"], 1187 - 2 * 89, by="word"), kicker=GCFG["kicker"],
+           number=GCFG["number"], number_color={"bad": "var(--g-bad)", "good": "var(--g-good)"}[GCFG["number_metric"]], caption=GCFG["number_caption"]) + "</div>",
     statement(at("s3_04@what sets"), until(L["s3_05"]), "Straight into entry-level software jobs.",
               "What sets computer science and computer engineering apart is where they lead.", dark=True),
     statement(L["s3_05"], until(L["s4_01"]), "2024 data. One year. Small samples.",
