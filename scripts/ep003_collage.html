@@ -1,0 +1,74 @@
+<!doctype html>
+<!-- EP003 문서 콜라주 껍데기. scripts/ep003_collage.py가 {{...}}를 채운다. 규칙: brand/GOLDEN.md -->
+<html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=1920, height=1080" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<style>{{ROOT_CSS}}
+:root { --gb-sans: Inter, 'Helvetica Neue', Arial, sans-serif; --gb-mono: 'IBM Plex Mono', Menlo, monospace; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--g-main); font-family: var(--gb-sans); }
+#root { position: absolute; inset: 0; background: var(--g-main); overflow: hidden; }
+.shot { position: absolute; inset: 0; display: none; }   /* WHY: visibility는 자식 visible이 이겨 이전 숏 카드가 남았다 → display로 숏 통째로 */
+.pop { position: absolute; visibility: hidden; }
+.tw { filter: drop-shadow(8px 8px 13px rgba(0,0,0,.22)); }   /* GOLDEN §6 그림자 8 · 흐림 13 */
+.card { position: relative; display: flex; flex-direction: column; justify-content: center; padding: 34px 55px; gap: 13px; color: var(--g-ink); }
+.n { font-family: 'Archivo Black', sans-serif; font-size: 144px; line-height: 1; }
+.lab { font: 800 34px/1.236 var(--gb-sans); letter-spacing: .04em; }
+.sub { font: 600 34px/1.236 var(--gb-sans); color: var(--g-ink-soft); }
+.kin { font-family: 'Archivo Black', sans-serif; line-height: 1.0; }
+.kin.struck { font-size: 89px; color: var(--g-ink-soft); text-decoration: line-through; text-decoration-thickness: 8px; text-decoration-color: var(--g-ink); }
+.note { font: 700 34px/1.236 var(--gb-sans); color: var(--g-ink); }
+.fk { font-family: 'Archivo Black', sans-serif; font-size: 89px; line-height: 1; text-align: center; }
+.dip { font-family: 'Archivo Black', sans-serif; font-size: 89px; line-height: 1; text-align: center; color: var(--g-second); }
+.card:has(.dip) { align-items: center; border: 8px double var(--g-second); }
+.bar .card { flex-direction: row; align-items: center; justify-content: space-between; padding: 0 34px; }
+.blab { font: 800 34px var(--gb-sans); letter-spacing: .04em; white-space: nowrap; color: var(--g-ink); }
+.bval { font-family: 'Archivo Black', sans-serif; font-size: 55px; line-height: 1.236; }
+.btitle { left: 377px; top: 144px; font: 800 34px var(--gb-sans); letter-spacing: .06em; color: var(--g-ink-soft); }
+.stamp { font-family: 'Archivo Black', sans-serif; font-size: 89px; line-height: 1; padding: 13px 34px; border: 8px solid; white-space: nowrap;
+         mix-blend-mode: multiply; opacity: .92; }
+.road { left: 0; top: 0; width: 1920px; height: 1080px; }
+.road path { fill: none; stroke: var(--g-ink); stroke-width: 5; stroke-linecap: round; stroke-dasharray: 21 13; }
+.full { inset: 0; }
+.src { position: absolute; left: 89px; bottom: 34px; font: 600 34px var(--gb-sans); color: var(--g-ink-soft); }
+/* 종이 질감: 망점(8px 격자) + 결(SVG 노이즈) + 가장자리 어둡게 — 전부 고정 무늬라 프레임마다 같다 */
+#half { position: absolute; inset: 0; pointer-events: none; opacity: .08;
+        background-image: radial-gradient(circle, var(--g-ink) 1.3px, transparent 1.6px); background-size: 8px 8px; }
+#grain { position: absolute; inset: 0; pointer-events: none; opacity: .13; mix-blend-mode: multiply;
+         background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='377' height='377'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='.89' numOctaves='3' seed='13'/><feColorMatrix values='0 0 0 0 .1 0 0 0 0 .1 0 0 0 0 .1 0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23f)'/></svg>"); }
+#vig { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at center, transparent 61.8%, rgba(27,34,51,.236) 100%); }
+#draft { position: absolute; right: 34px; top: 34px; font: 800 34px var(--gb-sans); color: var(--g-main); background: var(--g-second); padding: 5px 13px; z-index: 5; }
+</style></head><body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="{{END}}" data-width="1920" data-height="1080">
+{{SHOTS}}
+<div id="half"></div><div id="grain"></div><div id="vig"></div>
+{{DRAFT}}
+<audio id="mix" src="assets/mix.wav" data-start="0" data-duration="{{END}}" data-track-index="5" data-volume="1"></audio>
+</div>
+<script>
+// GOLDEN §4: 길이는 피보나치 프레임, 곡선은 cubic-bezier(0.382, 0, 0.146, 1). 콜라주는 두 장 한 그림(on twos) → 곡선을 계단으로
+const F = (n) => n / 30;
+const GOLD = (() => { const b = (t, p1, p2) => 3 * p1 * t * (1 - t) ** 2 + 3 * p2 * t * t * (1 - t) + t ** 3;
+  return (x) => { let lo = 0, hi = 1; for (let i = 0; i < 24; i++) { const m = (lo + hi) / 2; if (b(m, .382, .146) < x) lo = m; else hi = m; } return b((lo + hi) / 2, 0, 1); }; })();
+const STEP = (n) => (x) => (x >= 1 ? 1 : Math.floor(GOLD(x) * n) / n);   // n = 프레임 수 / 2
+const root = document.getElementById("root");
+const tl = gsap.timeline({ paused: true });
+for (const s of root.querySelectorAll(".shot")) {   // 숏은 내레이션 줄에서 자른다(디졸브 없음)
+  tl.set(s, { display: "block" }, +s.dataset.in);
+  tl.set(s, { display: "none" }, +s.dataset.out);
+}
+for (const el of root.querySelectorAll(".pop")) {
+  const t = +el.dataset.t, r = +el.dataset.r;
+  if (el.dataset.s) {   // 도장: 크게 찍혀 내려앉는다(8프레임)
+    tl.fromTo(el, { visibility: "visible", scale: 1.618, rotation: r }, { scale: 1, rotation: r, duration: F(8), ease: STEP(4), immediateRender: true }, t);
+  } else {              // 종이: 위에서 떨어져 붙는다(13프레임)
+    tl.fromTo(el, { visibility: "visible", y: -34, rotation: r * 2 }, { y: 0, rotation: r, duration: F(13), ease: STEP(7), immediateRender: true }, t);
+    tl.set(el, { visibility: "hidden" }, 0);
+    tl.set(el, { visibility: "visible" }, t);
+  }
+}
+for (const el of root.querySelectorAll(".pop.stamp")) { tl.set(el, { visibility: "hidden" }, 0); tl.set(el, { visibility: "visible" }, +el.dataset.t); }
+tl.to({}, { duration: 0.01 }, {{END}} - 0.01);
+window.__timelines = window.__timelines || {};
+window.__timelines["main"] = tl;
+</script>
+</body></html>
