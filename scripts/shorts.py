@@ -111,7 +111,9 @@ def build(ep, src, s):
         pd = 0
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str(s["t0"]), "-i", str(src), "-t", str(main), *enc], check=True)
     dur = round(main + pd, 3)
-    for f in ("hyperframes.json", "meta.json", "package.json"): shutil.copy(R / f"episodes/{ep}/film/{f}", proj / f)
+    tpl = R / f"episodes/{ep}/film"
+    if not (tpl / "hyperframes.json").exists(): tpl = R / "episodes/002/film"   # WHY: EP001 필름 폴더엔 HyperFrames 프로젝트 파일이 없다 — 숏 렌더 설정은 편과 무관해 EP002 것을 쓴다
+    for f in ("hyperframes.json", "meta.json", "package.json"): shutil.copy(tpl / f, proj / f)
     (proj / "index.html").write_text(page(s, dur, caps))
     out = R / f"output/{ep}/04_exports/EP{ep}_short_{s['id']}.mp4"
     subprocess.run(["npx", "hyperframes", "render", "-o", str(out)], cwd=proj, check=True)
