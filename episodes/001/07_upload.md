@@ -51,6 +51,8 @@ ai taking entry level jobs, college graduates struggle to find jobs, why is it s
 - 어디로: YouTube @Counter_Ledger
 - 되돌릴 수 있나: 비공개 단계에선 완전 되돌림. 공개 후엔 비공개 전환·삭제 가능하나 조회·노출 기록은 남음
 
+> **숏폼 3편 공개 2026-11-22** (1편 youtube.com/shorts/I_dxHW2AgyM). 영어·교육·아동용 아님·AI 아니요·태그 4
+
 ## 숏폼 3편 (2026-11-22 승인, 스프린트 #30, `python3 -I scripts/shorts.py 001 output/001/04_exports/EP001_v4_full_r5.mp4`)
 
 설명란 공통 끝부분(외부 링크 없음):
