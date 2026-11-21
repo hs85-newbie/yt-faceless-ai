@@ -53,6 +53,8 @@ is computer science worth it, is computer science still worth it, computer scien
 - 어디로: YouTube @Counter_Ledger
 - 되돌릴 수 있나: 비공개 단계에선 완전 되돌림. 공개 후엔 비공개 전환·삭제 가능하나 조회·노출 기록은 남음
 
+> **숏폼 3편 공개 2026-11-21** (1편 9OclCzEUJl4, 2편 mrg0VAfyH6I, 3편 IROeW_zq3H8). "관련 동영상" 연결은 스튜디오가 '이미 이용 가능, 새로고침' 안내만 반복해 못 함(채널 인증 필요 추정, 미확인)
+> **롱폼 결정(2026-11-21 사용자): 공개본 u5BlSFFWP2c 유지, 교체본 업로드·삭제 취소.** EP002_final2.mp4(썸네일 장면판)는 보관만
 > **숏폼 3편 비공개 업로드 2026-11-21** (Counter Ledger Shorts 탭, 1편 youtube.com/shorts/9OclCzEUJl4). 영어·교육·아동용 아님·AI 아니요·태그 4. 남은 것: 각 숏 "관련 동영상"에 롱폼 연결 → 공개 전환(컨펌 게이트)
 > **주의(2026-11-21 확인):** 롱폼 u5BlSFFWP2c가 이미 '공개' 상태(11/19 게시, 조회 0). Claude가 바꾸지 않음. 교체본 업로드·기존본 삭제는 보류하고 사용자 결정 대기
 
