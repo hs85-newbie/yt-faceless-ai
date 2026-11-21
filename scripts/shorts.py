@@ -93,13 +93,26 @@ window.__timelines["main"] = tl;
 
 def build(ep, src, s):
     """구간 자르기 → 프로젝트 쓰기 → 렌더. 반환: 완성 mp4 경로."""
-    dur = round(s["t1"] - s["t0"], 3)
+    main = round(s["t1"] - s["t0"], 3)
     proj = R / f"output/{ep}/03_work/shorts/{s['id']}"
     (proj / "assets").mkdir(parents=True, exist_ok=True)
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str(s["t0"]), "-i", str(src), "-t", str(dur),
-                    "-c:v", "libx264", "-crf", "16", "-preset", "medium", "-c:a", "aac", "-b:a", "192k", str(proj / "assets/clip.mp4")], check=True)
+    caps = cues(R / f"episodes/{ep}/subs/en.srt", s["t0"], s["t1"])
+    enc = ["-c:v", "libx264", "-crf", "16", "-preset", "medium", "-c:a", "aac", "-b:a", "192k", str(proj / "assets/clip.mp4")]
+    pre = s.get("pre")
+    if pre:
+        # 첫 3초에 답부터(2026-11-19 사용자 숏츠 가이드): 롱폼의 결론 장면을 앞에 붙인다. 그 구간 소리엔 내레이션이 있어 음악만(bgm, 믹스와 같은 0.55)
+        p0, pd, af = pre["t0"], pre["dur"], "aformat=sample_rates=48000:channel_layouts=stereo"
+        fc = (f"[0:v]trim=start={p0}:duration={pd},setpts=PTS-STARTPTS[pv];[1:a]atrim=start={p0}:duration={pd},asetpts=PTS-STARTPTS,volume=0.55,{af}[pa];"
+              f"[0:v]trim=start={s['t0']}:duration={main},setpts=PTS-STARTPTS[mv];[0:a]atrim=start={s['t0']}:duration={main},asetpts=PTS-STARTPTS,{af}[ma];"
+              f"[pv][pa][mv][ma]concat=n=2:v=1:a=1[v][a]")
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(src), "-i", str(R / pre["music"]), "-filter_complex", fc, "-map", "[v]", "-map", "[a]", *enc], check=True)
+        caps = [(0, pd, pre["cap"])] + [(round(a + pd, 3), d, t) for a, d, t in caps]
+    else:
+        pd = 0
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str(s["t0"]), "-i", str(src), "-t", str(main), *enc], check=True)
+    dur = round(main + pd, 3)
     for f in ("hyperframes.json", "meta.json", "package.json"): shutil.copy(R / f"episodes/{ep}/film/{f}", proj / f)
-    (proj / "index.html").write_text(page(s, dur, cues(R / f"episodes/{ep}/subs/en.srt", s["t0"], s["t1"])))
+    (proj / "index.html").write_text(page(s, dur, caps))
     out = R / f"output/{ep}/04_exports/EP{ep}_short_{s['id']}.mp4"
     subprocess.run(["npx", "hyperframes", "render", "-o", str(out)], cwd=proj, check=True)
     return out

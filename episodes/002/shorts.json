@@ -1,11 +1,13 @@
 [
   {"id": "1", "t0": 0.0, "t1": 34.57, "kicker": "IS CS STILL WORTH IT? &middot; PART 1/3",
-   "title": "<span class='bad'>4TH-HIGHEST</span> UNEMPLOYMENT OF 73 MAJORS",
+   "title": "CS GRADS ARE MORE <span class='bad'>JOBLESS</span> THAN ART HISTORY GRADS",
+   "pre": {"t0": 28.65, "dur": 1.833, "music": "output/002/03_work/v2/bgm.wav",
+           "cap": "Recent CS grads: 7.0% jobless. Art history: 6.7%."},
    "next_kicker": "NEXT &middot; PART 2/3", "next": "THE CS GRADS WHO DO GET HIRED"},
-  {"id": "2", "t0": 142.671, "t1": 184.359, "kicker": "IS CS STILL WORTH IT? &middot; PART 2/3",
-   "title": "<span class='bad'>HIGH RISK.</span> <span class='good'>HIGH PAY.</span>",
+  {"id": "2", "t0": 148.2, "t1": 184.359, "kicker": "IS CS STILL WORTH IT? &middot; PART 2/3",
+   "title": "THE ONES WHO GET HIRED START AT <span class='good'>$87,000</span>",
    "next_kicker": "NEXT &middot; PART 3/3", "next": "IS THE CAREER STILL THERE?"},
-  {"id": "3", "t0": 184.479, "t1": 213.331, "kicker": "IS CS STILL WORTH IT? &middot; PART 3/3",
-   "title": "THE CAREER IS THERE. THE FIRST JOB IS <span class='bad'>HARDER.</span>",
+  {"id": "3", "t0": 197.2, "t1": 213.331, "kicker": "IS CS STILL WORTH IT? &middot; PART 3/3",
+   "title": "SOFTWARE JOBS: <span class='good'>+10%</span> PROJECTED. FIRST JOBS: <span class='bad'>HARDER.</span>",
    "next_kicker": "FULL VIDEO &middot; ON THE CHANNEL", "next": "WHAT'S THEIR PLAN FOR THE FIRST JOB?"}
 ]
