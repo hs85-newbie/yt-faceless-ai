@@ -132,7 +132,7 @@ PLATES = [
 ]
 
 build({"name": "full", "end": END, "cards": c, "ticks": TICKS, "caps": CAPS, "tl": TL, "cams": CAMS, "plates": PLATES, "art": [ART / "ladder.png"],
-       "audio": WORK / "mix.wav", "draft": None if "final" in sys.argv else "DRAFT &middot; FULL LENGTH",   # mix = 내레이션 + BGM 덕킹(scripts/ep002_bgm.py)
+       "audio": WORK / "mix.wav", "draft": None if "final" in sys.argv else "DRAFT &middot; FULL LENGTH",   # mix = 내레이션 + BGM 덕킹(scripts/golden_bgm.py 002)
        "credit": (L["s9_02"], END, "Original score. Piano samples: &ldquo;Salamander Grand Piano V3&rdquo; by Alexander Holm, CC BY 3.0 (creativecommons.org/licenses/by/3.0). Orchestral samples: VS Chamber Orchestra: Community Edition, Versilian Studios (CC0)."),
        "src": "Source: NY Fed, The Labor Market for Recent College Graduates (by major, 2024)"}, "golden")
 assert all(x["t"] < x["e"] for x in c), [x["id"] for x in c if x["t"] >= x["e"]]
