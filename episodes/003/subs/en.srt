@@ -1,0 +1,243 @@
+1
+00:00:00,000 --> 00:00:00,584
+Right now,
+
+2
+00:00:00,584 --> 00:00:03,098
+a new college graduate is more likely to be
+
+3
+00:00:03,098 --> 00:00:05,728
+out of work than the average American worker.
+
+4
+00:00:05,728 --> 00:00:08,533
+Five point two percent, against four point zero.
+
+5
+00:00:08,653 --> 00:00:12,794
+And the jobs that used to start a career are the ones AI is getting good at.
+
+6
+00:00:12,794 --> 00:00:14,755
+So is college still worth the money?
+
+7
+00:00:15,105 --> 00:00:18,439
+That first number is real, but it answers the wrong question.
+
+8
+00:00:18,439 --> 00:00:20,952
+A family deciding about college isn't choosing
+
+9
+00:00:20,952 --> 00:00:23,084
+between a degree and an average worker.
+
+10
+00:00:23,084 --> 00:00:25,707
+They're choosing between a degree and no degree.
+
+11
+00:00:25,827 --> 00:00:27,365
+So put those side by side.
+
+12
+00:00:27,365 --> 00:00:28,134
+In September,
+
+13
+00:00:28,134 --> 00:00:32,867
+young workers without a degree had a seven point four percent unemployment rate.
+
+14
+00:00:32,867 --> 00:00:35,470
+Recent college grads were at five point two.
+
+15
+00:00:35,590 --> 00:00:38,395
+And the pay gap is wider than the job gap.
+
+16
+00:00:38,395 --> 00:00:44,006
+In 2025, grads aged 22 to 27 earned a median of about sixty thousand dollars a year.
+
+17
+00:00:44,006 --> 00:00:47,479
+Young high school grads earned about forty thousand.
+
+18
+00:00:47,479 --> 00:00:49,883
+That's one and a half times as much.
+
+19
+00:00:50,003 --> 00:00:53,246
+On the two numbers that pay the bills, the degree still wins.
+
+20
+00:00:53,596 --> 00:00:57,731
+The worry about AI is real, but it's narrower than the headlines.
+
+21
+00:00:57,731 --> 00:01:02,057
+A Stanford team looked at payroll records for workers aged 22 to 25.
+
+22
+00:01:02,057 --> 00:01:04,029
+In the jobs most exposed to AI,
+
+23
+00:01:04,029 --> 00:01:08,864
+employment for that age group was about nineteen percent lower by June 2026,
+
+24
+00:01:08,864 --> 00:01:11,981
+compared with young workers in less exposed jobs.
+
+25
+00:01:11,981 --> 00:01:14,780
+A year earlier, the gap was fifteen percent.
+
+26
+00:01:14,900 --> 00:01:19,141
+The same study finds the drop comes from fewer hires, not more layoffs.
+
+27
+00:01:19,141 --> 00:01:23,143
+And it finds no evidence of widespread job loss across the economy.
+
+28
+00:01:23,143 --> 00:01:26,249
+The authors call these patterns, not proof of cause.
+
+29
+00:01:26,369 --> 00:01:28,865
+So the part that's shrinking is the first rung.
+
+30
+00:01:28,865 --> 00:01:31,786
+That matters for a new grad, but it's a hiring problem,
+
+31
+00:01:31,786 --> 00:01:33,857
+not a sign that degrees stopped paying.
+
+32
+00:01:34,207 --> 00:01:37,640
+Here's the number that should worry parents more than AI.
+
+33
+00:01:37,640 --> 00:01:41,917
+Among all recent grads, thirty-nine percent were underemployed in 2024,
+
+34
+00:01:41,917 --> 00:01:45,109
+meaning they worked a job that doesn't need a degree.
+
+35
+00:01:45,229 --> 00:01:48,201
+And the average hides a huge spread by major.
+
+36
+00:01:48,201 --> 00:01:53,219
+In 2024, special education grads had an unemployment rate under one percent.
+
+37
+00:01:53,219 --> 00:01:55,134
+Nursing was at two point one.
+
+38
+00:01:55,134 --> 00:01:56,785
+Finance, two point eight.
+
+39
+00:01:56,785 --> 00:01:58,370
+Computer science, seven.
+
+40
+00:01:58,490 --> 00:02:01,007
+Underemployment spreads out the same way.
+
+41
+00:02:01,007 --> 00:02:03,523
+Computer science grads who land a job are
+
+42
+00:02:03,523 --> 00:02:06,162
+underemployed nineteen percent of the time.
+
+43
+00:02:06,162 --> 00:02:08,004
+Art history grads, forty-five.
+
+44
+00:02:08,004 --> 00:02:09,477
+Philosophy, forty-seven.
+
+45
+00:02:09,597 --> 00:02:11,142
+So "college" isn't one bet.
+
+46
+00:02:11,142 --> 00:02:14,290
+It's dozens of different bets with very different odds.
+
+47
+00:02:14,640 --> 00:02:18,480
+You could read all this and decide the safe move is to skip college.
+
+48
+00:02:18,480 --> 00:02:20,174
+The data doesn't support that.
+
+49
+00:02:20,174 --> 00:02:21,247
+In the same tables,
+
+50
+00:02:21,247 --> 00:02:25,200
+the no-degree path has the higher unemployment rate and the lower pay.
+
+51
+00:02:25,320 --> 00:02:27,637
+What AI changes is the margin for error.
+
+52
+00:02:27,637 --> 00:02:29,548
+When entry-level hiring tightens,
+
+53
+00:02:29,548 --> 00:02:33,661
+the major and the plan for the first job matter more than they used to.
+
+54
+00:02:34,011 --> 00:02:36,266
+So, is college still worth it with AI?
+
+55
+00:02:36,266 --> 00:02:37,216
+On average, yes.
+
+56
+00:02:37,216 --> 00:02:41,905
+A degree still means lower unemployment and about one and a half times the pay.
+
+57
+00:02:42,025 --> 00:02:44,176
+But the average is doing a lot of work.
+
+58
+00:02:44,176 --> 00:02:47,705
+The first rung is getting harder in jobs where AI does the task,
+
+59
+00:02:47,705 --> 00:02:50,131
+and the payoff depends heavily on the major.
+
+60
+00:02:50,251 --> 00:02:54,251
+So the question for your family isn't "college or not?" It's "which degree,
+
+61
+00:02:54,251 --> 00:02:56,331
+and what's the plan for the first job?"

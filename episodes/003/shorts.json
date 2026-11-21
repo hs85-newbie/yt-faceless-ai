@@ -1,0 +1,11 @@
+[
+  {"id": "1", "t0": 0.0, "t1": 35.47, "kicker": "IS COLLEGE WORTH IT? &middot; PART 1/3",
+   "title": "NO DEGREE: <span class='bad'>7.4%</span> JOBLESS. GRADS: <span class='good'>5.2%</span>.",
+   "next_kicker": "NEXT &middot; PART 2/3", "next": "THE PAY GAP IS WIDER"},
+  {"id": "2", "t0": 35.47, "t1": 53.48, "kicker": "IS COLLEGE WORTH IT? &middot; PART 2/3",
+   "title": "GRADS EARN <span class='good'>1.5&times;</span> WHAT HIGH SCHOOL GRADS DO",
+   "next_kicker": "NEXT &middot; PART 3/3", "next": "BUT IT DEPENDS ON THE MAJOR"},
+  {"id": "3", "t0": 94.09, "t1": 129.48, "kicker": "IS COLLEGE WORTH IT? &middot; PART 3/3",
+   "title": "<span class='bad'>39%</span> OF NEW GRADS WORK JOBS THAT DON'T NEED A DEGREE",
+   "next_kicker": "FULL VIDEO &middot; ON THE CHANNEL", "next": "WHICH DEGREE? WHAT FIRST JOB?"}
+]
