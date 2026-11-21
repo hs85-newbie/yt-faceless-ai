@@ -50,3 +50,18 @@ ai taking entry level jobs, college graduates struggle to find jobs, why is it s
 - 무엇을: 위 영상 + 제목·설명·태그·썸네일 1장·자막 2개
 - 어디로: YouTube @Counter_Ledger
 - 되돌릴 수 있나: 비공개 단계에선 완전 되돌림. 공개 후엔 비공개 전환·삭제 가능하나 조회·노출 기록은 남음
+
+## 숏폼 3편 (2026-11-22 승인, 스프린트 #30, `python3 -I scripts/shorts.py 001 output/001/04_exports/EP001_v4_full_r5.mp4`)
+
+설명란 공통 끝부분(외부 링크 없음):
+```
+Full video on this channel: "Is AI Taking Entry-Level Jobs? It Started Before ChatGPT"
+Sources: New York Fed, Liberty Street Economics (Jun 1, 2026), "Remote Work Leaves Younger Workers Sidelined"; Stanford Digital Economy Lab (Aug 2026), Canaries in the Coal Mine update.
+Narration uses a synthetic (AI) voice. Visuals are paper props built and rendered in 3D. No AI-generated video.
+```
+
+| 파일 | 길이 | 제목 | 설명 첫 줄 |
+|---|---|---|---|
+| `EP001_short_1.mp4` | 43초 | Is AI Taking Entry-Level Jobs? Part 1/3: The Grad Job Gap Started Before ChatGPT | Is AI taking entry-level jobs? Part 1 of 3. A New York Fed study finds the gap for young grads opened in jobs that went remote, before ChatGPT launched in November 2022. |
+| `EP001_short_2.mp4` | 28초 | Is AI Taking Entry-Level Jobs? Part 2/3: Remote Work May Explain 64% of the Rise | Is AI taking entry-level jobs? Part 2 of 3. The researchers' rough estimate: remote work can explain about 64% of the recent rise in unemployment among young college graduates. |
+| `EP001_short_3.mp4` | 43초 | Is AI Taking Entry-Level Jobs? Part 3/3: AI-Exposed Jobs, Young Employment 19% Lower | Is AI taking entry-level jobs? Part 3 of 3. Stanford payroll data: in the most AI-exposed jobs, employment for workers aged 22 to 25 was about 19% lower by June 2026 than in less exposed jobs (15% a year earlier). |
