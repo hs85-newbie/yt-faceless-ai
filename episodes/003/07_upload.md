@@ -48,3 +48,9 @@ Narration uses a synthetic (AI) voice. No AI-generated video or images. Piano sa
 | `EP003_short_1.mp4` | 35초 | Is College Still Worth It? Part 1/3: No Degree 7.4% Jobless, Grads 5.2% | Is college still worth it? Part 1 of 3. New grads are unemployed at 5.2%, above all workers at 4.0%, but young workers without a degree are at 7.4% (Sept 2026). |
 | `EP003_short_2.mp4` | 18초 | Is College Still Worth It? Part 2/3: Grads Earn 1.5x What High School Grads Do | Is college still worth it? Part 2 of 3. In 2025, grads aged 22 to 27 earned a median of about $60,000, against $40,000 for young high school grads. |
 | `EP003_short_3.mp4` | 35초 | Is College Still Worth It? Part 3/3: 39% of New Grads Work Jobs That Don't Need a Degree | Is college still worth it? Part 3 of 3. 39% of recent grads were underemployed in 2024, and the spread by major is huge. |
+
+## 업로드 기록
+- 2026-11-23 롱폼 업로드(Counter Ledger): https://youtu.be/QYcN9KHF8VI — 세부정보·태그·언어(영어)·영어 자막 입력, 검사 문제 없음. 사용자가 직접 공개 게시
+- 같은 날 다른 채널(BGM 채널)에 잘못 올라간 초안은 사용자가 취소
+- 숏폼 공개: 1편 https://youtube.com/shorts/EH8EkYz4Q7k · 2편 https://youtube.com/shorts/XJlTWLZzAbs · 3편 https://youtube.com/shorts/eYQffryKCTw
+- 해시태그(롱폼·숏폼 4편 설명 끝): #IsCollegeWorthIt #CollegeDegree #AIJobs. 유튜브 추천(#golf #investing #sports)은 주제와 무관해 안 씀
