@@ -1,199 +1,515 @@
 1
-00:00:00,000 --> 00:00:04,632
-The college majors with the lowest unemployment rate right now aren't in tech.
+00:00:00,000 --> 00:00:03,295
+Computer science, the major built for the tech economy,
 
 2
-00:00:04,632 --> 00:00:05,820
-They're in teaching.
+00:00:03,295 --> 00:00:05,932
+is now one of the majors most exposed to AI.
 
 3
-00:00:05,820 --> 00:00:08,789
-Special education grads: zero point seven percent.
+00:00:05,932 --> 00:00:08,448
+Nursing and education are among the least.
 
 4
-00:00:08,909 --> 00:00:11,533
-So which majors are actually safe from AI?
+00:00:08,568 --> 00:00:10,244
+And it's already showing up.
 
 5
-00:00:11,883 --> 00:00:13,253
-No major is AI-proof.
+00:00:10,244 --> 00:00:13,596
+In Texas, the more of a major's tasks AI could automate,
 
 6
-00:00:13,253 --> 00:00:15,274
-Nobody's data can promise that.
+00:00:13,596 --> 00:00:17,187
+the fewer of its graduates had jobs a year after graduating.
 
 7
-00:00:15,274 --> 00:00:18,992
-What the New York Fed data can show is narrower: in 2024,
+00:00:17,307 --> 00:00:20,908
+Forty-two percent of students working toward a bachelor's degree
 
 8
-00:00:18,992 --> 00:00:23,361
-which majors' new grads were finding work, and what they were paid.
+00:00:20,908 --> 00:00:24,283
+have seriously thought about switching majors because of AI.
 
 9
-00:00:23,711 --> 00:00:26,014
-Start with the lowest unemployment.
+00:00:24,403 --> 00:00:27,027
+So which majors are actually safe from AI?
 
 10
-00:00:26,014 --> 00:00:28,252
-Education majors dominate the top.
+00:00:30,344 --> 00:00:31,626
+No major is AI-proof.
 
 11
-00:00:28,252 --> 00:00:31,279
-Special education at zero point seven percent,
+00:00:31,626 --> 00:00:33,520
+Nobody's data can promise that.
 
 12
-00:00:31,279 --> 00:00:33,780
-elementary education at one point two.
+00:00:33,520 --> 00:00:34,375
+But this year,
 
 13
-00:00:33,900 --> 00:00:35,137
-But look at the pay.
+00:00:34,375 --> 00:00:37,306
+research has started to show where AI is already
 
 14
-00:00:35,137 --> 00:00:39,094
-Special education grads start around forty-six thousand dollars.
+00:00:37,306 --> 00:00:40,176
+showing up in the job market for new graduates.
 
 15
-00:00:39,094 --> 00:00:41,135
-Elementary education, forty-five.
+00:00:40,176 --> 00:00:42,192
+And it points somewhere specific.
 
 16
-00:00:41,135 --> 00:00:45,463
-The typical starting salary across all majors is fifty-eight thousand.
+00:00:42,192 --> 00:00:43,230
+Not mass layoffs.
 
 17
-00:00:45,583 --> 00:00:46,710
-Safe by one measure.
+00:00:43,230 --> 00:00:44,146
+The front door.
 
 18
-00:00:46,710 --> 00:00:48,569
-Among the lowest paid by another.
+00:00:44,496 --> 00:00:46,503
+Start with that Texas study.
 
 19
-00:00:48,919 --> 00:00:52,077
-The more useful list is the majors that do well on both.
+00:00:46,503 --> 00:00:51,665
+The Dallas Fed followed graduates of Texas public universities by major,
 
 20
-00:00:52,077 --> 00:00:56,194
-Below-average unemployment, and starting pay of seventy thousand or more.
+00:00:51,665 --> 00:00:52,955
+from 2021 to 2024.
 
 21
-00:00:56,314 --> 00:01:00,456
-Nursing: two point one percent unemployed, seventy thousand to start.
+00:00:52,955 --> 00:00:57,830
+Most exposed: computer science, computer engineering, and languages.
 
 22
-00:01:00,456 --> 00:01:04,478
-And only about thirteen percent of nursing grads are underemployed,
+00:00:57,830 --> 00:01:01,414
+Least exposed: nursing, education, and psychology.
 
 23
-00:01:04,478 --> 00:01:06,639
-against thirty-nine percent overall.
+00:01:01,534 --> 00:01:05,372
+For every ten points more of a major's tasks that AI could automate,
 
 24
-00:01:06,759 --> 00:01:10,731
-Civil engineering: two point three percent, seventy-five thousand.
+00:01:05,372 --> 00:01:07,742
+the share of its graduates employed a year
 
 25
-00:01:10,731 --> 00:01:14,763
-Aerospace engineering: two point two percent, eighty-five thousand.
+00:01:07,742 --> 00:01:10,168
+out was about one point seven points lower.
 
 26
-00:01:14,763 --> 00:01:18,855
-Construction services: two point two percent, seventy-five thousand.
+00:01:10,168 --> 00:01:14,401
+And first-year earnings in the more exposed majors fell about five percent,
 
 27
-00:01:18,975 --> 00:01:22,474
-Electrical engineering, finance, and economics make the list too.
+00:01:14,401 --> 00:01:15,699
+relative to the others.
 
 28
-00:01:22,594 --> 00:01:25,237
-Compare computer science: higher pay to start,
+00:01:15,819 --> 00:01:16,454
+Nationally,
 
 29
-00:01:25,237 --> 00:01:28,397
-at eighty-seven thousand, but seven percent unemployed.
+00:01:16,454 --> 00:01:20,323
+the Cleveland Fed found unemployment has risen about one percentage
 
 30
-00:01:28,747 --> 00:01:32,140
-Many of the sweet-spot majors lead to work tied to a place,
+00:01:20,323 --> 00:01:24,250
+point more in the jobs most exposed to AI than in the least exposed.
 
 31
-00:01:32,140 --> 00:01:36,109
-a license, or a patient: hospitals, job sites, aircraft, power grids.
+00:01:24,250 --> 00:01:28,235
+For workers aged twenty-three to thirty, the gap is about two points.
 
 32
-00:01:36,109 --> 00:01:39,157
-That's our reading, not something the table measures.
+00:01:28,355 --> 00:01:33,310
+Anthropic's own usage data shows a smaller version of the same thing: workers aged
 
 33
-00:01:39,277 --> 00:01:42,110
-It lines up with two findings from our first video.
+00:01:33,310 --> 00:01:38,265
+twenty-two to twenty-five are getting into AI-exposed jobs less often than before.
 
 34
-00:01:42,110 --> 00:01:44,665
-The New York Fed found the gap for young grads
+00:01:38,265 --> 00:01:41,347
+For workers over twenty-five, there's no such drop.
 
 35
-00:01:44,665 --> 00:01:46,943
-opened in jobs that can be done remotely,
-
-36
-00:01:46,943 --> 00:01:48,387
-like software engineering.
-
-37
-00:01:48,507 --> 00:01:53,371
+00:01:41,467 --> 00:01:46,332
 And Stanford payroll data shows employment in the jobs most exposed
 
-38
-00:01:53,371 --> 00:01:57,655
+36
+00:01:46,332 --> 00:01:50,616
 to AI fell about eleven percent from late 2022 to mid-2026,
 
-39
-00:01:57,655 --> 00:02:01,285
+37
+00:01:50,616 --> 00:01:54,246
 while in the least exposed jobs it rose about ten.
 
+38
+00:01:54,366 --> 00:01:58,312
+So far, AI is changing who gets in, more than who gets pushed out.
+
+39
+00:01:58,662 --> 00:02:04,186
+So if you only look at who's getting hired, the safest majors look like education.
+
 40
-00:02:01,405 --> 00:02:02,726
-Patterns, not proof.
+00:02:04,186 --> 00:02:06,341
+In the New York Fed's 2024 data,
 
 41
-00:02:02,726 --> 00:02:07,549
-And these figures are one year, 2024, with small samples for some majors.
+00:02:06,341 --> 00:02:10,787
+special education grads had zero point seven percent unemployment.
 
 42
-00:02:07,899 --> 00:02:09,683
-So, which majors are AI-proof?
+00:02:10,787 --> 00:02:13,212
+Elementary education, one point two.
 
 43
-00:02:09,683 --> 00:02:10,574
-None, honestly.
+00:02:13,332 --> 00:02:14,569
+But look at the pay.
 
 44
-00:02:10,574 --> 00:02:13,250
-But some majors are doing well on both counts
+00:02:14,569 --> 00:02:18,526
+Special education grads start around forty-six thousand dollars.
 
 45
-00:02:13,250 --> 00:02:15,806
-that matter for a first job: getting hired,
+00:02:18,526 --> 00:02:20,566
+Elementary education, forty-five.
 
 46
-00:02:15,806 --> 00:02:16,817
-and getting paid.
+00:02:20,566 --> 00:02:24,894
+The typical starting salary across all majors is fifty-eight thousand.
 
 47
-00:02:16,937 --> 00:02:19,885
-A better question than "is it AI-proof?" is this:
+00:02:25,014 --> 00:02:26,141
+Safe by one measure.
 
 48
-00:02:19,885 --> 00:02:22,772
-does this major lead to work that AI helps with,
+00:02:26,141 --> 00:02:28,001
+Among the lowest paid by another.
 
 49
-00:02:22,772 --> 00:02:24,036
-or work that AI does?
+00:02:28,351 --> 00:02:31,204
+Microsoft researchers measured how much of each
 
 50
-00:02:24,036 --> 00:02:25,299
+00:02:31,204 --> 00:02:33,996
+job's work AI chatbots can actually help with.
+
+51
+00:02:33,996 --> 00:02:38,124
+At the top: interpreters and translators, writers, customer service.
+
+52
+00:02:38,124 --> 00:02:42,555
+At the bottom: phlebotomists, oral surgeons, hazardous materials removal.
+
+53
+00:02:42,555 --> 00:02:45,226
+Work done with hands, on a body, in a place.
+
+54
+00:02:45,346 --> 00:02:48,770
+They also say a high score doesn't mean a job disappears.
+
+55
+00:02:48,770 --> 00:02:51,354
+It means AI can help with more of the work.
+
+56
+00:02:51,354 --> 00:02:53,276
+And it isn't just low-paid work.
+
+57
+00:02:53,276 --> 00:02:53,997
+Across jobs,
+
+58
+00:02:53,997 --> 00:02:58,743
+they found only a weak link between how much AI can help and what the job pays.
+
+59
+00:02:58,863 --> 00:03:01,934
+And healthcare, where so much of the work is hands-on,
+
+60
+00:03:01,934 --> 00:03:04,152
+is where the government expects growth.
+
+61
+00:03:04,152 --> 00:03:07,678
+The Bureau of Labor Statistics projects U.S. jobs overall will
+
+62
+00:03:07,678 --> 00:03:11,090
+grow about three and a half percent over the next ten years.
+
+63
+00:03:11,090 --> 00:03:13,364
+Healthcare practitioners, eight percent.
+
+64
+00:03:13,364 --> 00:03:16,378
+Office and administrative support, down four percent,
+
+65
+00:03:16,378 --> 00:03:19,620
+and the Bureau names AI-powered automation as one reason.
+
+66
+00:03:19,740 --> 00:03:24,394
+The fastest-growing job in the country: nurse practitioner, up forty-one percent,
+
+67
+00:03:24,394 --> 00:03:28,359
+with a median pay of about a hundred and thirty-two thousand dollars.
+
+68
+00:03:28,709 --> 00:03:32,171
+So the useful list is the majors that do well on both counts.
+
+69
+00:03:32,171 --> 00:03:35,179
+In the New York Fed data: below-average unemployment,
+
+70
+00:03:35,179 --> 00:03:37,733
+and starting pay of seventy thousand or more.
+
+71
+00:03:37,853 --> 00:03:41,995
+Nursing: two point one percent unemployed, seventy thousand to start.
+
+72
+00:03:41,995 --> 00:03:46,017
+And only about thirteen percent of nursing grads are underemployed,
+
+73
+00:03:46,017 --> 00:03:48,178
+against thirty-nine percent overall.
+
+74
+00:03:48,298 --> 00:03:52,167
+Civil engineering: two point three percent, seventy-five thousand.
+
+75
+00:03:52,167 --> 00:03:56,096
+Aerospace engineering: two point two percent, eighty-five thousand.
+
+76
+00:03:56,096 --> 00:04:00,082
+Construction services: two point two percent, seventy-five thousand.
+
+77
+00:04:00,082 --> 00:04:03,893
+Electrical engineering, finance, and economics make the list too.
+
+78
+00:04:04,013 --> 00:04:06,674
+And the jobs these majors often lead to are
+
+79
+00:04:06,674 --> 00:04:09,273
+projected to grow over the next ten years.
+
+80
+00:04:09,273 --> 00:04:11,191
+Registered nurses, six percent.
+
+81
+00:04:11,191 --> 00:04:12,985
+Civil engineers, six percent.
+
+82
+00:04:12,985 --> 00:04:14,594
+Financial analysts, seven.
+
+83
+00:04:14,944 --> 00:04:17,853
+Many of these jobs share something else: a license.
+
+84
+00:04:17,853 --> 00:04:21,104
+Seventy-one percent of healthcare practitioners hold one.
+
+85
+00:04:21,104 --> 00:04:23,328
+In computer and math jobs, six percent.
+
+86
+00:04:23,448 --> 00:04:27,197
+A civil engineer needs a license to sign off on public projects.
+
+87
+00:04:27,197 --> 00:04:29,188
+An accountant needs a CPA license,
+
+88
+00:04:29,188 --> 00:04:32,527
+which takes a hundred and fifty semester hours of school.
+
+89
+00:04:32,527 --> 00:04:35,104
+AI can help draft the plans and the numbers.
+
+90
+00:04:35,104 --> 00:04:36,803
+Someone licensed still signs.
+
+91
+00:04:36,803 --> 00:04:40,024
+That's our reading, not something these tables measure.
+
+92
+00:04:40,144 --> 00:04:42,778
+And not every safe path is a four-year degree.
+
+93
+00:04:42,778 --> 00:04:45,527
+Electricians are projected to grow nine percent,
+
+94
+00:04:45,527 --> 00:04:49,936
+after a four- to five-year apprenticeship, and most states require a license.
+
+95
+00:04:50,286 --> 00:04:51,501
+Now computer science.
+
+96
+00:04:51,501 --> 00:04:55,897
+Higher pay to start, at eighty-seven thousand, but seven percent unemployed.
+
+97
+00:04:56,017 --> 00:04:57,389
+But tech isn't one job.
+
+98
+00:04:57,389 --> 00:05:00,970
+Software developers are still projected to grow ten percent,
+
+99
+00:05:00,970 --> 00:05:04,729
+at a median of about a hundred and thirty-six thousand dollars.
+
+100
+00:05:04,729 --> 00:05:07,713
+Computer programmers, the more routine coding job,
+
+101
+00:05:07,713 --> 00:05:12,188
+are projected to shrink seven percent, and the Bureau names AI as a reason.
+
+102
+00:05:12,308 --> 00:05:13,474
+In Anthropic's data,
+
+103
+00:05:13,474 --> 00:05:16,213
+AI is already being used for about seventy-five
+
+104
+00:05:16,213 --> 00:05:18,602
+percent of a computer programmer's tasks.
+
+105
+00:05:18,602 --> 00:05:21,400
+For about thirty percent of workers, like cooks,
+
+106
+00:05:21,400 --> 00:05:24,489
+mechanics, and bartenders, it hasn't shown up at all.
+
+107
+00:05:24,609 --> 00:05:25,749
+It's not only tech.
+
+108
+00:05:25,749 --> 00:05:28,989
+Graphic designers are projected to shrink two percent,
+
+109
+00:05:28,989 --> 00:05:31,329
+with AI design tools named as a reason.
+
+110
+00:05:31,449 --> 00:05:33,404
+So the question isn't only the major.
+
+111
+00:05:33,404 --> 00:05:34,777
+It's which work inside it.
+
+112
+00:05:35,127 --> 00:05:37,053
+These are patterns, not proof.
+
+113
+00:05:37,053 --> 00:05:40,457
+The exposure measures don't use the same definitions.
+
+114
+00:05:40,457 --> 00:05:43,282
+Most of this data is about jobs, not majors.
+
+115
+00:05:43,282 --> 00:05:47,970
+The major figures are one year, 2024, with small samples for some majors.
+
+116
+00:05:48,090 --> 00:05:49,631
+And hiring hasn't collapsed.
+
+117
+00:05:49,631 --> 00:05:52,769
+Employers surveyed this spring planned to hire about five
+
+118
+00:05:52,769 --> 00:05:56,016
+and a half percent more new graduates than the year before.
+
+119
+00:05:56,016 --> 00:06:00,420
+Just over a quarter of them said AI has cut the need for some entry-level tasks.
+
+120
+00:06:00,770 --> 00:06:02,545
+So, which majors are AI-proof?
+
+121
+00:06:02,545 --> 00:06:03,433
+None, honestly.
+
+122
+00:06:03,433 --> 00:06:06,096
+But some majors are doing well on both counts
+
+123
+00:06:06,096 --> 00:06:08,640
+that matter for a first job: getting hired,
+
+124
+00:06:08,640 --> 00:06:09,646
+and getting paid.
+
+125
+00:06:09,646 --> 00:06:13,848
+And many of them lead to work tied to a place, a license, or a patient.
+
+126
+00:06:13,968 --> 00:06:16,916
+A better question than "is it AI-proof?" is this:
+
+127
+00:06:16,916 --> 00:06:19,803
+does this major lead to work that AI helps with,
+
+128
+00:06:19,803 --> 00:06:21,067
+or work that AI does?
+
+129
+00:06:21,067 --> 00:06:22,330
 And what does it pay?

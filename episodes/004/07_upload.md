@@ -1,9 +1,9 @@
 # EP004 — 업로드 패키지 (스프린트 #30)
 
-- 영상: `output/004/04_exports/EP004_final.mp4` (2:25, 1920x1080 30fps) — 10MB 넘으면 파일 선택은 사용자가
-- 자막: `episodes/004/subs/en.srt`(영어, 50조각). 한국어는 이번 스프린트 생략
-- 썸네일: 맞춤 썸네일 불가(채널 전화 인증) → 0:09~0:11 제목 숏이 썸네일 구성(제목 + 0.7%). 스튜디오 "동영상에서 선택"으로 고른다
-- 숏폼 3편: `output/004/04_exports/EP004_short_{1,2,3}.mp4` (`python3 -I scripts/shorts.py 004 output/004/04_exports/EP004_final.mp4`)
+- 영상: `output/004/04_exports/EP004_v2_final.mp4` (v2: 자료 보강 재제작, 6:22, 1920x1080 30fps) — 10MB 넘으면 파일 선택은 사용자가. v1(2:25)은 업로드하지 않음
+- 자막: `episodes/004/subs/en.srt`(영어, v2 내레이션 기준). 한국어는 이번 스프린트 생략
+- 썸네일: 맞춤 썸네일 불가(채널 전화 인증) → 0:24~0:30 제목 숏(제목 + 42%)을 제목 문장 뒤 2.967초 정지로 따로 만들었다. 스튜디오 "동영상에서 선택"으로 0:27~0:29 근처 프레임을 고른다
+- 숏폼 3편: v1 롱폼에서 자른 것(사용자 지시로 그대로 공개, 아래 업로드 기록)
 
 ## 제목
 Which College Majors Are AI-Proof? What the Job Data Says
@@ -11,19 +11,28 @@ Which College Majors Are AI-Proof? What the Job Data Says
 ## 설명란 (외부 링크 없음)
 
 ```
-Which college majors are AI-proof? Honestly, none. But the data shows which majors' new grads are getting hired and what they're paid. Education majors have the lowest unemployment and some of the lowest starting pay. Nursing, engineering, construction, finance and economics do well on both. This video walks through the numbers and the one pattern they share.
+Which college majors are AI-proof? Honestly, none. But new research shows where AI is already showing up for new graduates: computer science is one of the most AI-exposed majors, while nursing and education are among the least, and in Texas that's already showing up in who gets hired. This video walks through the job data, the majors that do well on both unemployment and pay, why licenses matter, and why the work inside a major matters as much as the major itself.
 
 0:00 Which majors are AI-proof?
-0:11 The honest answer
-0:23 Safe by one measure
-0:48 The sweet spot
-1:28 One pattern, not proof
-2:07 A better question
+0:30 The honest answer
+0:44 The front door
+1:58 Safe by one measure
+2:28 Where AI helps least
+3:28 The sweet spot
+4:14 The license
+4:50 The twist inside tech
+5:35 Patterns, not proof
+6:00 A better question
 
 Sources
+- Federal Reserve Bank of Dallas, Dodini & Smith, "AI plays a role in weak labor market for college graduates" (Sep 2026)
+- Federal Reserve Bank of Cleveland, Cline & Kaymak, Economic Commentary 2026-26 (Nov 2026)
 - New York Fed, The Labor Market for Recent College Graduates (by-major data from the 2024 American Community Survey)
-- New York Fed, Liberty Street Economics (June 2026)
-- Brynjolfsson, Chandar & Chen, "Canaries in the Coal Mine," Stanford Digital Economy Lab (revised Aug 2026)
+- U.S. Bureau of Labor Statistics, Employment Projections 2025-2035 (Aug 2026), Occupational Outlook Handbook, Current Population Survey (2025)
+- Microsoft Research, Tomlinson et al., "Working with AI" (Oct 2026)
+- Anthropic, Massenkoff & McCrory, "Labor market impacts of AI" (Mar 2026)
+- Brynjolfsson, Chandar & Chen, "Canaries in the Coal Mine," Stanford Digital Economy Lab (Aug 2026)
+- Lumina Foundation-Gallup (Apr 2026); NACE (Apr & May 2026)
 
 Narration uses a synthetic (AI) voice. Collage and charts are drawn in code from the data. No AI-generated video or images.
 Original score. Piano samples: "Salamander Grand Piano V3" by Alexander Holm, CC BY 3.0. Orchestral samples: VS Chamber Orchestra: Community Edition, Versilian Studios (CC0).
@@ -32,7 +41,7 @@ Original score. Piano samples: "Salamander Grand Piano V3" by Alexander Holm, CC
 ```
 
 ## 태그
-which majors are ai proof, ai proof college majors, best college majors for jobs, college majors with lowest unemployment, highest paying college majors, nursing major salary, engineering major unemployment, computer science unemployment, new york fed college majors
+which majors are ai proof, ai proof college majors, most ai exposed majors, computer science major ai, best college majors for jobs, college majors with lowest unemployment, highest paying college majors, nursing major salary, engineering major unemployment, computer science unemployment, new york fed college majors
 
 ## 설정
 - 카테고리: Education / 언어: English / 아동용 아님 / AI 사용(사실적 합성): 아니요 / 공개 범위: 사용자 승인대로
