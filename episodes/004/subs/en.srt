@@ -1,0 +1,199 @@
+1
+00:00:00,000 --> 00:00:04,632
+The college majors with the lowest unemployment rate right now aren't in tech.
+
+2
+00:00:04,632 --> 00:00:05,820
+They're in teaching.
+
+3
+00:00:05,820 --> 00:00:08,789
+Special education grads: zero point seven percent.
+
+4
+00:00:08,909 --> 00:00:11,533
+So which majors are actually safe from AI?
+
+5
+00:00:11,883 --> 00:00:13,253
+No major is AI-proof.
+
+6
+00:00:13,253 --> 00:00:15,274
+Nobody's data can promise that.
+
+7
+00:00:15,274 --> 00:00:18,992
+What the New York Fed data can show is narrower: in 2024,
+
+8
+00:00:18,992 --> 00:00:23,361
+which majors' new grads were finding work, and what they were paid.
+
+9
+00:00:23,711 --> 00:00:26,014
+Start with the lowest unemployment.
+
+10
+00:00:26,014 --> 00:00:28,252
+Education majors dominate the top.
+
+11
+00:00:28,252 --> 00:00:31,279
+Special education at zero point seven percent,
+
+12
+00:00:31,279 --> 00:00:33,780
+elementary education at one point two.
+
+13
+00:00:33,900 --> 00:00:35,137
+But look at the pay.
+
+14
+00:00:35,137 --> 00:00:39,094
+Special education grads start around forty-six thousand dollars.
+
+15
+00:00:39,094 --> 00:00:41,135
+Elementary education, forty-five.
+
+16
+00:00:41,135 --> 00:00:45,463
+The typical starting salary across all majors is fifty-eight thousand.
+
+17
+00:00:45,583 --> 00:00:46,710
+Safe by one measure.
+
+18
+00:00:46,710 --> 00:00:48,569
+Among the lowest paid by another.
+
+19
+00:00:48,919 --> 00:00:52,077
+The more useful list is the majors that do well on both.
+
+20
+00:00:52,077 --> 00:00:56,194
+Below-average unemployment, and starting pay of seventy thousand or more.
+
+21
+00:00:56,314 --> 00:01:00,456
+Nursing: two point one percent unemployed, seventy thousand to start.
+
+22
+00:01:00,456 --> 00:01:04,478
+And only about thirteen percent of nursing grads are underemployed,
+
+23
+00:01:04,478 --> 00:01:06,639
+against thirty-nine percent overall.
+
+24
+00:01:06,759 --> 00:01:10,731
+Civil engineering: two point three percent, seventy-five thousand.
+
+25
+00:01:10,731 --> 00:01:14,763
+Aerospace engineering: two point two percent, eighty-five thousand.
+
+26
+00:01:14,763 --> 00:01:18,855
+Construction services: two point two percent, seventy-five thousand.
+
+27
+00:01:18,975 --> 00:01:22,474
+Electrical engineering, finance, and economics make the list too.
+
+28
+00:01:22,594 --> 00:01:25,237
+Compare computer science: higher pay to start,
+
+29
+00:01:25,237 --> 00:01:28,397
+at eighty-seven thousand, but seven percent unemployed.
+
+30
+00:01:28,747 --> 00:01:32,140
+Many of the sweet-spot majors lead to work tied to a place,
+
+31
+00:01:32,140 --> 00:01:36,109
+a license, or a patient: hospitals, job sites, aircraft, power grids.
+
+32
+00:01:36,109 --> 00:01:39,157
+That's our reading, not something the table measures.
+
+33
+00:01:39,277 --> 00:01:42,110
+It lines up with two findings from our first video.
+
+34
+00:01:42,110 --> 00:01:44,665
+The New York Fed found the gap for young grads
+
+35
+00:01:44,665 --> 00:01:46,943
+opened in jobs that can be done remotely,
+
+36
+00:01:46,943 --> 00:01:48,387
+like software engineering.
+
+37
+00:01:48,507 --> 00:01:53,371
+And Stanford payroll data shows employment in the jobs most exposed
+
+38
+00:01:53,371 --> 00:01:57,655
+to AI fell about eleven percent from late 2022 to mid-2026,
+
+39
+00:01:57,655 --> 00:02:01,285
+while in the least exposed jobs it rose about ten.
+
+40
+00:02:01,405 --> 00:02:02,726
+Patterns, not proof.
+
+41
+00:02:02,726 --> 00:02:07,549
+And these figures are one year, 2024, with small samples for some majors.
+
+42
+00:02:07,899 --> 00:02:09,683
+So, which majors are AI-proof?
+
+43
+00:02:09,683 --> 00:02:10,574
+None, honestly.
+
+44
+00:02:10,574 --> 00:02:13,250
+But some majors are doing well on both counts
+
+45
+00:02:13,250 --> 00:02:15,806
+that matter for a first job: getting hired,
+
+46
+00:02:15,806 --> 00:02:16,817
+and getting paid.
+
+47
+00:02:16,937 --> 00:02:19,885
+A better question than "is it AI-proof?" is this:
+
+48
+00:02:19,885 --> 00:02:22,772
+does this major lead to work that AI helps with,
+
+49
+00:02:22,772 --> 00:02:24,036
+or work that AI does?
+
+50
+00:02:24,036 --> 00:02:25,299
+And what does it pay?

@@ -1,0 +1,11 @@
+[
+  {"id": "1", "t0": 23.711, "t1": 48.569, "kicker": "WHICH MAJORS ARE AI-PROOF? &middot; PART 1/3",
+   "title": "TEACHING: <span class='good'>0.7%</span> JOBLESS. BUT <span class='bad'>$46,000</span> PAY.",
+   "next_kicker": "NEXT &middot; PART 2/3", "next": "THE MAJORS THAT WIN ON BOTH"},
+  {"id": "2", "t0": 48.919, "t1": 88.397, "kicker": "WHICH MAJORS ARE AI-PROOF? &middot; PART 2/3",
+   "title": "LOW UNEMPLOYMENT AND <span class='good'>$70,000+</span> TO START",
+   "next_kicker": "NEXT &middot; PART 3/3", "next": "WHAT THESE MAJORS HAVE IN COMMON"},
+  {"id": "3", "t0": 88.747, "t1": 127.549, "kicker": "WHICH MAJORS ARE AI-PROOF? &middot; PART 3/3",
+   "title": "AI-EXPOSED JOBS <span class='bad'>&minus;11%</span>. LEAST EXPOSED <span class='good'>+10%</span>.",
+   "next_kicker": "FULL VIDEO &middot; ON THE CHANNEL", "next": "DOES AI HELP WITH THE WORK, OR DO IT?"}
+]
