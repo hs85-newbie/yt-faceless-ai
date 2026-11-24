@@ -98,7 +98,7 @@ def fork(t0, left, right):
     return road + card(233, 144, 610, 269, left, round(t0 + F(13), 3), 31) + card(1077, 144, 610, 269, right, round(t0 + F(34), 3), 32, rot=1.618)
 
 
-def write(ep, L, end, shots, final):
+def write(ep, L, end, shots, final, work="v1"):
     """shots = {줄 id: (화면 html, 출처)} → output/NNN/03_work/collage/ (npx hyperframes render로 렌더)."""
     ids, out, body = list(shots), R / f"output/{ep}/03_work/collage", []
     for i, k in enumerate(ids):
@@ -108,7 +108,7 @@ def write(ep, L, end, shots, final):
         body.append(f'<div class="shot" data-in="{L[k]}" data-out="{t_out}">{html}{src_html}</div>')
     draft = "" if final else f'<div id="draft">DRAFT &middot; EP{ep} COLLAGE</div>'
     (out / "assets").mkdir(parents=True, exist_ok=True)
-    shutil.copy(R / f"output/{ep}/03_work/v1/mix.wav", out / "assets/mix.wav")
+    shutil.copy(R / f"output/{ep}/03_work/{work}/mix.wav", out / "assets/mix.wav")
     for f in ("hyperframes.json", "meta.json", "package.json"): shutil.copy(R / "episodes/002/film" / f, out / f)
     (out / "index.html").write_text((R / "scripts/collage.html").read_text().replace("{{ROOT_CSS}}", root_css()).replace("{{END}}", str(end))
                                     .replace("{{SHOTS}}", "\n".join(body)).replace("{{DRAFT}}", draft))

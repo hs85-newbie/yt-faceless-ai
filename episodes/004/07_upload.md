@@ -55,3 +55,7 @@ Narration uses a synthetic (AI) voice. No AI-generated video or images. Piano sa
 | `EP004_short_3.mp4` | 39초 | Which Majors Are AI-Proof? Part 3/3: AI-Exposed Jobs Down 11%, Least Exposed Up 10% | Which majors are AI-proof? Part 3 of 3. Stanford payroll data: employment in the most AI-exposed jobs fell about 11% from late 2022 to mid-2026, while the least exposed rose about 10%. |
 
 숏폼 3편 설명의 출처 줄은 3편만 "Brynjolfsson, Chandar & Chen, "Canaries in the Coal Mine," Stanford Digital Economy Lab (Aug 2026)"을 더한다.
+
+## 업로드 기록
+- 2026-11-25 숏폼 3편 공개(v1 롱폼에서 자른 것, 사용자 지시로 그대로): 1편 https://youtube.com/shorts/T6_Tr16r7OM · 2편 https://youtube.com/shorts/blE87e17lFQ · 3편 https://youtube.com/shorts/GKDljwQ_kqU
+- 롱폼은 자료 보강 후 재제작 중이라 숏폼 설명란은 "Full video coming soon on this channel"로 올림. 롱폼 공개 후 "Full video on this channel"로 고칠 것. 3편 끝 화면의 "FULL VIDEO · ON THE CHANNEL"은 영상에 박혀 있어 롱폼 공개 전까지 어긋남

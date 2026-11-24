@@ -9,15 +9,17 @@
 
 ## 1. Hook
 
-Forty-two percent of college students working toward a bachelor's degree have seriously thought about switching majors because of AI. Thirteen percent already have. [#25]
+Computer science, the major built for the tech economy, is now one of the majors most exposed to AI. Nursing and education are among the least. [#22]
 
-`[CHART] two torn bars: thought about switching 42% · already switched 13%`
+`[COLLAGE] two torn labels: COMPUTER SCIENCE stamped MOST EXPOSED · NURSING / EDUCATION stamped LEAST EXPOSED`
 
-And their parents are worried too. Seventy-one percent of American adults expect AI to mean fewer jobs over the next twenty years. [#28]
+And it's already showing up. In Texas, the more of a major's tasks AI could automate, the fewer of its graduates had jobs a year after graduating. [#22]
+
+Forty-two percent of students working toward a bachelor's degree have seriously thought about switching majors because of AI. [#25]
 
 So which majors are actually safe from AI?
 
-`[TITLE] WHICH MAJORS ARE AI-PROOF?`
+`[TITLE] WHICH MAJORS ARE AI-PROOF? — 썸네일 구간: 제목 문장 뒤 2.967초(89프레임) 정지, episodes/004/pauses.json`
 
 ## 2. The honest answer first
 
@@ -27,11 +29,11 @@ No major is AI-proof. Nobody's data can promise that. But this year, research ha
 
 ## 3. The front door
 
-Start with Texas. The Dallas Fed followed graduates of Texas public universities by major, from 2021 to 2024. The majors most exposed to AI automation were computer science, computer engineering, and languages. The least exposed were nursing, education, and psychology. [#22]
+Start with that Texas study. The Dallas Fed followed graduates of Texas public universities by major, from 2021 to 2024. Most exposed: computer science, computer engineering, and languages. Least exposed: nursing, education, and psychology. [#22]
 
 `[CHART] two stacks of torn labels: MOST EXPOSED (CS · computer eng. · languages) vs LEAST EXPOSED (nursing · education · psychology)`
 
-The more of a major's tasks AI could automate, the fewer of its graduates had jobs a year later. And first-year earnings in the more exposed majors fell about five percent, relative to the others. [#22]
+For every ten points more of a major's tasks that AI could automate, the share of its graduates employed a year out was about one point seven points lower. And first-year earnings in the more exposed majors fell about five percent, relative to the others. [#22]
 
 Nationally, the Cleveland Fed found unemployment has risen about one percentage point more in the jobs most exposed to AI than in the least exposed. For workers aged twenty-three to thirty, the gap is about two points. [#23]
 
