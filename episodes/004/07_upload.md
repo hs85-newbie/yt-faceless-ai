@@ -68,3 +68,5 @@ Narration uses a synthetic (AI) voice. No AI-generated video or images. Piano sa
 ## 업로드 기록
 - 2026-11-25 숏폼 3편 공개(v1 롱폼에서 자른 것, 사용자 지시로 그대로): 1편 https://youtube.com/shorts/T6_Tr16r7OM · 2편 https://youtube.com/shorts/blE87e17lFQ · 3편 https://youtube.com/shorts/GKDljwQ_kqU
 - 롱폼은 자료 보강 후 재제작 중이라 숏폼 설명란은 "Full video coming soon on this channel"로 올림. 롱폼 공개 후 "Full video on this channel"로 고칠 것. 3편 끝 화면의 "FULL VIDEO · ON THE CHANNEL"은 영상에 박혀 있어 롱폼 공개 전까지 어긋남
+- 2026-11-25 롱폼 v2 공개: https://youtu.be/2WDdW_244BA (6:22, 영어 자막·챕터 10개·태그·해시태그). 숏폼 3편 설명을 "Full video on this channel"로 고침(저장 화면 확인)
+- 남은 일: 스튜디오 "동영상에서 선택"으로 0:27~0:29 프레임 썸네일 지정(사용자)
